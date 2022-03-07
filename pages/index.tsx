@@ -6,7 +6,7 @@ const Home: NextPage = () => {
     <div>
       <Head>
         <title>
-          InstruGo | Get help with math, languages, physics and more
+          InstruGo | Get help with math, physics, languages and more
         </title>
         <meta
           name="description"
