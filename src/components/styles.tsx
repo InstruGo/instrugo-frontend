@@ -2,8 +2,8 @@ import { styled } from '@stitches/react';
 
 export const StyledButton = styled('button', {
   border: '0',
-  borderRadius: '50px',
   fontFamily: 'inherit',
+  '&:focus-visible': { outline: 'none' },
 
   variants: {
     type: {
@@ -17,21 +17,9 @@ export const StyledButton = styled('button', {
         fontWeight: 'bold',
       },
     },
-    spacing: {
-      compact: {
-        padding: '5px 10px',
-      },
-      comfortable: {
-        padding: '8px 25px',
-      },
-      spacey: {
-        padding: '10px 50px',
-      },
-    },
   },
 
   defaultVariants: {
     type: 'primary',
-    spacing: 'comfortable',
   },
 });

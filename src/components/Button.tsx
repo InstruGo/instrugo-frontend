@@ -5,15 +5,10 @@ type StitchesComponentProps = React.ComponentPropsWithoutRef<
   typeof StyledButton
 >;
 
-export const Button = (props: StitchesComponentProps) => {
-  return (
-    <StyledButton
-      onClick={props.onClick}
-      type={props.type}
-      spacing={props.spacing}
-      style={props.style}
-    >
-      {props.children}
-    </StyledButton>
-  );
+interface ButtonProps extends StitchesComponentProps {
+  text: string;
+}
+
+export const Button = ({ text, ...rest }: ButtonProps) => {
+  return <StyledButton {...rest}>{text}</StyledButton>;
 };
