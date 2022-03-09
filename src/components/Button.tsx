@@ -1,16 +1,11 @@
 import React from 'react';
 import { StyledButton } from './styles';
-import type * as Stitches from '@stitches/react';
 
-interface ButtonProps {
-  text: string;
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
-  style?: React.CSSProperties;
-}
+type StitchesComponentProps = React.ComponentPropsWithoutRef<
+  typeof StyledButton
+>;
 
-type StyledButtonProps = Stitches.VariantProps<typeof StyledButton>;
-
-export const Button = (props: ButtonProps & StyledButtonProps) => {
+export const Button = (props: StitchesComponentProps) => {
   return (
     <StyledButton
       onClick={props.onClick}
@@ -18,7 +13,7 @@ export const Button = (props: ButtonProps & StyledButtonProps) => {
       spacing={props.spacing}
       style={props.style}
     >
-      {props.text}
+      {props.children}
     </StyledButton>
   );
 };
