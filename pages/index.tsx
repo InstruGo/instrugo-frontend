@@ -8,11 +8,6 @@ const Home: NextPage = () => {
         <title>
           InstruGo | Get help with math, physics, languages and more
         </title>
-        <meta
-          name="description"
-          content="App for connecting students and knowledgeable tutors."
-        />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
     </div>
   );
