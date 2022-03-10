@@ -1,1 +1,15 @@
-{}
+{
+  "appName": "InstruGo",
+
+  "button.register": "register",
+  "button.login": "login",
+
+  "registration.terms": "Agree to our terms and conditions",
+  "registration.confirmPassword": "confirm password",
+
+  "user.firstName": "first name",
+  "user.lastName": "last name",
+  "user.email": "e-mail",
+  "user.password": "password",
+  "user.phone": "phone number"
+}
