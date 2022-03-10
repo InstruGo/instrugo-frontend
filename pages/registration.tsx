@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { RegistrationContainer } from '../src/modules/Registration/RegistrationContainer';
+import { RegistrationContainer } from '../src/modules/Registration';
 
 const Registration: NextPage = () => {
   return (
