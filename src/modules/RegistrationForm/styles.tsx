@@ -2,56 +2,50 @@ import { CSSProperties } from '@stitches/react';
 
 import { styled } from 'styles/stitches';
 
-export const RegistrationContainer = styled('form', {
+export const RegistrationFormContainer = styled('form', {
   display: 'flex',
   alignItems: 'center',
   flexDirection: 'column',
-  padding: '20px',
   marginTop: '30px',
-  'div + div': {
+  padding: '0 30px',
+  'input + input': {
     marginTop: '30px',
   },
-});
-
-export const LabeledInput = styled('div', {
-  width: '100%',
-  maxWidth: '400px',
-  display: 'flex',
-  flexDirection: 'column',
-});
-
-export const StyledLabel = styled('label', {
-  fontSize: '20px',
-  color: '#10434E',
-  textTransform: 'capitalize',
-  '&:after': {
-    content: ':',
+  '@sm': {
+    marginTop: '60px',
   },
 });
 
 export const StyledInput = styled('input', {
-  border: 'none',
-  padding: '0',
-  paddingLeft: '2px',
-  marginTop: '10px',
-  borderBottom: 'solid 2px #5a7b83',
-  fontSize: '18px',
-  fontFamily: 'inherit',
-  color: '#10434E',
   width: '100%',
-  transition: 'width 0.5s',
+  maxWidth: '400px',
+  padding: '10px 15px',
+  boxSizing: 'border-box',
+  border: 'none',
+  boxShadow: '0 0 2px #aaa',
+  borderRadius: '10px',
+  fontSize: '18px',
+  color: '#10434E',
+  fontFamily: 'inherit',
+  transition: 'box-shadow 0.4s',
   '&:focus-visible': { outline: 'none' },
   '&:focus': {
-    borderBottom: 'solid 2px #10434e',
+    boxShadow: '0 0 6px #375d64b3',
   },
   '&::selection': {
     backgroundColor: '#f5d2a5',
   },
-  '@sm': {
-    '&:focus': {
-      width: '103%',
-    },
-  },
+  '&::placeholder': { textTransform: 'capitalize', color: '#aaa' },
+});
+
+export const LabeledCheckbox = styled('div', {
+  width: '100%',
+  maxWidth: '400px',
+  display: 'flex',
+  flexDirection: 'row-reverse',
+  justifyContent: 'center',
+  alignItems: 'center',
+  marginTop: '50px',
 });
 
 export const RegisterButton: CSSProperties = {

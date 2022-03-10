@@ -1,17 +1,7 @@
-import { styled } from '@stitches/react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { FormattedMessage } from 'react-intl';
-
-import { HeaderContainer } from '@components';
 import { RegistrationForm } from '@modules';
-
-export const StyledAppName = styled('div', {
-  color: 'white',
-  fontSize: '30px',
-  fontWeight: 'bold',
-  letterSpacing: '1px',
-});
+import { SimpleHeader } from '@modules/SimpleHeader/Simpleheader';
 
 const Registration: NextPage = () => {
   return (
@@ -20,12 +10,7 @@ const Registration: NextPage = () => {
         <title>InstruGo | Register an account</title>
       </Head>
 
-      <HeaderContainer>
-        <StyledAppName>
-          <FormattedMessage id={'appName'} />
-        </StyledAppName>
-      </HeaderContainer>
-
+      <SimpleHeader />
       <RegistrationForm />
     </div>
   );
