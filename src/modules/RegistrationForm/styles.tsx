@@ -6,13 +6,12 @@ export const RegistrationFormContainer = styled('form', {
   display: 'flex',
   alignItems: 'center',
   flexDirection: 'column',
-  marginTop: '30px',
-  padding: '0 30px',
+  padding: '30px',
   'input + input': {
     marginTop: '30px',
   },
   '@sm': {
-    marginTop: '60px',
+    paddingTop: '60px',
   },
 });
 
