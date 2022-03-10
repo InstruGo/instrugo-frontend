@@ -1,33 +1,21 @@
-import { css, CSSProperties, styled } from '@stitches/react';
+import { CSSProperties } from '@stitches/react';
 
-export const Header = styled('div', {
-  height: '100px',
-  backgroundColor: '#10434E',
-  display: 'flex',
-  alignItems: 'center',
-});
-
-export const AppName = styled('div', {
-  marginLeft: '15px',
-  color: 'white',
-  fontSize: '40px',
-  textShadow: '4px 4px 10px #000',
-  fontWeight: 'bold',
-  letterSpacing: '1px',
-});
+import { styled } from 'styles/stitches';
 
 export const RegistrationContainer = styled('form', {
   display: 'flex',
   alignItems: 'center',
   flexDirection: 'column',
-  marginTop: '100px',
+  padding: '20px',
+  marginTop: '30px',
   'div + div': {
-    marginTop: '20px',
+    marginTop: '30px',
   },
 });
 
 export const LabeledInput = styled('div', {
-  width: '500px',
+  width: '100%',
+  maxWidth: '400px',
   display: 'flex',
   flexDirection: 'column',
 });
@@ -35,18 +23,34 @@ export const LabeledInput = styled('div', {
 export const StyledLabel = styled('label', {
   fontSize: '20px',
   color: '#10434E',
-  '&:first-letter': { textTransform: 'uppercase' },
+  textTransform: 'capitalize',
+  '&:after': {
+    content: ':',
+  },
 });
 
 export const StyledInput = styled('input', {
   border: 'none',
-  marginTop: '15px',
-  borderBottom: 'solid 1px #10434E66',
+  padding: '0',
+  paddingLeft: '2px',
+  marginTop: '10px',
+  borderBottom: 'solid 2px #5a7b83',
   fontSize: '18px',
+  fontFamily: 'inherit',
   color: '#10434E',
+  width: '100%',
+  transition: 'width 0.5s',
   '&:focus-visible': { outline: 'none' },
   '&:focus': {
-    borderBottom: 'solid 1px #10434Eff',
+    borderBottom: 'solid 2px #10434e',
+  },
+  '&::selection': {
+    backgroundColor: '#f5d2a5',
+  },
+  '@sm': {
+    '&:focus': {
+      width: '103%',
+    },
   },
 });
 

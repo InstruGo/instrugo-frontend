@@ -17,4 +17,6 @@ export const ChildrenContainer = styled('div', {
   width: '100%',
   height: '100%',
   marginLeft: '15px',
+  display: 'flex',
+  alignItems: 'center',
 });

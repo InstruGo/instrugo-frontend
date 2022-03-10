@@ -1,26 +1,12 @@
-import Image from 'next/image';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { Button } from '../../components/Button';
 import * as S from './styles';
 
-export const RegistrationContainer = () => {
+export const RegistrationForm = () => {
   const intl = useIntl();
 
   return (
     <div>
-      <S.Header>
-        <div
-          style={{
-            marginLeft: '15px',
-          }}
-        >
-          <Image src="/logo.svg" alt="appLogo" width="90px" height="90px" />
-        </div>
-        <S.AppName>
-          <FormattedMessage id={'appName'} />
-        </S.AppName>
-      </S.Header>
-
       <S.RegistrationContainer>
         <S.LabeledInput>
           <S.StyledLabel>
