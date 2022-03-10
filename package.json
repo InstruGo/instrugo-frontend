@@ -33,7 +33,7 @@
     "typescript": "4.6.2"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,md,mdx,json}": [
+    "*.{js,jsx,ts,tsx,md,mdx}": [
       "yarn lint",
       "yarn format"
     ]
