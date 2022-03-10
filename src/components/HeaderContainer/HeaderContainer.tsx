@@ -1,6 +1,10 @@
 import Image from 'next/image';
 import React from 'react';
-import { StyledHeaderContainer } from './styles';
+import {
+  ChildrenContainer,
+  LogoContainer,
+  StyledHeaderContainer,
+} from './styles';
 
 type StitchesComponentProps = React.ComponentPropsWithoutRef<
   typeof StyledHeaderContainer
@@ -12,7 +16,7 @@ export const HeaderContainer = ({
 }: React.PropsWithChildren<StitchesComponentProps>) => {
   return (
     <StyledHeaderContainer {...rest}>
-      <div style={{ flexBasis: '50px', marginLeft: '15px' }}>
+      <LogoContainer>
         <Image
           src="/favicon.ico"
           width="50px"
@@ -20,16 +24,8 @@ export const HeaderContainer = ({
           alt="appLogo"
           layout="fixed"
         />
-      </div>
-      <div
-        style={{
-          width: '100%',
-          height: '100%',
-          marginLeft: '15px',
-        }}
-      >
-        {children}
-      </div>
+      </LogoContainer>
+      <ChildrenContainer>{children}</ChildrenContainer>
     </StyledHeaderContainer>
   );
 };

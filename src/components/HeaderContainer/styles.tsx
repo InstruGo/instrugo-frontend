@@ -7,3 +7,14 @@ export const StyledHeaderContainer = styled('div', {
   alignItems: 'center',
   overflow: 'hidden',
 });
+
+export const LogoContainer = styled('div', {
+  flexBasis: '50px',
+  marginLeft: '15px',
+});
+
+export const ChildrenContainer = styled('div', {
+  width: '100%',
+  height: '100%',
+  marginLeft: '15px',
+});
