@@ -15,6 +15,13 @@ export const RegistrationFormContainer = styled('form', {
   },
 });
 
+export const RegistrationText = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  fontSize: '20px',
+});
+
 export const StyledInput = styled('input', {
   width: '100%',
   maxWidth: '400px',
