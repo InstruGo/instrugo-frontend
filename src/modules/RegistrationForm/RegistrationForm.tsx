@@ -1,5 +1,5 @@
+import { Button, Input } from '@components';
 import { FormattedMessage, useIntl } from 'react-intl';
-import { Button } from '../../components/Button';
 import * as S from './styles';
 
 export const RegistrationForm = () => {
@@ -27,29 +27,41 @@ export const RegistrationForm = () => {
         </div>
       </S.RegistrationText>
       <S.RegistrationFormContainer>
-        <S.StyledInput
-          placeholder={intl.formatMessage({ id: 'user.firstName' })}
+        <Input
+          type="auth"
+          placeholderMsgId="user.firstName"
+          style={S.InputStyles}
         />
 
-        <S.StyledInput
-          placeholder={intl.formatMessage({ id: 'user.lastName' })}
+        <Input
+          type="auth"
+          placeholderMsgId="user.lastName"
+          style={S.InputStyles}
         />
 
-        <S.StyledInput placeholder={intl.formatMessage({ id: 'user.email' })} />
-
-        <S.StyledInput
-          type="password"
-          placeholder={intl.formatMessage({ id: 'user.password' })}
+        <Input
+          type="auth"
+          placeholderMsgId="user.email"
+          style={S.InputStyles}
         />
 
-        <S.StyledInput
-          type="password"
-          placeholder={intl.formatMessage({
-            id: 'registration.confirmPassword',
-          })}
+        <Input
+          type="auth"
+          placeholderMsgId="user.password"
+          style={S.InputStyles}
         />
 
-        <S.StyledInput placeholder={intl.formatMessage({ id: 'user.phone' })} />
+        <Input
+          type="auth"
+          placeholderMsgId="registration.confirmPassword"
+          style={S.InputStyles}
+        />
+
+        <Input
+          type="auth"
+          placeholderMsgId="user.phone"
+          style={S.InputStyles}
+        />
 
         <S.LabeledCheckbox>
           <label style={{ marginLeft: '10px' }}>

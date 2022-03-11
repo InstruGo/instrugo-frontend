@@ -2,6 +2,13 @@ import { CSSProperties } from '@stitches/react';
 
 import { styled } from 'styles/stitches.config';
 
+export const RegistrationText = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  fontSize: '20px',
+});
+
 export const RegistrationFormContainer = styled('form', {
   display: 'flex',
   alignItems: 'center',
@@ -15,34 +22,13 @@ export const RegistrationFormContainer = styled('form', {
   },
 });
 
-export const RegistrationText = styled('div', {
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  fontSize: '20px',
-});
-
-export const StyledInput = styled('input', {
+export const InputStyles: CSSProperties = {
   width: '100%',
   maxWidth: '400px',
-  padding: '10px 15px',
-  boxSizing: 'border-box',
-  border: 'none',
-  boxShadow: '0 0 2px #aaa',
-  borderRadius: '10px',
   fontSize: '18px',
   color: '#10434E',
   fontFamily: 'inherit',
-  transition: 'box-shadow 0.4s',
-  '&:focus-visible': { outline: 'none' },
-  '&:focus': {
-    boxShadow: '0 0 6px #375d64b3',
-  },
-  '&::selection': {
-    backgroundColor: '#f5d2a5',
-  },
-  '&::placeholder': { textTransform: 'capitalize', color: '#aaa' },
-});
+};
 
 export const LabeledCheckbox = styled('div', {
   width: '100%',
