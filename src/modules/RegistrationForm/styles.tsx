@@ -1,6 +1,6 @@
 import { CSSProperties } from '@stitches/react';
 
-import { styled } from 'styles/stitches';
+import { styled } from 'styles/stitches.config';
 
 export const RegistrationFormContainer = styled('form', {
   display: 'flex',
@@ -10,7 +10,7 @@ export const RegistrationFormContainer = styled('form', {
   'input + input': {
     marginTop: '30px',
   },
-  '@sm': {
+  '@bp1': {
     paddingTop: '60px',
   },
 });
