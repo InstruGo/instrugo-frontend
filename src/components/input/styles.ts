@@ -1,17 +1,30 @@
-import { styled } from '@stitches/react';
+import { styled } from 'styles/stitches.config';
 
 export const StyledInput = styled('input', {
-  padding: '10px 15px',
   boxSizing: 'border-box',
-  border: 'none',
-  boxShadow: '0 0 2px #aaa',
-  borderRadius: '10px',
-  fontSize: '18px',
+  border: 'solid 1px #aaa',
   fontFamily: 'inherit',
-  transition: 'box-shadow 0.4s',
-  '&:focus-visible': { outline: 'none' },
-  '&:focus': {
-    boxShadow: '0 0 6px #44444488',
-  },
   '&::placeholder': { color: '#aaa' },
+  '&:focus-visible': { outline: 'none' },
+
+  variants: {
+    type: {
+      auth: {
+        border: 'none',
+        padding: '$2 $4',
+        borderRadius: '10px',
+        color: '#10434E',
+        fontSize: '$4',
+        boxShadow: '0 0 2px #aaa',
+        transition: 'box-shadow 0.4s',
+        '&:focus': {
+          boxShadow: '0 0 6px #375d64b3',
+        },
+        '&::placeholder': { textTransform: 'capitalize' },
+        '&::selection': {
+          backgroundColor: '#f5d2a5',
+        },
+      },
+    },
+  },
 });
