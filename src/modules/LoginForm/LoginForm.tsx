@@ -1,5 +1,5 @@
-import { FormattedMessage, useIntl } from 'react-intl';
-import { Button } from '../../components/Button';
+import { Button } from '@components';
+import { useIntl } from 'react-intl';
 import * as S from './styles';
 
 export const LoginForm = () => {

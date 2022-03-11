@@ -1,7 +1,6 @@
+import { LoginForm, SimpleHeader } from '@modules';
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { LoginForm } from '../src/modules/LoginForm';
-import { SimpleHeader } from '../src/modules/SimpleHeader/Simpleheader';
 
 const Login: NextPage = () => {
   return (
