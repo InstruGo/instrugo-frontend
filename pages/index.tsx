@@ -10,8 +10,6 @@ const Home: NextPage = () => {
           InstruGo | Get help with math, physics, languages and more
         </title>
       </Head>
-
-      <Input placeholderMsgId="reg" defaultValueMsgId="reg" />
     </div>
   );
 };
