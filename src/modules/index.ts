@@ -1,1 +1,2 @@
-export * from './RegistrationForm';
+export * from './RegistrationForm/RegistrationForm';
+export * from './SimpleHeader/Simpleheader';

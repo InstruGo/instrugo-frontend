@@ -8,71 +8,56 @@ export const RegistrationForm = () => {
   return (
     <>
       <S.RegistrationText>
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            padding: '20px 15px',
-            boxSizing: 'border-box',
-            width: '100%',
-            background: 'linear-gradient(#fff, #eee)',
-            color: 'rgb(47, 147, 160)',
-            fontWeight: 'bold',
-            fontSize: '24px',
-            textAlign: 'center',
-          }}
-        >
-          Register an account and join the community
-        </div>
+        <FormattedMessage id="registration.description" />
       </S.RegistrationText>
       <S.RegistrationFormContainer>
         <Input
           type="auth"
           placeholderMsgId="user.firstName"
-          style={S.InputStyles}
+          required
+          css={S.InputStyles}
         />
 
         <Input
           type="auth"
           placeholderMsgId="user.lastName"
-          style={S.InputStyles}
+          required
+          css={S.InputStyles}
         />
 
         <Input
           type="auth"
           placeholderMsgId="user.email"
-          style={S.InputStyles}
+          required
+          css={S.InputStyles}
         />
 
         <Input
           type="auth"
           placeholderMsgId="user.password"
-          style={S.InputStyles}
+          required
+          css={S.InputStyles}
         />
 
         <Input
           type="auth"
           placeholderMsgId="registration.confirmPassword"
-          style={S.InputStyles}
+          required
+          css={S.InputStyles}
         />
 
-        <Input
-          type="auth"
-          placeholderMsgId="user.phone"
-          style={S.InputStyles}
-        />
+        <Input type="auth" placeholderMsgId="user.phone" css={S.InputStyles} />
 
         <S.LabeledCheckbox>
           <label style={{ marginLeft: '10px' }}>
             <FormattedMessage id={'registration.terms'} />
           </label>
-          <input type="checkbox" />
+          <input type="checkbox" required />
         </S.LabeledCheckbox>
 
         <Button
           text={intl.formatMessage({ id: 'button.register' })}
-          style={S.RegisterButton}
+          css={S.RegisterButton}
         />
       </S.RegistrationFormContainer>
     </>

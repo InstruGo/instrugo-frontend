@@ -1,7 +1,6 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { RegistrationForm } from '@modules';
-import { SimpleHeader } from '@modules/SimpleHeader/Simpleheader';
+import { RegistrationForm, SimpleHeader } from '@modules';
 
 const Registration: NextPage = () => {
   return (

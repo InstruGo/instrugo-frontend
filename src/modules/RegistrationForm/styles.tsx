@@ -1,4 +1,4 @@
-import { CSSProperties } from '@stitches/react';
+import { CSS } from '@stitches/react';
 
 import { styled } from 'styles/stitches.config';
 
@@ -6,45 +6,49 @@ export const RegistrationText = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  fontSize: '20px',
+  padding: '$5 $4',
+  boxSizing: 'border-box',
+  background: 'linear-gradient(#fff, #eee)',
+  color: 'rgb(47, 147, 160)',
+  fontWeight: 'bold',
+  fontSize: '$xl2',
+  textAlign: 'center',
 });
 
 export const RegistrationFormContainer = styled('form', {
   display: 'flex',
   alignItems: 'center',
   flexDirection: 'column',
-  padding: '30px',
+  padding: '$8',
   'input + input': {
-    marginTop: '30px',
+    marginTop: '$8',
   },
   '@bp1': {
-    paddingTop: '60px',
+    paddingTop: '$16',
   },
 });
 
-export const InputStyles: CSSProperties = {
+export const InputStyles: CSS = {
   width: '100%',
   maxWidth: '400px',
-  fontSize: '18px',
+  fontSize: '$base',
   color: '#10434E',
   fontFamily: 'inherit',
 };
 
 export const LabeledCheckbox = styled('div', {
-  width: '100%',
-  maxWidth: '400px',
   display: 'flex',
   flexDirection: 'row-reverse',
   justifyContent: 'center',
   alignItems: 'center',
-  marginTop: '50px',
+  marginTop: '$12',
 });
 
-export const RegisterButton: CSSProperties = {
-  marginTop: '20px',
+export const RegisterButton: CSS = {
+  marginTop: '$5',
   borderRadius: '50px',
-  padding: '10px 50px',
+  padding: '$2 $12',
   textTransform: 'uppercase',
   fontWeight: 'bold',
-  fontSize: '16px',
+  fontSize: '$base',
 };
