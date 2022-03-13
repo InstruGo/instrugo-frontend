@@ -1,4 +1,5 @@
 import { CSSProperties } from '@stitches/react';
+import { CSS } from '@stitches/react';
 
 import { styled } from '../../../styles/stitches.config';
 
@@ -62,3 +63,11 @@ export const LinkRef = styled('a', {
   fontWeight: 'bold',
   textDecoration: 'none',
 });
+
+export const InputStyles: CSS = {
+  width: '100%',
+  maxWidth: '400px',
+  fontSize: '$base',
+  color: '#10434E',
+  fontFamily: 'inherit',
+};

@@ -1,5 +1,6 @@
-import { Button } from '@components';
+import { Button, Input } from '@components';
 import { useIntl } from 'react-intl';
+import Link from 'next/link';
 import * as S from './styles';
 
 export const LoginForm = () => {
@@ -7,19 +8,35 @@ export const LoginForm = () => {
 
   return (
     <S.LoginFormContainer>
-      <S.StyledInput placeholder={intl.formatMessage({ id: 'user.email' })} />
-
-      <S.StyledInput
-        placeholder={intl.formatMessage({ id: 'user.password' })}
+      <Input
+        type="auth"
+        placeholderMsgId="user.email"
+        required
+        css={S.InputStyles}
+      />
+      <Input
+        type="auth"
+        placeholderMsgId="user.password"
+        required
+        css={S.InputStyles}
       />
 
-      <S.LinkRef href="url">Forgot password?</S.LinkRef>
+      <Link href="/">
+        <S.LinkRef>
+          {intl.formatMessage({ id: 'login.forgotPassword' })}
+        </S.LinkRef>
+      </Link>
 
       <Button
         text={intl.formatMessage({ id: 'button.login' })}
         style={S.LoginButton}
       />
-      <S.LinkRef href="url">Register</S.LinkRef>
+
+      <Link href="/registration">
+        <S.LinkRef>
+          {intl.formatMessage({ id: 'login.createAccount' })}
+        </S.LinkRef>
+      </Link>
     </S.LoginFormContainer>
   );
 };
