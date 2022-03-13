@@ -8,13 +8,16 @@ export const StyledInput = styled('input', {
   '&:focus-visible': { outline: 'none' },
 
   variants: {
-    type: {
+    variant: {
       auth: {
+        width: '100%',
+        maxWidth: '400px',
+        fontSize: '$base',
+        color: '#10434E',
+        fontFamily: 'inherit',
         border: 'none',
         padding: '$2 $4',
         borderRadius: '10px',
-        color: '#10434E',
-        fontSize: '$4',
         boxShadow: '0 0 2px #aaa',
         transition: 'box-shadow 0.4s',
         '&:focus': {
@@ -26,5 +29,9 @@ export const StyledInput = styled('input', {
         },
       },
     },
+  },
+
+  defaultVariants: {
+    variant: 'auth',
   },
 });

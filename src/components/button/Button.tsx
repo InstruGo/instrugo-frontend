@@ -1,9 +1,7 @@
 import React from 'react';
 import { StyledButton } from './styles';
 
-type StitchesComponentProps = React.ComponentPropsWithoutRef<
-  typeof StyledButton
->;
+type StitchesComponentProps = React.ComponentProps<typeof StyledButton>;
 
 interface ButtonProps extends StitchesComponentProps {
   text: string;
