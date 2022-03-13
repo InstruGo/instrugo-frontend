@@ -29,7 +29,7 @@ export const LoginForm = () => {
 
       <Button
         text={intl.formatMessage({ id: 'button.login' })}
-        style={S.LoginButton}
+        css={S.LoginButton}
       />
 
       <Link href="/registration">

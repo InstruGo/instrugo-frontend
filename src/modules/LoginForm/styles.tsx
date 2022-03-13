@@ -1,4 +1,3 @@
-import { CSSProperties } from '@stitches/react';
 import { CSS } from '@stitches/react';
 
 import { styled } from '../../../styles/stitches.config';
@@ -7,9 +6,9 @@ export const LoginFormContainer = styled('form', {
   display: 'flex',
   alignItems: 'center',
   flexDirection: 'column',
+  padding: '$8',
   height: '80vh',
   justifyContent: 'center',
-  padding: '30px',
   'input + input': {
     marginTop: '30px',
   },
@@ -23,35 +22,13 @@ export const LoginFormContainer = styled('form', {
   },
 });
 
-export const StyledInput = styled('input', {
-  width: '100%',
-  maxWidth: '400px',
-  padding: '10px 15px',
-  boxSizing: 'border-box',
-  border: 'none',
-  boxShadow: '0 0 2px #aaa',
-  borderRadius: '10px',
-  fontSize: '18px',
-  color: '#10434E',
-  fontFamily: 'inherit',
-  transition: 'box-shadow 0.4s',
-  '&:focus-visible': { outline: 'none' },
-  '&:focus': {
-    boxShadow: '0 0 6px #375d64b3',
-  },
-  '&::selection': {
-    backgroundColor: '#f5d2a5',
-  },
-  '&::placeholder': { textTransform: 'capitalize', color: '#aaa' },
-});
-
-export const LoginButton: CSSProperties = {
-  marginTop: '40px',
+export const LoginButton: CSS = {
+  marginTop: '$5',
   borderRadius: '50px',
-  padding: '10px 50px',
+  padding: '$2 $12',
   textTransform: 'uppercase',
   fontWeight: 'bold',
-  fontSize: '16px',
+  fontSize: '$base',
 };
 
 export const LinkRef = styled('a', {
