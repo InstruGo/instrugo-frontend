@@ -14,9 +14,9 @@ export const LogoContainer = styled('div', {
 });
 
 export const ChildrenContainer = styled('div', {
+  display: 'flex',
   width: '100%',
   height: '100%',
   marginLeft: '15px',
-  display: 'flex',
   alignItems: 'center',
 });

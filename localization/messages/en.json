@@ -12,5 +12,8 @@
   "user.lastName": "last name",
   "user.email": "e-mail",
   "user.password": "password",
-  "user.phone": "phone number"
+  "user.phone": "phone number",
+
+  "login.forgotPassword": "Forgot password?",
+  "login.createAccount": "Register"
 }
