@@ -1,1 +1,18 @@
-{}
+{
+  "appName": "InstruGo",
+
+  "button.register": "registriraj se",
+  "button.login": "login",
+
+  "registration.terms": "Prihvatite odredbe i uvjete",
+  "registration.confirmPassword": "potvrdi lozinku",
+
+  "user.firstName": "ime",
+  "user.lastName": "prezime",
+  "user.email": "e-mail",
+  "user.password": "lozinka",
+  "user.phone": "broj mobitela",
+
+  "login.forgotPassword": "Zaboravili ste lozinku?",
+  "login.createAccount": "Registriraj se"
+}
