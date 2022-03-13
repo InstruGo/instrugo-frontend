@@ -1,7 +1,7 @@
 import { styled } from '@stitches/react';
 import { FormattedMessage } from 'react-intl';
 
-import { HeaderContainer } from '../../components';
+import { HeaderContainer } from '@components';
 
 export const StyledAppName = styled('div', {
   color: 'white',

@@ -6,6 +6,7 @@
 
   "registration.terms": "Agree to Terms and Conditions",
   "registration.confirmPassword": "confirm password",
+  "registration.description": "Register an account and join the community",
 
   "user.firstName": "first name",
   "user.lastName": "last name",

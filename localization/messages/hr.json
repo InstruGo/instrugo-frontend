@@ -6,6 +6,7 @@
 
   "registration.terms": "Prihvatite odredbe i uvjete",
   "registration.confirmPassword": "potvrdi lozinku",
+  "registration.description": "Registrirajte se i pridružite se zajednici",
 
   "user.firstName": "ime",
   "user.lastName": "prezime",
