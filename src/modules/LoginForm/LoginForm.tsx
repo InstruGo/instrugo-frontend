@@ -1,5 +1,5 @@
 import { Button, Input } from '@components';
-import { useIntl } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import Link from 'next/link';
 import * as S from './styles';
 
@@ -23,7 +23,7 @@ export const LoginForm = () => {
 
       <Link href="/">
         <S.LinkRef>
-          {intl.formatMessage({ id: 'login.forgotPassword' })}
+          <FormattedMessage id="login.forgotPassword" />
         </S.LinkRef>
       </Link>
 
@@ -34,7 +34,7 @@ export const LoginForm = () => {
 
       <Link href="/registration">
         <S.LinkRef>
-          {intl.formatMessage({ id: 'login.createAccount' })}
+          <FormattedMessage id="button.register" />
         </S.LinkRef>
       </Link>
     </S.LoginFormContainer>

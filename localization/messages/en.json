@@ -1,19 +1,19 @@
 {
   "appName": "InstruGo",
 
-  "button.register": "register",
-  "button.login": "login",
+  "button.register": "Register",
+  "button.login": "Login",
+
+  "confirmPassword": "Confirm password",
 
   "registration.terms": "Agree to Terms and Conditions",
-  "registration.confirmPassword": "confirm password",
   "registration.description": "Register an account and join the community",
+
+  "login.forgotPassword": "Forgot password?",
 
   "user.firstName": "first name",
   "user.lastName": "last name",
   "user.email": "e-mail",
   "user.password": "password",
-  "user.phone": "phone number",
-
-  "login.forgotPassword": "Forgot password?",
-  "login.createAccount": "Register"
+  "user.phone": "phone number"
 }

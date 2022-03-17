@@ -41,7 +41,7 @@ export const RegistrationForm = () => {
 
         <Input
           type="auth"
-          placeholderMsgId="registration.confirmPassword"
+          placeholderMsgId="confirmPassword"
           required
           css={S.InputStyles}
         />
