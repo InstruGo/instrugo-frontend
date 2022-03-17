@@ -7,6 +7,10 @@ import { IntlProvider } from 'react-intl';
 
 import { locales } from '../localization/messages';
 
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+const queryClient = new QueryClient();
+
 function MyApp({ Component, pageProps }: AppProps) {
   // Determine active locale and set messages
   const { locale, defaultLocale } = useRouter();
@@ -18,7 +22,9 @@ function MyApp({ Component, pageProps }: AppProps) {
       defaultLocale={defaultLocale}
       messages={messages}
     >
-      <Component {...pageProps} />
+      <QueryClientProvider client={queryClient}>
+        <Component {...pageProps} />
+      </QueryClientProvider>
     </IntlProvider>
   );
 }

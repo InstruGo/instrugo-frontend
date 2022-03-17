@@ -41,10 +41,15 @@ export const LinkRef = styled('a', {
   textDecoration: 'none',
 });
 
-export const InputStyles: CSS = {
-  width: '100%',
-  maxWidth: '400px',
-  fontSize: '$base',
-  color: '#10434E',
-  fontFamily: 'inherit',
-};
+export const LoginText = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  padding: '$5 $4',
+  boxSizing: 'border-box',
+  background: 'linear-gradient(#fff, #eee)',
+  color: 'rgb(47, 147, 160)',
+  fontWeight: 'bold',
+  fontSize: '$xl2',
+  textAlign: 'center',
+});

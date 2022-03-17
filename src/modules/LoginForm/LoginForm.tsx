@@ -1,42 +1,49 @@
-import { Button, Input } from '@components';
-import { FormattedMessage, useIntl } from 'react-intl';
-import Link from 'next/link';
-import * as S from './styles';
+import { useForm } from 'react-hook-form';
+import { FormattedMessage } from 'react-intl';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Input } from '@components';
+import { useLogin } from '../../hooks/useLogin';
+
+import { LoginButton, LoginFormContainer, LoginText } from './styles';
+import { LoginFormInputs, loginFormSchema } from '../../types/login.type';
 
 export const LoginForm = () => {
-  const intl = useIntl();
+  const loginUser = useLogin();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LoginFormInputs>({
+    resolver: zodResolver(loginFormSchema),
+  });
+
+  const onSubmit = (data: LoginFormInputs) => loginUser.mutate(data);
 
   return (
-    <S.LoginFormContainer>
-      <Input
-        type="auth"
-        placeholderMsgId="user.email"
-        required
-        css={S.InputStyles}
-      />
-      <Input
-        type="auth"
-        placeholderMsgId="user.password"
-        required
-        css={S.InputStyles}
-      />
+    <>
+      <LoginText>
+        <FormattedMessage id="login.description" />
+      </LoginText>
 
-      <Link href="/">
-        <S.LinkRef>
-          <FormattedMessage id="login.forgotPassword" />
-        </S.LinkRef>
-      </Link>
+      <LoginFormContainer onSubmit={handleSubmit(onSubmit)}>
+        <Input
+          name="email"
+          register={register}
+          errors={errors.email}
+          type="email"
+          placeholderMsgId="user.email"
+        />
 
-      <Button
-        text={intl.formatMessage({ id: 'button.login' })}
-        css={S.LoginButton}
-      />
+        <Input
+          name="password"
+          register={LoginButton}
+          errors={errors.password}
+          type="password"
+          placeholderMsgId="user.password"
+        />
 
-      <Link href="/registration">
-        <S.LinkRef>
-          <FormattedMessage id="button.register" />
-        </S.LinkRef>
-      </Link>
-    </S.LoginFormContainer>
+        <input type="submit" />
+      </LoginFormContainer>
+    </>
   );
 };
