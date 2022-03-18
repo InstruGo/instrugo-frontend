@@ -36,7 +36,7 @@ export const LoginForm = () => {
 
         <Input
           name="password"
-          register={LoginButton}
+          register={register}
           errors={errors.password}
           type="password"
           placeholderMsgId="user.password"
