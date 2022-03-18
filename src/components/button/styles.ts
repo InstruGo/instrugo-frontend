@@ -6,7 +6,7 @@ export const StyledButton = styled('button', {
   '&:focus-visible': { outline: 'none' },
 
   variants: {
-    type: {
+    variant: {
       primary: {
         backgroundColor: '#10434E',
         color: '#fff',
@@ -20,6 +20,6 @@ export const StyledButton = styled('button', {
   },
 
   defaultVariants: {
-    type: 'primary',
+    variant: 'primary',
   },
 });

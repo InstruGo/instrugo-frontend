@@ -28,14 +28,6 @@ export const RegistrationFormContainer = styled('form', {
   },
 });
 
-export const InputStyles: CSS = {
-  width: '100%',
-  maxWidth: '400px',
-  fontSize: '$base',
-  color: '#10434E',
-  fontFamily: 'inherit',
-};
-
 export const LabeledCheckbox = styled('div', {
   display: 'flex',
   flexDirection: 'row-reverse',
