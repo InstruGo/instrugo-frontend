@@ -9,6 +9,7 @@ export const useLogin = () => {
       'http://localhost:3000/api/auth/login',
       input
     );
+    return data;
   };
 
   return useMutation(login, {
