@@ -10,6 +10,7 @@
   "registration.description": "Register an account and join the community",
 
   "login.forgotPassword": "Forgot password?",
+  "login.description": "Welcome back!",
 
   "user.firstName": "first name",
   "user.lastName": "last name",
