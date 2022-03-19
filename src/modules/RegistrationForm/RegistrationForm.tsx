@@ -1,65 +1,92 @@
-import { Button, Input } from '@components';
-import { FormattedMessage, useIntl } from 'react-intl';
-import * as S from './styles';
+import { useForm } from 'react-hook-form';
+import { FormattedMessage } from 'react-intl';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Input } from '@components';
+import { useRegister } from '../../hooks/useRegister';
+
+import {
+  LabeledCheckbox,
+  RegistrationFormContainer,
+  RegistrationText,
+} from './styles';
+import {
+  RegisterFormInputs,
+  registerFormSchema,
+} from '../../types/register.type';
 
 export const RegistrationForm = () => {
-  const intl = useIntl();
+  const registerUser = useRegister();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<RegisterFormInputs>({
+    resolver: zodResolver(registerFormSchema),
+  });
+
+  const onSubmit = (data: RegisterFormInputs) => registerUser.mutate(data);
 
   return (
     <>
-      <S.RegistrationText>
+      <RegistrationText>
         <FormattedMessage id="registration.description" />
-      </S.RegistrationText>
-      <S.RegistrationFormContainer>
+      </RegistrationText>
+
+      <RegistrationFormContainer onSubmit={handleSubmit(onSubmit)}>
         <Input
-          type="auth"
+          name="firstName"
+          register={register}
+          errors={errors.firstName}
           placeholderMsgId="user.firstName"
-          required
-          css={S.InputStyles}
         />
 
         <Input
-          type="auth"
+          name="lastName"
+          register={register}
+          errors={errors.lastName}
           placeholderMsgId="user.lastName"
-          required
-          css={S.InputStyles}
         />
 
         <Input
-          type="auth"
+          name="email"
+          register={register}
+          errors={errors.email}
+          type="email"
           placeholderMsgId="user.email"
-          required
-          css={S.InputStyles}
         />
 
         <Input
-          type="auth"
+          name="password"
+          register={register}
+          errors={errors.password}
+          type="password"
           placeholderMsgId="user.password"
-          required
-          css={S.InputStyles}
         />
 
         <Input
-          type="auth"
+          name="confirmPassword"
+          register={register}
+          errors={errors.confirmPassword}
+          type="password"
           placeholderMsgId="confirmPassword"
-          required
-          css={S.InputStyles}
         />
 
-        <Input type="auth" placeholderMsgId="user.phone" css={S.InputStyles} />
+        <Input
+          name="phone"
+          register={register}
+          errors={errors.phone}
+          placeholderMsgId="user.phone"
+        />
 
-        <S.LabeledCheckbox>
+        <LabeledCheckbox>
           <label style={{ marginLeft: '10px' }}>
             <FormattedMessage id={'registration.terms'} />
           </label>
           <input type="checkbox" required />
-        </S.LabeledCheckbox>
+        </LabeledCheckbox>
 
-        <Button
-          text={intl.formatMessage({ id: 'button.register' })}
-          css={S.RegisterButton}
-        />
-      </S.RegistrationFormContainer>
+        <input type="submit" />
+      </RegistrationFormContainer>
     </>
   );
 };

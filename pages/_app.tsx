@@ -6,6 +6,9 @@ import { useRouter } from 'next/router';
 import { IntlProvider } from 'react-intl';
 
 import { locales } from '../localization/messages';
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+const queryClient = new QueryClient();
 
 import { QueryClient, QueryClientProvider } from 'react-query';
 
