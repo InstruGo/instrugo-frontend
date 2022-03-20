@@ -42,7 +42,11 @@ export const LoginForm = () => {
           placeholderMsgId="user.password"
         />
 
-        <input type="submit" />
+        <Input
+          type="submit"
+          variant="authSubmit"
+          placeholderMsgId="button.login"
+        />
       </LoginFormContainer>
     </>
   );

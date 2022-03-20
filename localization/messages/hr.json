@@ -10,7 +10,7 @@
   "registration.description": "Registrirajte se i pridružite se zajednici",
 
   "login.forgotPassword": "Zaboravili ste lozinku?",
-  "login.description": "",
+  "login.description": "Dobrodošli!",
 
   "user.firstName": "ime",
   "user.lastName": "prezime",

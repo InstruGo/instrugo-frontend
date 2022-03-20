@@ -2,7 +2,6 @@ import { styled } from 'styles/stitches.config';
 
 export const StyledInput = styled('input', {
   boxSizing: 'border-box',
-  border: 'solid 1px #aaa',
   fontFamily: 'inherit',
   '&::placeholder': { color: '#aaa' },
   '&:focus-visible': { outline: 'none' },
@@ -14,7 +13,6 @@ export const StyledInput = styled('input', {
         maxWidth: '400px',
         fontSize: '$base',
         color: '#10434E',
-        fontFamily: 'inherit',
         border: 'none',
         padding: '$2 $4',
         borderRadius: '10px',
@@ -27,6 +25,15 @@ export const StyledInput = styled('input', {
         '&::selection': {
           backgroundColor: '#f5d2a5',
         },
+      },
+      authSubmit: {
+        backgroundColor: '#10434E',
+        color: '#fff',
+        borderRadius: '20px',
+        padding: '$2 $4',
+        fontSize: '$base',
+        marginTop: '20px',
+        textTransform: 'uppercase',
       },
     },
   },

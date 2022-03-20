@@ -8,9 +8,9 @@ type StitchesComponentProps = React.ComponentPropsWithoutRef<
 >;
 
 interface InputProps extends StitchesComponentProps {
-  name: string;
-  register: any;
-  errors: any;
+  name?: string;
+  register?: any;
+  errors?: any;
   placeholderMsgId?: string;
   defaultValueMsgId?: string;
 }
@@ -25,6 +25,27 @@ export const Input = ({
 }: InputProps) => {
   const intl = useIntl();
 
+  if (rest.type === 'submit')
+    return (
+      <Fragment>
+        <StyledInput
+          value={
+            placeholderMsgId
+              ? intl.formatMessage({ id: placeholderMsgId })
+              : undefined
+          }
+          defaultValue={
+            defaultValueMsgId
+              ? intl.formatMessage({ id: defaultValueMsgId })
+              : undefined
+          }
+          {...rest}
+        />
+
+        {errors && <span>{errors.message}</span>}
+      </Fragment>
+    );
+
   return (
     <Fragment>
       <StyledInput
@@ -38,10 +59,9 @@ export const Input = ({
             ? intl.formatMessage({ id: defaultValueMsgId })
             : undefined
         }
-        {...rest}
         {...register(name)}
+        {...rest}
       />
-
       {errors && <span>{errors.message}</span>}
     </Fragment>
   );
