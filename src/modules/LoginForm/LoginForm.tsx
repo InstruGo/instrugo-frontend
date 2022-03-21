@@ -4,8 +4,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Input } from '@components';
 import { useLogin } from '../../hooks/useLogin';
 
-import { LoginButton, LoginFormContainer, LoginText } from './styles';
-import { LoginFormInputs, loginFormSchema } from '../../types/login.type';
+import { LoginFormContainer, LoginText } from './styles';
+import { LoginFormInputs, loginFormSchema } from '../../types/login.types';
 
 export const LoginForm = () => {
   const loginUser = useLogin();

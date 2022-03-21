@@ -2,13 +2,15 @@ import axios from 'axios';
 import { useMutation } from 'react-query';
 
 import type { LoginFormInputs } from '@types';
+import { User } from '@types';
 
 export const useLogin = () => {
-  const login = async (input: LoginFormInputs) => {
+  const login = async (input: LoginFormInputs): Promise<User | null> => {
     const { data } = await axios.post(
       'http://localhost:3000/api/auth/login',
       input
     );
+
     return data;
   };
 
