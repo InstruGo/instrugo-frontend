@@ -85,7 +85,11 @@ export const RegistrationForm = () => {
           <input type="checkbox" required />
         </LabeledCheckbox>
 
-        <input type="submit" />
+        <Input
+          type="submit"
+          variant="authSubmit"
+          placeholderMsgId="button.register"
+        />
       </RegistrationFormContainer>
     </>
   );

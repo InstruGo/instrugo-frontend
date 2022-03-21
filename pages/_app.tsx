@@ -10,10 +10,6 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 
 const queryClient = new QueryClient();
 
-import { QueryClient, QueryClientProvider } from 'react-query';
-
-const queryClient = new QueryClient();
-
 function MyApp({ Component, pageProps }: AppProps) {
   // Determine active locale and set messages
   const { locale, defaultLocale } = useRouter();
