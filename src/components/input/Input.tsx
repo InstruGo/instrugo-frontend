@@ -25,27 +25,6 @@ export const Input = ({
 }: InputProps) => {
   const intl = useIntl();
 
-  if (rest.type === 'submit')
-    return (
-      <Fragment>
-        <StyledInput
-          value={
-            placeholderMsgId
-              ? intl.formatMessage({ id: placeholderMsgId })
-              : undefined
-          }
-          defaultValue={
-            defaultValueMsgId
-              ? intl.formatMessage({ id: defaultValueMsgId })
-              : undefined
-          }
-          {...rest}
-        />
-
-        {errors && <span>{errors.message}</span>}
-      </Fragment>
-    );
-
   return (
     <Fragment>
       <StyledInput
@@ -59,7 +38,7 @@ export const Input = ({
             ? intl.formatMessage({ id: defaultValueMsgId })
             : undefined
         }
-        {...register(name)}
+        {...(register && name && register(name))}
         {...rest}
       />
       {errors && <span>{errors.message}</span>}

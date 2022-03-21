@@ -17,11 +17,11 @@ export const ModalBody = styled('div', {
   boxSizing: 'border-box',
   overflow: 'auto',
   margin: '$20 $5',
-  width: '600px',
+  width: '$xl',
   '@bp2': {
-    width: '800px',
+    width: '$xl3',
   },
   '@bp3': {
-    width: '1000px',
+    width: '$xl5',
   },
 });
