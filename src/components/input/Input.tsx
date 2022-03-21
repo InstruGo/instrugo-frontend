@@ -38,6 +38,11 @@ export const Input = ({
             ? intl.formatMessage({ id: defaultValueMsgId })
             : undefined
         }
+        value={
+          placeholderMsgId && rest.type === 'submit'
+            ? intl.formatMessage({ id: placeholderMsgId })
+            : undefined
+        }
         {...(register && name && register(name))}
         {...rest}
       />
