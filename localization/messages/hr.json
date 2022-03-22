@@ -16,5 +16,12 @@
   "user.lastName": "prezime",
   "user.email": "e-mail",
   "user.password": "lozinka",
-  "user.phone": "broj mobitela"
+  "user.phone": "broj mobitela",
+
+  "card.subject": "Predmet",
+  "card.dateAndTime": "Datum i vrijeme",
+  "card.subfield": "Područje",
+  "card.meetingType": "Tip sastanka",
+  "card.location": "Lokacija",
+  "card.educationLevel": "Razina obrazovanja"
 }
