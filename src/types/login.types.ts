@@ -8,5 +8,5 @@ export const loginFormSchema = z.object({
 export type LoginFormInputs = z.infer<typeof loginFormSchema>;
 
 export type LoginResponse = {
-  access: string;
+  accessToken: string;
 };
