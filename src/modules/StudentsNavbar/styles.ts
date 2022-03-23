@@ -1,5 +1,4 @@
-import { CSS } from '@stitches/react';
-import { css, styled } from 'styles/stitches.config';
+import { styled } from 'styles/stitches.config';
 
 export const StyledHeader = styled('div', {
   width: '100%',
@@ -20,7 +19,7 @@ export const StyledNavbar = styled('div', {
 
 export const NavLink = styled('div', {
   color: 'white',
-  fontSize: '22px',
+  fontSize: '$xl',
   fontWeight: 'bold',
   cursor: 'pointer',
   '&:hover': { textDecoration: 'underline' },
@@ -48,8 +47,6 @@ export const OppenedMenu = styled('div', {
 });
 
 export const RightNavSection = styled('div', { display: 'flex' });
-
-export const SwitchButton = css({});
 
 export const ProfileLink = styled('div', {
   backgroundColor: 'white',
