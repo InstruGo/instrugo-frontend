@@ -1,11 +1,13 @@
+import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 import { FormattedMessage } from 'react-intl';
+
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Input } from '@components';
-import { useLogin } from '../../hooks/useLogin';
+import { useLogin } from '@hooks';
+import { LoginFormInputs, loginFormSchema } from '@types';
 
-import { LoginButton, LoginFormContainer, LoginText } from './styles';
-import { LoginFormInputs, loginFormSchema } from '../../types/login.type';
+import { LoginFormContainer, LoginText } from './styles';
 
 export const LoginForm = () => {
   const loginUser = useLogin();

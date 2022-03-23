@@ -1,13 +1,15 @@
+import React, { useState } from 'react';
+import type { NextPage } from 'next';
+import Head from 'next/head';
+
 import { Modal } from '@components';
+import { useProfile } from '@hooks';
 import {
   LessonsContainer,
   NewRequestButton,
   Rewards,
   StudentsNavbar,
 } from '@modules';
-import type { NextPage } from 'next';
-import Head from 'next/head';
-import React from 'react';
 import { styled } from 'styles/stitches.config';
 
 const PageLayout = styled('div', {
@@ -18,7 +20,10 @@ const PageLayout = styled('div', {
 });
 
 const Homepage: NextPage = () => {
-  const [showNewRequestModal, setNewRequestModal] = React.useState(false);
+  const [showNewRequestModal, setNewRequestModal] = useState(false);
+  const { isLoading } = useProfile();
+
+  if (isLoading) return <div>Loading...</div>;
 
   return (
     <div>

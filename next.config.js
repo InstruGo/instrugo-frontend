@@ -7,6 +7,15 @@ const nextConfig = {
     // Default locale for non-locale prefixed path e.g. /home
     defaultLocale: 'en',
   },
+  redirects: async function redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/login',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;
