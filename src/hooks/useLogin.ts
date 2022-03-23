@@ -22,7 +22,7 @@ export const useLogin = () => {
   return useMutation(login, {
     onSuccess: (data) => {
       setAccessToken(data.accessToken);
-      router.push('/');
+      router.push('/home');
     },
     onError: (error) => {
       console.log(error);

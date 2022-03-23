@@ -10,8 +10,15 @@ import {
 
 import { BiFilter } from 'react-icons/bi';
 import { FormattedMessage } from 'react-intl';
+import { useUpcomingLessons } from '@hooks';
+import { Fragment } from 'react';
 
 export const LessonsContainer = () => {
+  const { data, isLoading } = useUpcomingLessons();
+
+  if (isLoading) return <div>Loading...</div>;
+  if (!data) return <div>No lessons...</div>;
+
   return (
     <StyledContainer>
       <LessonsHeader>
@@ -60,9 +67,14 @@ export const LessonsContainer = () => {
         </div>
       </ControlPanel>
 
-      <LessonsBody
-        style={{ backgroundColor: 'firebrick', height: '200px' }}
-      ></LessonsBody>
+      <LessonsBody style={{ height: '200px' }}>
+        {data.map((lesson) => (
+          <Fragment key={lesson.id}>
+            <div>{lesson.subject.name}</div>
+            <div>{lesson.subfield}</div>
+          </Fragment>
+        ))}
+      </LessonsBody>
     </StyledContainer>
   );
 };
