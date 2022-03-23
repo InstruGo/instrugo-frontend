@@ -10,7 +10,6 @@ import {
   RightNavSection,
   StyledHeader,
   StyledNavbar,
-  SwitchButton,
 } from './styles';
 
 import { CgProfile } from 'react-icons/cg';
@@ -56,7 +55,7 @@ export const StudentsNavbar = () => {
         </HamburgerMenu>
 
         <RightNavSection>
-          <Button className={`${SwitchButton}`}>
+          <Button variant="switch">
             <HiOutlineSwitchVertical size={'25px'} />
             <div className="text">
               <FormattedMessage id="nav.switch" />

@@ -49,32 +49,7 @@ export const OppenedMenu = styled('div', {
 
 export const RightNavSection = styled('div', { display: 'flex' });
 
-export const SwitchButton = css({
-  height: '40px',
-  width: '40px',
-  boxSizing: 'border-box',
-  marginRight: '20px',
-  padding: '7px',
-  backgroundColor: 'rgb(63, 178, 193, 0.85) !important',
-  borderRadius: '50px',
-  color: 'white',
-  display: 'flex',
-  alignItems: 'center',
-  cursor: 'pointer',
-  justifyContent: 'center',
-  fontSize: '17px',
-  '& > .text': {
-    display: 'none',
-  },
-  '@bp1': {
-    padding: '10px 20px',
-    width: 'auto',
-    '& > .text': {
-      display: 'block',
-      marginLeft: '10px',
-    },
-  },
-});
+export const SwitchButton = css({});
 
 export const ProfileLink = styled('div', {
   backgroundColor: 'white',
