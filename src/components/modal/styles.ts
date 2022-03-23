@@ -13,15 +13,41 @@ export const ModalBackground = styled('div', {
 });
 
 export const ModalBody = styled('div', {
+  position: 'relative',
   backgroundColor: 'white',
   boxSizing: 'border-box',
   overflow: 'auto',
   margin: '$20 $5',
   width: '$xl',
+  borderRadius: '10px',
+  padding: '10px',
   '@bp2': {
     width: '$xl3',
   },
   '@bp3': {
     width: '$xl5',
   },
+
+  // Scrollbar styles
+  '&::-webkit-scrollbar': {
+    width: '5px',
+  },
+
+  // Track
+  '&::-webkit-scrollbar-track': {
+    background: '#f1f1f1',
+  },
+
+  // Handle
+  '&::-webkit-scrollbar-thumb': {
+    background: '#3FB2C1',
+  },
+});
+
+export const ModalClose = styled('div', {
+  position: 'absolute',
+  top: '10px',
+  right: '10px',
+  cursor: 'pointer',
+  backgroundColor: 'white',
 });

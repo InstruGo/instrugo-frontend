@@ -1,22 +1,25 @@
 import React from 'react';
-import { ModalBackground, ModalBody } from './styles';
+import { ModalBackground, ModalBody, ModalClose } from './styles';
+
+import { IoIosCloseCircle } from 'react-icons/io';
 
 interface ModalProps {
   children: React.ReactChild | React.ReactChild[];
   shouldShow: boolean;
-  onBackgroundClick?: () => void;
+  closeAction?: () => void;
 }
 
-export const Modal = ({
-  children,
-  shouldShow,
-  onBackgroundClick,
-}: ModalProps) => {
+export const Modal = ({ children, shouldShow, closeAction }: ModalProps) => {
   return (
     <>
       {shouldShow && (
-        <ModalBackground onClick={onBackgroundClick}>
-          <ModalBody onClick={(e) => e.stopPropagation()}>{children}</ModalBody>
+        <ModalBackground onClick={closeAction}>
+          <ModalBody onClick={(e) => e.stopPropagation()}>
+            <ModalClose onClick={closeAction}>
+              <IoIosCloseCircle size="30px" color="#3FB2C1" />
+            </ModalClose>
+            {children}
+          </ModalBody>
         </ModalBackground>
       )}
     </>

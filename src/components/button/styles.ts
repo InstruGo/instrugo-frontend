@@ -4,6 +4,7 @@ export const StyledButton = styled('button', {
   border: '0',
   fontFamily: 'inherit',
   '&:focus-visible': { outline: 'none' },
+  cursor: 'pointer',
 
   variants: {
     variant: {
