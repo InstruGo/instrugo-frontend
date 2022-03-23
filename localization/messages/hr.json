@@ -18,13 +18,12 @@
   "user.password": "lozinka",
   "user.phone": "broj mobitela",
 
-
   "card.subject": "Predmet",
   "card.dateAndTime": "Datum i vrijeme",
   "card.subfield": "Područje",
   "card.meetingType": "Tip sastanka",
   "card.location": "Lokacija",
-  "card.educationLevel": "Razina obrazovanja"
+  "card.educationLevel": "Razina obrazovanja",
 
   "nav.home": "Početna",
   "nav.myLessons": "Moje instrukcije",
@@ -39,5 +38,4 @@
   "filter": "Filtar",
 
   "button.createRequest": "Stvorite novi zahtjev"
-
 }

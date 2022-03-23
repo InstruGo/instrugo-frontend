@@ -18,13 +18,12 @@
   "user.password": "password",
   "user.phone": "phone number",
 
-
   "card.subject": "Subject",
   "card.dateAndTime": "Date And Time",
   "card.subfield": "Subfield",
   "card.meetingType": "Meeting Type",
   "card.location": "Location",
-  "card.educationLevel": "Education lvl"
+  "card.educationLevel": "Education lvl",
 
   "nav.home": "Home",
   "nav.myLessons": "My Lessons",
@@ -39,5 +38,4 @@
   "filter": "Filter",
 
   "button.createRequest": "Create new request"
-
 }

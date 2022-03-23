@@ -15,9 +15,7 @@ export const useUpcomingLessons = () => {
   };
 
   return useQuery('upcomingLessons', getUpcomingLessons, {
-    onSuccess: (data) => {
-      console.log(data);
-    },
+    onSuccess: () => {},
     onError: (error) => {
       console.log(error);
     },

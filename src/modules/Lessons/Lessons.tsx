@@ -1,4 +1,10 @@
-import { Button } from '@components';
+import { Fragment } from 'react';
+import { FormattedMessage } from 'react-intl';
+import { BiFilter } from 'react-icons/bi';
+
+import { Button, Card } from '@components';
+import { useUpcomingLessons } from '@hooks';
+
 import {
   ControlPanel,
   LessonsBody,
@@ -7,11 +13,6 @@ import {
   StyledHr,
   Title,
 } from './styles';
-
-import { BiFilter } from 'react-icons/bi';
-import { FormattedMessage } from 'react-intl';
-import { useUpcomingLessons } from '@hooks';
-import { Fragment } from 'react';
 
 export const LessonsContainer = () => {
   const { data, isLoading } = useUpcomingLessons();
@@ -69,10 +70,14 @@ export const LessonsContainer = () => {
 
       <LessonsBody style={{ height: '200px' }}>
         {data.map((lesson) => (
-          <Fragment key={lesson.id}>
-            <div>{lesson.subject.name}</div>
-            <div>{lesson.subfield}</div>
-          </Fragment>
+          <Card
+            key={lesson.id}
+            subject={lesson.subject.name}
+            subfield={lesson.subfield}
+            location={lesson.location}
+            meetingType={lesson.type}
+            dateAndTime={lesson.lessonTimeFrames[0].startTime}
+          />
         ))}
       </LessonsBody>
     </StyledContainer>
