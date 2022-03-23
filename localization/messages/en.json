@@ -16,5 +16,19 @@
   "user.lastName": "last name",
   "user.email": "e-mail",
   "user.password": "password",
-  "user.phone": "phone number"
+  "user.phone": "phone number",
+
+  "nav.home": "Home",
+  "nav.myLessons": "My Lessons",
+  "nav.myRequests": "My Requests",
+  "nav.switch": "Switch to tutor",
+
+  "home.rewards": "Rewards",
+  "home.lessons": "Lessons",
+  "lessons.upcoming": "Upcoming",
+  "lessons.requests": "Requests",
+
+  "filter": "Filter",
+
+  "button.createRequest": "Create new request"
 }

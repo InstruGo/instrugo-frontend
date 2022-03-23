@@ -16,5 +16,19 @@
   "user.lastName": "prezime",
   "user.email": "e-mail",
   "user.password": "lozinka",
-  "user.phone": "broj mobitela"
+  "user.phone": "broj mobitela",
+
+  "nav.home": "Početna",
+  "nav.myLessons": "Moje instrukcije",
+  "nav.myRequests": "Moji zahtjevi",
+  "nav.switch": "Prebaci se na instruktora",
+
+  "home.rewards": "Nagrade",
+  "home.lessons": "Lekcije",
+  "lessons.upcoming": "Nadolazeće",
+  "lessons.requests": "Zahtjevi",
+
+  "filter": "Filtar",
+
+  "button.createRequest": "Stvorite novi zahtjev"
 }
