@@ -30,12 +30,14 @@
   "nav.myRequests": "Moji zahtjevi",
   "nav.switch": "Prebaci se na instruktora",
 
-  "home.rewards": "Nagrade",
-  "home.lessons": "Lekcije",
+  "student.home.rewards": "Nagrade",
+  "student.home.lessons": "Lekcije",
   "lessons.upcoming": "Nadolazeće",
   "lessons.requests": "Zahtjevi",
 
   "filter": "Filtar",
 
-  "button.createRequest": "Stvorite novi zahtjev"
+  "button.createRequest": "Stvorite novi zahtjev",
+
+  "student.request.requests": "Moji zahtjevi"
 }
