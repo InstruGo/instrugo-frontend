@@ -30,8 +30,8 @@
   "nav.myRequests": "My Requests",
   "nav.switch": "Switch to tutor",
 
-  "home.rewards": "Rewards",
-  "home.lessons": "Lessons",
+  "student.home.rewards": "Rewards",
+  "student.home.lessons": "Lessons",
   "lessons.upcoming": "Upcoming",
   "lessons.requests": "Requests",
 
