@@ -180,7 +180,7 @@ export const NewRequestForm = () => {
           <FormColumn>
             <InputDescription>Available time slots:</InputDescription>
             <ul>{timeSlotList}</ul>
-            <Button text="+ Add time slot" onClick={onAddTimeSlot} />
+            <Button onClick={onAddTimeSlot}>+ Add time slot</Button>
 
             <InputDescription>Meeting type:</InputDescription>
             <RadioInput>

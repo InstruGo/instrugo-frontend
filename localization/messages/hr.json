@@ -16,5 +16,28 @@
   "user.lastName": "prezime",
   "user.email": "e-mail",
   "user.password": "lozinka",
-  "user.phone": "broj mobitela"
+  "user.phone": "broj mobitela",
+
+  "card.subject": "Predmet",
+  "card.dateAndTime": "Datum i vrijeme",
+  "card.subfield": "Područje",
+  "card.meetingType": "Tip sastanka",
+  "card.location": "Lokacija",
+  "card.educationLevel": "Razina obrazovanja",
+
+  "nav.home": "Početna",
+  "nav.myLessons": "Moje instrukcije",
+  "nav.myRequests": "Moji zahtjevi",
+  "nav.switch": "Prebaci se na instruktora",
+
+  "student.home.rewards": "Nagrade",
+  "student.home.lessons": "Lekcije",
+  "lessons.upcoming": "Nadolazeće",
+  "lessons.requests": "Zahtjevi",
+
+  "filter": "Filtar",
+
+  "button.createRequest": "Stvorite novi zahtjev",
+
+  "student.request.requests": "Moji zahtjevi"
 }

@@ -1,3 +1,22 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": ["next/core-web-vitals"],
+  "plugins": ["import"],
+  "parser": "@typescript-eslint/parser",
+  "rules": {
+    "import/order": [
+      "warn",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          ["parent", "sibling", "index"]
+        ],
+        "newlines-between": "always",
+        "pathGroups": [],
+        "alphabetize": { "order": "asc", "caseInsensitive": true },
+        "pathGroupsExcludedImportTypes": ["builtin"]
+      }
+    ]
+  }
 }

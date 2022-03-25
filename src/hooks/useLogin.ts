@@ -1,24 +1,30 @@
-import axios from 'axios';
+import { useRouter } from 'next/router';
 import { useMutation } from 'react-query';
+import axios from 'axios';
 
-import type { LoginFormInputs } from '@types';
+import { useUserContext } from '@hooks';
+import type { LoginFormInputs, LoginResponse } from '@types';
 
 export const useLogin = () => {
-  const login = async (input: LoginFormInputs) => {
-    const { data } = await axios.post(
+  const router = useRouter();
+  const { setAccessToken } = useUserContext();
+
+  const login = async (input: LoginFormInputs): Promise<LoginResponse> => {
+    const response = await axios.post(
       'http://localhost:3000/api/auth/login',
       input
     );
+
+    const data = response.data as LoginResponse;
     return data;
   };
 
   return useMutation(login, {
     onSuccess: (data) => {
-      console.log('Successful login!');
-      console.log(data);
+      setAccessToken(data.accessToken);
+      router.push('/home');
     },
     onError: (error) => {
-      console.log('Error during login!');
       console.log(error);
     },
   });
