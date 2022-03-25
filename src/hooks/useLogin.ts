@@ -1,6 +1,6 @@
+import axios from 'axios';
 import { useRouter } from 'next/router';
 import { useMutation } from 'react-query';
-import axios from 'axios';
 
 import { useUserContext } from '@hooks';
 import type { LoginFormInputs, LoginResponse } from '@types';
@@ -21,6 +21,7 @@ export const useLogin = () => {
 
   return useMutation(login, {
     onSuccess: (data) => {
+      localStorage.setItem('accessToken', data.accessToken);
       setAccessToken(data.accessToken);
       router.push('/student/home');
     },

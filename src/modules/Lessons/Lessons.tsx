@@ -1,6 +1,5 @@
-import { Fragment } from 'react';
-import { FormattedMessage } from 'react-intl';
 import { BiFilter } from 'react-icons/bi';
+import { FormattedMessage } from 'react-intl';
 
 import { Button, Card } from '@components';
 import { useUpcomingLessons } from '@hooks';
