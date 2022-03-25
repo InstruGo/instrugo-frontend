@@ -25,7 +25,7 @@ export const ModalBody = styled('div', {
     width: '$xl3',
   },
   '@bp3': {
-    width: '$xl5',
+    width: '$xl6',
   },
 
   // Scrollbar styles

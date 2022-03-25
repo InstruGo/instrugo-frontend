@@ -1,12 +1,9 @@
 import { useForm } from 'react-hook-form';
-import { SetStateAction, useState } from 'react';
-import { FormattedMessage } from 'react-intl';
+import { useState } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Input } from '@components';
-import DateAdapterFns from '@mui/lab/AdapterDateFns';
-import LocalizationProvider from '@mui/lab/LocalizationProvider';
-import { DatePicker, TimePicker } from '@mui/lab';
-import { TextField } from '@mui/material';
+import { FormattedMessage } from 'react-intl';
+
 // import { useRegister } from '../../hooks/useNewRequest';
 
 import {
@@ -16,6 +13,7 @@ import {
   TextBox,
   FormColumn,
   FormRow,
+  NewRequestText,
 } from './styles';
 import {
   NewRequestFormInputs,
@@ -37,9 +35,6 @@ export const NewRequestForm = () => {
 
   // const onSubmit = (data: NewRequestFormInputs) => registerRequest.mutate(data);
   const onSubmit = () => {
-    return;
-  };
-  const onChange = () => {
     return;
   };
   const value = new Date();
@@ -132,6 +127,9 @@ export const NewRequestForm = () => {
   };
   return (
     <>
+      <NewRequestText>
+        <FormattedMessage id="newRequest.description" />
+      </NewRequestText>
       <NewRequestFormContainer onSubmit={handleSubmit(onSubmit)}>
         <FormRow>
           <FormColumn>
@@ -219,7 +217,7 @@ export const NewRequestForm = () => {
           <Input
             type="submit"
             variant="authSubmit"
-            placeholderMsgId="button.newRequest"
+            placeholderMsgId="button.createRequest"
           />
         </FormRow>
       </NewRequestFormContainer>

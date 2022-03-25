@@ -2,29 +2,16 @@ import { CSS } from '@stitches/react';
 
 import { styled } from 'styles/stitches.config';
 
-export const RegistrationText = styled('div', {
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  padding: '$5 $4',
-  boxSizing: 'border-box',
-  background: 'linear-gradient(#fff, #eee)',
-  color: 'rgb(47, 147, 160)',
-  fontWeight: 'bold',
-  fontSize: '$xl2',
-  textAlign: 'center',
-});
-
 export const NewRequestFormContainer = styled('form', {
   display: 'flex',
   alignItems: 'center',
   flexDirection: 'column',
-  padding: '$8',
+  padding: '$4',
   'input + input': {
     marginTop: '$8',
   },
   '@bp1': {
-    paddingTop: '$16',
+    paddingTop: '$2',
   },
 });
 
@@ -49,7 +36,17 @@ export const RadioInput = styled('div', {
   font: 'Roboto',
   color: '#0E353D',
 });
-
+export const NewRequestText = styled('div', {
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'flex-start',
+  padding: '$3 $3',
+  boxSizing: 'border-box',
+  color: 'rgb(47, 147, 160)',
+  fontWeight: 'bold',
+  fontSize: '$xl2',
+  textAlign: 'center',
+});
 export const TextBox = styled('textarea', {
   height: '70px',
   width: '100%',

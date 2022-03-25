@@ -9,6 +9,7 @@ import {
   NewRequestButton,
   Rewards,
   StudentsNavbar,
+  NewRequestForm,
 } from '@modules';
 import { styled } from 'styles/stitches.config';
 
@@ -47,7 +48,9 @@ const Homepage: NextPage = () => {
         shouldShow={showNewRequestModal}
         closeAction={() => setNewRequestModal(false)}
       >
-        <div style={{ marginRight: '30px' }}>Create new request</div>
+        <div style={{ marginRight: '30px' }}>
+          <NewRequestForm />
+        </div>
       </Modal>
     </div>
   );
