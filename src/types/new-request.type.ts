@@ -17,14 +17,13 @@ export const newRequestFormSchema = z.object({
   level: z.nativeEnum(EducationLevel),
   grade: z.number().positive(),
   budget: z.number().positive(),
-  type: z.nativeEnum(MeetingType).optional(),
-  location: z.string().optional(),
-  description: z.string().optional(),
+  type: z.nativeEnum(MeetingType),
+  location: z.string(),
+  description: z.string(),
   lessonTimeFrames: z
     .object({ startTime: z.string(), endTime: z.string() })
     .array()
-    .nonempty()
-    .optional(),
+    .nonempty(),
 });
 
 export type NewRequestFormInputs = z.infer<typeof newRequestFormSchema>;

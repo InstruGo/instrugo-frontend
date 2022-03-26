@@ -162,7 +162,6 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
       </li>
     );
     updateTimeSlotList(tempSlotList);
-    // setValue('lessonTimeFrames', [{ startTime: '', endTime: '' }]);
   };
   updateLessonTimeFrames(timeSlots);
   const [subjectId, setSubjectId] = useState<number>(1);
