@@ -1,7 +1,8 @@
 import React, { Fragment } from 'react';
 import { useIntl } from 'react-intl';
+import { styled } from 'styles/stitches.config';
 
-import { StyledInput } from './styles';
+import { ErrorsContainer, StyledInput } from './styles';
 
 type StitchesComponentProps = React.ComponentPropsWithoutRef<
   typeof StyledInput
@@ -15,6 +16,12 @@ interface InputProps extends StitchesComponentProps {
   defaultValueMsgId?: string;
 }
 
+const ErrorWrapper = styled('div', {
+  'input:focus + div': {
+    display: 'none',
+  },
+});
+
 export const Input = ({
   name,
   register,
@@ -24,6 +31,12 @@ export const Input = ({
   ...rest
 }: InputProps) => {
   const intl = useIntl();
+
+  const [isErrorDismissed, dismissError] = React.useState(false);
+
+  React.useEffect(() => {
+    dismissError(false);
+  }, [errors]);
 
   return (
     <Fragment>
@@ -45,8 +58,11 @@ export const Input = ({
         }
         {...(register && name && register(name))}
         {...rest}
+        onChange={() => dismissError(true)}
       />
-      {errors && <span>{errors.message}</span>}
+      <ErrorsContainer>
+        {errors && !isErrorDismissed && <span>{errors.message}</span>}
+      </ErrorsContainer>
     </Fragment>
   );
 };

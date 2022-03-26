@@ -2,7 +2,7 @@ import { styled } from '@stitches/react';
 
 export const StyledHeaderContainer = styled('div', {
   display: 'flex',
-  background: 'linear-gradient(#07242b, #10434E)',
+  background: 'linear-gradient(#10434E, #134b57)',
   height: '80px',
   alignItems: 'center',
   overflow: 'hidden',

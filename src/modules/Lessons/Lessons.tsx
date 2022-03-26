@@ -24,7 +24,7 @@ export const LessonsContainer = () => {
     <StyledContainer>
       <LessonsHeader>
         <Title>
-          <FormattedMessage id="student.home.lessons" />
+          <FormattedMessage id="home.lessons" />
         </Title>
         <StyledHr />
       </LessonsHeader>

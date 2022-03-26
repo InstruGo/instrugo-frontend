@@ -1,18 +1,20 @@
+import { zodResolver } from '@hookform/resolvers/zod';
+import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { FormattedMessage } from 'react-intl';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { Input } from '@components';
-import { useRegister } from '../../hooks/useRegister';
 
-import {
-  LabeledCheckbox,
-  RegistrationFormContainer,
-  RegistrationText,
-} from './styles';
+import { Input } from '@components';
+
+import { useRegister } from '../../hooks/useRegister';
 import {
   RegisterFormInputs,
   registerFormSchema,
 } from '../../types/register.type';
+import {
+  AlreadyHaveAccount,
+  LabeledCheckbox,
+  RegistrationFormContainer,
+} from './styles';
 
 export const RegistrationForm = () => {
   const registerUser = useRegister();
@@ -28,10 +30,6 @@ export const RegistrationForm = () => {
 
   return (
     <>
-      <RegistrationText>
-        <FormattedMessage id="registration.description" />
-      </RegistrationText>
-
       <RegistrationFormContainer onSubmit={handleSubmit(onSubmit)}>
         <Input
           name="firstName"
@@ -90,6 +88,15 @@ export const RegistrationForm = () => {
           variant="authSubmit"
           placeholderMsgId="button.register"
         />
+
+        <AlreadyHaveAccount>
+          <FormattedMessage id="registration.alreadyHaveAnAccount" />
+          <Link href="/login">
+            <a>
+              <FormattedMessage id="button.login" />
+            </a>
+          </Link>
+        </AlreadyHaveAccount>
       </RegistrationFormContainer>
     </>
   );

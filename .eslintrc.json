@@ -13,7 +13,10 @@
           ["parent", "sibling", "index"]
         ],
         "newlines-between": "always",
-        "pathGroups": [],
+        "pathGroups": [
+          { "pattern": "next/*", "group": "builtin" },
+          { "pattern": "react", "group": "builtin" }
+        ],
         "alphabetize": { "order": "asc", "caseInsensitive": true },
         "pathGroupsExcludedImportTypes": ["builtin"]
       }

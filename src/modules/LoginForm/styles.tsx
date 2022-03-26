@@ -3,14 +3,15 @@ import { CSS } from '@stitches/react';
 import { styled } from '../../../styles/stitches.config';
 
 export const LoginFormContainer = styled('form', {
+  width: '100%',
   display: 'flex',
   alignItems: 'center',
   flexDirection: 'column',
-  padding: '$8',
-  height: '80vh',
+  padding: '$20 $8 $8',
+  boxSizing: 'border-box',
   justifyContent: 'center',
-  'input + input': {
-    marginTop: '30px',
+  'div + input': {
+    marginTop: '$6',
   },
   'input + a': {
     marginTop: '10px',
@@ -19,6 +20,19 @@ export const LoginFormContainer = styled('form', {
   'button + a': {
     marginTop: '10px',
     justifyContent: 'center',
+  },
+});
+
+export const ForgotPassContainer = styled('div', {
+  width: '100%',
+  maxWidth: '400px',
+  margin: '10px 0 0 5px',
+  fontSize: '13px',
+  a: {
+    color: '#3FB2C1',
+  },
+  'a:hover': {
+    textDecoration: 'underline',
   },
 });
 
@@ -31,6 +45,16 @@ export const LoginButton: CSS = {
   fontSize: '$base',
 };
 
+export const NeedAnAccount = styled('div', {
+  display: 'flex',
+  fontSize: '13px',
+  marginTop: '10px',
+  a: { color: '#3FB2C1', marginLeft: '5px' },
+  'a:hover': {
+    textDecoration: 'underline',
+  },
+});
+
 export const LinkRef = styled('a', {
   width: '100%',
   maxWidth: '400px',
@@ -41,15 +65,8 @@ export const LinkRef = styled('a', {
   textDecoration: 'none',
 });
 
-export const LoginText = styled('div', {
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  padding: '$5 $4',
-  boxSizing: 'border-box',
-  background: 'linear-gradient(#fff, #eee)',
-  color: 'rgb(47, 147, 160)',
-  fontWeight: 'bold',
-  fontSize: '$xl2',
-  textAlign: 'center',
+export const LoaderContainer = styled('div', {
+  marginTop: '40px',
+  width: '40px',
+  height: '40px',
 });

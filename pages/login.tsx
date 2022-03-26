@@ -1,6 +1,8 @@
-import { LoginForm, SimpleHeader } from '@modules';
 import type { NextPage } from 'next';
 import Head from 'next/head';
+
+import { LoginForm } from '@modules';
+import { AuthLayout } from '@modules/AuthLayout/AuthLayout';
 
 const Login: NextPage = () => {
   return (
@@ -9,8 +11,9 @@ const Login: NextPage = () => {
         <title>InstruGo | Login </title>
       </Head>
 
-      <SimpleHeader />
-      <LoginForm />
+      <AuthLayout descriptionMsgId="login.description">
+        <LoginForm />
+      </AuthLayout>
     </div>
   );
 };

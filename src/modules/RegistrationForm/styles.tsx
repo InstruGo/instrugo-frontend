@@ -2,26 +2,13 @@ import { CSS } from '@stitches/react';
 
 import { styled } from 'styles/stitches.config';
 
-export const RegistrationText = styled('div', {
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  padding: '$5 $4',
-  boxSizing: 'border-box',
-  background: 'linear-gradient(#fff, #eee)',
-  color: 'rgb(47, 147, 160)',
-  fontWeight: 'bold',
-  fontSize: '$xl2',
-  textAlign: 'center',
-});
-
 export const RegistrationFormContainer = styled('form', {
   display: 'flex',
   alignItems: 'center',
   flexDirection: 'column',
   padding: '$8',
-  'input + input': {
-    marginTop: '$8',
+  'div + input': {
+    marginTop: '$6',
   },
   '@bp1': {
     paddingTop: '$16',
@@ -44,3 +31,9 @@ export const RegisterButton: CSS = {
   fontWeight: 'bold',
   fontSize: '$base',
 };
+
+export const AlreadyHaveAccount = styled('div', {
+  marginTop: '10px',
+  fontSize: '13px',
+  a: { marginLeft: '5px', color: '#3FB2C1' },
+});
