@@ -50,3 +50,38 @@ export const Input = ({
     </Fragment>
   );
 };
+export const NumberInput = ({
+  name,
+  register,
+  errors,
+  placeholderMsgId,
+  defaultValueMsgId,
+  ...rest
+}: InputProps) => {
+  const intl = useIntl();
+
+  return (
+    <Fragment>
+      <StyledInput
+        placeholder={
+          placeholderMsgId
+            ? intl.formatMessage({ id: placeholderMsgId })
+            : undefined
+        }
+        defaultValue={
+          defaultValueMsgId
+            ? intl.formatMessage({ id: defaultValueMsgId })
+            : undefined
+        }
+        value={
+          placeholderMsgId && rest.type === 'submit'
+            ? intl.formatMessage({ id: placeholderMsgId })
+            : undefined
+        }
+        {...(register && name && register(name, { valueAsNumber: true }))}
+        {...rest}
+      />
+      {errors && <span>{errors.message}</span>}
+    </Fragment>
+  );
+};

@@ -26,4 +26,7 @@ export const ControlPanel = styled('div', {
 
 export const LessonsBody = styled('div', {
   marginTop: '20px',
+  display: 'flex',
+  flexWrap: 'wrap',
+  gap: '$6',
 });

@@ -49,7 +49,7 @@ const Homepage: NextPage = () => {
         closeAction={() => setNewRequestModal(false)}
       >
         <div style={{ marginRight: '30px' }}>
-          <NewRequestForm />
+          <NewRequestForm onFinish={() => setNewRequestModal(false)} />
         </div>
       </Modal>
     </div>

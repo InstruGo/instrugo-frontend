@@ -1,10 +1,10 @@
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Input } from '@components';
+import { Input, NumberInput } from '@components';
 import { FormattedMessage } from 'react-intl';
 
-// import { useRegister } from '../../hooks/useNewRequest';
+import { useNewRequest, useSubjects, useUserContext } from '@hooks';
 
 import {
   NewRequestFormContainer,
@@ -14,6 +14,8 @@ import {
   FormColumn,
   FormRow,
   NewRequestText,
+  Dropdown,
+  DropdownOption,
 } from './styles';
 import {
   NewRequestFormInputs,
@@ -23,36 +25,41 @@ import {
 } from '../../types/new-request.type';
 import { Button, TimeSlot } from '@components';
 
-export const NewRequestForm = () => {
-  // const registerRequest = useNewRequest();
+interface NewRequestProps {
+  onFinish?: () => void;
+}
+export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
+  const { data, isLoading } = useSubjects();
+  const { accessToken, user } = useUserContext();
+  const newRequest = useNewRequest();
   const {
     register,
     handleSubmit,
+    setValue,
+    getValues,
     formState: { errors },
   } = useForm<NewRequestFormInputs>({
     resolver: zodResolver(newRequestFormSchema),
   });
 
-  // const onSubmit = (data: NewRequestFormInputs) => registerRequest.mutate(data);
-  const onSubmit = () => {
-    return;
+  const onSubmit = async (data: NewRequestFormInputs) => {
+    const lesson = await newRequest.mutate(data);
+    if (onFinish) {
+      onFinish();
+    }
   };
-  const value = new Date();
+
   const [selectedEducationLevel, setEducationLevel] = useState<EducationLevel>(
     EducationLevel.ELEMENTARY
   );
   const [selectedMeetingType, setMeetingType] = useState<MeetingType>(
     MeetingType.IRL
   );
-  const [description, setDescription] = useState('');
   const onLevelSelect = (e: any) => {
     setEducationLevel(e.target.value);
   };
   const onMeetingSelect = (e: any) => {
     setMeetingType(e.target.value);
-  };
-  const onDescriptionChange = (e: any) => {
-    setDescription(e.target.value);
   };
 
   const [slotCount, setSlotCount] = useState<number>(0);
@@ -64,6 +71,41 @@ export const NewRequestForm = () => {
       endTime: new Date(),
     },
   ]);
+
+  const updateLessonTimeFrames = (tempSlots: any) => {
+    const lessonTimeFrames = [];
+    for (var i = 0; i < tempSlots.length; i++) {
+      const [month, day, year] = [
+        tempSlots[i].date.getMonth(),
+        tempSlots[i].date.getDate(),
+        tempSlots[i].date.getFullYear(),
+      ];
+      const [hourStart, minutesStart, secondsStart] = [
+        tempSlots[i].startTime.getHours(),
+        tempSlots[i].startTime.getMinutes(),
+        tempSlots[i].startTime.getSeconds(),
+      ];
+      const [hourEnd, minutesEnd, secondsEnd] = [
+        tempSlots[i].endTime.getHours(),
+        tempSlots[i].endTime.getMinutes(),
+        tempSlots[i].endTime.getSeconds(),
+      ];
+      const start = new Date(
+        year,
+        month,
+        day,
+        hourStart,
+        minutesStart,
+        secondsStart
+      );
+      const end = new Date(year, month, day, hourEnd, minutesEnd, secondsEnd);
+      lessonTimeFrames.push({
+        startTime: start.toISOString(),
+        endTime: end.toISOString(),
+      });
+    }
+    setValue('lessonTimeFrames', lessonTimeFrames);
+  };
   const onDateChange = (
     idx: number,
     date: Date,
@@ -78,9 +120,8 @@ export const NewRequestForm = () => {
         tempSlots[i].endTime = endTime;
       }
     }
-
     updateTimeSlots(tempSlots);
-    console.log(slotCount);
+    updateLessonTimeFrames(tempSlots);
   };
   const destroyTimeSlot = (index: number) => {
     var tempSlots = timeSlots;
@@ -90,7 +131,6 @@ export const NewRequestForm = () => {
       }
     }
     updateTimeSlots(tempSlots);
-    console.log(slotCount);
   };
   const [timeSlotList, updateTimeSlotList] = useState([
     <li key={0}>
@@ -122,9 +162,18 @@ export const NewRequestForm = () => {
       </li>
     );
     updateTimeSlotList(tempSlotList);
-    console.log(timeSlots);
-    console.log(slotCount);
+    // setValue('lessonTimeFrames', [{ startTime: '', endTime: '' }]);
   };
+  updateLessonTimeFrames(timeSlots);
+  const [subjectId, setSubjectId] = useState<number>(1);
+  setValue('subjectId', subjectId);
+  if (isLoading) return <div>Loading...</div>;
+  if (user) {
+    setValue('userId', user.id);
+  } else {
+    setValue('userId', 0);
+  }
+
   return (
     <>
       <NewRequestText>
@@ -133,17 +182,37 @@ export const NewRequestForm = () => {
       <NewRequestFormContainer onSubmit={handleSubmit(onSubmit)}>
         <FormRow>
           <FormColumn>
-            <InputDescription>Subject: </InputDescription>
-            <Input name="subject" register={register} errors={errors.subject} />
-            <InputDescription>Subfield:</InputDescription>
+            <InputDescription>
+              <FormattedMessage id="card.subject" />:{' '}
+            </InputDescription>
+            <Dropdown
+              value={subjectId}
+              onChange={(e) => {
+                setSubjectId(parseInt(e.target.value, 10));
+                setValue('subjectId', parseInt(e.target.value, 10));
+                console.log(getValues('subjectId'));
+              }}
+            >
+              {data?.map((subject) => (
+                <DropdownOption key={subject.id} value={subject.id}>
+                  {subject.name}
+                </DropdownOption>
+              ))}
+            </Dropdown>
+            <InputDescription>
+              <FormattedMessage id="card.subfield" />:
+            </InputDescription>
             <Input
               name="subfield"
               register={register}
               errors={errors.subfield}
             />
-            <InputDescription>Education level:</InputDescription>
+            <InputDescription>
+              <FormattedMessage id="newRequestForm.educationLevel" />:
+            </InputDescription>
             <RadioInput>
               <input
+                {...register('level', { required: true })}
                 type="radio"
                 value={EducationLevel.ELEMENTARY}
                 checked={selectedEducationLevel === EducationLevel.ELEMENTARY}
@@ -153,6 +222,7 @@ export const NewRequestForm = () => {
             </RadioInput>
             <RadioInput>
               <input
+                {...register('level', { required: true })}
                 type="radio"
                 value={EducationLevel.HIGH}
                 checked={selectedEducationLevel === EducationLevel.HIGH}
@@ -162,6 +232,7 @@ export const NewRequestForm = () => {
             </RadioInput>
             <RadioInput>
               <input
+                {...register('level', { required: true })}
                 type="radio"
                 value={EducationLevel.UNI}
                 checked={selectedEducationLevel === EducationLevel.UNI}
@@ -170,19 +241,40 @@ export const NewRequestForm = () => {
               {EducationLevel.UNI}
             </RadioInput>
 
-            <InputDescription>Grade: </InputDescription>
-            <Input name="grade" register={register} errors={errors.grade} />
-            <InputDescription>Budget: (kn/h)</InputDescription>
-            <Input name="budget" register={register} errors={errors.budget} />
+            <InputDescription>
+              <FormattedMessage id="newRequestForm.grade" />:{' '}
+            </InputDescription>
+            <NumberInput
+              type="number"
+              name="grade"
+              register={register}
+              errors={errors.grade}
+            />
+            <InputDescription>
+              <FormattedMessage id="newRequestForm.budget" />: (kn/h)
+            </InputDescription>
+            <NumberInput
+              type="number"
+              name="budget"
+              register={register}
+              errors={errors.budget}
+            />
           </FormColumn>
           <FormColumn>
-            <InputDescription>Available time slots:</InputDescription>
+            <InputDescription>
+              <FormattedMessage id="newRequestForm.availableDates" />:
+            </InputDescription>
             <ul>{timeSlotList}</ul>
-            <Button onClick={onAddTimeSlot}>+ Add time slot</Button>
+            <Button type="button" onClick={onAddTimeSlot}>
+              + <FormattedMessage id="newRequestForm.newTime" />
+            </Button>
 
-            <InputDescription>Meeting type:</InputDescription>
+            <InputDescription>
+              <FormattedMessage id="card.meetingType" />:
+            </InputDescription>
             <RadioInput>
               <input
+                {...register('type', { required: true })}
                 type="radio"
                 value={MeetingType.IRL}
                 checked={selectedMeetingType === MeetingType.IRL}
@@ -192,6 +284,7 @@ export const NewRequestForm = () => {
             </RadioInput>
             <RadioInput>
               <input
+                {...register('type', { required: true })}
                 type="radio"
                 value={MeetingType.ONLINE}
                 checked={selectedMeetingType === MeetingType.ONLINE}
@@ -199,18 +292,18 @@ export const NewRequestForm = () => {
               />
               {MeetingType.ONLINE}
             </RadioInput>
-            <InputDescription>Location:</InputDescription>
+            <InputDescription>
+              <FormattedMessage id="card.location" />:
+            </InputDescription>
             <Input
               name="location"
               register={register}
               errors={errors.location}
             />
-            <InputDescription>Description: </InputDescription>
-            <TextBox
-              name="body"
-              onChange={onDescriptionChange}
-              value={description}
-            />
+            <InputDescription>
+              <FormattedMessage id="newRequestForm.description" />:{' '}
+            </InputDescription>
+            <TextBox {...register('description', { required: true })} />
           </FormColumn>
         </FormRow>
         <FormRow>

@@ -11,18 +11,20 @@ export enum MeetingType {
   ONLINE = 'Online',
 }
 export const newRequestFormSchema = z.object({
-  subject: z.string(),
+  userId: z.number().positive(),
+  subjectId: z.number().positive(),
   subfield: z.string().max(100).min(1, 'Područje je obavezno'),
-  educationLevel: z.nativeEnum(EducationLevel),
+  level: z.nativeEnum(EducationLevel),
   grade: z.number().positive(),
   budget: z.number().positive(),
-  type: z.nativeEnum(MeetingType),
-  location: z.string(),
-  description: z.string(),
+  type: z.nativeEnum(MeetingType).optional(),
+  location: z.string().optional(),
+  description: z.string().optional(),
   lessonTimeFrames: z
     .object({ startTime: z.string(), endTime: z.string() })
     .array()
-    .nonempty(),
+    .nonempty()
+    .optional(),
 });
 
 export type NewRequestFormInputs = z.infer<typeof newRequestFormSchema>;

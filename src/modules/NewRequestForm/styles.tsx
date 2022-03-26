@@ -100,3 +100,19 @@ export const FormRow = styled('div', {
     variant: 'normal',
   },
 });
+
+export const Dropdown = styled('select', {
+  font: 'Montserrat',
+  backgroundColor: '#10434E',
+  color: '#fff',
+  fontSize: '$sm',
+  borderRadius: '5px',
+  boxSizing: 'content-box',
+  padding: '$1 $2',
+});
+
+export const DropdownOption = styled('option', {
+  font: 'Montserrat',
+  backgroundColor: '#fff',
+  color: '#10434E',
+});
