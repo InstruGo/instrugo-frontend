@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Input, NumberInput } from '@components';
+import { Input } from '@components';
 import { FormattedMessage } from 'react-intl';
 
 import { useNewRequest, useSubjects, useUserContext } from '@hooks';
@@ -243,20 +243,22 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
             <InputDescription>
               <FormattedMessage id="newRequestForm.grade" />:{' '}
             </InputDescription>
-            <NumberInput
+            <Input
               type="number"
               name="grade"
               register={register}
               errors={errors.grade}
+              isNumber={true}
             />
             <InputDescription>
               <FormattedMessage id="newRequestForm.budget" />: (kn/h)
             </InputDescription>
-            <NumberInput
+            <Input
               type="number"
               name="budget"
               register={register}
               errors={errors.budget}
+              isNumber={true}
             />
           </FormColumn>
           <FormColumn>
