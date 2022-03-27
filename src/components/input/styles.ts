@@ -14,14 +14,16 @@ export const StyledInput = styled('input', {
         fontSize: '$base',
         color: '#10434E',
         border: 'none',
-        padding: '$2 $4',
-        borderRadius: '10px',
-        boxShadow: '0 0 2px #aaa',
-        transition: 'box-shadow 0.4s',
+        borderBottom: 'solid 1px #ccc',
+        padding: '$2 $1',
+        transition: 'border-color 0.2s, background-color 0.2s',
         '&:focus': {
-          boxShadow: '0 0 6px #375d64b3',
+          borderColor: '#10434E',
+          backgroundColor: '#e6f2f5',
         },
-        '&::placeholder': { textTransform: 'capitalize' },
+        '&::placeholder': {
+          textTransform: 'capitalize',
+        },
         '&::selection': {
           backgroundColor: '#f5d2a5',
         },
@@ -33,7 +35,10 @@ export const StyledInput = styled('input', {
         padding: '$2 $4',
         fontSize: '$base',
         marginTop: '20px',
-        textTransform: 'uppercase',
+        fontWeight: 'bold',
+        cursor: 'pointer',
+        border: 'none',
+        letterSpacing: '0.5px',
       },
     },
   },
@@ -41,4 +46,14 @@ export const StyledInput = styled('input', {
   defaultVariants: {
     variant: 'auth',
   },
+});
+
+export const ErrorsContainer = styled('div', {
+  marginTop: '10px',
+  color: 'firebrick',
+  fontSize: '13px',
+  // Same width as the input above
+  width: '100%',
+  maxWidth: '400px',
+  paddingLeft: '5px',
 });

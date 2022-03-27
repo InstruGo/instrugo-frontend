@@ -18,7 +18,7 @@ export const HeaderContainer = ({
     <StyledHeaderContainer {...rest}>
       <LogoContainer>
         <Image
-          src="/favicon.ico"
+          src="/neural.png"
           width="50px"
           height="50px"
           alt="appLogo"

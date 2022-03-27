@@ -2,15 +2,15 @@ import { z } from 'zod';
 
 export const registerFormSchema = z
   .object({
-    email: z.string().email('Unesite ispravnu e-mail adresu.'),
-    firstName: z.string().max(100).min(1, 'Ime je obavezno.'),
-    lastName: z.string().max(100).min(1, 'Prezime je obavezno.'),
+    firstName: z.string().max(100).min(1, 'The first name field is required'),
+    lastName: z.string().max(100).min(1, 'The last name field is required'),
+    email: z.string().email('E-mail address format is incorrect'),
+    password: z.string().min(6, 'Password must contain at least 6 characters'),
+    confirmPassword: z.string().min(1, 'Confirm the password'),
     phone: z.string().optional(),
-    password: z.string().min(6, 'Lozinka mora biti dugačka barem 6 znakova.'),
-    confirmPassword: z.string().min(1, 'Potvrdite lozinku.'),
   })
   .refine((data) => data.password === data.confirmPassword, {
-    message: 'Lozinke se ne poklapaju.',
+    message: "Passwords don't match",
   });
 
 export type RegisterFormInputs = z.infer<typeof registerFormSchema>;

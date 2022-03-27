@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 export const loginFormSchema = z.object({
-  email: z.string().email('Unesite ispravnu e-mail adresu!'),
+  email: z.string().email('E-mail address format is incorrect'),
   password: z.string(),
 });
 
