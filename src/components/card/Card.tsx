@@ -36,7 +36,16 @@ export const Card = ({
             {dateAndTime && (
               <CardItem>
                 <AiOutlineClockCircle />
-                <CardText>{dateAndTime}</CardText>
+                <CardText>
+                  {new Intl.DateTimeFormat('en-GB', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: '2-digit',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    hour12: false,
+                  }).format(new Date(dateAndTime))}
+                </CardText>
               </CardItem>
             )}
             <CardItem>

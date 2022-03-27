@@ -3,6 +3,13 @@ import { styled } from 'styles/stitches.config';
 export const StyledButton = styled('button', {
   border: '0',
   fontFamily: 'inherit',
+  borderRadius: '10px',
+  boxShadow: '0 0 2px #aaa',
+  transition: 'box-shadow 0.4s',
+  '&:focus': {
+    boxShadow: '0 0 6px #375d64b3',
+  },
+  padding: '$1 $2',
   '&:focus-visible': { outline: 'none' },
   cursor: 'pointer',
 

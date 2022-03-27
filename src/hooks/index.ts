@@ -5,3 +5,5 @@ export * from './useUserContext';
 export * from './useUpcomingLessons';
 export * from './useLogout';
 export * from './useProfile';
+export * from './useNewRequest';
+export * from './useSubjects';
