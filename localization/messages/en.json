@@ -2,15 +2,17 @@
   "appName": "InstruGo",
 
   "button.register": "Register",
-  "button.login": "Login",
+  "button.login": "Log In",
 
   "confirmPassword": "Confirm password",
 
   "registration.terms": "Agree to Terms and Conditions",
   "registration.description": "Register an account and join the community",
+  "registration.alreadyHaveAnAccount": "Already have an account?",
 
   "login.forgotPassword": "Forgot password?",
-  "login.description": "Welcome back!",
+  "login.description": "Log in to use our services",
+  "login.needAnAccount": "Need an account?",
 
   "user.firstName": "first name",
   "user.lastName": "last name",
@@ -30,8 +32,8 @@
   "nav.myRequests": "My Requests",
   "nav.switch": "Switch to tutor",
 
-  "student.home.rewards": "Rewards",
-  "student.home.lessons": "Lessons",
+  "home.rewards": "Rewards",
+  "home.lessons": "Lessons",
   "lessons.upcoming": "Upcoming",
   "lessons.requests": "Requests",
 
@@ -44,5 +46,8 @@
   "newRequestForm.availableDates": "Available Time Slots",
   "newRequestForm.budget": "Budget",
   "newRequestForm.newTime": "Add time slot",
-  "newRequestForm.educationLevel": "Education Level"
+  "newRequestForm.educationLevel": "Education Level",
+
+  "lang.hr": "hr",
+  "lang.en": "en"
 }

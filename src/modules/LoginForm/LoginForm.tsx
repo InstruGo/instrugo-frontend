@@ -1,13 +1,21 @@
-import { useRouter } from 'next/router';
+import Link from 'next/link';
+import React from 'react';
+
+import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { FormattedMessage } from 'react-intl';
 
-import { zodResolver } from '@hookform/resolvers/zod';
 import { Input } from '@components';
+import { Loader } from '@components/icons';
 import { useLogin } from '@hooks';
 import { LoginFormInputs, loginFormSchema } from '@types';
 
-import { LoginFormContainer, LoginText } from './styles';
+import {
+  ForgotPassContainer,
+  LoaderContainer,
+  LoginFormContainer,
+  NeedAnAccount,
+} from './styles';
 
 export const LoginForm = () => {
   const loginUser = useLogin();
@@ -19,14 +27,15 @@ export const LoginForm = () => {
     resolver: zodResolver(loginFormSchema),
   });
 
-  const onSubmit = (data: LoginFormInputs) => loginUser.mutate(data);
+  const [isAuthenticating, setAuthenticating] = React.useState(false);
+
+  const onSubmit = (data: LoginFormInputs) => {
+    setAuthenticating(true);
+    loginUser.mutate(data);
+  };
 
   return (
     <>
-      <LoginText>
-        <FormattedMessage id="login.description" />
-      </LoginText>
-
       <LoginFormContainer onSubmit={handleSubmit(onSubmit)}>
         <Input
           name="email"
@@ -44,11 +53,34 @@ export const LoginForm = () => {
           placeholderMsgId="user.password"
         />
 
+        <ForgotPassContainer>
+          <Link href="/login">
+            <a>
+              <FormattedMessage id="login.forgotPassword" />
+            </a>
+          </Link>
+        </ForgotPassContainer>
+
         <Input
           type="submit"
           variant="authSubmit"
           placeholderMsgId="button.login"
         />
+
+        <NeedAnAccount>
+          <FormattedMessage id="login.needAnAccount" />
+          <Link href="/register">
+            <a>
+              <FormattedMessage id="button.register" />
+            </a>
+          </Link>
+        </NeedAnAccount>
+
+        <LoaderContainer>
+          {isAuthenticating && (
+            <Loader fill="#10434E" width="40px" height="40px" />
+          )}
+        </LoaderContainer>
       </LoginFormContainer>
     </>
   );

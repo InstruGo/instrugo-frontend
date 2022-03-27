@@ -2,15 +2,17 @@
   "appName": "InstruGo",
 
   "button.register": "Registriraj se",
-  "button.login": "Login",
+  "button.login": "Prijavi se",
 
   "confirmPassword": "Potvrdi lozinku",
 
   "registration.terms": "Prihvatite odredbe i uvjete",
   "registration.description": "Registrirajte se i pridružite se zajednici",
+  "registration.alreadyHaveAnAccount": "Već imate korisnički račun?",
 
   "login.forgotPassword": "Zaboravili ste lozinku?",
-  "login.description": "Dobrodošli!",
+  "login.description": "Prijavite se za korištenje naših usluga",
+  "login.needAnAccount": "Nemate korisnički račun?",
 
   "user.firstName": "ime",
   "user.lastName": "prezime",
@@ -30,8 +32,8 @@
   "nav.myRequests": "Moji zahtjevi",
   "nav.switch": "Prebaci se na instruktora",
 
-  "student.home.rewards": "Nagrade",
-  "student.home.lessons": "Lekcije",
+  "home.rewards": "Nagrade",
+  "home.lessons": "Lekcije",
   "lessons.upcoming": "Nadolazeće",
   "lessons.requests": "Zahtjevi",
 
@@ -47,5 +49,8 @@
   "newRequestForm.availableDates": "Dostupni termini",
   "newRequestForm.budget": "Budžet",
   "newRequestForm.newTime": "Dodaj termin",
-  "newRequestForm.educationLevel": "Razina obrazovanja"
+  "newRequestForm.educationLevel": "Razina obrazovanja",
+
+  "lang.hr": "hr",
+  "lang.en": "en"
 }
