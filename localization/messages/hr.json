@@ -39,5 +39,13 @@
 
   "button.createRequest": "Stvorite novi zahtjev",
 
-  "student.request.requests": "Moji zahtjevi"
+  "student.request.requests": "Moji zahtjevi",
+
+  "newRequest.description": "Novi Zahtjev",
+  "newRequestForm.grade": "Razred/Godina",
+  "newRequestForm.description": "Opis",
+  "newRequestForm.availableDates": "Dostupni termini",
+  "newRequestForm.budget": "Budžet",
+  "newRequestForm.newTime": "Dodaj termin",
+  "newRequestForm.educationLevel": "Razina obrazovanja"
 }

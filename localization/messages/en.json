@@ -37,5 +37,12 @@
 
   "filter": "Filter",
 
-  "button.createRequest": "Create new request"
+  "button.createRequest": "Create new request",
+  "newRequest.description": "New Request",
+  "newRequestForm.grade": "Grade",
+  "newRequestForm.description": "Description",
+  "newRequestForm.availableDates": "Available Time Slots",
+  "newRequestForm.budget": "Budget",
+  "newRequestForm.newTime": "Add time slot",
+  "newRequestForm.educationLevel": "Education Level"
 }
