@@ -62,9 +62,11 @@ export const Input = ({
         {...rest}
         onChange={() => dismissError(true)}
       />
-      <ErrorsContainer>
-        {errors && !isErrorDismissed && <span>{errors.message}</span>}
-      </ErrorsContainer>
+      {placeholderMsgId !== 'button.createRequest' && (
+        <ErrorsContainer>
+          {errors && !isErrorDismissed && <span>{errors.message}</span>}
+        </ErrorsContainer>
+      )}
     </Fragment>
   );
 };

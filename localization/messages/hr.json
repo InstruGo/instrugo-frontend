@@ -51,6 +51,9 @@
   "newRequestForm.newTime": "Dodaj termin",
   "newRequestForm.educationLevel": "Razina obrazovanja",
 
+  "requestDetails.description": "Detalji zahtjeva",
+  "requestDetails.tutorResponses": "Odgovori instruktora",
+
   "lang.hr": "hr",
   "lang.en": "en"
 }

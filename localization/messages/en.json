@@ -48,6 +48,9 @@
   "newRequestForm.newTime": "Add time slot",
   "newRequestForm.educationLevel": "Education Level",
 
+  "requestDetails.description": "Request details",
+  "requestDetails.tutorResponses": "Tutor responses",
+
   "lang.hr": "hr",
   "lang.en": "en"
 }
