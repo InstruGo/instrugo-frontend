@@ -1,6 +1,6 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-
+import { useRouter } from 'next/router';
 import { Button, HeaderContainer } from '@components';
 import {
   HamburgerMenu,
@@ -18,18 +18,18 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 
 export const StudentsNavbar = () => {
   const [isMenuOpen, setMenuOpen] = React.useState(false);
-
+  const router = useRouter();
   return (
     <HeaderContainer>
       <StyledHeader>
         <StyledNavbar>
-          <NavLink>
+          <NavLink onClick={() => router.push('/student/home')}>
             <FormattedMessage id={'nav.home'} />
           </NavLink>
           <NavLink>
             <FormattedMessage id={'nav.myLessons'} />
           </NavLink>
-          <NavLink>
+          <NavLink onClick={() => router.push('/student/requests')}>
             <FormattedMessage id={'nav.myRequests'} />
           </NavLink>
         </StyledNavbar>
