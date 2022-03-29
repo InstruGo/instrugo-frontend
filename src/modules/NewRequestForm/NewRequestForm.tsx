@@ -308,11 +308,13 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
           </FormColumn>
         </FormRow>
         <FormRow>
-          <Input
-            type="submit"
-            variant="authSubmit"
-            placeholderMsgId="button.createRequest"
-          />
+          <FormColumn style={{ alignItems: 'center' }}>
+            <Input
+              type="submit"
+              variant="authSubmit"
+              placeholderMsgId="button.createRequest"
+            />
+          </FormColumn>
         </FormRow>
       </NewRequestFormContainer>
     </>

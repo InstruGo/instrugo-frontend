@@ -8,7 +8,7 @@ export const useLesson = (id: number) => {
     return response.data;
   };
 
-  return useQuery('lesson', getLesson, {
+  return useQuery(`lesson${id}`, getLesson, {
     onSuccess: () => {},
     onError: (error) => {
       console.log(error);

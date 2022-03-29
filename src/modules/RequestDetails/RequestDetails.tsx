@@ -17,11 +17,8 @@ interface RequestDetailsProps {
   id: number;
 }
 export const RequestDetails = (props: RequestDetailsProps) => {
-  const { data, isLoading, refetch } = useLesson(props.id);
+  const { data, isLoading } = useLesson(props.id);
   if (isLoading) return <div>Loading...</div>;
-  if (refetch) {
-    refetch();
-  }
   return (
     <>
       <RequestDetailsText>
