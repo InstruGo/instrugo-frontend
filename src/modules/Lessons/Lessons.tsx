@@ -72,6 +72,7 @@ export const LessonsContainer = () => {
         {data.map((lesson) => (
           <Card
             key={lesson.id}
+            index={lesson.id}
             subject={lesson.subject.name}
             subfield={lesson.subfield}
             location={lesson.location}

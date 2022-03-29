@@ -10,7 +10,15 @@ export const CardStyle = styled('div', {
   display: 'flex',
   flexDirection: 'column',
 });
-
+export const ModalButton = styled('button', {
+  background: 'none',
+  color: 'inherit',
+  border: 'none',
+  padding: '0px',
+  font: 'inherit',
+  cursor: 'pointer',
+  outline: 'inherit',
+});
 export const CardHeader = styled('div', {
   display: 'flex',
   color: 'white',

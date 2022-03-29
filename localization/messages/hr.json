@@ -43,6 +43,17 @@
 
   "student.request.requests": "Moji zahtjevi",
 
+  "newRequest.description": "Novi Zahtjev",
+  "newRequestForm.grade": "Razred/Godina",
+  "newRequestForm.description": "Opis",
+  "newRequestForm.availableDates": "Dostupni termini",
+  "newRequestForm.budget": "Budžet",
+  "newRequestForm.newTime": "Dodaj termin",
+  "newRequestForm.educationLevel": "Razina obrazovanja",
+
+  "requestDetails.description": "Detalji zahtjeva",
+  "requestDetails.tutorResponses": "Odgovori instruktora",
+
   "lang.hr": "hr",
   "lang.en": "en"
 }
