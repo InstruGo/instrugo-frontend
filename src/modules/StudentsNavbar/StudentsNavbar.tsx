@@ -59,7 +59,7 @@ export const StudentsNavbar = () => {
         </HamburgerMenu>
 
         <RightNavSection>
-          <Button variant="switch">
+          <Button variant="switch" onClick={() => router.push('/tutor/home')}>
             <HiOutlineSwitchVertical size={'25px'} />
             <div className="text">
               <FormattedMessage id="nav.switch" />

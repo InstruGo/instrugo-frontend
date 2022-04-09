@@ -10,7 +10,7 @@ export const useLessonRequests = () => {
     const response = await axios.get(`http://localhost:3000/api/lessons`, {
       params: {
         studentId: user?.id,
-        status: 'Request',
+        status: 'Requested',
       },
     });
 

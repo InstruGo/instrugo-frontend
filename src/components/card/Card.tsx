@@ -16,6 +16,7 @@ import {
   CardStyle,
   ModalButton,
 } from './styles';
+import { useRouter } from 'next/router';
 
 type StitchesComponentProps = React.ComponentPropsWithoutRef<typeof CardStyle>;
 
@@ -39,16 +40,27 @@ export const Card = ({
   grade,
   educationLvl,
   dateAndTime,
+  color,
 }: CardProps) => {
   const [showRequestDetailsModal, setRequestDetailsModal] =
     React.useState(false);
+  const router = useRouter();
   return (
     <>
       <Fragment>
-        <ModalButton onClick={() => setRequestDetailsModal(true)}>
-          <CardStyle>
-            <CardHeader>{subject}</CardHeader>
-            <CardBody>
+        <ModalButton
+          onClick={() => {
+            router.push({
+              pathname: '/student/request-details/[id]',
+              query: { id: index },
+            });
+          }}
+        >
+          <CardStyle style={{ borderColor: color }}>
+            <CardHeader style={{ backgroundColor: color, borderColor: color }}>
+              {subject}
+            </CardHeader>
+            <CardBody style={{ backgroundColor: color + '33' }}>
               {dateAndTime && (
                 <CardItem>
                   <AiOutlineClockCircle />

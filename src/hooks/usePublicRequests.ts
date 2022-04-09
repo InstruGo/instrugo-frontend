@@ -8,7 +8,7 @@ export const usePublicRequests = () => {
   const getPublicRequests = async (): Promise<Lesson[]> => {
     const response = await axios.get(`http://localhost:3000/api/lessons`, {
       params: {
-        status: 'Request',
+        status: 'Requested',
       },
     });
 
