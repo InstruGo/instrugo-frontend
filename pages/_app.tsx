@@ -1,14 +1,12 @@
 import type { AppProps } from 'next/app';
-
-import '../styles/reset.css';
-
 import { useRouter } from 'next/router';
 import { IntlProvider } from 'react-intl';
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+import { UserContextProvider } from '@context';
 
 import { locales } from '../localization/messages';
-
-import { QueryClient, QueryClientProvider } from 'react-query';
-import { UserContextProvider } from '@context';
+import '../styles/reset.css';
 
 const queryClient = new QueryClient();
 

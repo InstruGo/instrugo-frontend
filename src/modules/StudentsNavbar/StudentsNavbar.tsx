@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React from 'react';
+import React, { useState } from 'react';
 
 import { CgProfile } from 'react-icons/cg';
 import { GiHamburgerMenu } from 'react-icons/gi';
@@ -20,8 +20,9 @@ import {
 } from './styles';
 
 export const StudentsNavbar = () => {
-  const [isMenuOpen, setMenuOpen] = React.useState(false);
+  const [isMenuOpen, setMenuOpen] = useState(false);
   const router = useRouter();
+
   return (
     <HeaderContainer>
       <StyledHeader>

@@ -1,5 +1,6 @@
-import type { NextPage } from 'next';
 import Head from 'next/head';
+
+import type { NextPage } from 'next';
 
 import { LoginForm } from '@modules';
 import { AuthLayout } from '@modules/AuthLayout/AuthLayout';
