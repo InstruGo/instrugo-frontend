@@ -7,9 +7,12 @@ export const useUpcomingLessons = () => {
   const axios = useAxios();
 
   const getUpcomingLessons = async (): Promise<Lesson[]> => {
-    const response = await axios.get(
-      `http://localhost:3000/api/lessons?ownerId=${user?.id}&status=Lesson`
-    );
+    const response = await axios.get(`http://localhost:3000/api/lessons`, {
+      params: {
+        ownerId: user?.id,
+        status: 'Lesson',
+      },
+    });
 
     return response.data;
   };

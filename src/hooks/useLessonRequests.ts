@@ -7,9 +7,12 @@ export const useLessonRequests = () => {
   const axios = useAxios();
 
   const getLessonRequests = async (): Promise<Lesson[]> => {
-    const response = await axios.get(
-      `http://localhost:3000/api/lessons?ownerId=${user?.id}&status=Request`
-    );
+    const response = await axios.get(`http://localhost:3000/api/lessons`, {
+      params: {
+        ownerId: user?.id,
+        status: 'Request',
+      },
+    });
 
     return response.data;
   };

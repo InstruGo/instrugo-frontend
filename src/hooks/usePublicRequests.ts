@@ -6,9 +6,11 @@ export const usePublicRequests = () => {
   const axios = useAxios();
 
   const getPublicRequests = async (): Promise<Lesson[]> => {
-    const response = await axios.get(
-      `http://localhost:3000/api/lessons?status=Request`
-    );
+    const response = await axios.get(`http://localhost:3000/api/lessons`, {
+      params: {
+        status: 'Request',
+      },
+    });
 
     return response.data;
   };
