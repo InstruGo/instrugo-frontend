@@ -27,10 +27,16 @@
   "card.location": "Location",
   "card.educationLevel": "Education lvl",
 
+  "student.request.requests": "My requests",
+  "tutor.request.requests": "Public requests",
+
   "nav.home": "Home",
   "nav.myLessons": "My Lessons",
   "nav.myRequests": "My Requests",
   "nav.switch": "Switch to tutor",
+  "nav.switch.tutor": "Switch to student",
+  "nav.publicRequests": "Requests",
+  "nav.tutorResponses": "My responses",
 
   "home.rewards": "Rewards",
   "home.lessons": "Lessons",

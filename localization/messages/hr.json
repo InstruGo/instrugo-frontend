@@ -31,6 +31,9 @@
   "nav.myLessons": "Moje instrukcije",
   "nav.myRequests": "Moji zahtjevi",
   "nav.switch": "Prebaci se na instruktora",
+  "nav.switch.tutor": "Prebaci se na studenta",
+  "nav.publicRequests": "Javni zahtjevi",
+  "nav.tutorResponses": "Moji odgovori",
 
   "home.rewards": "Nagrade",
   "home.lessons": "Lekcije",
@@ -42,6 +45,7 @@
   "button.createRequest": "Stvorite novi zahtjev",
 
   "student.request.requests": "Moji zahtjevi",
+  "tutor.request.requests": "Javni zahtjevi",
 
   "newRequest.description": "Novi Zahtjev",
   "newRequestForm.grade": "Razred/Godina",

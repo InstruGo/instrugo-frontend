@@ -7,3 +7,6 @@ export * from './Rewards/Rewards';
 export * from './Lessons/Lessons';
 export * from './NewRequestButton/NewRequestButton';
 export * from './RequestDetails/RequestDetails';
+export * from './RequestsContainer/RequestsContainer';
+export * from './PublicRequestsContainer/PublicRequestsContainer';
+export * from './TutorsNavbar/TutorsNavbar';

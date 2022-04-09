@@ -78,7 +78,7 @@ export const Card = ({
               {grade && educationLvl && (
                 <CardItem>
                   <FaGraduationCap />
-                  <CardText>{`${educationLvl}, ${grade}`}</CardText>
+                  <CardText>{`${educationLvl}, ${grade}. grade`}</CardText>
                 </CardItem>
               )}
             </CardBody>

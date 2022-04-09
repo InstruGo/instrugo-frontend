@@ -1,28 +1,25 @@
 import { useQuery } from 'react-query';
-import { useAxios, useUserContext } from '@hooks';
+import { useAxios } from '@hooks';
 import { Lesson } from '@types';
 
-export const useUpcomingLessons = () => {
-  const { user } = useUserContext();
+export const usePublicRequests = () => {
   const axios = useAxios();
 
-  const getUpcomingLessons = async (): Promise<Lesson[]> => {
+  const getPublicRequests = async (): Promise<Lesson[]> => {
     const response = await axios.get(`http://localhost:3000/api/lessons`, {
       params: {
-        studentId: user?.id,
-        status: 'Lesson',
+        status: 'Request',
       },
     });
 
     return response.data;
   };
 
-  return useQuery(`upcomingLessons`, getUpcomingLessons, {
+  return useQuery('publicRequests', getPublicRequests, {
     onSuccess: () => {},
     onError: (error) => {
       console.log(error);
     },
     staleTime: Infinity,
-    enabled: !!user,
   });
 };
