@@ -14,9 +14,7 @@ export const usePublicRequests = () => {
   };
 
   return useQuery('publicRequests', getPublicRequests, {
-    onSuccess: (data) => {
-      console.log(data);
-    },
+    onSuccess: () => {},
     onError: (error) => {
       console.log(error);
     },
