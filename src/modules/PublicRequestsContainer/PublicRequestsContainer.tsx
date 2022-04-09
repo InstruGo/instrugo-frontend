@@ -1,7 +1,7 @@
 import { FormattedMessage } from 'react-intl';
 
-import { Button, Card } from '@components';
-import { useLessonRequests } from '@hooks';
+import { Card } from '@components';
+import { usePublicRequests } from '@hooks';
 
 import {
   RequestsBody,
@@ -11,17 +11,17 @@ import {
   Title,
 } from './styles';
 
-export const RequestsContainer = () => {
-  const { data, isLoading } = useLessonRequests();
+export const PublicRequestsContainer = () => {
+  const { data, isLoading } = usePublicRequests();
 
   if (isLoading) return <div>Loading...</div>;
-  if (!data) return <div>No requests...</div>;
+  if (!data) return <div>No public requests...</div>;
 
   return (
     <StyledContainer>
       <LessonsHeader>
         <Title>
-          <FormattedMessage id="student.request.requests" />
+          <FormattedMessage id="tutor.request.requests" />
         </Title>
         <StyledHr />
       </LessonsHeader>
@@ -35,7 +35,8 @@ export const RequestsContainer = () => {
             subfield={lesson.subfield}
             location={lesson.location}
             meetingType={lesson.type}
-            dateAndTime={lesson.lessonTimeFrames[0].startTime}
+            grade={lesson.grade}
+            educationLvl={lesson.level}
           />
         ))}
       </RequestsBody>

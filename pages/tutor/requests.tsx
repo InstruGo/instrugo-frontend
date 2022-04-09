@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { StudentsNavbar, RequestsContainer } from '@modules';
+import { TutorsNavbar, PublicRequestsContainer } from '@modules';
 
 const Requestspage: NextPage = () => {
   return (
@@ -9,8 +9,8 @@ const Requestspage: NextPage = () => {
         <title>InstruGo | Student requests</title>
       </Head>
 
-      <StudentsNavbar />
-      <RequestsContainer />
+      <TutorsNavbar />
+      <PublicRequestsContainer />
     </div>
   );
 };

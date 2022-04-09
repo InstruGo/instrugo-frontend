@@ -8,11 +8,14 @@ export const LessonsHeader = styled('div', {
   padding: '$2 $2',
 });
 
-export const Title = styled('div', { fontWeight: 'bold', fontSize: '22px' });
+export const Title = styled('div', {
+  fontWeight: 'bold',
+  fontSize: '22px',
+});
 
 export const StyledHr = styled('hr', {
   marginLeft: '20px',
-  width: '90%',
+  width: '88%',
   borderTop: 'solid 1px #10434E',
 });
 
