@@ -1,5 +1,6 @@
-import axios from 'axios';
 import { useRouter } from 'next/router';
+
+import axios from 'axios';
 import { useMutation } from 'react-query';
 
 import { useUserContext } from '@hooks';

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
@@ -27,7 +27,7 @@ export const LoginForm = () => {
     resolver: zodResolver(loginFormSchema),
   });
 
-  const [isAuthenticating, setAuthenticating] = React.useState(false);
+  const [isAuthenticating, setAuthenticating] = useState(false);
 
   const onSubmit = (data: LoginFormInputs) => {
     setAuthenticating(true);

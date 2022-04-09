@@ -1,5 +1,6 @@
 import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
+
 import { IntlProvider } from 'react-intl';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
@@ -10,8 +11,7 @@ import '../styles/reset.css';
 
 const queryClient = new QueryClient();
 
-function MyApp({ Component, pageProps }: AppProps) {
-  // Determine active locale and set messages
+const MyApp = ({ Component, pageProps }: AppProps) => {
   const { locale, defaultLocale } = useRouter();
   const messages = locale ? locales[locale] : locales['en'];
 
@@ -28,6 +28,6 @@ function MyApp({ Component, pageProps }: AppProps) {
       </QueryClientProvider>
     </IntlProvider>
   );
-}
+};
 
 export default MyApp;
