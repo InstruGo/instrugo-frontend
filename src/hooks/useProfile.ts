@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { useQuery } from 'react-query';
 
-import type { User } from '@types';
 import { useUserContext } from '@hooks';
+import type { User } from '@types';
 
 export const useProfile = () => {
   const { accessToken, setUser } = useUserContext();

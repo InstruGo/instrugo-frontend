@@ -6,3 +6,4 @@ export * from './StudentsNavbar/StudentsNavbar';
 export * from './Rewards/Rewards';
 export * from './Lessons/Lessons';
 export * from './NewRequestButton/NewRequestButton';
+export * from './ProfilePage/ProfilePage';
