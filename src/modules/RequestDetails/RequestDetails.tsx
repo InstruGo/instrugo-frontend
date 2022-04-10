@@ -1,7 +1,6 @@
 import { FormattedMessage } from 'react-intl';
 
 import { useLesson } from '@hooks';
-
 import {
   RequestDetailsContainer,
   RequestDetailsText,
@@ -12,6 +11,7 @@ import {
   ResponsesHeader,
   Title,
 } from './styles';
+import { TutorResponse } from '@components';
 
 interface RequestDetailsProps {
   id: number;
@@ -91,6 +91,16 @@ export const RequestDetails = (props: RequestDetailsProps) => {
 
           <StyledHr />
         </ResponsesHeader>
+        {data?.tutorResponses.map((response) => {
+          <TutorResponse
+            index={response.id}
+            firstName={response.tutor.firstName}
+            lastName={response.tutor.lastName}
+            avgRating={response.tutor.averageRating}
+            price={response.price}
+            timeslots={response.tutorResponseTimeFrames}
+          />;
+        })}
       </RequestDetailsContainer>
     </>
   );

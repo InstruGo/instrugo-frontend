@@ -60,7 +60,8 @@ export const Card = ({
             <CardHeader style={{ backgroundColor: color, borderColor: color }}>
               {subject}
             </CardHeader>
-            <CardBody style={{ backgroundColor: color + '33' }}>
+            {/* <CardBody style={{ backgroundColor: color + '20' }}> */}
+            <CardBody>
               {dateAndTime && (
                 <CardItem>
                   <AiOutlineClockCircle />

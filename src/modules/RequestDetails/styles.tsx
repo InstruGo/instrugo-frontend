@@ -75,10 +75,9 @@ export const Column = styled('div', {
   },
 });
 export const Row = styled('div', {
-  justifyContent: 'left',
+  justifyContent: 'flex-start',
   display: 'flex',
   width: '100%',
-  maxWidth: '1400px',
   variants: {
     variant: {
       normal: {
