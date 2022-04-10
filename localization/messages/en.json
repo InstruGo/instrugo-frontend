@@ -51,6 +51,20 @@
   "requestDetails.description": "Request details",
   "requestDetails.tutorResponses": "Tutor responses",
 
+  "lessons.1st_group": "Today",
+  "lessons.2nd_group": "In the next 7 days",
+  "lessons.3rd_group": "Recently completed",
+  "lessons.table": "Completed",
+
+  "lessons.titles.subject": "Subject",
+  "lessons.titles.dateAndTime": "Date And Time",
+  "lessons.titles.subfield": "Subfield",
+  "lessons.titles.price": "Price",
+  "lessons.titles.location": "Location",
+  "lessons.titles.meetingType": "Meeting Type",
+  "lessons.titles.educationLevel": "Education lvl",
+  "lessons.titles.grade": "Grade",
+
   "lang.hr": "hr",
   "lang.en": "en"
 }

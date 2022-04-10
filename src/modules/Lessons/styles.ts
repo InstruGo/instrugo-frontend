@@ -30,3 +30,10 @@ export const LessonsBody = styled('div', {
   flexWrap: 'wrap',
   gap: '$6',
 });
+
+export const TableBody = styled('div', {
+  marginTop: '20px',
+  display: 'flex',
+  flexWrap: 'wrap',
+  gap: '$6',
+});

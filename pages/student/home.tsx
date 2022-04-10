@@ -39,7 +39,7 @@ const Homepage: NextPage = () => {
       <PageLayout>
         <Rewards />
 
-        <LessonsContainer />
+        <LessonsContainer title={'home.lessons'} home={true} cards={true} />
       </PageLayout>
 
       <NewRequestButton onClick={() => setNewRequestModal(true)} />

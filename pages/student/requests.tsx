@@ -10,7 +10,7 @@ const Requestspage: NextPage = () => {
       </Head>
 
       <StudentsNavbar />
-      <LessonsContainer />
+      <LessonsContainer title="My requests" />
     </div>
   );
 };
