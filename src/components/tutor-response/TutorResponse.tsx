@@ -10,6 +10,7 @@ import {
   ResponseContainer,
   ResponseItem,
   FieldDescription,
+  StyledHr,
 } from './styles';
 
 export interface ResponseProps {
@@ -30,6 +31,7 @@ export const TutorResponse = ({
   timeslots,
 }: ResponseProps) => {
   const onAcceptClick = () => {};
+  console.log(avgRating);
   return (
     <>
       <ResponseContainer>
@@ -38,27 +40,32 @@ export const TutorResponse = ({
         </ResponseItem>
         <ResponseItem style={{ flexGrow: '1' }}>
           <ItemRow>{firstName + ' ' + lastName}</ItemRow>
-          <ItemRow>
-            {avgRating + '/5'}
-            {'  '}
-            <div {...{ style: { padding: '0px 5px' } }}>
-              <BsStarHalf />
-            </div>
-          </ItemRow>
+          {avgRating && (
+            <ItemRow>
+              {avgRating + '/5'}
+              {'  '}
+              <div {...{ style: { padding: '0px 5px' } }}>
+                <BsStarHalf />
+              </div>
+            </ItemRow>
+          )}
         </ResponseItem>
-        <ResponseItem>{price + ' kn/h'}</ResponseItem>
+        <ResponseItem>
+          <FieldDescription>Price: {'    ' + price + ' kn/h'}</FieldDescription>
+        </ResponseItem>
         <ResponseItem>
           <FieldDescription>
             <FormattedMessage id="newRequestForm.availableDates" />:{' '}
           </FieldDescription>
-
+        </ResponseItem>
+        <ResponseItem style={{ justifyContent: 'flex-start' }}>
           {timeslots.map(
             (timeFrame: { startTime: string; endTime: string }) => {
               const start = new Date(timeFrame.startTime);
               const end = new Date(timeFrame.startTime);
               const idx = timeslots.indexOf(timeFrame);
               return (
-                <FieldDescription key={idx}>
+                <FieldDescription key={idx} style={{ justifyContent: 'left' }}>
                   <ItemRow>
                     {`${start.getDate()}\/${start.getMonth()}\/${start.getFullYear()}`}
                   </ItemRow>
@@ -96,6 +103,7 @@ export const TutorResponse = ({
           </Button>
         </ResponseItem>
       </ResponseContainer>
+      <StyledHr />
     </>
   );
 };

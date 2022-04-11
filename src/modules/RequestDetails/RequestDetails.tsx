@@ -19,6 +19,7 @@ interface RequestDetailsProps {
 export const RequestDetails = (props: RequestDetailsProps) => {
   const { data, isLoading } = useLesson(props.id);
   if (isLoading) return <div>Loading...</div>;
+  console.log(data?.tutorResponses);
   return (
     <>
       <RequestDetailsText>
@@ -92,14 +93,21 @@ export const RequestDetails = (props: RequestDetailsProps) => {
           <StyledHr />
         </ResponsesHeader>
         {data?.tutorResponses.map((response) => {
-          <TutorResponse
-            index={response.id}
-            firstName={response.tutor.firstName}
-            lastName={response.tutor.lastName}
-            avgRating={response.tutor.averageRating}
-            price={response.price}
-            timeslots={response.tutorResponseTimeFrames}
-          />;
+          return (
+            <TutorResponse
+              key={response.id}
+              index={response.id}
+              firstName={response.tutor.firstName}
+              lastName={response.tutor.lastName}
+              avgRating={
+                response.tutor.ratingsCount != 0
+                  ? response.tutor.averageRating
+                  : undefined
+              }
+              price={response.price}
+              timeslots={response.tutorResponseTimeFrames}
+            />
+          );
         })}
       </RequestDetailsContainer>
     </>

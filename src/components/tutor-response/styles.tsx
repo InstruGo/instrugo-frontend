@@ -5,7 +5,11 @@ export const ResponseContainer = styled('div', {
   flexDirection: 'row',
   width: '100%',
 });
-
+export const StyledHr = styled('hr', {
+  marginLeft: '20px',
+  width: '98%',
+  borderTop: 'solid 1px #10434E',
+});
 export const ResponseItem = styled('div', {
   justifyContent: 'center',
   alignItems: 'center',
@@ -15,9 +19,9 @@ export const ResponseItem = styled('div', {
   padding: '$2',
 });
 export const FieldDescription = styled('div', {
-  alignItems: 'flex-start',
+  justifyContent: 'center',
   display: 'flex',
-  padding: '$4 0 $1 0',
+  padding: '$2 $2',
   width: '100%',
   maxWidth: '400px',
   fontSize: '26',
