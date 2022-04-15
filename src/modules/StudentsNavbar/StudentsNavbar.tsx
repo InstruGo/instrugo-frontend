@@ -1,11 +1,12 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React from 'react';
 
 import { CgProfile } from 'react-icons/cg';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { HiOutlineSwitchVertical } from 'react-icons/hi';
 import { FormattedMessage } from 'react-intl';
-import { useRouter } from 'next/router';
+
 import { Button, HeaderContainer } from '@components';
 
 import {
