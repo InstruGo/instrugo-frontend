@@ -10,3 +10,4 @@ export * from './RequestDetails/RequestDetails';
 export * from './RequestsContainer/RequestsContainer';
 export * from './PublicRequestsContainer/PublicRequestsContainer';
 export * from './TutorsNavbar/TutorsNavbar';
+export * from './Profile/Profile';

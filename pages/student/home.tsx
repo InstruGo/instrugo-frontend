@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import React, { useState } from 'react';
 
 import { Modal } from '@components';
 import { useProfile } from '@hooks';
