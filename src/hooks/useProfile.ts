@@ -1,16 +1,19 @@
-import axios from 'axios';
+import { useRouter } from 'next/router';
+
 import { useQuery } from 'react-query';
 
 import { useUserContext } from '@hooks';
 import type { User } from '@types';
 
+import { useAxios } from './useAxios';
+
 export const useProfile = () => {
-  const { accessToken, setUser } = useUserContext();
+  const { setUser } = useUserContext();
+  const router = useRouter();
+  const axios = useAxios();
 
   const getProfile = async (): Promise<User> => {
-    const response = await axios.get('http://localhost:3000/api/auth/profile', {
-      headers: { Authorization: `Bearer ${accessToken}` },
-    });
+    const response = await axios.get('/auth/profile');
 
     const user = response.data as User;
     return user;
@@ -20,8 +23,10 @@ export const useProfile = () => {
     onSuccess: (data) => {
       setUser(data);
     },
-    onError: (error) => {
-      console.log(error);
+    onError: () => {
+      if (router.pathname !== '/login') {
+        router.push('/login', { query: { redirectUrl: router.pathname } });
+      }
     },
     staleTime: Infinity,
   });

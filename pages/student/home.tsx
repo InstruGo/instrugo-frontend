@@ -1,9 +1,9 @@
-import type { NextPage } from 'next';
 import Head from 'next/head';
 import React, { useState } from 'react';
 
+import type { NextPage } from 'next';
+
 import { Modal } from '@components';
-import { useProfile } from '@hooks';
 import {
   LessonsContainer,
   NewRequestButton,
@@ -22,9 +22,6 @@ const PageLayout = styled('div', {
 
 const Homepage: NextPage = () => {
   const [showNewRequestModal, setNewRequestModal] = useState(false);
-  const { isLoading } = useProfile();
-
-  if (isLoading) return <div>Loading...</div>;
 
   return (
     <div>
