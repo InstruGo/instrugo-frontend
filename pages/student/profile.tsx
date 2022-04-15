@@ -2,12 +2,12 @@ import type { NextPage } from 'next';
 import React from 'react';
 
 import { useUserContext } from '@hooks';
-import { ProfilePage } from '@modules';
+import { Profile } from '@modules';
 
-const Homepage: NextPage = () => {
+const ProfilePage: NextPage = () => {
   const { user } = useUserContext();
 
-  return <ProfilePage user={user} />;
+  return <Profile user={user} />;
 };
 
-export default Homepage;
+export default ProfilePage;

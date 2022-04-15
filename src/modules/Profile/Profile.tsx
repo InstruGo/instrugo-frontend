@@ -22,7 +22,7 @@ import {
   StyledContent,
 } from './styles';
 
-export const ProfilePage = ({ user }: { user: OptionalUser }) => {
+export const Profile = ({ user }: { user: OptionalUser }) => {
   return (
     <>
       <StudentsNavbar />
