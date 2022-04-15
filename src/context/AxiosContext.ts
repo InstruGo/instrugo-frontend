@@ -16,6 +16,7 @@ export const AxiosProvider = ({
   const auth = useMemo(() => {
     const axios = Axios.create({
       baseURL: publicRuntimeConfig.apiUrl,
+      withCredentials: true,
     });
 
     axios.interceptors.response.use(

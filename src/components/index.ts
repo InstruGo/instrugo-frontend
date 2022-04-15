@@ -4,4 +4,3 @@ export * from './input/Input';
 export * from './modal/Modal';
 export * from './time-slot/TimeSlot';
 export * from './card/Card';
-export * from './AuthCheck';

@@ -4,8 +4,7 @@ import { useRouter } from 'next/router';
 import { IntlProvider } from 'react-intl';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
-import { AuthCheck } from '@components';
-import { UserContextProvider } from '@context';
+import { AxiosProvider, UserContextProvider } from '@context';
 
 import { locales } from '../localization/messages';
 import '../styles/reset.css';
@@ -23,11 +22,11 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       messages={messages}
     >
       <QueryClientProvider client={queryClient}>
-        <UserContextProvider>
-          <AuthCheck>
+        <AxiosProvider>
+          <UserContextProvider>
             <Component {...pageProps} />
-          </AuthCheck>
-        </UserContextProvider>
+          </UserContextProvider>
+        </AxiosProvider>
       </QueryClientProvider>
     </IntlProvider>
   );

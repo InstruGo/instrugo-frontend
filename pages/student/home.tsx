@@ -13,6 +13,8 @@ import {
 } from '@modules';
 import { styled } from 'styles/stitches.config';
 
+import { withAuth } from '../../src/components/withAuth';
+
 const PageLayout = styled('div', {
   padding: '20px',
   '> div + div': {
@@ -20,7 +22,7 @@ const PageLayout = styled('div', {
   },
 });
 
-const Homepage: NextPage = () => {
+const StudentHomepage: NextPage = () => {
   const [showNewRequestModal, setNewRequestModal] = useState(false);
 
   return (
@@ -53,4 +55,4 @@ const Homepage: NextPage = () => {
   );
 };
 
-export default Homepage;
+export default withAuth(StudentHomepage);
