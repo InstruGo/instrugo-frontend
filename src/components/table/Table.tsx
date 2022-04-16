@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-
+import { FormattedMessage } from 'react-intl';
 import {
   TableText,
   TableHeader,
@@ -7,6 +7,8 @@ import {
   TableItem,
   TableStyle,
   TableTitles,
+  TableData,
+  StyledHr,
 } from './styles';
 
 import { useUpcomingLessons } from '@hooks';
@@ -24,32 +26,45 @@ export const Table = () => {
     <>
       <Fragment>
         <TableStyle>
-          <TableHeader />
           <TableBody>
-            <table>
-              <tr>
-                <TableTitles>{'lessons.title.subject'}</TableTitles>
-                <TableTitles>{'lessons.title.subfield'}</TableTitles>
-                <TableTitles>{'lessons.title.dateAndTime'}</TableTitles>
-                <TableTitles>{'lessons.title.price'}</TableTitles>
-                <TableTitles>{'lessons.title.location'}</TableTitles>
-                <TableTitles>{'lessons.title.meetingType'}</TableTitles>
-                <TableTitles>{'lessons.title.educationLevel'}</TableTitles>
-                <TableTitles>{'lessons.title.grade'}</TableTitles>
-              </tr>
-              {data.map((lesson) => (
-                <>
-                  <td>{lesson.subject.name}</td>
-                  <td>{lesson.subfield}</td>
-                  <td>{lesson.lessonTimeFrames[0].startTime}</td>
-                  <td>{'0kn'}</td>
-                  <td>{lesson.location}</td>
-                  <td>{lesson.type}</td>
-                  <td>{lesson.level}</td>
-                  <td>{lesson.grade}</td>
-                </>
-              ))}
-            </table>
+            <TableHeader>
+              <TableTitles style={{ borderTopLeftRadius: '8px' }}>
+                <FormattedMessage id="lessons.titles.subject" />
+              </TableTitles>
+              <TableTitles>
+                <FormattedMessage id="lessons.titles.subfield" />
+              </TableTitles>
+              <TableTitles>
+                <FormattedMessage id="lessons.titles.dateAndTime" />
+              </TableTitles>
+              <TableTitles>
+                <FormattedMessage id="lessons.titles.price" />
+              </TableTitles>
+              <TableTitles>
+                <FormattedMessage id="lessons.titles.location" />
+              </TableTitles>
+              <TableTitles>
+                <FormattedMessage id="lessons.titles.meetingType" />
+              </TableTitles>
+              <TableTitles>
+                <FormattedMessage id="lessons.titles.educationLevel" />
+              </TableTitles>
+              <TableTitles style={{ borderTopRightRadius: '8px' }}>
+                <FormattedMessage id="lessons.titles.grade" />
+              </TableTitles>
+            </TableHeader>
+            {data.map((lesson) => (
+              <TableItem key={lesson.id}>
+                <TableData>{lesson.subject.name}</TableData>
+                <TableData>{lesson.subfield}</TableData>
+                <TableData>{lesson.lessonTimeFrames[0].startTime}</TableData>
+                <TableData>{'0kn'}</TableData>
+                <TableData>{lesson.location}</TableData>
+                <TableData>{lesson.type}</TableData>
+                <TableData>{lesson.level}</TableData>
+                <TableData>{lesson.grade}</TableData>
+              </TableItem>
+            ))}
           </TableBody>
         </TableStyle>
       </Fragment>

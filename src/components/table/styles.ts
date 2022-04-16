@@ -3,33 +3,35 @@ import { CSS } from '@stitches/react';
 import { styled } from '../../../styles/stitches.config';
 
 export const TableStyle = styled('div', {
-  width: '14rem',
-  height: '8rem',
+  width: '100%',
+  height: '100%',
   border: '2px solid #3FB2C1',
   borderRadius: '10px',
   display: 'flex',
   flexDirection: 'column',
 });
-export const TableHeader = styled('div', {
+export const TableHeader = styled('tr', {
   display: 'flex',
   color: 'white',
   justifyContent: 'center',
   fontSize: '$lg',
   fontWeight: '$semibold',
-  borderBottom: '1px solid #3FB2C1',
-  backgroundColor: '#3FB2C1',
   height: '2',
   alignItems: 'center',
-  borderTopLeftRadius: '6px',
-  borderTopRightRadius: '6px',
-  padding: '5px 0px',
+  borderTopLeftRadius: '10px',
+  borderTopRightRadius: '10px',
+  padding: '0px 0px',
+  width: '100%',
 });
-
-export const TableBody = styled('div', {
+export const StyledHr = styled('hr', {
+  width: '100%',
+  borderTop: 'solid 1px #10434E',
+});
+export const TableBody = styled('table', {
   display: 'flex',
   backgroundColor: 'rgba(63, 178, 193, 0.2)',
   flexDirection: 'column',
-  justifyContent: 'center',
+  justifyContent: 'flex-start',
   alignItems: 'center',
   fontSize: '$xs',
   height: '100%',
@@ -43,12 +45,21 @@ export const TableText = styled('i', {
 
 export const TableItem = styled('tr', {
   hover: { backgroundColor: '#ddd' },
+  display: 'flex',
+  width: '100%',
+  justifyContent: 'space-evenly',
 });
-
+export const TableData = styled('td', {
+  textAlign: 'center',
+  flexGrow: '1',
+  flexShrink: '1',
+});
 export const TableTitles = styled('th', {
   paddingTop: '12px',
   paddingBottom: '12px',
-  textAlign: 'left',
+  textAlign: 'center',
   backgroundColor: '#10434E',
   color: 'white',
+  flexGrow: '1',
+  flexShrink: '0',
 });
