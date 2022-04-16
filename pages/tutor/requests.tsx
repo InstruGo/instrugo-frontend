@@ -1,5 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
+
+import { withAuth } from '@components';
 import { TutorsNavbar, PublicRequestsContainer } from '@modules';
 
 const RequestsPage: NextPage = () => {
@@ -15,4 +17,4 @@ const RequestsPage: NextPage = () => {
   );
 };
 
-export default RequestsPage;
+export default withAuth(RequestsPage);

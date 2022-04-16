@@ -22,8 +22,7 @@ export const newRequestFormSchema = z.object({
   description: z.string(),
   lessonTimeFrames: z
     .object({ startTime: z.string(), endTime: z.string() })
-    .array()
-    .nonempty(),
+    .array(),
 });
 
 export type NewRequestFormInputs = z.infer<typeof newRequestFormSchema>;

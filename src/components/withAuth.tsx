@@ -1,6 +1,5 @@
-import { useRouter } from 'next/router';
-
 import { NextPage } from 'next';
+import { useRouter } from 'next/router';
 
 import { useProfile } from '../hooks/useProfile';
 import { useUserContext } from '../hooks/useUserContext';

@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import { Button } from '@components';
+
+import { DatePicker, TimePicker } from '@mui/lab';
 import DateAdapterFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
-import { DatePicker, TimePicker } from '@mui/lab';
 import { TextField } from '@mui/material';
 
 import { FormColumn, FormRow, DestroyButton } from './styles';
+
 interface TimeSlotProps {
   onDateChange: (
     index: number,

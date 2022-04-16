@@ -6,6 +6,8 @@ import { GoBook } from 'react-icons/go';
 import { MdOutlineMeetingRoom, MdOutlineLocationOn } from 'react-icons/md';
 
 import { Modal } from '@components';
+import { RequestDetails } from '@modules';
+
 import {
   CardText,
   CardHeader,
@@ -14,7 +16,6 @@ import {
   CardStyle,
   ModalButton,
 } from './styles';
-import { RequestDetails } from '@modules';
 
 type StitchesComponentProps = React.ComponentPropsWithoutRef<typeof CardStyle>;
 

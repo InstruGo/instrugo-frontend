@@ -1,9 +1,8 @@
+import type { NextPage } from 'next';
 import Head from 'next/head';
 import React, { useState } from 'react';
 
-import type { NextPage } from 'next';
-
-import { Modal } from '@components';
+import { Modal, withAuth } from '@components';
 import {
   LessonsContainer,
   NewRequestButton,
@@ -12,8 +11,6 @@ import {
   NewRequestForm,
 } from '@modules';
 import { styled } from 'styles/stitches.config';
-
-import { withAuth } from '../../src/components/withAuth';
 
 const PageLayout = styled('div', {
   padding: '20px',

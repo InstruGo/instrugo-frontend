@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { StyledButton } from './styles';
 
 type StitchesComponentProps = React.ComponentProps<typeof StyledButton>;

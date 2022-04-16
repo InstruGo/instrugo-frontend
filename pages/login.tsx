@@ -1,8 +1,7 @@
+import type { NextPage } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-
-import type { NextPage } from 'next';
 
 import { LoginForm } from '@modules';
 import { AuthLayout } from '@modules/AuthLayout/AuthLayout';
@@ -15,7 +14,7 @@ const Login: NextPage = () => {
 
   useEffect(() => {
     if (user) {
-      router.push('/');
+      router.push(user.role === 'student' ? '/student/home' : '/');
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

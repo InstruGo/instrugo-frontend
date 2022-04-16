@@ -1,7 +1,8 @@
 import React from 'react';
-import { ModalBackground, ModalBody, ModalClose } from './styles';
 
 import { IoIosCloseCircle } from 'react-icons/io';
+
+import { ModalBackground, ModalBody, ModalClose } from './styles';
 
 interface ModalProps {
   children: React.ReactChild | React.ReactChild[];
