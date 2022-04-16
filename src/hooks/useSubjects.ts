@@ -1,10 +1,15 @@
 import { useQuery } from 'react-query';
-import axios from 'axios';
+
 import { Subject } from '@types';
 
+import { useAxios } from './useAxios';
+
 export const useSubjects = () => {
+  const axios = useAxios();
+
   const getSubjects = async (): Promise<Subject[]> => {
-    const response = await axios.get(`http://localhost:3000/api/subjects`);
+    const response = await axios.get(`/subjects`);
+
     return response.data;
   };
 

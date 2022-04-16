@@ -1,11 +1,19 @@
-import { useForm } from 'react-hook-form';
 import { useState } from 'react';
+
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Input } from '@components';
+import { useForm } from 'react-hook-form';
 import { FormattedMessage } from 'react-intl';
 
+import { Input } from '@components';
+import { Button, TimeSlot } from '@components';
 import { useNewRequest, useSubjects, useUserContext } from '@hooks';
 
+import {
+  NewRequestFormInputs,
+  newRequestFormSchema,
+  EducationLevel,
+  MeetingType,
+} from '../../types/new-request.type';
 import {
   NewRequestFormContainer,
   InputDescription,
@@ -17,20 +25,13 @@ import {
   Dropdown,
   DropdownOption,
 } from './styles';
-import {
-  NewRequestFormInputs,
-  newRequestFormSchema,
-  EducationLevel,
-  MeetingType,
-} from '../../types/new-request.type';
-import { Button, TimeSlot } from '@components';
 
 interface NewRequestProps {
   onFinish?: () => void;
 }
 export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
   const { data, isLoading } = useSubjects();
-  const { accessToken, user } = useUserContext();
+  const { user } = useUserContext();
   const newRequest = useNewRequest();
   const {
     register,

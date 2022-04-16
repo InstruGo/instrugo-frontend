@@ -1,19 +1,17 @@
 import type { AppProps } from 'next/app';
-
-import '../styles/reset.css';
-
 import { useRouter } from 'next/router';
+
 import { IntlProvider } from 'react-intl';
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+import { AxiosProvider, UserContextProvider } from '@context';
 
 import { locales } from '../localization/messages';
-
-import { QueryClient, QueryClientProvider } from 'react-query';
-import { UserContextProvider } from '@context';
+import '../styles/reset.css';
 
 const queryClient = new QueryClient();
 
-function MyApp({ Component, pageProps }: AppProps) {
-  // Determine active locale and set messages
+const MyApp = ({ Component, pageProps }: AppProps) => {
   const { locale, defaultLocale } = useRouter();
   const messages = locale ? locales[locale] : locales['en'];
 
@@ -24,12 +22,14 @@ function MyApp({ Component, pageProps }: AppProps) {
       messages={messages}
     >
       <QueryClientProvider client={queryClient}>
-        <UserContextProvider>
-          <Component {...pageProps} />
-        </UserContextProvider>
+        <AxiosProvider>
+          <UserContextProvider>
+            <Component {...pageProps} />
+          </UserContextProvider>
+        </AxiosProvider>
       </QueryClientProvider>
     </IntlProvider>
   );
-}
+};
 
 export default MyApp;

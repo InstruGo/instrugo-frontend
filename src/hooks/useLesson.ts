@@ -1,10 +1,15 @@
 import { useQuery } from 'react-query';
-import axios from 'axios';
+
 import { Lesson } from '@types';
 
+import { useAxios } from './useAxios';
+
 export const useLesson = (id: number) => {
+  const axios = useAxios();
+
   const getLesson = async (): Promise<Lesson> => {
-    const response = await axios.get(`http://localhost:3000/api/lessons/${id}`);
+    const response = await axios.get(`/lessons/${id}`);
+
     return response.data;
   };
 

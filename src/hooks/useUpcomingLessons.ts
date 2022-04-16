@@ -1,17 +1,14 @@
 import { useQuery } from 'react-query';
-import { useAxios, useUserContext } from '@hooks';
+
+import { useAxios } from '@hooks';
 import { Lesson } from '@types';
 
 export const useUpcomingLessons = () => {
-  const { user } = useUserContext();
   const axios = useAxios();
 
   const getUpcomingLessons = async (): Promise<Lesson[]> => {
-    const response = await axios.get(`http://localhost:3000/api/lessons`, {
-      params: {
-        studentId: user?.id,
-        status: 'Lesson',
-      },
+    const response = await axios.get(`/lessons`, {
+      params: { status: 'Pending' },
     });
 
     return response.data;
@@ -23,6 +20,5 @@ export const useUpcomingLessons = () => {
       console.log(error);
     },
     staleTime: Infinity,
-    enabled: !!user,
   });
 };
