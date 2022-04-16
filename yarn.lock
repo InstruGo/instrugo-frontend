@@ -317,7 +317,7 @@
     prop-types "^15.7.2"
     react-is "^17.0.2"
 
-"@mui/lab@^5.0.0-alpha.76":
+"@mui/lab@^5.0.0-alpha.77":
   version "5.0.0-alpha.77"
   resolved "https://registry.yarnpkg.com/@mui/lab/-/lab-5.0.0-alpha.77.tgz#0ef32c33f9e55b1a84443d8b011f490503e9d477"
   integrity sha512-N+XVPqb3/IAH2i6oz2rk0sPogxOws9FNG045702z6cGL/F9lccOxF+3B12GxrHgKt9dmdeGV+BYDIf0bv2W+Eg==
@@ -333,7 +333,7 @@
     react-transition-group "^4.4.2"
     rifm "^0.12.1"
 
-"@mui/material@^5.6.0":
+"@mui/material@^5.6.1":
   version "5.6.1"
   resolved "https://registry.yarnpkg.com/@mui/material/-/material-5.6.1.tgz#b74cfbe4666586e054a28cf3df448369892085e1"
   integrity sha512-xg6pPq+1jxWupwmPpnfmsHNjrsOe2xynUQWrRfcH8WHrrr1sQulq0VF4gORq/l8DD8a/jb4s8SsC20e/e6mHKQ==
@@ -419,10 +419,10 @@
   resolved "https://registry.yarnpkg.com/@next/env/-/env-12.1.5.tgz#a21ba6708022d630402ca2b340316e69a0296dfc"
   integrity sha512-+34yUJslfJi7Lyx6ELuN8nWcOzi27izfYnZIC1Dqv7kmmfiBVxgzR3BXhlvEMTKC2IRJhXVs2FkMY+buQe3k7Q==
 
-"@next/eslint-plugin-next@12.1.4":
-  version "12.1.4"
-  resolved "https://registry.yarnpkg.com/@next/eslint-plugin-next/-/eslint-plugin-next-12.1.4.tgz#9c52637af8eecab24dac3f2e5098376f6fc2dff4"
-  integrity sha512-BRy565KVK6Cdy8LHaHTiwctLqBu/RT84RLpESug70BDJzBlV8QBvODyx/j7wGhvYqp9kvstM05lyb6JaTkSCcQ==
+"@next/eslint-plugin-next@12.1.5":
+  version "12.1.5"
+  resolved "https://registry.yarnpkg.com/@next/eslint-plugin-next/-/eslint-plugin-next-12.1.5.tgz#273885b35e6bbcd40ff1436d2a8d0ec03fb6f6ef"
+  integrity sha512-Cnb8ERC5bNKBFrnMH6203sp/b0Y78QRx1XsFu+86oBtDBmQmOFoHu7teQjHm69ER73XKK3aGaeoLiXacHoUFsg==
   dependencies:
     glob "7.1.7"
 
@@ -564,25 +564,7 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*":
-  version "18.0.5"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.0.5.tgz#1a4d4b705ae6af5aed369dec22800b20f89f5301"
-  integrity sha512-UPxNGInDCIKlfqBrm8LDXYWNfLHwIdisWcsH5GpMyGjhEDLFgTtlRBaoWuCua9HcyuE0rMkmAeZ3FXV1pYLIYQ==
-  dependencies:
-    "@types/prop-types" "*"
-    "@types/scheduler" "*"
-    csstype "^3.0.2"
-
-"@types/react@16 || 17":
-  version "17.0.44"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.44.tgz#c3714bd34dd551ab20b8015d9d0dbec812a51ec7"
-  integrity sha512-Ye0nlw09GeMp2Suh8qoOv0odfgCoowfM/9MG6WeRD60Gq9wS90bdkdRtYbRkNhXOpG4H+YXGvj4wOWhAC0LJ1g==
-  dependencies:
-    "@types/prop-types" "*"
-    "@types/scheduler" "*"
-    csstype "^3.0.2"
-
-"@types/react@17.0.39":
+"@types/react@*", "@types/react@16 || 17", "@types/react@17.0.39":
   version "17.0.39"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.39.tgz#d0f4cde092502a6db00a1cded6e6bf2abb7633ce"
   integrity sha512-UVavlfAxDd/AgAacMa60Azl7ygyQNRwC/DsHZmKgNvPmRR5p70AJ5Q9EAmL2NWOJmeV+vVUI4IAP7GZrN8h8Ug==
@@ -1168,12 +1150,12 @@ escape-string-regexp@^4.0.0:
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-4.0.0.tgz#14ba83a5d373e3d311e5afca29cf5bfad965bf34"
   integrity sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA==
 
-eslint-config-next@12.1.4:
-  version "12.1.4"
-  resolved "https://registry.yarnpkg.com/eslint-config-next/-/eslint-config-next-12.1.4.tgz#939ea2ff33034763300bf1e62482cea91212d274"
-  integrity sha512-Uj0jrVjoQbg9qerxRjSHoOOv3PEzoZxpb8G9LYct25fsflP8xIiUq0l4WEu2KSB5owuLv5hie7wSMqPEsHj+bQ==
+eslint-config-next@12.1.5:
+  version "12.1.5"
+  resolved "https://registry.yarnpkg.com/eslint-config-next/-/eslint-config-next-12.1.5.tgz#658cc61194a32dfd917a3db199351396ea5db1d1"
+  integrity sha512-P+DCt5ti63KhC0qNLzrAmPcwRGq8pYqgcf/NNr1E+WjCrMkWdCAXkIANTquo+kcO1adR2k1lTo5GCrNUtKy4hQ==
   dependencies:
-    "@next/eslint-plugin-next" "12.1.4"
+    "@next/eslint-plugin-next" "12.1.5"
     "@rushstack/eslint-patch" "1.0.8"
     "@typescript-eslint/parser" "5.10.1"
     eslint-import-resolver-node "0.3.4"
@@ -1884,7 +1866,7 @@ lines-and-columns@^1.1.6:
   resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-1.2.4.tgz#eca284f75d2965079309dc0ad9255abb2ebc1632"
   integrity sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==
 
-lint-staged@^12.3.7:
+lint-staged@^12.3.8:
   version "12.3.8"
   resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-12.3.8.tgz#ee3fe2e16c9d76f99d8348072900b017d6d76901"
   integrity sha512-0+UpNaqIwKRSGAFOCcpuYNIv/j5QGVC+xUVvmSdxHO+IfIGoHbFLo3XcPmV/LLnsVj5EAncNHVtlITSoY5qWGQ==
@@ -2327,7 +2309,7 @@ react-is@^17.0.2:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
-react-query@^3.34.19:
+react-query@^3.34.20:
   version "3.34.20"
   resolved "https://registry.yarnpkg.com/react-query/-/react-query-3.34.20.tgz#649e83073b7e3350cd3fc78f8b2370e9252c4a64"
   integrity sha512-I0nGBu/4bebKodwwHSFmdMCjgx4bAjn2p5OQRFIlGX7GhVAyTWGRWEWAP3+KG06bb062HPOMqcy9jw086snfQg==
