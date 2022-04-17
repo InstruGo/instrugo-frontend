@@ -22,13 +22,19 @@ export const ResponsesHeader = styled('div', {
   display: 'flex',
   alignItems: 'flex-start',
   width: '100%',
+  padding: '$5 0px $5 0px',
 });
 
+export const CalendarContainer = styled('div', {
+  maxWidth: '1500px',
+  padding: '$10',
+});
 export const Title = styled('div', {
   fontWeight: 'normal',
   fontSize: '20px',
   color: '#10434E',
-  width: '20%',
+  whiteSpace: 'nowrap',
+  padding: '$0 $5 $0 $2',
 });
 export const FieldDescription = styled('div', {
   alignItems: 'flex-start',
@@ -75,7 +81,7 @@ export const Column = styled('div', {
   },
 });
 export const Row = styled('div', {
-  justifyContent: 'flex-start',
+  justifyContent: 'center',
   display: 'flex',
   width: '100%',
   variants: {

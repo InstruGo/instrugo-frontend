@@ -1,12 +1,12 @@
 import { useMutation, useQueryClient } from 'react-query';
 
 import type { NewRequestFormInputs, Lesson } from '@types';
-
 import { useAxios } from './useAxios';
 
+
 export const useNewRequest = () => {
-  const queryClient = useQueryClient();
   const axios = useAxios();
+  const queryClient = useQueryClient();
 
   const newRequest = async (input: NewRequestFormInputs): Promise<Lesson> => {
     const response = await axios.post('/lessons', input);
@@ -16,7 +16,7 @@ export const useNewRequest = () => {
   };
 
   return useMutation(newRequest, {
-    onSuccess: (data) => {
+    onSuccess: () => {
       queryClient.invalidateQueries('upcomingLessons');
     },
     onError: (error) => {

@@ -2,15 +2,19 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import React, { useState } from 'react';
 
+<<<<<<< HEAD
 import { Modal, withAuth } from '@components';
+=======
+import { useProfile } from '@hooks';
+>>>>>>> new request from changes and request details changes
 import {
   LessonsContainer,
   NewRequestButton,
   Rewards,
   StudentsNavbar,
-  NewRequestForm,
 } from '@modules';
 import { styled } from 'styles/stitches.config';
+import { useRouter } from 'next/router';
 
 const PageLayout = styled('div', {
   padding: '20px',
@@ -19,8 +23,16 @@ const PageLayout = styled('div', {
   },
 });
 
+<<<<<<< HEAD
 const StudentHomepage: NextPage = () => {
   const [showNewRequestModal, setNewRequestModal] = useState(false);
+=======
+const Homepage: NextPage = () => {
+  const { isLoading } = useProfile();
+  const router = useRouter();
+
+  if (isLoading) return <div>Loading...</div>;
+>>>>>>> new request from changes and request details changes
 
   return (
     <div>
@@ -38,16 +50,7 @@ const StudentHomepage: NextPage = () => {
         <LessonsContainer />
       </PageLayout>
 
-      <NewRequestButton onClick={() => setNewRequestModal(true)} />
-
-      <Modal
-        shouldShow={showNewRequestModal}
-        closeAction={() => setNewRequestModal(false)}
-      >
-        <div style={{ marginRight: '30px' }}>
-          <NewRequestForm onFinish={() => setNewRequestModal(false)} />
-        </div>
-      </Modal>
+      <NewRequestButton onClick={() => router.push('/student/new-request')} />
     </div>
   );
 };
