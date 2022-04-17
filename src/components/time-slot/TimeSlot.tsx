@@ -31,6 +31,7 @@ export const TimeSlot = (props: TimeSlotProps) => {
         <FormColumn variant="smallPadding">
           <DatePicker
             value={date}
+            minDate={new Date()}
             onChange={(newValue) => {
               if (newValue != null) {
                 setDate(newValue);

@@ -31,7 +31,6 @@ export const TutorResponse = ({
   timeslots,
 }: ResponseProps) => {
   const onAcceptClick = () => {};
-  console.log(avgRating);
   return (
     <>
       <ResponseContainer>
@@ -62,7 +61,7 @@ export const TutorResponse = ({
           {timeslots.map(
             (timeFrame: { startTime: string; endTime: string }) => {
               const start = new Date(timeFrame.startTime);
-              const end = new Date(timeFrame.startTime);
+              const end = new Date(timeFrame.endTime);
               const idx = timeslots.indexOf(timeFrame);
               return (
                 <FieldDescription key={idx} style={{ justifyContent: 'left' }}>

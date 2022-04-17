@@ -16,6 +16,7 @@ import {
   CardStyle,
   ModalButton,
 } from './styles';
+import { LessonDetails } from '@modules';
 import { useRouter } from 'next/router';
 
 type StitchesComponentProps = React.ComponentPropsWithoutRef<typeof CardStyle>;
@@ -29,6 +30,8 @@ export interface CardProps extends StitchesComponentProps {
   grade?: number;
   educationLvl?: string;
   dateAndTime?: string;
+  forTutors?: boolean;
+  isModal?: boolean;
 }
 
 export const Card = ({
@@ -41,19 +44,32 @@ export const Card = ({
   educationLvl,
   dateAndTime,
   color,
+  forTutors,
+  isModal,
 }: CardProps) => {
-  const [showRequestDetailsModal, setRequestDetailsModal] =
-    React.useState(false);
+  const [showLessonDetailsModal, setLessonDetailsModal] = React.useState(false);
   const router = useRouter();
+  console.log(isModal);
   return (
     <>
       <Fragment>
         <ModalButton
           onClick={() => {
-            router.push({
-              pathname: '/student/request-details/[id]',
-              query: { id: index },
-            });
+            if (isModal) {
+              setLessonDetailsModal(true);
+            } else {
+              if (forTutors) {
+                router.push({
+                  pathname: '/tutor/request-details/[id]',
+                  query: { id: index },
+                });
+              } else {
+                router.push({
+                  pathname: '/student/request-details/[id]',
+                  query: { id: index },
+                });
+              }
+            }
           }}
         >
           <CardStyle style={{ borderColor: color }}>
@@ -97,12 +113,10 @@ export const Card = ({
               )}
             </CardBody>
             <Modal
-              shouldShow={showRequestDetailsModal}
-              closeAction={() => setRequestDetailsModal(false)}
+              shouldShow={showLessonDetailsModal}
+              closeAction={() => setLessonDetailsModal(false)}
             >
-              <div style={{ marginRight: '30px' }}>
-                <RequestDetails id={index} />
-              </div>
+              <LessonDetails id={index} />
             </Modal>
           </CardStyle>
         </ModalButton>

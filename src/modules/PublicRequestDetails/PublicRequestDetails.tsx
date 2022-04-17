@@ -15,18 +15,19 @@ import {
   Row,
   Column,
   FieldDescription,
-  StyledHr,
-  ResponsesHeader,
+  ResponseHeader,
   Title,
   CalendarContainer,
 } from './styles';
-import { TutorResponse } from '@components';
+import { NewTutorResponseForm } from '@modules/TutorResponseForm/TutorResponseForm';
+import { useRouter } from 'next/router';
 
 interface RequestDetailsProps {
   id: number;
 }
-export const RequestDetails = (props: RequestDetailsProps) => {
+export const PublicRequestDetails = (props: RequestDetailsProps) => {
   const { data, isLoading } = useLesson(props.id);
+  const router = useRouter();
   if (isLoading) return <div>Loading...</div>;
   const schedulerData: any = [];
   data?.lessonTimeFrames.map(
@@ -101,30 +102,17 @@ export const RequestDetails = (props: RequestDetailsProps) => {
             </Scheduler>
           </Paper>
         </CalendarContainer>
-        <ResponsesHeader>
+        <ResponseHeader>
           <Title>
-            <FormattedMessage id="requestDetails.tutorResponses" />
+            <FormattedMessage id="requestDetails.responseForm" />
           </Title>
-
-          <StyledHr />
-        </ResponsesHeader>
-        {data?.tutorResponses.map((response) => {
-          return (
-            <TutorResponse
-              key={response.id}
-              index={response.id}
-              firstName={response.tutor.firstName}
-              lastName={response.tutor.lastName}
-              avgRating={
-                response.tutor.ratingsCount != 0
-                  ? response.tutor.averageRating
-                  : undefined
-              }
-              price={response.price}
-              timeslots={response.tutorResponseTimeFrames}
-            />
-          );
-        })}
+        </ResponseHeader>
+        <NewTutorResponseForm
+          onFinish={() => {
+            router.push('/tutor/requests'); //change to tutor responses when page is made
+          }}
+          lessonId={props.id}
+        />
       </RequestDetailsContainer>
     </>
   );

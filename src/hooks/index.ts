@@ -10,3 +10,4 @@ export * from './useSubjects';
 export * from './useLesson';
 export * from './usePublicRequests';
 export * from './useLessonRequests';
+export * from './useNewTutorResponse';

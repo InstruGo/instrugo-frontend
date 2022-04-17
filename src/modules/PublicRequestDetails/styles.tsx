@@ -18,9 +18,9 @@ export const StyledHr = styled('hr', {
   width: '100%',
   borderTop: 'solid 1px #10434E',
 });
-export const ResponsesHeader = styled('div', {
+export const ResponseHeader = styled('div', {
   display: 'flex',
-  alignItems: 'flex-start',
+  justifyContent: 'center',
   width: '100%',
   padding: '$5 0px $5 0px',
 });
