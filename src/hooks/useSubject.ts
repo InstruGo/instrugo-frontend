@@ -4,9 +4,7 @@ import { Subject } from '@types';
 
 export const useSubject = (id: number) => {
   const getSubject = async (): Promise<Subject[]> => {
-    const response = await axios.get(
-      `http://localhost:8000/api/subjects/${id}`
-    );
+    const response = await axios.get(`/subjects/${id}`);
     return response.data;
   };
 

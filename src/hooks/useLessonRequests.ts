@@ -3,14 +3,12 @@ import { useAxios, useUserContext } from '@hooks';
 import { Lesson } from '@types';
 
 export const useLessonRequests = () => {
-  const { user, accessToken } = useUserContext();
+  const { user } = useUserContext();
   const axios = useAxios();
 
   const getLessonRequests = async (): Promise<Lesson[]> => {
-    const response = await axios.get(`http://localhost:8000/api/lessons`, {
-      headers: { Authorization: `Bearer ${accessToken}` },
+    const response = await axios.get(`/lessons`, {
       params: {
-        studentId: user?.id,
         status: 'Requested',
       },
     });

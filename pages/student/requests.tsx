@@ -1,15 +1,11 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-<<<<<<< HEAD
 
 import { withAuth } from '@components';
-import { StudentsNavbar, RequestsContainer } from '@modules';
-=======
 import { StudentsNavbar, RequestsContainer, NewRequestButton } from '@modules';
 import { useRouter } from 'next/router';
->>>>>>> new request from changes and request details changes
 
-const Requestspage: NextPage = () => {
+const RequestsPage: NextPage = () => {
   const router = useRouter();
   return (
     <div>
@@ -24,4 +20,4 @@ const Requestspage: NextPage = () => {
   );
 };
 
-export default withAuth(Requestspage);
+export default withAuth(RequestsPage);

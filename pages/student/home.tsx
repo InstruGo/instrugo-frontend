@@ -2,11 +2,7 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import React, { useState } from 'react';
 
-<<<<<<< HEAD
-import { Modal, withAuth } from '@components';
-=======
-import { useProfile } from '@hooks';
->>>>>>> new request from changes and request details changes
+import { withAuth } from '@components';
 import {
   LessonsContainer,
   NewRequestButton,
@@ -23,17 +19,8 @@ const PageLayout = styled('div', {
   },
 });
 
-<<<<<<< HEAD
 const StudentHomepage: NextPage = () => {
-  const [showNewRequestModal, setNewRequestModal] = useState(false);
-=======
-const Homepage: NextPage = () => {
-  const { isLoading } = useProfile();
   const router = useRouter();
-
-  if (isLoading) return <div>Loading...</div>;
->>>>>>> new request from changes and request details changes
-
   return (
     <div>
       <Head>

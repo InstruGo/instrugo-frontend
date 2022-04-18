@@ -36,8 +36,8 @@ export const NewTutorResponseForm = ({
     resolver: zodResolver(newTutorResponseFormSchema),
   });
 
-  const onSubmit = async (data: NewTutorResponseFormInputs) => {
-    const lesson = await newResponse.mutate(data);
+  const onSubmit = (data: NewTutorResponseFormInputs) => {
+    const lesson = newResponse.mutate(data);
     if (onFinish) {
       onFinish();
     }
@@ -90,13 +90,14 @@ export const NewTutorResponseForm = ({
       });
     }
   };
+
   const onDateChange = (
     idx: number,
     date: Date,
     startTime: Date,
     endTime: Date
   ) => {
-    var tempSlots = timeSlots;
+    let tempSlots = timeSlots;
     for (var i = 0; i < tempSlots.length; i++) {
       if (tempSlots[i].index === idx) {
         tempSlots[i].date = date;
@@ -107,8 +108,9 @@ export const NewTutorResponseForm = ({
     updateTimeSlots(tempSlots);
     updateTutorTimeFrames(tempSlots);
   };
+
   const destroyTimeSlot = (index: number) => {
-    var tempSlots = timeSlots;
+    let tempSlots = timeSlots;
     for (var i = 0; i < tempSlots.length; i++) {
       if (tempSlots[i].index === index) {
         tempSlots.splice(i, 1);
@@ -116,8 +118,9 @@ export const NewTutorResponseForm = ({
     }
     updateTimeSlots(tempSlots);
   };
+
   const onAddTimeSlot = () => {
-    var tempSlots = timeSlots;
+    let tempSlots = timeSlots;
     setSlotCount(slotCount + 1);
     tempSlots.push({
       index: slotCount + 1,
@@ -127,8 +130,10 @@ export const NewTutorResponseForm = ({
     });
     updateTimeSlots(tempSlots);
   };
+
   updateTutorTimeFrames(timeSlots);
   setValue('lessonId', lessonId);
+
   return (
     <>
       <ResponseFormContainer onSubmit={handleSubmit(onSubmit)}>

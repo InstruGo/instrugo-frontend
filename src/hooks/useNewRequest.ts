@@ -17,6 +17,8 @@ export const useNewRequest = () => {
   return useMutation(newRequest, {
     onSuccess: () => {
       queryClient.invalidateQueries('upcomingLessons');
+      queryClient.invalidateQueries('lessonRequests');
+      queryClient.invalidateQueries('publicRequests');
     },
     onError: (error) => {
       console.log(error);

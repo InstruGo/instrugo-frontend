@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { StudentsNavbar, NewRequestForm } from '@modules';
 import { useRouter } from 'next/router';
 
-const Requestspage: NextPage = () => {
+const RequestsPage: NextPage = () => {
   const router = useRouter();
   return (
     <div>
@@ -12,9 +12,9 @@ const Requestspage: NextPage = () => {
       </Head>
 
       <StudentsNavbar />
-      <NewRequestForm onFinish={() => router.push('/student/home')} />
+      <NewRequestForm onFinish={() => router.push('/student/requests')} />
     </div>
   );
 };
 
-export default Requestspage;
+export default RequestsPage;
