@@ -112,6 +112,7 @@ export const RequestDetails = (props: RequestDetailsProps) => {
           return (
             <TutorResponse
               key={response.id}
+              lessonId={data?.id}
               index={response.id}
               firstName={response.tutor.firstName}
               lastName={response.tutor.lastName}

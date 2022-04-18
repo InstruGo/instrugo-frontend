@@ -12,9 +12,12 @@ import {
   FieldDescription,
   StyledHr,
 } from './styles';
+import { useResolveLesson } from '@hooks/useResolveLesson';
+import { useRouter } from 'next/router';
 
 export interface ResponseProps {
   index: number;
+  lessonId: number;
   firstName: string;
   lastName: string;
   avgRating?: number;
@@ -24,13 +27,22 @@ export interface ResponseProps {
 
 export const TutorResponse = ({
   index,
+  lessonId,
   firstName,
   lastName,
   avgRating,
   price,
   timeslots,
 }: ResponseProps) => {
-  const onAcceptClick = () => {};
+  const acceptResponse = useResolveLesson(lessonId);
+  const router = useRouter();
+  const onAcceptClick = async () => {
+    await acceptResponse.mutate({
+      tutorResponseId: index,
+      timeFrameId: timeslots[0].id,
+    });
+    router.push('/student/home');
+  };
   return (
     <>
       <ResponseContainer>

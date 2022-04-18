@@ -1,31 +1,25 @@
 import { useMutation, useQueryClient } from 'react-query';
 
-import type { NewTutorResponseFormInputs, TutorResponse } from '@types';
 import { useUserContext } from './useUserContext';
 import { useAxios } from './useAxios';
 
-export const useNewTutorResponse = (lessonId: number) => {
+export const useCancelLesson = (lessonId: number) => {
   const axios = useAxios();
   const queryClient = useQueryClient();
   const { user, accessToken } = useUserContext();
-  const newResponse = async (
-    input: NewTutorResponseFormInputs
-  ): Promise<TutorResponse> => {
-    const response = await axios.post(
-      'http://localhost:8000/api/tutor-responses',
-      input,
+  const cancelLesson = async (lessonId: number): Promise<void> => {
+    const response = await axios.put(
+      `http://localhost:8000/api/lessons/cancel/${lessonId}`,
+      lessonId,
       {
         headers: { Authorization: `Bearer ${accessToken}` },
       }
     );
-    const data = response.data as TutorResponse;
-    return data;
   };
 
-  return useMutation(newResponse, {
+  return useMutation(cancelLesson, {
     onSuccess: () => {
       queryClient.invalidateQueries('upcomingLessons');
-      queryClient.invalidateQueries('lessonRequests');
       queryClient.invalidateQueries(`lesson${lessonId}`);
     },
     onError: (error) => {

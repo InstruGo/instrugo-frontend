@@ -11,7 +11,14 @@ export const useLogin = () => {
   const axios = useAxios();
 
   const login = async (input: LoginFormInputs): Promise<LoginResponse> => {
+<<<<<<< HEAD
     const response = await axios.post('/auth/login', input);
+=======
+    const response = await axios.post(
+      'http://localhost:8000/api/auth/login',
+      input
+    );
+>>>>>>> resolve lesson and cancel lesson hooks
 
     const data = response.data as LoginResponse;
     return data;

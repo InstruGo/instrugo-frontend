@@ -49,7 +49,6 @@ export const Card = ({
 }: CardProps) => {
   const [showLessonDetailsModal, setLessonDetailsModal] = React.useState(false);
   const router = useRouter();
-  console.log(isModal);
   return (
     <>
       <Fragment>
@@ -112,14 +111,14 @@ export const Card = ({
                 </CardItem>
               )}
             </CardBody>
-            <Modal
-              shouldShow={showLessonDetailsModal}
-              closeAction={() => setLessonDetailsModal(false)}
-            >
-              <LessonDetails id={index} />
-            </Modal>
           </CardStyle>
         </ModalButton>
+        <Modal
+          shouldShow={showLessonDetailsModal}
+          closeAction={() => setLessonDetailsModal(false)}
+        >
+          <LessonDetails id={index} />
+        </Modal>
       </Fragment>
     </>
   );

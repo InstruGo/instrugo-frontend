@@ -10,7 +10,13 @@ export const useProfile = () => {
   const axios = useAxios();
 
   const getProfile = async (): Promise<User> => {
+<<<<<<< HEAD
     const response = await axios.get('/auth/profile');
+=======
+    const response = await axios.get('http://localhost:8000/api/auth/profile', {
+      headers: { Authorization: `Bearer ${accessToken}` },
+    });
+>>>>>>> resolve lesson and cancel lesson hooks
 
     const user = response.data as User;
     return user;

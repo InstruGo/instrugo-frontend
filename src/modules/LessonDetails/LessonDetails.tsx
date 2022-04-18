@@ -16,18 +16,23 @@ import {
   CardText,
 } from './styles';
 import { Button } from '@components';
+import { useCancelLesson } from '@hooks/useCancelLesson';
 
 interface LessonDetailsProps {
   id: number;
 }
 export const LessonDetails = (props: LessonDetailsProps) => {
   const { data, isLoading } = useLesson(props.id);
+  const cancelLesson = useCancelLesson(props.id);
+  const onCancel = async () => {
+    const result = await cancelLesson.mutate(props.id);
+  };
   if (isLoading) return <div>Loading...</div>;
-  // if (!(data?.finalStartTime && data?.finalEndTime))
-  //   return <div>Loading...</div>;
+  if (!(data?.finalStartTime && data?.finalEndTime))
+    return <div>Loading...</div>;
 
-  // const lessonStart = new Date(data?.finalStartTime);
-  // const lessonEnd = new Date(data?.finalEndTime);
+  const lessonStart = new Date(data?.finalStartTime);
+  const lessonEnd = new Date(data?.finalEndTime);
 
   return (
     <>
@@ -41,8 +46,11 @@ export const LessonDetails = (props: LessonDetailsProps) => {
           <Column>
             <Row>
               <AiOutlineClockCircle />
-              {/* {`${lessonStart.getDate()}\/${lessonStart.getMonth()}\/${lessonStart.getFullYear()}`}
-              {`${lessonStart.getHours()}:${lessonStart.getMinutes()} - ${lessonEnd.getHours()}:${lessonEnd.getMinutes()}`} */}
+              <CardText>
+                {`${lessonStart.getDate()}\/${lessonStart.getMonth()}\/${lessonStart.getFullYear()}`}
+                {',   '}
+                {`${lessonStart.getHours()}:${lessonStart.getMinutes()} - ${lessonEnd.getHours()}:${lessonEnd.getMinutes()}`}
+              </CardText>
             </Row>
             <Row>
               <MdOutlineMeetingRoom />
@@ -50,11 +58,13 @@ export const LessonDetails = (props: LessonDetailsProps) => {
             </Row>
             <Row>
               <BsPerson />
-              <CardText>{data?.tutor}</CardText>
+              <CardText>
+                {data?.tutor.firstName + '  ' + data?.tutor.lastName}
+              </CardText>
             </Row>
             <Row>
               <AiOutlineDollar />
-              <CardText>{data?.finalPrice}</CardText>
+              <CardText>{data?.finalPrice + '  kn/h'}</CardText>
             </Row>
             <Row>
               <BsBookHalf />
@@ -90,7 +100,7 @@ export const LessonDetails = (props: LessonDetailsProps) => {
                 alignItems: 'flex-end',
               }}
             >
-              <Button style={{ backgroundColor: 'red' }}>
+              <Button onClick={onCancel} style={{ backgroundColor: 'red' }}>
                 <FormattedMessage id="lessonDetails.cancelLesson"></FormattedMessage>
               </Button>
             </Column>

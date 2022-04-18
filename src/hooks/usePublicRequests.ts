@@ -7,7 +7,7 @@ export const usePublicRequests = () => {
   const axios = useAxios();
   const { accessToken } = useUserContext();
   const getPublicRequests = async (): Promise<Lesson[]> => {
-    const response = await axios.get(`http://localhost:3000/api/lessons`, {
+    const response = await axios.get(`http://localhost:8000/api/lessons`, {
       headers: { Authorization: `Bearer ${accessToken}` },
       params: {
         status: 'Requested',

@@ -7,7 +7,7 @@ export const useLessonRequests = () => {
   const axios = useAxios();
 
   const getLessonRequests = async (): Promise<Lesson[]> => {
-    const response = await axios.get(`http://localhost:3000/api/lessons`, {
+    const response = await axios.get(`http://localhost:8000/api/lessons`, {
       headers: { Authorization: `Bearer ${accessToken}` },
       params: {
         studentId: user?.id,
