@@ -3,13 +3,10 @@ import { styled } from 'styles/stitches.config';
 export const StyledButton = styled('button', {
   border: '0',
   fontFamily: 'inherit',
-  borderRadius: '10px',
+  borderRadius: '100px',
   boxShadow: '0 0 2px #aaa',
   transition: 'box-shadow 0.4s',
-  '&:focus': {
-    boxShadow: '0 0 6px #375d64b3',
-  },
-  padding: '$1 $2',
+  padding: '$2 $3',
   '&:focus-visible': { outline: 'none' },
   cursor: 'pointer',
 
@@ -18,35 +15,37 @@ export const StyledButton = styled('button', {
       primary: {
         backgroundColor: '#10434E',
         color: '#fff',
+        '&:hover': {
+          backgroundColor: '#1d6c7d',
+        },
       },
       secondary: {
         backgroundColor: '#fff',
-        color: '#3FB2C1',
+        color: '#10434E',
+        border: 'solid 1px #10434E',
         fontWeight: 'bold',
+        '&:hover': {
+          backgroundColor: '#edf5f7',
+        },
       },
       switch: {
-        height: '$10',
-        width: '$10',
         boxSizing: 'border-box',
-        marginRight: '$5',
         padding: '$2',
         backgroundColor: 'rgb(63, 178, 193, 0.85)',
-        borderRadius: '50px',
+        borderRadius: '100px',
         color: 'white',
         display: 'flex',
         alignItems: 'center',
         cursor: 'pointer',
         justifyContent: 'center',
         fontSize: '$base',
-        '& > .text': {
-          display: 'none',
+        '& > div': { display: 'none' },
+        '&:hover': {
+          backgroundColor: 'rgb(63, 178, 193, 1)',
         },
         '@bp1': {
-          padding: '$3 $5',
-          width: 'auto',
-          '& > .text': {
+          '& > div': {
             display: 'block',
-            marginLeft: '$5',
           },
         },
       },

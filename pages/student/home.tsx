@@ -44,9 +44,7 @@ const StudentHomepage: NextPage = () => {
         shouldShow={showNewRequestModal}
         closeAction={() => setNewRequestModal(false)}
       >
-        <div style={{ marginRight: '30px' }}>
-          <NewRequestForm onFinish={() => setNewRequestModal(false)} />
-        </div>
+        <NewRequestForm onFinish={() => setNewRequestModal(false)} />
       </Modal>
     </div>
   );

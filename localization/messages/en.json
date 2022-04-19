@@ -1,6 +1,8 @@
 {
   "appName": "InstruGo",
 
+  "landingPage.description": "Welcome to Instrugo!",
+
   "button.register": "Register",
   "button.login": "Log In",
 
@@ -45,15 +47,22 @@
   "lessons.requests": "Requests",
 
   "filter": "Filter",
+  "filter.subjects": "By subjects",
 
-  "button.createRequest": "Create new request",
+  "subjects.all": "all",
+  "subjects.math": "math",
+  "subjects.physics": "physics",
+  "subjects.chemistry": "chemistry",
+  "subjects.sociology": "sociology",
+
+  "button.createRequest": "New request",
   "newRequest.description": "New Request",
   "newRequestForm.grade": "Grade",
-  "newRequestForm.description": "Description",
-  "newRequestForm.availableDates": "Available Time Slots",
+  "newRequestForm.availableDates": "Available time slots",
   "newRequestForm.budget": "Budget",
   "newRequestForm.newTime": "Add time slot",
-  "newRequestForm.educationLevel": "Education Level",
+  "newRequestForm.educationLevel": "Education level",
+  "newRequestForm.additionalInfo": "Additional Information",
 
   "requestDetails.description": "Request details",
   "requestDetails.tutorResponses": "Tutor responses",

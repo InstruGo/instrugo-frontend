@@ -6,6 +6,7 @@ export const StyledContent = styled('div', {
 });
 
 export const ProfileCard = styled('div', {
+  position: 'relative',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',

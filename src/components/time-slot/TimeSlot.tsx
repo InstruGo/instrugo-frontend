@@ -24,8 +24,8 @@ export const TimeSlot = (props: TimeSlotProps) => {
   const [destroyed, setDestroyed] = useState(false);
   return destroyed ? null : (
     <LocalizationProvider dateAdapter={DateAdapterFns}>
-      <FormRow variant="smallPadding">
-        <FormColumn variant="smallPadding">
+      <FormRow>
+        <FormColumn>
           <DatePicker
             value={date}
             onChange={(newValue) => {
@@ -37,7 +37,7 @@ export const TimeSlot = (props: TimeSlotProps) => {
             renderInput={(params) => <TextField {...params} />}
           />
         </FormColumn>
-        <FormColumn variant="smallPadding">
+        <FormColumn>
           <TimePicker
             label="start time"
             value={startTime}
@@ -50,7 +50,7 @@ export const TimeSlot = (props: TimeSlotProps) => {
             renderInput={(params) => <TextField {...params} />}
           />
         </FormColumn>
-        <FormColumn variant="smallPadding">
+        <FormColumn>
           <TimePicker
             label="end time"
             value={endTime}

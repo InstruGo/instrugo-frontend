@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
+import { FaPlus } from 'react-icons/fa';
 import { FormattedMessage } from 'react-intl';
 
 import { Input } from '@components';
@@ -15,15 +16,15 @@ import {
   MeetingType,
 } from '../../types/new-request.type';
 import {
-  NewRequestFormContainer,
+  FormContainer,
   InputDescription,
   RadioInput,
   TextBox,
   FormColumn,
-  FormRow,
-  NewRequestText,
+  InputsContainer,
   Dropdown,
   DropdownOption,
+  NewRequestTitle,
 } from './styles';
 
 interface NewRequestProps {
@@ -183,7 +184,7 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
   };
 
   updateLessonTimeFrames(timeSlots);
-  const [subjectId, setSubjectId] = useState<number>(1);
+  const [subjectId, setSubjectId] = useState<number>(0);
   setValue('subjectId', subjectId);
 
   if (isLoading) return <div>Loading...</div>;
@@ -196,153 +197,169 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
 
   return (
     <>
-      <NewRequestText>
+      <NewRequestTitle>
         <FormattedMessage id="newRequest.description" />
-      </NewRequestText>
+      </NewRequestTitle>
 
-      <NewRequestFormContainer onSubmit={handleSubmit(onSubmit)}>
-        <FormRow>
+      <FormContainer onSubmit={handleSubmit(onSubmit)}>
+        <InputsContainer>
           <FormColumn>
             <InputDescription>
-              <FormattedMessage id="card.subject" />:{' '}
+              <FormattedMessage id="card.subject" />:
+              <Dropdown
+                value={subjectId}
+                onChange={(e) => {
+                  setSubjectId(Number.parseInt(e.target.value));
+                  setValue('subjectId', Number.parseInt(e.target.value));
+                }}
+              >
+                {data?.map((subject) => (
+                  <DropdownOption key={subject.id} value={subject.id}>
+                    {subject.name}
+                  </DropdownOption>
+                ))}
+              </Dropdown>
             </InputDescription>
-            <Dropdown
-              value={subjectId}
-              onChange={(e) => {
-                setSubjectId(parseInt(e.target.value, 10));
-                setValue('subjectId', parseInt(e.target.value, 10));
-              }}
-            >
-              {data?.map((subject) => (
-                <DropdownOption key={subject.id} value={subject.id}>
-                  {subject.name}
-                </DropdownOption>
-              ))}
-            </Dropdown>
 
             <InputDescription>
               <FormattedMessage id="card.subfield" />:
+              <Input
+                name="subfield"
+                placeholder="eg. Math"
+                register={register}
+                errors={errors.subfield}
+                style={{ width: '120px' }}
+              />
             </InputDescription>
-            <Input
-              name="subfield"
-              register={register}
-              errors={errors.subfield}
-            />
 
-            <InputDescription>
+            <InputDescription variant="column">
               <FormattedMessage id="newRequestForm.educationLevel" />:
+              <RadioInput>
+                <input
+                  {...register('level', { required: true })}
+                  type="radio"
+                  value={EducationLevel.ELEMENTARY}
+                  checked={selectedEducationLevel === EducationLevel.ELEMENTARY}
+                  onChange={onLevelSelect}
+                />
+                {EducationLevel.ELEMENTARY}
+              </RadioInput>
+              <RadioInput>
+                <input
+                  {...register('level', { required: true })}
+                  type="radio"
+                  value={EducationLevel.HIGH}
+                  checked={selectedEducationLevel === EducationLevel.HIGH}
+                  onChange={onLevelSelect}
+                />
+                {EducationLevel.HIGH}
+              </RadioInput>
+              <RadioInput>
+                <input
+                  {...register('level', { required: true })}
+                  type="radio"
+                  value={EducationLevel.UNI}
+                  checked={selectedEducationLevel === EducationLevel.UNI}
+                  onChange={onLevelSelect}
+                />
+                {EducationLevel.UNI}
+              </RadioInput>
             </InputDescription>
-            <RadioInput>
-              <input
-                {...register('level', { required: true })}
-                type="radio"
-                value={EducationLevel.ELEMENTARY}
-                checked={selectedEducationLevel === EducationLevel.ELEMENTARY}
-                onChange={onLevelSelect}
-              />
-              {EducationLevel.ELEMENTARY}
-            </RadioInput>
-            <RadioInput>
-              <input
-                {...register('level', { required: true })}
-                type="radio"
-                value={EducationLevel.HIGH}
-                checked={selectedEducationLevel === EducationLevel.HIGH}
-                onChange={onLevelSelect}
-              />
-              {EducationLevel.HIGH}
-            </RadioInput>
-            <RadioInput>
-              <input
-                {...register('level', { required: true })}
-                type="radio"
-                value={EducationLevel.UNI}
-                checked={selectedEducationLevel === EducationLevel.UNI}
-                onChange={onLevelSelect}
-              />
-              {EducationLevel.UNI}
-            </RadioInput>
 
             <InputDescription>
               <FormattedMessage id="newRequestForm.grade" />:{' '}
+              <Input
+                type="number"
+                name="grade"
+                placeholder="0"
+                register={register}
+                errors={errors.grade}
+                isNumber={true}
+                style={{ width: '60px' }}
+              />
             </InputDescription>
-            <Input
-              type="number"
-              name="grade"
-              register={register}
-              errors={errors.grade}
-              isNumber={true}
-            />
 
             <InputDescription>
-              <FormattedMessage id="newRequestForm.budget" />: (kn/h)
+              <FormattedMessage id="newRequestForm.budget" />:
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+                <Input
+                  type="number"
+                  name="budget"
+                  placeholder="0"
+                  register={register}
+                  errors={errors.budget}
+                  isNumber={true}
+                  style={{ width: '80px' }}
+                />
+                <div style={{ marginLeft: '8px' }}>kn/h</div>
+              </div>
             </InputDescription>
-            <Input
-              type="number"
-              name="budget"
-              register={register}
-              errors={errors.budget}
-              isNumber={true}
-            />
           </FormColumn>
 
           <FormColumn>
-            <InputDescription>
+            <InputDescription variant="column">
               <FormattedMessage id="newRequestForm.availableDates" />:
+              <ul>{timeSlotList}</ul>
+              <Button
+                type="button"
+                onClick={onAddTimeSlot}
+                style={{
+                  alignSelf: 'flex-end',
+                  padding: '7px',
+                }}
+              >
+                <FaPlus size="16px" />
+              </Button>
             </InputDescription>
-            <ul>{timeSlotList}</ul>
-            <Button type="button" onClick={onAddTimeSlot}>
-              + <FormattedMessage id="newRequestForm.newTime" />
-            </Button>
 
-            <InputDescription>
+            <InputDescription variant="column">
               <FormattedMessage id="card.meetingType" />:
+              <RadioInput>
+                <input
+                  {...register('type', { required: true })}
+                  type="radio"
+                  value={MeetingType.IRL}
+                  checked={selectedMeetingType === MeetingType.IRL}
+                  onChange={onMeetingSelect}
+                />
+                {MeetingType.IRL}
+              </RadioInput>
+              <RadioInput>
+                <input
+                  {...register('type', { required: true })}
+                  type="radio"
+                  value={MeetingType.ONLINE}
+                  checked={selectedMeetingType === MeetingType.ONLINE}
+                  onChange={onMeetingSelect}
+                />
+                {MeetingType.ONLINE}
+              </RadioInput>
             </InputDescription>
-            <RadioInput>
-              <input
-                {...register('type', { required: true })}
-                type="radio"
-                value={MeetingType.IRL}
-                checked={selectedMeetingType === MeetingType.IRL}
-                onChange={onMeetingSelect}
-              />
-              {MeetingType.IRL}
-            </RadioInput>
-            <RadioInput>
-              <input
-                {...register('type', { required: true })}
-                type="radio"
-                value={MeetingType.ONLINE}
-                checked={selectedMeetingType === MeetingType.ONLINE}
-                onChange={onMeetingSelect}
-              />
-              {MeetingType.ONLINE}
-            </RadioInput>
+
             <InputDescription>
               <FormattedMessage id="card.location" />:
+              <Input
+                name="location"
+                placeholder="eg. zagreb, croatia"
+                register={register}
+                errors={errors.location}
+                style={{ marginLeft: '50px' }}
+              />
             </InputDescription>
-            <Input
-              name="location"
-              register={register}
-              errors={errors.location}
-            />
-            <InputDescription>
-              <FormattedMessage id="newRequestForm.description" />:{' '}
-            </InputDescription>
+
+            <div style={{}}>
+              <FormattedMessage id="newRequestForm.additionalInfo" />:{' '}
+            </div>
             <TextBox {...register('description', { required: true })} />
           </FormColumn>
-        </FormRow>
+        </InputsContainer>
 
-        <FormRow>
-          <FormColumn style={{ alignItems: 'center' }}>
-            <Input
-              type="submit"
-              variant="authSubmit"
-              placeholderMsgId="button.createRequest"
-            />
-          </FormColumn>
-        </FormRow>
-      </NewRequestFormContainer>
+        <Input
+          type="submit"
+          variant="authSubmit"
+          placeholderMsgId="button.createRequest"
+        />
+      </FormContainer>
     </>
   );
 };

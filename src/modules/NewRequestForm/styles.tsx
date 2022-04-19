@@ -1,118 +1,119 @@
-import { CSS } from '@stitches/react';
-
 import { styled } from 'styles/stitches.config';
 
-export const NewRequestFormContainer = styled('form', {
+export const NewRequestTitle = styled('div', {
+  color: 'rgb(63, 178, 193)',
+  fontWeight: 'bold',
+  fontSize: '$xl2',
+  padding: '10px',
+  borderBottom: '1px solid rgb(88, 163, 173, 0.7)',
+});
+
+export const FormContainer = styled('form', {
   display: 'flex',
-  alignItems: 'center',
   flexDirection: 'column',
-  padding: '$4',
-  'input + input': {
-    marginTop: '$8',
+  alignItems: 'center',
+  boxSizing: 'border-box',
+  padding: '$4 0',
+
+  '@bp2': {
+    padding: '40px 80px',
   },
-  '@bp1': {
-    paddingTop: '$2',
+});
+
+export const InputsContainer = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  '> div + div': {
+    marginTop: '20px',
+  },
+
+  '@bp3': {
+    flexDirection: 'row',
+    '> div + div': {
+      marginTop: '0',
+      marginLeft: '30px',
+      borderLeft: '1px solid rgb(88, 163, 173, 0.7)',
+      paddingLeft: '30px',
+    },
+  },
+});
+
+export const FormColumn = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'flex-start',
+  '> div + div': {
+    marginTop: '20px',
   },
 });
 
 export const InputDescription = styled('div', {
-  alignItems: 'flex-start',
   display: 'flex',
-  padding: '$4 0 $1 0',
-  width: '100%',
-  maxWidth: '400px',
-  fontSize: '26',
-  font: 'Roboto',
-  color: '#0E353D',
-});
-export const RadioInput = styled('div', {
-  alignItems: 'flex-start',
-  display: 'flex',
-  flexDirection: 'row',
-  padding: '$1 0 $1 0',
-  width: '100%',
-  maxWidth: '400px',
-  fontSize: '26',
-  font: 'Roboto',
-  color: '#0E353D',
-});
-export const NewRequestText = styled('div', {
-  display: 'flex',
-  flexDirection: 'row',
-  alignItems: 'flex-start',
-  padding: '$3 $3',
-  boxSizing: 'border-box',
-  color: 'rgb(47, 147, 160)',
-  fontWeight: 'bold',
-  fontSize: '$xl2',
-  textAlign: 'center',
-});
-export const TextBox = styled('textarea', {
-  height: '70px',
-  width: '100%',
-  maxWidth: '370px',
-  fontSize: '$base',
   color: '#10434E',
-  border: 'none',
-  padding: '$2 $4',
+  fontWeight: 'bold',
   borderRadius: '10px',
-  boxShadow: '0 0 2px #aaa',
-  transition: 'box-shadow 0.4s',
-});
-export const FormColumn = styled('div', {
-  alignItems: 'flex-start',
-  display: 'flex',
-  flexDirection: 'column',
+  boxShadow: '0 0 5px #ccc',
+  padding: '10px 20px',
+  boxSizing: 'border-box',
   width: '100%',
-  maxWidth: '450px',
+  maxWidth: '600px',
+
   variants: {
     variant: {
-      normal: {
-        padding: '$2 $4',
+      row: {
+        alignItems: 'center',
+        justifyContent: 'space-between',
       },
-      smallPadding: {
-        padding: '$2 $1',
+      column: {
+        flexDirection: 'column',
       },
     },
   },
 
   defaultVariants: {
-    variant: 'normal',
-  },
-});
-export const FormRow = styled('div', {
-  justifyContent: 'center',
-  display: 'flex',
-  width: '100%',
-  maxWidth: '1400px',
-  variants: {
-    variant: {
-      normal: {
-        padding: '$2 $5',
-      },
-      smallPadding: {
-        padding: '$2 $0',
-      },
-    },
-  },
-
-  defaultVariants: {
-    variant: 'normal',
+    variant: 'row',
   },
 });
 
 export const Dropdown = styled('select', {
-  font: 'Montserrat',
   backgroundColor: '#10434E',
   color: '#fff',
   fontSize: '$sm',
   borderRadius: '5px',
   boxSizing: 'content-box',
   padding: '$1 $2',
+
+  marginLeft: '10px',
+  textTransform: 'capitalize',
+
+  '&:hover': {
+    cursor: 'pointer',
+  },
 });
 
 export const DropdownOption = styled('option', {
   font: 'Montserrat',
   backgroundColor: '#fff',
   color: '#10434E',
+});
+
+export const RadioInput = styled('div', {
+  marginTop: '5px',
+  input: {
+    marginRight: '10px',
+  },
+});
+
+export const TextBox = styled('textarea', {
+  height: '100%',
+  fontSize: '$base',
+  color: '#10434E',
+  border: 'none',
+  padding: '$2 $4',
+  boxSizing: 'border-box',
+  width: '100%',
+  borderRadius: '10px',
+  boxShadow: '0 0 2px #aaa',
+  transition: 'box-shadow 0.4s',
+  marginTop: '10px',
 });

@@ -10,7 +10,7 @@ export const LoginFormContainer = styled('form', {
   padding: '$20 $8 $8',
   boxSizing: 'border-box',
   justifyContent: 'center',
-  'div + input': {
+  '> div + div': {
     marginTop: '$6',
   },
   'input + a': {
@@ -53,6 +53,7 @@ export const NeedAnAccount = styled('div', {
   'a:hover': {
     textDecoration: 'underline',
   },
+  userSelect: 'none',
 });
 
 export const LinkRef = styled('a', {

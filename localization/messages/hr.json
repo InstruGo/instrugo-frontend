@@ -1,6 +1,8 @@
 {
   "appName": "InstruGo",
 
+  "landingPage.description": "Dobro došli na Instrugo!",
+
   "button.register": "Registriraj se",
   "button.login": "Prijavi se",
 
@@ -42,6 +44,13 @@
   "lessons.requests": "Zahtjevi",
 
   "filter": "Filtar",
+  "filter.subjects": "Po predmetima",
+
+  "subjects.all": "all",
+  "subjects.math": "matematika",
+  "subjects.physics": "fizika",
+  "subjects.chemistry": "kemija",
+  "subjects.sociology": "sociologija",
 
   "button.createRequest": "Stvorite novi zahtjev",
 

@@ -1,27 +1,27 @@
-import { Button } from '@components';
-import { FaPlus } from 'react-icons/fa';
-import { config, css } from 'styles/stitches.config';
+import React from 'react';
 
-import * as Stitches from '@stitches/react';
+import { FaPlus } from 'react-icons/fa';
 import { FormattedMessage } from 'react-intl';
 
-type CSS = Stitches.CSS<typeof config>;
+import { Button } from '@components';
 
-const ButtonStyles = css({
+const ButtonStyles = {
   position: 'fixed !important',
   bottom: '20px',
   right: '20px',
   borderRadius: '100px',
-  padding: '15px',
+  padding: '15px 25px',
   fontSize: '20px',
   display: 'flex',
   alignItems: 'center',
-});
 
-export const NewRequestButton = (props: { onClick: () => void }) => {
+  '> svg': { marginRight: '15px' },
+};
+
+export const NewRequestButton = ({ onClick }: { onClick: () => void }) => {
   return (
-    <Button className={`${ButtonStyles}`} {...props}>
-      <FaPlus size="30px" style={{ marginRight: '15px' }} />
+    <Button onClick={onClick} css={ButtonStyles}>
+      <FaPlus size="25px" />
       <FormattedMessage id="button.createRequest" />
     </Button>
   );

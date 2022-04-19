@@ -1,5 +1,12 @@
 import { styled } from 'styles/stitches.config';
 
+export const InputContainer = styled('div', {
+  width: '100%',
+  maxWidth: '400px',
+  display: 'flex',
+  flexDirection: 'column',
+});
+
 export const StyledInput = styled('input', {
   boxSizing: 'border-box',
   fontFamily: 'inherit',
@@ -10,7 +17,6 @@ export const StyledInput = styled('input', {
     variant: {
       auth: {
         width: '100%',
-        maxWidth: '400px',
         fontSize: '$base',
         color: '#10434E',
         border: 'none',
@@ -29,6 +35,7 @@ export const StyledInput = styled('input', {
         },
       },
       authSubmit: {
+        alignSelf: 'center',
         backgroundColor: '#10434E',
         color: '#fff',
         borderRadius: '20px',
@@ -39,6 +46,9 @@ export const StyledInput = styled('input', {
         cursor: 'pointer',
         border: 'none',
         letterSpacing: '0.5px',
+        '&:hover': {
+          backgroundColor: '#1d6c7d',
+        },
       },
     },
   },
