@@ -126,7 +126,7 @@ export const LessonsContainer = ({
       )}
 
       {table && (
-        <TableBody style={{ height: '200px' }}>
+        <TableBody>
           <Table />
         </TableBody>
       )}

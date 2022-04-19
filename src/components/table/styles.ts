@@ -4,19 +4,18 @@ import { styled } from '../../../styles/stitches.config';
 
 export const TableStyle = styled('div', {
   width: '100%',
-  height: '100%',
-  border: '2px solid #3FB2C1',
+  // height: '100%',
+  border: '2px solid #10434E',
   borderRadius: '10px',
-  display: 'flex',
-  flexDirection: 'column',
+  // display: 'flex',
+  // flexDirection: 'column',
 });
 export const TableHeader = styled('tr', {
-  display: 'flex',
   color: 'white',
   justifyContent: 'center',
   fontSize: '$lg',
   fontWeight: '$semibold',
-  height: '2',
+  height: '$2',
   alignItems: 'center',
   borderTopLeftRadius: '10px',
   borderTopRightRadius: '10px',
@@ -28,9 +27,7 @@ export const StyledHr = styled('hr', {
   borderTop: 'solid 1px #10434E',
 });
 export const TableBody = styled('table', {
-  display: 'flex',
   backgroundColor: 'rgba(63, 178, 193, 0.2)',
-  flexDirection: 'column',
   justifyContent: 'flex-start',
   alignItems: 'center',
   fontSize: '$xs',
@@ -39,20 +36,30 @@ export const TableBody = styled('table', {
 });
 
 export const TableText = styled('i', {
-  display: 'flex',
   padding: '4px',
 });
 
 export const TableItem = styled('tr', {
   hover: { backgroundColor: '#ddd' },
-  display: 'flex',
+
+  fontSize: '14px',
   width: '100%',
-  justifyContent: 'space-evenly',
+  alignItems: 'center',
+  justifyContent: 'center',
+  borderTop: '1px',
+  borderStyle: 'solid',
+  borderColor: '#000',
+  paddingTop: '12px',
+  paddingBottom: '12px',
+  height: '30px',
 });
 export const TableData = styled('td', {
+  cursor: 'pointer',
+  paddingTop: '$3',
   textAlign: 'center',
-  flexGrow: '1',
-  flexShrink: '1',
+  justifyContent: 'center',
+  alignItems: 'center',
+  height: '30px',
 });
 export const TableTitles = styled('th', {
   paddingTop: '12px',
