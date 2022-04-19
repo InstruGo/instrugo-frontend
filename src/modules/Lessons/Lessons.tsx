@@ -77,6 +77,8 @@ export const LessonsContainer = () => {
             location={lesson.location}
             meetingType={lesson.type}
             dateAndTime={lesson.lessonTimeFrames[0].startTime}
+            color={lesson.subject.color}
+            isModal={lesson.status !== 'Requested'}
           />
         ))}
       </LessonsBody>

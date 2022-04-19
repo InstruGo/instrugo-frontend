@@ -3,6 +3,7 @@
 
   "button.register": "Registriraj se",
   "button.login": "Prijavi se",
+  "button.createResponse": "Odgovori na zahtjev",
 
   "confirmPassword": "Potvrdi lozinku",
 
@@ -56,8 +57,13 @@
   "newRequestForm.newTime": "Dodaj termin",
   "newRequestForm.educationLevel": "Razina obrazovanja",
 
+  "newResponseForm.price": "Cijena",
+
   "requestDetails.description": "Detalji zahtjeva",
   "requestDetails.tutorResponses": "Odgovori instruktora",
+  "requestDetails.responseForm": "Tvoj odgovor",
+  "lessonDetails.description": "Detalji instrukcija",
+  "lessonDetails.cancelLesson": "Otkaži instrukcije",
 
   "lang.hr": "hr",
   "lang.en": "en"

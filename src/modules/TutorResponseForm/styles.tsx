@@ -1,8 +1,6 @@
-import { CSS } from '@stitches/react';
-
 import { styled } from 'styles/stitches.config';
 
-export const NewRequestFormContainer = styled('form', {
+export const ResponseFormContainer = styled('form', {
   display: 'flex',
   alignItems: 'center',
   flexDirection: 'column',
@@ -35,18 +33,6 @@ export const RadioInput = styled('div', {
   fontSize: '26',
   font: 'Roboto',
   color: '#0E353D',
-});
-export const NewRequestText = styled('div', {
-  display: 'flex',
-  flexDirection: 'row',
-  alignItems: 'center',
-  justifyContent: 'center',
-  padding: '$3 $3',
-  boxSizing: 'border-box',
-  color: 'rgb(47, 147, 160)',
-  fontWeight: 'bold',
-  fontSize: '$xl2',
-  textAlign: 'center',
 });
 export const TextBox = styled('textarea', {
   height: '70px',
