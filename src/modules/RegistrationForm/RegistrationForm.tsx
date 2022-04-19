@@ -1,5 +1,6 @@
-import { zodResolver } from '@hookform/resolvers/zod';
 import Link from 'next/link';
+
+import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { FormattedMessage } from 'react-intl';
 

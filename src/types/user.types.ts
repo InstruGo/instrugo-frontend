@@ -7,6 +7,8 @@ export type User = {
   role: string;
   avatarUrl: string;
   createdOn: Date;
+  averageRating: number;
+  ratingsCount: number;
 };
 
 export type OptionalUser = User | null;

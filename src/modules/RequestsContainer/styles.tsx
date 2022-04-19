@@ -5,16 +5,21 @@ export const StyledContainer = styled('div', {});
 export const LessonsHeader = styled('div', {
   display: 'flex',
   alignItems: 'center',
+  padding: '$2 $2',
 });
 
 export const Title = styled('div', { fontWeight: 'bold', fontSize: '22px' });
 
 export const StyledHr = styled('hr', {
   marginLeft: '20px',
-  width: '100%',
+  width: '90%',
   borderTop: 'solid 1px #10434E',
 });
 
-export const LessonsBody = styled('div', {
+export const RequestsBody = styled('div', {
   marginTop: '20px',
+  marginLeft: '$6',
+  display: 'flex',
+  flexWrap: 'wrap',
+  gap: '$6',
 });

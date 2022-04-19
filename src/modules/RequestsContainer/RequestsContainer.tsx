@@ -1,21 +1,21 @@
 import { FormattedMessage } from 'react-intl';
 
 import { Button, Card } from '@components';
-import { useUpcomingLessons } from '@hooks';
+import { useLessonRequests } from '@hooks';
 
 import {
-  LessonsBody,
+  RequestsBody,
   LessonsHeader,
   StyledContainer,
   StyledHr,
   Title,
 } from './styles';
 
-export const LessonsContainer = () => {
-  const { data, isLoading } = useUpcomingLessons();
+export const RequestsContainer = () => {
+  const { data, isLoading } = useLessonRequests();
 
   if (isLoading) return <div>Loading...</div>;
-  if (!data) return <div>No lessons...</div>;
+  if (!data) return <div>No requests...</div>;
 
   return (
     <StyledContainer>
@@ -26,18 +26,20 @@ export const LessonsContainer = () => {
         <StyledHr />
       </LessonsHeader>
 
-      <LessonsBody style={{ height: '200px' }}>
+      <RequestsBody style={{ height: '200px' }}>
         {data.map((lesson) => (
           <Card
             key={lesson.id}
+            index={lesson.id}
             subject={lesson.subject.name}
             subfield={lesson.subfield}
             location={lesson.location}
             meetingType={lesson.type}
             dateAndTime={lesson.lessonTimeFrames[0].startTime}
+            color={lesson.subject.color}
           />
         ))}
-      </LessonsBody>
+      </RequestsBody>
     </StyledContainer>
   );
 };

@@ -36,7 +36,7 @@ export const CardHeader = styled('div', {
 
 export const CardBody = styled('div', {
   display: 'flex',
-  backgroundColor: 'rgba(63, 178, 193, 0.2)',
+  backgroundColor: 'rgba(63, 178, 193, 0.0)',
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',

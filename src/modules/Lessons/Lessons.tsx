@@ -1,6 +1,5 @@
-import { Fragment } from 'react';
-import { FormattedMessage } from 'react-intl';
 import { BiFilter } from 'react-icons/bi';
+import { FormattedMessage } from 'react-intl';
 
 import { Button, Card, Table } from '@components';
 import { useUpcomingLessons } from '@hooks';
@@ -119,6 +118,8 @@ export const LessonsContainer = ({
               location={lesson.location}
               meetingType={lesson.type}
               dateAndTime={lesson.lessonTimeFrames[0].startTime}
+              color={lesson.subject.color}
+              isModal={lesson.status !== 'Requested'}
             />
           ))}
         </LessonsBody>

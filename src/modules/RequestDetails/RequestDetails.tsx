@@ -1,7 +1,14 @@
 import { FormattedMessage } from 'react-intl';
+import Paper from '@mui/material/Paper';
+import { ViewState } from '@devexpress/dx-react-scheduler';
+import {
+  Scheduler,
+  DayView,
+  WeekView,
+  Appointments,
+} from '@devexpress/dx-react-scheduler-material-ui';
 
 import { useLesson } from '@hooks';
-
 import {
   RequestDetailsContainer,
   RequestDetailsText,
@@ -11,7 +18,9 @@ import {
   StyledHr,
   ResponsesHeader,
   Title,
+  CalendarContainer,
 } from './styles';
+import { TutorResponse } from '@components';
 
 interface RequestDetailsProps {
   id: number;
@@ -19,6 +28,20 @@ interface RequestDetailsProps {
 export const RequestDetails = (props: RequestDetailsProps) => {
   const { data, isLoading } = useLesson(props.id);
   if (isLoading) return <div>Loading...</div>;
+  const schedulerData: any = [];
+  data?.lessonTimeFrames.map(
+    (timeFrame: { startTime: string; endTime: string }) => {
+      const start = new Date(timeFrame.startTime);
+      const end = new Date(timeFrame.endTime);
+      schedulerData.push({
+        startDate: start.toString(),
+        endDate: end.toString(),
+        title: 'Available timeslot',
+      });
+    }
+  );
+  const currentDate = schedulerData[0].startDate;
+
   return (
     <>
       <RequestDetailsText>
@@ -42,12 +65,12 @@ export const RequestDetails = (props: RequestDetailsProps) => {
             <FieldDescription>
               <FormattedMessage id="newRequestForm.grade" />: {data?.grade}.
             </FieldDescription>
+          </Column>
+          <Column>
             <FieldDescription>
               <FormattedMessage id="newRequestForm.budget" />: {data?.budget}{' '}
               kn/h
             </FieldDescription>
-          </Column>
-          <Column>
             <FieldDescription>
               <FormattedMessage id="card.meetingType" />: {data?.type}
             </FieldDescription>
@@ -60,30 +83,24 @@ export const RequestDetails = (props: RequestDetailsProps) => {
               {data?.description}
             </FieldDescription>
           </Column>
+        </Row>
+        <Row>
           <Column>
             <FieldDescription>
               <FormattedMessage id="newRequestForm.availableDates" />:{' '}
             </FieldDescription>
-
-            {data?.lessonTimeFrames.map(
-              (timeFrame: { startTime: string; endTime: string }) => {
-                const start = new Date(timeFrame.startTime);
-                const end = new Date(timeFrame.startTime);
-                const idx = data?.lessonTimeFrames.indexOf(timeFrame);
-                return (
-                  <FieldDescription key={idx}>
-                    <Column>
-                      {`${start.getDate()}\/${start.getMonth()}\/${start.getFullYear()}`}
-                    </Column>
-                    <Column>
-                      {`${start.getHours()}:${start.getMinutes()} - ${end.getHours()}:${end.getMinutes()}`}
-                    </Column>
-                  </FieldDescription>
-                );
-              }
-            )}
           </Column>
+          <Column />
         </Row>
+        <CalendarContainer>
+          <Paper>
+            <Scheduler data={schedulerData}>
+              <ViewState currentDate={currentDate} />
+              <WeekView startDayHour={5} endDayHour={23} cellDuration={120} />
+              <Appointments />
+            </Scheduler>
+          </Paper>
+        </CalendarContainer>
         <ResponsesHeader>
           <Title>
             <FormattedMessage id="requestDetails.tutorResponses" />
@@ -91,6 +108,24 @@ export const RequestDetails = (props: RequestDetailsProps) => {
 
           <StyledHr />
         </ResponsesHeader>
+        {data?.tutorResponses.map((response) => {
+          return (
+            <TutorResponse
+              key={response.id}
+              lessonId={data?.id}
+              index={response.id}
+              firstName={response.tutor.firstName}
+              lastName={response.tutor.lastName}
+              avgRating={
+                response.tutor.ratingsCount != 0
+                  ? response.tutor.averageRating
+                  : undefined
+              }
+              price={response.price}
+              timeslots={response.tutorResponseTimeFrames}
+            />
+          );
+        })}
       </RequestDetailsContainer>
     </>
   );

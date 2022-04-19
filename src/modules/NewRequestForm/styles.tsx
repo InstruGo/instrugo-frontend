@@ -39,7 +39,8 @@ export const RadioInput = styled('div', {
 export const NewRequestText = styled('div', {
   display: 'flex',
   flexDirection: 'row',
-  alignItems: 'flex-start',
+  alignItems: 'center',
+  justifyContent: 'center',
   padding: '$3 $3',
   boxSizing: 'border-box',
   color: 'rgb(47, 147, 160)',
@@ -64,7 +65,7 @@ export const FormColumn = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   width: '100%',
-  maxWidth: '450px',
+  maxWidth: '700px',
   variants: {
     variant: {
       normal: {

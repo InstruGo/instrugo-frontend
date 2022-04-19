@@ -27,10 +27,7 @@ export const LoginForm = () => {
     resolver: zodResolver(loginFormSchema),
   });
 
-  const [isAuthenticating, setAuthenticating] = React.useState(false);
-
   const onSubmit = (data: LoginFormInputs) => {
-    setAuthenticating(true);
     loginUser.mutate(data);
   };
 
@@ -77,7 +74,7 @@ export const LoginForm = () => {
         </NeedAnAccount>
 
         <LoaderContainer>
-          {isAuthenticating && (
+          {loginUser.isLoading && (
             <Loader fill="#10434E" width="40px" height="40px" />
           )}
         </LoaderContainer>

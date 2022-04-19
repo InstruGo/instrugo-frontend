@@ -1,15 +1,23 @@
-import axios from 'axios';
+import { useRouter } from 'next/router';
+
 import { useMutation } from 'react-query';
 
 import type { RegisterFormInputs } from '@types';
 
+import { useAxios } from './useAxios';
+
 export const useRegister = () => {
+  const router = useRouter();
+  const axios = useAxios();
+
   const register = async (input: RegisterFormInputs): Promise<void> => {
-    await axios.post('http://localhost:3000/api/auth/register', input);
+    await axios.post('/auth/register', input);
   };
 
   return useMutation(register, {
-    onSuccess: (data) => {},
-    onError: (error) => {},
+    onSuccess: () => {
+      router.push('/login');
+    },
+    onError: () => {},
   });
 };

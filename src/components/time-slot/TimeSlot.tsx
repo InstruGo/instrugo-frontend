@@ -1,12 +1,16 @@
 import { useState } from 'react';
-import { Button } from '@components';
+
+import { DatePicker, TimePicker } from '@mui/lab';
 import DateAdapterFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
-import { DatePicker, TimePicker } from '@mui/lab';
 import { TextField } from '@mui/material';
 
 import { FormColumn, FormRow, DestroyButton } from './styles';
+
 interface TimeSlotProps {
+  date: Date;
+  startTime: Date;
+  endTime: Date;
   onDateChange: (
     index: number,
     date: Date,
@@ -17,9 +21,9 @@ interface TimeSlotProps {
   onDestroy: (index: number) => void;
 }
 export const TimeSlot = (props: TimeSlotProps) => {
-  const [date, setDate] = useState<Date>(new Date());
-  const [startTime, setStartTime] = useState<Date>(new Date());
-  const [endTime, setEndTime] = useState<Date>(new Date());
+  const [date, setDate] = useState<Date>(props.date);
+  const [startTime, setStartTime] = useState<Date>(props.startTime);
+  const [endTime, setEndTime] = useState<Date>(props.endTime);
   const [destroyed, setDestroyed] = useState(false);
   return destroyed ? null : (
     <LocalizationProvider dateAdapter={DateAdapterFns}>
@@ -27,6 +31,7 @@ export const TimeSlot = (props: TimeSlotProps) => {
         <FormColumn variant="smallPadding">
           <DatePicker
             value={date}
+            minDate={new Date()}
             onChange={(newValue) => {
               if (newValue != null) {
                 setDate(newValue);

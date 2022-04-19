@@ -7,14 +7,11 @@ const nextConfig = {
     // Default locale for non-locale prefixed path e.g. /home
     defaultLocale: 'en',
   },
-  redirects: async function redirects() {
-    return [
-      {
-        source: '/',
-        destination: '/login',
-        permanent: false,
-      },
-    ];
+  publicRuntimeConfig: {
+    apiUrl:
+      process.env.NODE_ENV === 'development'
+        ? 'http://localhost:8000/api'
+        : 'http://localhost:8000/api',
   },
 };
 

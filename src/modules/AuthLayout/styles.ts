@@ -13,7 +13,7 @@ export const AuthDescription = styled('div', {
   },
 });
 
-export const LocaleSection = styled('a', {
+export const LocaleSection = styled('div', {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',

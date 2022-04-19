@@ -1,11 +1,17 @@
-import { useForm } from 'react-hook-form';
 import { useState } from 'react';
+
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Input } from '@components';
+import { useForm } from 'react-hook-form';
 import { FormattedMessage } from 'react-intl';
 
-import { useNewRequest, useSubjects, useUserContext } from '@hooks';
-
+import { useNewRequest, useSubjects } from '@hooks';
+import { Button, TimeSlot, Input } from '@components';
+import {
+  NewRequestFormInputs,
+  newRequestFormSchema,
+  EducationLevel,
+  MeetingType,
+} from '../../types/new-request.type';
 import {
   NewRequestFormContainer,
   InputDescription,
@@ -17,33 +23,26 @@ import {
   Dropdown,
   DropdownOption,
 } from './styles';
-import {
-  NewRequestFormInputs,
-  newRequestFormSchema,
-  EducationLevel,
-  MeetingType,
-} from '../../types/new-request.type';
-import { Button, TimeSlot } from '@components';
 
 interface NewRequestProps {
   onFinish?: () => void;
 }
+
 export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
   const { data, isLoading } = useSubjects();
-  const { accessToken, user } = useUserContext();
   const newRequest = useNewRequest();
   const {
     register,
     handleSubmit,
     setValue,
-    getValues,
     formState: { errors },
   } = useForm<NewRequestFormInputs>({
     resolver: zodResolver(newRequestFormSchema),
   });
 
   const onSubmit = async (data: NewRequestFormInputs) => {
-    const lesson = await newRequest.mutate(data);
+    newRequest.mutate(data);
+
     if (onFinish) {
       onFinish();
     }
@@ -52,17 +51,20 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
   const [selectedEducationLevel, setEducationLevel] = useState<EducationLevel>(
     EducationLevel.ELEMENTARY
   );
+
   const [selectedMeetingType, setMeetingType] = useState<MeetingType>(
     MeetingType.IRL
   );
+
   const onLevelSelect = (e: any) => {
     setEducationLevel(e.target.value);
   };
+
   const onMeetingSelect = (e: any) => {
     setMeetingType(e.target.value);
   };
 
-  const [slotCount, setSlotCount] = useState<number>(0);
+  const [slotCount, setSlotCount] = useState(0);
   const [timeSlots, updateTimeSlots] = useState([
     {
       index: slotCount,
@@ -74,22 +76,25 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
 
   const updateLessonTimeFrames = (tempSlots: any) => {
     const lessonTimeFrames = [];
-    for (var i = 0; i < tempSlots.length; i++) {
+    for (let i = 0; i < tempSlots.length; i++) {
       const [month, day, year] = [
         tempSlots[i].date.getMonth(),
         tempSlots[i].date.getDate(),
         tempSlots[i].date.getFullYear(),
       ];
+
       const [hourStart, minutesStart, secondsStart] = [
         tempSlots[i].startTime.getHours(),
         tempSlots[i].startTime.getMinutes(),
         tempSlots[i].startTime.getSeconds(),
       ];
+
       const [hourEnd, minutesEnd, secondsEnd] = [
         tempSlots[i].endTime.getHours(),
         tempSlots[i].endTime.getMinutes(),
         tempSlots[i].endTime.getSeconds(),
       ];
+
       const start = new Date(
         year,
         month,
@@ -98,51 +103,50 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
         minutesStart,
         secondsStart
       );
+
       const end = new Date(year, month, day, hourEnd, minutesEnd, secondsEnd);
+      setValue(`lessonTimeFrames.${i}`, {
+        startTime: start.toISOString(),
+        endTime: end.toISOString(),
+      });
       lessonTimeFrames.push({
         startTime: start.toISOString(),
         endTime: end.toISOString(),
       });
     }
-    setValue('lessonTimeFrames', lessonTimeFrames);
   };
+
   const onDateChange = (
     idx: number,
     date: Date,
     startTime: Date,
     endTime: Date
   ) => {
-    var tempSlots = timeSlots;
-    for (var i = 0; i < tempSlots.length; i++) {
+    let tempSlots = timeSlots;
+    for (let i = 0; i < tempSlots.length; i++) {
       if (tempSlots[i].index === idx) {
         tempSlots[i].date = date;
         tempSlots[i].startTime = startTime;
         tempSlots[i].endTime = endTime;
       }
     }
+
     updateTimeSlots(tempSlots);
     updateLessonTimeFrames(tempSlots);
   };
+
   const destroyTimeSlot = (index: number) => {
-    var tempSlots = timeSlots;
-    for (var i = 0; i < tempSlots.length; i++) {
+    let tempSlots = timeSlots;
+    for (let i = 0; i < tempSlots.length; i++) {
       if (tempSlots[i].index === index) {
         tempSlots.splice(i, 1);
       }
     }
+
     updateTimeSlots(tempSlots);
   };
-  const [timeSlotList, updateTimeSlotList] = useState([
-    <li key={0}>
-      <TimeSlot
-        onDateChange={onDateChange}
-        index={0}
-        onDestroy={destroyTimeSlot}
-      />
-    </li>,
-  ]);
   const onAddTimeSlot = () => {
-    var tempSlots = timeSlots;
+    let tempSlots = timeSlots;
     setSlotCount(slotCount + 1);
     tempSlots.push({
       index: slotCount + 1,
@@ -150,34 +154,22 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
       startTime: new Date(),
       endTime: new Date(),
     });
+
     updateTimeSlots(tempSlots);
-    var tempSlotList = timeSlotList;
-    tempSlotList.push(
-      <li key={slotCount + 1}>
-        <TimeSlot
-          onDateChange={onDateChange}
-          index={slotCount + 1}
-          onDestroy={destroyTimeSlot}
-        />
-      </li>
-    );
-    updateTimeSlotList(tempSlotList);
   };
+
   updateLessonTimeFrames(timeSlots);
   const [subjectId, setSubjectId] = useState<number>(1);
   setValue('subjectId', subjectId);
+
   if (isLoading) return <div>Loading...</div>;
-  if (user) {
-    setValue('userId', user.id);
-  } else {
-    setValue('userId', 0);
-  }
 
   return (
     <>
       <NewRequestText>
         <FormattedMessage id="newRequest.description" />
       </NewRequestText>
+
       <NewRequestFormContainer onSubmit={handleSubmit(onSubmit)}>
         <FormRow>
           <FormColumn>
@@ -189,7 +181,6 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
               onChange={(e) => {
                 setSubjectId(parseInt(e.target.value, 10));
                 setValue('subjectId', parseInt(e.target.value, 10));
-                console.log(getValues('subjectId'));
               }}
             >
               {data?.map((subject) => (
@@ -198,6 +189,7 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
                 </DropdownOption>
               ))}
             </Dropdown>
+
             <InputDescription>
               <FormattedMessage id="card.subfield" />:
             </InputDescription>
@@ -206,6 +198,7 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
               register={register}
               errors={errors.subfield}
             />
+
             <InputDescription>
               <FormattedMessage id="newRequestForm.educationLevel" />:
             </InputDescription>
@@ -250,6 +243,7 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
               errors={errors.grade}
               isNumber={true}
             />
+
             <InputDescription>
               <FormattedMessage id="newRequestForm.budget" />: (kn/h)
             </InputDescription>
@@ -261,11 +255,26 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
               isNumber={true}
             />
           </FormColumn>
-          <FormColumn>
+          <FormColumn style={{ maxWidth: '450px' }}>
             <InputDescription>
               <FormattedMessage id="newRequestForm.availableDates" />:
             </InputDescription>
-            <ul>{timeSlotList}</ul>
+            <ul>
+              {timeSlots.map((timeSlot) => {
+                return (
+                  <li key={timeSlot.index}>
+                    <TimeSlot
+                      date={timeSlot.date}
+                      startTime={timeSlot.startTime}
+                      endTime={timeSlot.endTime}
+                      onDateChange={onDateChange}
+                      index={timeSlot.index}
+                      onDestroy={destroyTimeSlot}
+                    />
+                  </li>
+                );
+              })}
+            </ul>
             <Button type="button" onClick={onAddTimeSlot}>
               + <FormattedMessage id="newRequestForm.newTime" />
             </Button>
@@ -307,6 +316,7 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
             <TextBox {...register('description', { required: true })} />
           </FormColumn>
         </FormRow>
+
         <FormRow>
           <FormColumn style={{ alignItems: 'center' }}>
             <Input

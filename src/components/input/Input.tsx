@@ -1,5 +1,7 @@
 import React, { Fragment } from 'react';
+
 import { useIntl } from 'react-intl';
+
 import { styled } from 'styles/stitches.config';
 
 import { ErrorsContainer, StyledInput } from './styles';

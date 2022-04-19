@@ -1,17 +1,29 @@
 import { useRouter } from 'next/router';
+
+import { useMutation } from 'react-query';
+
 import { useUserContext } from '@hooks';
 
+import { useAxios } from './useAxios';
+
 export const useLogout = () => {
-  const { setUser, setAccessToken, setRefreshToken } = useUserContext();
+  const { setUser } = useUserContext();
   const router = useRouter();
+  const axios = useAxios();
 
-  const logout = () => {
-    setUser(null);
-    setAccessToken(null);
-    setRefreshToken(null);
+  const logout = async () => {
+    const data = axios.post('/auth/logout');
 
-    router.push('/');
+    return data;
   };
 
-  return logout;
+  return useMutation(logout, {
+    onSuccess: () => {
+      setUser(null);
+      router.push('/login');
+    },
+    onError: (error) => {
+      console.log(error);
+    },
+  });
 };

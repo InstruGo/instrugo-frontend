@@ -11,7 +11,6 @@ export enum MeetingType {
   ONLINE = 'Online',
 }
 export const newRequestFormSchema = z.object({
-  userId: z.number().positive(),
   subjectId: z.number().positive(),
   subfield: z.string().max(100).min(1, 'Područje je obavezno'),
   level: z.nativeEnum(EducationLevel),
@@ -22,8 +21,7 @@ export const newRequestFormSchema = z.object({
   description: z.string(),
   lessonTimeFrames: z
     .object({ startTime: z.string(), endTime: z.string() })
-    .array()
-    .nonempty(),
+    .array(),
 });
 
 export type NewRequestFormInputs = z.infer<typeof newRequestFormSchema>;

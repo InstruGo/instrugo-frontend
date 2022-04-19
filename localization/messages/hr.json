@@ -3,6 +3,7 @@
 
   "button.register": "Registriraj se",
   "button.login": "Prijavi se",
+  "button.createResponse": "Odgovori na zahtjev",
 
   "confirmPassword": "Potvrdi lozinku",
 
@@ -31,9 +32,13 @@
   "nav.myLessons": "Moje instrukcije",
   "nav.myRequests": "Moji zahtjevi",
   "nav.switch": "Prebaci se na instruktora",
+  "nav.switch.tutor": "Prebaci se na studenta",
+  "nav.publicRequests": "Javni zahtjevi",
+  "nav.tutorResponses": "Moji odgovori",
 
   "home.rewards": "Nagrade",
   "home.lessons": "Lekcije",
+
   "lessons.upcoming": "Nadolazeće",
   "lessons.requests": "Zahtjevi",
 
@@ -42,6 +47,7 @@
   "button.createRequest": "Stvorite novi zahtjev",
 
   "student.request.requests": "Moji zahtjevi",
+  "tutor.request.requests": "Javni zahtjevi",
 
   "newRequest.description": "Novi Zahtjev",
   "newRequestForm.grade": "Razred/Godina",
@@ -51,8 +57,13 @@
   "newRequestForm.newTime": "Dodaj termin",
   "newRequestForm.educationLevel": "Razina obrazovanja",
 
+  "newResponseForm.price": "Cijena",
+
   "requestDetails.description": "Detalji zahtjeva",
   "requestDetails.tutorResponses": "Odgovori instruktora",
+  "requestDetails.responseForm": "Tvoj odgovor",
+  "lessonDetails.description": "Detalji instrukcija",
+  "lessonDetails.cancelLesson": "Otkaži instrukcije",
 
   "lessons.1st_group": "Danas",
   "lessons.2nd_group": "U sljedećih 7 dana",

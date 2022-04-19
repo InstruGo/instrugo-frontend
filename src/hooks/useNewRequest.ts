@@ -1,23 +1,24 @@
-import axios from 'axios';
 import { useMutation, useQueryClient } from 'react-query';
 
 import type { NewRequestFormInputs, Lesson } from '@types';
+import { useAxios } from './useAxios';
 
 export const useNewRequest = () => {
+  const axios = useAxios();
   const queryClient = useQueryClient();
+
   const newRequest = async (input: NewRequestFormInputs): Promise<Lesson> => {
-    const response = await axios.post(
-      'http://localhost:3000/api/lessons',
-      input
-    );
+    const response = await axios.post('/lessons', input);
+
     const data = response.data as Lesson;
     return data;
   };
 
   return useMutation(newRequest, {
-    onSuccess: (data) => {
-      console.log(data);
+    onSuccess: () => {
       queryClient.invalidateQueries('upcomingLessons');
+      queryClient.invalidateQueries('lessonRequests');
+      queryClient.invalidateQueries('publicRequests');
     },
     onError: (error) => {
       console.log(error);

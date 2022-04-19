@@ -1,3 +1,5 @@
+import { TutorResponse } from './tutor-response';
+
 export type Lesson = {
   id: number;
   subfield: string;
@@ -11,6 +13,11 @@ export type Lesson = {
   createdOn: Date;
   lastModifiedOn: Date;
   subject: any;
-  owner: any;
+  student: any;
+  tutor: any;
+  finalStartTime: string;
+  finalEndTime: string;
+  finalPrice: number;
   lessonTimeFrames: any;
+  tutorResponses: TutorResponse[];
 };
