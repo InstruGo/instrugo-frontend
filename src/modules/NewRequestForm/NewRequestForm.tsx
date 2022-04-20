@@ -7,6 +7,7 @@ import { FormattedMessage } from 'react-intl';
 import { Input } from '@components';
 import { Button, TimeSlot } from '@components';
 import { useNewRequest, useSubjects, useUserContext } from '@hooks';
+
 import {
   NewRequestFormInputs,
   newRequestFormSchema,
@@ -28,6 +29,7 @@ import {
 interface NewRequestProps {
   onFinish?: () => void;
 }
+
 export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
   const { data, isLoading } = useSubjects();
   const { user } = useUserContext();
@@ -40,24 +42,31 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
   } = useForm<NewRequestFormInputs>({
     resolver: zodResolver(newRequestFormSchema),
   });
+
   const onSubmit = async (data: NewRequestFormInputs) => {
     newRequest.mutate(data);
+
     if (onFinish) {
       onFinish();
     }
   };
+
   const [selectedEducationLevel, setEducationLevel] = useState<EducationLevel>(
     EducationLevel.ELEMENTARY
   );
+
   const [selectedMeetingType, setMeetingType] = useState<MeetingType>(
     MeetingType.IRL
   );
+
   const onLevelSelect = (e: any) => {
     setEducationLevel(e.target.value);
   };
+
   const onMeetingSelect = (e: any) => {
     setMeetingType(e.target.value);
   };
+
   const [slotCount, setSlotCount] = useState(0);
   const [timeSlots, updateTimeSlots] = useState([
     {
@@ -67,6 +76,7 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
       endTime: new Date(),
     },
   ]);
+
   const updateLessonTimeFrames = (tempSlots: any) => {
     const lessonTimeFrames = [];
     for (let i = 0; i < tempSlots.length; i++) {
@@ -75,16 +85,19 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
         tempSlots[i].date.getDate(),
         tempSlots[i].date.getFullYear(),
       ];
+
       const [hourStart, minutesStart, secondsStart] = [
         tempSlots[i].startTime.getHours(),
         tempSlots[i].startTime.getMinutes(),
         tempSlots[i].startTime.getSeconds(),
       ];
+
       const [hourEnd, minutesEnd, secondsEnd] = [
         tempSlots[i].endTime.getHours(),
         tempSlots[i].endTime.getMinutes(),
         tempSlots[i].endTime.getSeconds(),
       ];
+
       const start = new Date(
         year,
         month,
@@ -93,14 +106,17 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
         minutesStart,
         secondsStart
       );
+
       const end = new Date(year, month, day, hourEnd, minutesEnd, secondsEnd);
       lessonTimeFrames.push({
         startTime: start.toISOString(),
         endTime: end.toISOString(),
       });
     }
+
     setValue('lessonTimeFrames', lessonTimeFrames);
   };
+
   const onDateChange = (
     idx: number,
     date: Date,
@@ -115,9 +131,11 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
         tempSlots[i].endTime = endTime;
       }
     }
+
     updateTimeSlots(tempSlots);
     updateLessonTimeFrames(tempSlots);
   };
+
   const destroyTimeSlot = (index: number) => {
     let tempSlots = timeSlots;
     for (let i = 0; i < tempSlots.length; i++) {
@@ -125,8 +143,10 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
         tempSlots.splice(i, 1);
       }
     }
+
     updateTimeSlots(tempSlots);
   };
+
   const [timeSlotList, updateTimeSlotList] = useState([
     <li key={0}>
       <TimeSlot
@@ -136,6 +156,7 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
       />
     </li>,
   ]);
+
   const onAddTimeSlot = () => {
     let tempSlots = timeSlots;
     setSlotCount(slotCount + 1);
@@ -145,6 +166,7 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
       startTime: new Date(),
       endTime: new Date(),
     });
+
     updateTimeSlots(tempSlots);
     let tempSlotList = timeSlotList;
     tempSlotList.push(
@@ -156,6 +178,7 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
         />
       </li>
     );
+
     updateTimeSlotList(tempSlotList);
   };
 
@@ -164,6 +187,7 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
   setValue('subjectId', subjectId);
 
   if (isLoading) return <div>Loading...</div>;
+
   if (user) {
     setValue('userId', user.id);
   } else {
