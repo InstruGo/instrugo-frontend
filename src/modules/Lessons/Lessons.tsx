@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { BiFilter } from 'react-icons/bi';
 import { FormattedMessage } from 'react-intl';
 
 import { Button, Card } from '@components';
-import { useLessons } from '@hooks';
+import { useLessons, useMenuAnimation, useSubjects } from '@hooks';
 
 import {
   ControlPanel,
@@ -25,44 +25,27 @@ export const LessonsContainer = () => {
   const [currentSubject, setCurrentSubject] = React.useState<string>('all');
   const filterMenuRef = React.useRef<HTMLDivElement>(null);
 
+  const { data: subjects } = useSubjects();
+
+  const [filtersBySubjects, setFiltersBySubjects] = useState(['all']);
+
   // Available filters
-  const filtersBySubjects = ['all', 'math', 'physics', 'sociology'];
+  React.useEffect(() => {
+    if (subjects)
+      setFiltersBySubjects(['all', ...subjects.map((sub) => sub.name)]);
+  }, [subjects]);
 
   const selectFilter = (subject: any) => {
     setCurrentSubject(subject);
   };
 
-  // Menu accordion animations
+  const { menuAnimation: filterMenuAnimation } = useMenuAnimation();
   React.useLayoutEffect(() => {
-    if (filterMenuRef.current) {
-      let menuContainer = filterMenuRef.current;
-      menuContainer.style.transition = '';
-      let rect = menuContainer.getBoundingClientRect();
-
-      // Remember start height
-      let startHeight = rect.height;
-
-      menuContainer.style.height = isFilterOn ? 'auto' : '0';
-      rect = menuContainer.getBoundingClientRect();
-
-      // Remember end height
-      let endHeight = rect.height;
-
-      // Set to start height
-      menuContainer.style.height = `${startHeight}px`;
-
-      requestAnimationFrame(() => {
-        // Move to end height
-        menuContainer.style.height = `${endHeight}px`;
-        menuContainer.style.transition = 'height 0.3s';
-      });
-    }
-  }, [isFilterOn]);
+    filterMenuAnimation(filterMenuRef, isFilterOn);
+  }, [filterMenuAnimation, isFilterOn]);
 
   if (isLoading) return <div>Loading...</div>;
   if (!data) return <div>No lessons...</div>;
-
-  console.log(data);
 
   return (
     <StyledContainer>
@@ -120,6 +103,7 @@ export const LessonsContainer = () => {
         </div>
         <FilterGroup>
           {filtersBySubjects.map((filterName, i) => {
+            console.log(filterName);
             return (
               <Button key={i} onClick={() => selectFilter(filterName)}>
                 <FormattedMessage id={`subjects.${filterName}`} />

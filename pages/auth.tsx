@@ -1,29 +1,17 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { withAuth } from '@components';
 import { Loader } from '@components/icons';
-import { useUserContext } from '@hooks';
+import { useHomeRedirect } from '@hooks/useHomeRedirect';
 
 const AuthRedirect: NextPage = () => {
-  const { user } = useUserContext();
-  const router = useRouter();
+  const redirect = useHomeRedirect();
 
-  React.useEffect(() => {
-    switch (user?.role) {
-      case 'student':
-        router.push('/student/home');
-        break;
-      case 'tutor':
-        router.push('/tutor/home');
-        break;
-      default:
-        break;
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user]);
+  useEffect(() => {
+    redirect();
+  }, [redirect]);
 
   return (
     <div>

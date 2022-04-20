@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import React, { useRef, useState } from 'react';
+import React, { useLayoutEffect, useRef, useState } from 'react';
 
 import { BsPersonCircle } from 'react-icons/bs';
 import { GiHamburgerMenu } from 'react-icons/gi';
@@ -7,7 +7,7 @@ import { HiOutlineSwitchVertical } from 'react-icons/hi';
 import { FormattedMessage } from 'react-intl';
 
 import { Button, CustomLink, HeaderContainer } from '@components';
-import { useLogout } from '@hooks';
+import { useLogout, useMenuAnimation } from '@hooks';
 
 import {
   Clickable,
@@ -41,58 +41,14 @@ export const StudentsNavbar = () => {
     setMenuOpen(false);
   };
 
-  // Menu accordion animations
-  React.useLayoutEffect(() => {
-    if (menuRef.current) {
-      let menuContainer = menuRef.current;
-      menuContainer.style.transition = '';
-      let rect = menuContainer.getBoundingClientRect();
+  // Animations for navbar hamburger menu and profile menu
+  const { menuAnimation: navbarMenuAnimation } = useMenuAnimation();
+  const { menuAnimation: profileMenuAnimation } = useMenuAnimation();
 
-      // Remember start height
-      let startHeight = rect.height;
-
-      menuContainer.style.height = isMenuOpen ? 'auto' : '0';
-      rect = menuContainer.getBoundingClientRect();
-
-      // Remember end height
-      let endHeight = rect.height;
-
-      // Set to start height
-      menuContainer.style.height = `${startHeight}px`;
-
-      requestAnimationFrame(() => {
-        // Move to end height
-        menuContainer.style.height = `${endHeight}px`;
-        menuContainer.style.transition = 'height 0.3s';
-      });
-    }
-  }, [isMenuOpen]);
-
-  React.useLayoutEffect(() => {
-    if (profileRef.current) {
-      let profileMenuContainer = profileRef.current;
-      profileMenuContainer.style.transition = '';
-      let rect = profileMenuContainer.getBoundingClientRect();
-
-      // Remember start height
-      let startHeight = rect.height;
-
-      profileMenuContainer.style.height = isProfileOpen ? 'auto' : '0';
-      rect = profileMenuContainer.getBoundingClientRect();
-
-      // Remember end height
-      let endHeight = rect.height;
-
-      // Set to start height
-      profileMenuContainer.style.height = `${startHeight}px`;
-
-      requestAnimationFrame(() => {
-        // Move to end height
-        profileMenuContainer.style.height = `${endHeight}px`;
-        profileMenuContainer.style.transition = 'height 0.3s';
-      });
-    }
-  }, [isProfileOpen]);
+  useLayoutEffect(() => {
+    navbarMenuAnimation(menuRef, isMenuOpen);
+    profileMenuAnimation(profileRef, isProfileOpen);
+  }, [isMenuOpen, isProfileOpen, navbarMenuAnimation, profileMenuAnimation]);
 
   return (
     <HeaderContainer>

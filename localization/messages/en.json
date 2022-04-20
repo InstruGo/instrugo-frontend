@@ -54,6 +54,12 @@
   "subjects.physics": "physics",
   "subjects.chemistry": "chemistry",
   "subjects.sociology": "sociology",
+  "subjects.english": "english",
+  "subjects.geography": "geography",
+  "subjects.biology": "biology",
+  "subjects.history": "history",
+  "subjects.IT": "IT",
+  "subjects.latin": "latin",
 
   "button.createRequest": "New request",
   "newRequest.description": "New Request",

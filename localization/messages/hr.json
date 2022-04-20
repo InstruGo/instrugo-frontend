@@ -51,6 +51,12 @@
   "subjects.physics": "fizika",
   "subjects.chemistry": "kemija",
   "subjects.sociology": "sociologija",
+  "subjects.english": "engleski",
+  "subjects.geography": "geografija",
+  "subjects.biology": "biologija",
+  "subjects.history": "povijest",
+  "subjects.IT": "IT",
+  "subjects.latin": "latinski",
 
   "button.createRequest": "Stvorite novi zahtjev",
 
