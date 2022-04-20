@@ -80,6 +80,10 @@
   "lessonDetails.description": "Detalji instrukcija",
   "lessonDetails.cancelLesson": "Otkaži instrukcije",
 
+  "profile.phoneNumberMissing": "Nije postavljen",
+  "profile.aboutMe": "O meni",
+  "profile.saveChanges": "Spremi promjene",
+
   "lang.hr": "hr",
   "lang.en": "en"
 }

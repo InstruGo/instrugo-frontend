@@ -103,7 +103,6 @@ export const LessonsContainer = () => {
         </div>
         <FilterGroup>
           {filtersBySubjects.map((filterName, i) => {
-            console.log(filterName);
             return (
               <Button key={i} onClick={() => selectFilter(filterName)}>
                 <FormattedMessage id={`subjects.${filterName}`} />

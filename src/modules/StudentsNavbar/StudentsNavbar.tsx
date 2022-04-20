@@ -115,7 +115,7 @@ export const StudentsNavbar = () => {
 
             <OppenedProfileMenu ref={profileRef}>
               <NavLink style={{ margin: '20px 15px' }}>
-                <CustomLink href="/student/profile">Profile</CustomLink>
+                <CustomLink href="/profile">Profile</CustomLink>
               </NavLink>
               <NavLink
                 onClick={() => logout.mutate()}

@@ -11,5 +11,5 @@ export * from './RequestsContainer/RequestsContainer';
 export * from './PublicRequestsContainer/PublicRequestsContainer';
 export * from './PublicRequestDetails/PublicRequestDetails';
 export * from './TutorsNavbar/TutorsNavbar';
-export * from './Profile/Profile';
+export * from './PrivateProfile/PrivateProfile';
 export * from './LessonDetails/LessonDetails';

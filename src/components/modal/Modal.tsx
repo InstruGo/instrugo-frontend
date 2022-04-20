@@ -5,12 +5,15 @@ import { IoIosCloseCircle } from 'react-icons/io';
 import { ModalBackground, ModalBody, ModalClose } from './styles';
 
 interface ModalProps {
-  children: React.ReactChild | React.ReactChild[];
   shouldShow: boolean;
   closeAction?: () => void;
 }
 
-export const Modal = ({ children, shouldShow, closeAction }: ModalProps) => {
+export const Modal = ({
+  children,
+  shouldShow,
+  closeAction,
+}: React.PropsWithChildren<ModalProps>) => {
   return (
     <>
       {shouldShow && (

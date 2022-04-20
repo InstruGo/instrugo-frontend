@@ -1,13 +1,14 @@
 import type { NextPage } from 'next';
 import React from 'react';
 
+import { withAuth } from '@components';
 import { useUserContext } from '@hooks';
-import { Profile } from '@modules';
+import { PrivateProfile } from '@modules';
 
 const ProfilePage: NextPage = () => {
   const { user } = useUserContext();
 
-  return <Profile user={user} />;
+  return <PrivateProfile user={user} />;
 };
 
-export default ProfilePage;
+export default withAuth(ProfilePage);

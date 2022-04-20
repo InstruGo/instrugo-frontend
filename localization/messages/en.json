@@ -79,6 +79,10 @@
   "lessonDetails.description": "Lesson details",
   "lessonDetails.cancelLesson": "Cancel lesson",
 
+  "profile.phoneNumberMissing": "Not set",
+  "profile.aboutMe": "About me",
+  "profile.saveChanges": "Save changes",
+
   "lang.hr": "hr",
   "lang.en": "en"
 }
