@@ -1,6 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import React, { useState } from 'react';
+import { useRouter } from 'next/router';
+import React from 'react';
 
 import { withAuth } from '@components';
 import {
@@ -10,7 +11,6 @@ import {
   StudentsNavbar,
 } from '@modules';
 import { styled } from 'styles/stitches.config';
-import { useRouter } from 'next/router';
 
 const PageLayout = styled('div', {
   padding: '20px',

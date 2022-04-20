@@ -3,9 +3,10 @@ import React from 'react';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
+import { IoCheckmarkCircle } from 'react-icons/io5';
 import { FormattedMessage } from 'react-intl';
 
-import { Input } from '@components';
+import { CustomLink, Input } from '@components';
 import { Loader } from '@components/icons';
 import { useLogin } from '@hooks';
 import { LoginFormInputs, loginFormSchema } from '@types';
@@ -66,16 +67,17 @@ export const LoginForm = () => {
 
         <NeedAnAccount>
           <FormattedMessage id="login.needAnAccount" />
-          <Link href="/register">
-            <a>
-              <FormattedMessage id="button.register" />
-            </a>
-          </Link>
+          <CustomLink href="/register">
+            <FormattedMessage id="button.register" />
+          </CustomLink>
         </NeedAnAccount>
 
         <LoaderContainer>
           {loginUser.isLoading && (
             <Loader fill="#10434E" width="40px" height="40px" />
+          )}
+          {loginUser.isSuccess && (
+            <IoCheckmarkCircle fill="#23b067" size="40px" />
           )}
         </LoaderContainer>
       </LoginFormContainer>

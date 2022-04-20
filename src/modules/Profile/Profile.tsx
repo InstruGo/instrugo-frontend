@@ -28,7 +28,7 @@ export const Profile = ({ user }: { user: OptionalUser }) => {
       <StudentsNavbar />
       <StyledContent>
         <ProfileCard>
-          <Button style={{ position: 'absolute' }}>
+          <Button style={{ position: 'absolute', top: '10px', right: '10px' }}>
             <AiOutlineEdit />
           </Button>
 

@@ -8,6 +8,7 @@ export const StyledAppName = styled('div', {
   fontSize: '30px',
   fontWeight: 'bold',
   letterSpacing: '1px',
+  userSelect: 'none',
 });
 
 export const SimpleHeader = () => {

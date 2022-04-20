@@ -4,7 +4,7 @@ import { useIntl } from 'react-intl';
 
 import { styled } from 'styles/stitches.config';
 
-import { ErrorsContainer, StyledInput } from './styles';
+import { ErrorsContainer, InputContainer, StyledInput } from './styles';
 
 type StitchesComponentProps = React.ComponentPropsWithoutRef<
   typeof StyledInput
@@ -19,12 +19,6 @@ interface InputProps extends StitchesComponentProps {
   isNumber?: boolean;
 }
 
-const ErrorWrapper = styled('div', {
-  'input:focus + div': {
-    display: 'none',
-  },
-});
-
 export const Input = ({
   name,
   register,
@@ -32,6 +26,7 @@ export const Input = ({
   placeholderMsgId,
   defaultValueMsgId,
   isNumber,
+  style,
   ...rest
 }: InputProps) => {
   const intl = useIntl();
@@ -43,7 +38,7 @@ export const Input = ({
   }, [errors]);
 
   return (
-    <Fragment>
+    <InputContainer style={style}>
       <StyledInput
         placeholder={
           placeholderMsgId
@@ -61,12 +56,14 @@ export const Input = ({
             : undefined
         }
         {...(register && name && register(name, { valueAsNumber: isNumber }))}
-        {...rest}
         onChange={() => dismissError(true)}
+        {...rest}
       />
-      <ErrorsContainer>
-        {errors && !isErrorDismissed && <span>{errors.message}</span>}
-      </ErrorsContainer>
-    </Fragment>
+      {errors && (
+        <ErrorsContainer>
+          {!isErrorDismissed && <span>{errors.message}</span>}
+        </ErrorsContainer>
+      )}
+    </InputContainer>
   );
 };

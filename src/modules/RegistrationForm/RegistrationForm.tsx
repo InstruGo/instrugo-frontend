@@ -4,7 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { FormattedMessage } from 'react-intl';
 
-import { Input } from '@components';
+import { CustomLink, Input } from '@components';
 
 import { useRegister } from '../../hooks/useRegister';
 import {
@@ -92,11 +92,9 @@ export const RegistrationForm = () => {
 
         <AlreadyHaveAccount>
           <FormattedMessage id="registration.alreadyHaveAnAccount" />
-          <Link href="/login">
-            <a>
-              <FormattedMessage id="button.login" />
-            </a>
-          </Link>
+          <CustomLink href="/login">
+            <FormattedMessage id="button.login" />
+          </CustomLink>
         </AlreadyHaveAccount>
       </RegistrationFormContainer>
     </>
