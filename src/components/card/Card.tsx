@@ -16,6 +16,8 @@ import {
   CardStyle,
   ModalButton,
 } from './styles';
+import { LessonDetails } from '@modules';
+import { useRouter } from 'next/router';
 
 type StitchesComponentProps = React.ComponentPropsWithoutRef<typeof CardStyle>;
 
@@ -28,6 +30,8 @@ export interface CardProps extends StitchesComponentProps {
   grade?: number;
   educationLvl?: string;
   dateAndTime?: string;
+  forTutors?: boolean;
+  isModal?: boolean;
 }
 
 export const Card = ({
@@ -39,15 +43,39 @@ export const Card = ({
   grade,
   educationLvl,
   dateAndTime,
+  color,
+  forTutors,
+  isModal,
 }: CardProps) => {
-  const [showRequestDetailsModal, setRequestDetailsModal] =
-    React.useState(false);
+  const [showLessonDetailsModal, setLessonDetailsModal] = React.useState(false);
+  const router = useRouter();
   return (
     <>
       <Fragment>
-        <ModalButton onClick={() => setRequestDetailsModal(true)}>
-          <CardStyle>
-            <CardHeader>{subject}</CardHeader>
+        <ModalButton
+          onClick={() => {
+            if (isModal) {
+              setLessonDetailsModal(true);
+            } else {
+              if (forTutors) {
+                router.push({
+                  pathname: '/tutor/request-details/[id]',
+                  query: { id: index },
+                });
+              } else {
+                router.push({
+                  pathname: '/student/request-details/[id]',
+                  query: { id: index },
+                });
+              }
+            }
+          }}
+        >
+          <CardStyle style={{ borderColor: color }}>
+            <CardHeader style={{ backgroundColor: color, borderColor: color }}>
+              {subject}
+            </CardHeader>
+            {/* <CardBody style={{ backgroundColor: color + '20' }}> */}
             <CardBody>
               {dateAndTime && (
                 <CardItem>
@@ -83,16 +111,14 @@ export const Card = ({
                 </CardItem>
               )}
             </CardBody>
-            <Modal
-              shouldShow={showRequestDetailsModal}
-              closeAction={() => setRequestDetailsModal(false)}
-            >
-              <div style={{ marginRight: '30px' }}>
-                <RequestDetails id={index} />
-              </div>
-            </Modal>
           </CardStyle>
         </ModalButton>
+        <Modal
+          shouldShow={showLessonDetailsModal}
+          closeAction={() => setLessonDetailsModal(false)}
+        >
+          <LessonDetails id={index} />
+        </Modal>
       </Fragment>
     </>
   );

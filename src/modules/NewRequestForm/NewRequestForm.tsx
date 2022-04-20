@@ -4,10 +4,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { FormattedMessage } from 'react-intl';
 
-import { Input } from '@components';
-import { Button, TimeSlot } from '@components';
-import { useNewRequest, useSubjects, useUserContext } from '@hooks';
-
+import { useNewRequest, useSubjects } from '@hooks';
+import { Button, TimeSlot, Input } from '@components';
 import {
   NewRequestFormInputs,
   newRequestFormSchema,
@@ -32,7 +30,6 @@ interface NewRequestProps {
 
 export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
   const { data, isLoading } = useSubjects();
-  const { user } = useUserContext();
   const newRequest = useNewRequest();
   const {
     register,
@@ -108,13 +105,15 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
       );
 
       const end = new Date(year, month, day, hourEnd, minutesEnd, secondsEnd);
+      setValue(`lessonTimeFrames.${i}`, {
+        startTime: start.toISOString(),
+        endTime: end.toISOString(),
+      });
       lessonTimeFrames.push({
         startTime: start.toISOString(),
         endTime: end.toISOString(),
       });
     }
-
-    setValue('lessonTimeFrames', lessonTimeFrames);
   };
 
   const onDateChange = (
@@ -146,17 +145,6 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
 
     updateTimeSlots(tempSlots);
   };
-
-  const [timeSlotList, updateTimeSlotList] = useState([
-    <li key={0}>
-      <TimeSlot
-        onDateChange={onDateChange}
-        index={0}
-        onDestroy={destroyTimeSlot}
-      />
-    </li>,
-  ]);
-
   const onAddTimeSlot = () => {
     let tempSlots = timeSlots;
     setSlotCount(slotCount + 1);
@@ -168,18 +156,6 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
     });
 
     updateTimeSlots(tempSlots);
-    let tempSlotList = timeSlotList;
-    tempSlotList.push(
-      <li key={slotCount + 1}>
-        <TimeSlot
-          onDateChange={onDateChange}
-          index={slotCount + 1}
-          onDestroy={destroyTimeSlot}
-        />
-      </li>
-    );
-
-    updateTimeSlotList(tempSlotList);
   };
 
   updateLessonTimeFrames(timeSlots);
@@ -187,12 +163,6 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
   setValue('subjectId', subjectId);
 
   if (isLoading) return <div>Loading...</div>;
-
-  if (user) {
-    setValue('userId', user.id);
-  } else {
-    setValue('userId', 0);
-  }
 
   return (
     <>
@@ -285,12 +255,26 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
               isNumber={true}
             />
           </FormColumn>
-
-          <FormColumn>
+          <FormColumn style={{ maxWidth: '450px' }}>
             <InputDescription>
               <FormattedMessage id="newRequestForm.availableDates" />:
             </InputDescription>
-            <ul>{timeSlotList}</ul>
+            <ul>
+              {timeSlots.map((timeSlot) => {
+                return (
+                  <li key={timeSlot.index}>
+                    <TimeSlot
+                      date={timeSlot.date}
+                      startTime={timeSlot.startTime}
+                      endTime={timeSlot.endTime}
+                      onDateChange={onDateChange}
+                      index={timeSlot.index}
+                      onDestroy={destroyTimeSlot}
+                    />
+                  </li>
+                );
+              })}
+            </ul>
             <Button type="button" onClick={onAddTimeSlot}>
               + <FormattedMessage id="newRequestForm.newTime" />
             </Button>

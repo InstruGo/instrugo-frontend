@@ -1,12 +1,13 @@
-import { CSS } from '@stitches/react';
-
 import { styled } from 'styles/stitches.config';
 
-export const RequestDetailsContainer = styled('div', {
+export const LessonDetailsContainer = styled('div', {
   display: 'flex',
-  alignItems: 'center',
+  justifyContent: 'center',
   flexDirection: 'column',
+  height: '80%',
+  width: '95%',
   padding: '$4',
+  color: '#0E353D',
   'input + input': {
     marginTop: '$8',
   },
@@ -14,28 +15,17 @@ export const RequestDetailsContainer = styled('div', {
     paddingTop: '$2',
   },
 });
-export const StyledHr = styled('hr', {
-  width: '100%',
-  borderTop: 'solid 1px #10434E',
-});
-export const ResponsesHeader = styled('div', {
-  display: 'flex',
-  alignItems: 'flex-start',
-  width: '100%',
-  padding: '$5 0px $5 0px',
-});
-
-export const CalendarContainer = styled('div', {
-  maxWidth: '1400px',
-  padding: '$10',
-  color: '#328fab',
-});
 export const Title = styled('div', {
   fontWeight: 'normal',
   fontSize: '20px',
   color: '#10434E',
   whiteSpace: 'nowrap',
   padding: '$0 $5 $0 $2',
+  width: '100%',
+  textAlign: 'left',
+  paddingLeft: '$5',
+  paddingBottom: '$5',
+  textSize: '$lg',
 });
 export const FieldDescription = styled('div', {
   alignItems: 'flex-start',
@@ -45,10 +35,9 @@ export const FieldDescription = styled('div', {
   maxWidth: '400px',
   fontSize: '26',
   font: 'Roboto',
-  color: '#0E353D',
 });
 
-export const RequestDetailsText = styled('div', {
+export const LessonDetailsText = styled('div', {
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'center',
@@ -59,13 +48,19 @@ export const RequestDetailsText = styled('div', {
   fontSize: '$xl2',
   textAlign: 'center',
 });
-
+export const StyledVr = styled('div', {
+  color: '#0E353D',
+  backgroundColor: '#0E353D',
+  height: '500px',
+});
 export const Column = styled('div', {
-  alignItems: 'flex-start',
+  justifyContent: 'center',
+  alignItems: 'center',
   display: 'flex',
   flexDirection: 'column',
   width: '100%',
   maxWidth: '450px',
+  border: '5px',
   variants: {
     variant: {
       normal: {
@@ -82,9 +77,11 @@ export const Column = styled('div', {
   },
 });
 export const Row = styled('div', {
-  justifyContent: 'space-evenly',
+  flexGrow: '0',
+  justifyContent: 'flex-start',
+  alignItems: 'center',
   display: 'flex',
-  width: '100%',
+  width: '50%',
   variants: {
     variant: {
       normal: {
@@ -100,4 +97,11 @@ export const Row = styled('div', {
   defaultVariants: {
     variant: 'normal',
   },
+});
+
+export const CardText = styled('i', {
+  display: 'flex',
+  padding: '4px',
+  fontWeight: 'bold',
+  fontSize: '$lg',
 });

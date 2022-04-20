@@ -5,6 +5,7 @@
 
   "button.register": "Register",
   "button.login": "Log In",
+  "button.createResponse": "Create response",
 
   "confirmPassword": "Confirm password",
 
@@ -70,8 +71,13 @@
   "newRequestForm.educationLevel": "Education level",
   "newRequestForm.additionalInfo": "Additional Information",
 
+  "newResponseForm.price": "Price",
+
   "requestDetails.description": "Request details",
   "requestDetails.tutorResponses": "Tutor responses",
+  "requestDetails.responseForm": "Your response",
+  "lessonDetails.description": "Lesson details",
+  "lessonDetails.cancelLesson": "Cancel lesson",
 
   "lang.hr": "hr",
   "lang.en": "en"

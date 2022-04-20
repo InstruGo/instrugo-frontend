@@ -1,14 +1,14 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import React, { useState } from 'react';
+import { useRouter } from 'next/router';
+import React from 'react';
 
-import { Modal, withAuth } from '@components';
+import { withAuth } from '@components';
 import {
   LessonsContainer,
   NewRequestButton,
   Rewards,
   StudentsNavbar,
-  NewRequestForm,
 } from '@modules';
 import { styled } from 'styles/stitches.config';
 
@@ -20,8 +20,7 @@ const PageLayout = styled('div', {
 });
 
 const StudentHomepage: NextPage = () => {
-  const [showNewRequestModal, setNewRequestModal] = useState(false);
-
+  const router = useRouter();
   return (
     <div>
       <Head>
@@ -38,14 +37,7 @@ const StudentHomepage: NextPage = () => {
         <LessonsContainer />
       </PageLayout>
 
-      <NewRequestButton onClick={() => setNewRequestModal(true)} />
-
-      <Modal
-        shouldShow={showNewRequestModal}
-        closeAction={() => setNewRequestModal(false)}
-      >
-        <NewRequestForm onFinish={() => setNewRequestModal(false)} />
-      </Modal>
+      <NewRequestButton onClick={() => router.push('/student/new-request')} />
     </div>
   );
 };

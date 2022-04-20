@@ -2,9 +2,11 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 
 import { withAuth } from '@components';
-import { StudentsNavbar, RequestsContainer } from '@modules';
+import { StudentsNavbar, RequestsContainer, NewRequestButton } from '@modules';
+import { useRouter } from 'next/router';
 
-const Requestspage: NextPage = () => {
+const RequestsPage: NextPage = () => {
+  const router = useRouter();
   return (
     <div>
       <Head>
@@ -13,8 +15,9 @@ const Requestspage: NextPage = () => {
 
       <StudentsNavbar />
       <RequestsContainer />
+      <NewRequestButton onClick={() => router.push('/student/new-request')} />
     </div>
   );
 };
 
-export default withAuth(Requestspage);
+export default withAuth(RequestsPage);

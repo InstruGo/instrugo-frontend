@@ -11,3 +11,5 @@ export * from './useLesson';
 export * from './usePublicRequests';
 export * from './useLessonRequests';
 export * from './useMenuAnimation';
+export * from './useNewTutorResponse';
+export * from './useCancelLesson';

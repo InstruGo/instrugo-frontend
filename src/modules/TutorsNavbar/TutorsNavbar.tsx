@@ -45,13 +45,13 @@ export const TutorsNavbar = () => {
           />
 
           <OppenedMenu style={{ display: isMenuOpen ? 'flex' : 'none' }}>
-            <NavLink>
+            <NavLink onClick={() => router.push('/tutor/home')}>
               <FormattedMessage id={'nav.home'} />
             </NavLink>
             <NavLink>
               <FormattedMessage id={'nav.myLessons'} />
             </NavLink>
-            <NavLink>
+            <NavLink onClick={() => router.push('/tutor/requests')}>
               <FormattedMessage id={'nav.publicRequests'} />
             </NavLink>
             <NavLink onClick={() => router.push('/tutor/responses')}>
@@ -61,7 +61,7 @@ export const TutorsNavbar = () => {
         </HamburgerMenu>
 
         <RightNavSection>
-          <Button variant="switch">
+          <Button variant="switch" onClick={() => router.push('/student/home')}>
             <HiOutlineSwitchVertical size={'25px'} />
             <div className="text">
               <FormattedMessage id="nav.switch.tutor" />

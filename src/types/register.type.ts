@@ -8,6 +8,7 @@ export const registerFormSchema = z
     password: z.string().min(6, 'Password must contain at least 6 characters'),
     confirmPassword: z.string().min(1, 'Confirm the password'),
     phone: z.string().optional(),
+    isTutor: z.boolean().default(false),
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: "Passwords don't match",
