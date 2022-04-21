@@ -1,7 +1,16 @@
 {
   "appName": "InstruGo",
 
-  "landingPage.description": "Dobro došli na Instrugo!",
+  "landingPage.generalInfo": "Pronađi pomoć za učenje za bilo koju razinu studija.",
+  "landingPage.createAnAccount": "Stvori korisnički račun i započni korištenje naših usluga.",
+  "landingPage.joinButton": "Pridruži se",
+  "landingPage.phase1": "Stvori zahtjev",
+  "landingPage.phase2": "Odaberi instruktora",
+  "landingPage.phase3": "Organiziraj raspored",
+  "landingPage.phase4": "Ocijeni svoje iskustvo",
+  "landingPage.lessons": "Pronađi pomoć u traženom području. Organiziraj svoje instrukcije i prati svoj raspored.",
+  "landingPage.quality": "Cilj nam je omogućiti najbolje moguće iskustvo i kvalitetu instrukcija.",
+  "landingPage.ratings": "Pogledaj ocjene drugih instruktora i ocjenjuj svoje iskustvo.",
 
   "button.register": "Registriraj se",
   "button.login": "Prijavi se",
@@ -83,6 +92,13 @@
   "profile.phoneNumberMissing": "Nije postavljen",
   "profile.aboutMe": "O meni",
   "profile.saveChanges": "Spremi promjene",
+
+  "footer.support": "Podrška",
+  "footer.contact": "Kontakt",
+  "footer.faq": "FAQ",
+  "footer.privacy": "Politika privatnosti",
+  "footer.terms": "Odredbe korištenja",
+  "footer.copyright": "© 2022 InstruGo, d.o.o.",
 
   "lang.hr": "hr",
   "lang.en": "en"

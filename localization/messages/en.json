@@ -1,7 +1,16 @@
 {
   "appName": "InstruGo",
 
-  "landingPage.description": "Welcome to Instrugo!",
+  "landingPage.generalInfo": "Find help with your learning process for any level of education.",
+  "landingPage.createAnAccount": "Create an account and start using our app.",
+  "landingPage.joinButton": "Join now",
+  "landingPage.phase1": "Request a lesson",
+  "landingPage.phase2": "Select a tutor",
+  "landingPage.phase3": "Organize your schedule",
+  "landingPage.phase4": "Learn and rate the experience",
+  "landingPage.lessons": "Search for a helping hand in your field of interest. Organize your lessons and keep track of your schedule.",
+  "landingPage.quality": "We strive to give you the best possible experience and quality of education.",
+  "landingPage.ratings": "See other tutors' ratings and give your opinion after each lesson.",
 
   "button.register": "Register",
   "button.login": "Log In",
@@ -82,6 +91,13 @@
   "profile.phoneNumberMissing": "Not set",
   "profile.aboutMe": "About me",
   "profile.saveChanges": "Save changes",
+
+  "footer.support": "Support",
+  "footer.contact": "Contact us",
+  "footer.faq": "FAQ",
+  "footer.privacy": "Privacy Policy",
+  "footer.terms": "Terms of use",
+  "footer.copyright": "© 2022 InstruGo, LLC",
 
   "lang.hr": "hr",
   "lang.en": "en"
