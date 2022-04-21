@@ -1,3 +1,4 @@
+import { Hidden } from '@mui/material';
 import { styled } from 'styles/stitches.config';
 
 export const StyledHeader = styled('div', {
@@ -18,11 +19,13 @@ export const StyledNavbar = styled('div', {
 });
 
 export const NavLink = styled('div', {
-  color: 'white',
-  fontSize: '$xl',
-  fontWeight: 'bold',
-  cursor: 'pointer',
-  '&:hover': { textDecoration: 'underline' },
+  '> a': {
+    color: 'white',
+    fontSize: '$lg',
+    fontWeight: 'bold',
+    cursor: 'pointer',
+    '&:hover': { color: '#a4e4ed' },
+  },
 });
 
 export const HamburgerMenu = styled('div', {
@@ -33,14 +36,23 @@ export const HamburgerMenu = styled('div', {
   alignItems: 'center',
 });
 
+export const Clickable = styled('div', {
+  '&:hover': {
+    cursor: 'pointer',
+  },
+});
+
 export const OppenedMenu = styled('div', {
   position: 'absolute',
-  top: '80px',
-  left: 0,
+  zIndex: 1,
+  top: '83px',
+  left: '3px',
+  borderRadius: '5px',
   backgroundColor: 'rgb(16, 67, 78)',
-  borderTop: 'solid 1px rgb(7, 36, 43)',
   flexDirection: 'column',
-  padding: '20px',
+  overflow: 'hidden',
+  height: '0',
+
   'div + div': {
     marginTop: '20px',
   },
@@ -49,11 +61,27 @@ export const OppenedMenu = styled('div', {
 export const RightNavSection = styled('div', { display: 'flex' });
 
 export const ProfileLink = styled('div', {
-  backgroundColor: 'white',
   width: '40px',
-  borderRadius: '50px',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
   cursor: 'pointer',
+  marginLeft: '15px',
+});
+
+export const OppenedProfileMenu = styled('div', {
+  position: 'absolute',
+  zIndex: 1,
+  top: '83px',
+  right: '3px',
+  backgroundColor: 'rgb(16, 67, 78)',
+  borderRadius: '10px',
+  flexDirection: 'column',
+  boxSizing: 'border-box',
+  overflow: 'hidden',
+  height: '0',
+
+  'div + div': {
+    marginTop: '20px',
+  },
 });

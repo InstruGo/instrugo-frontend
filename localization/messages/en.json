@@ -1,6 +1,8 @@
 {
   "appName": "InstruGo",
 
+  "landingPage.description": "Welcome to Instrugo!",
+
   "button.register": "Register",
   "button.login": "Log In",
   "button.createResponse": "Create response",
@@ -46,15 +48,28 @@
   "lessons.requests": "Requests",
 
   "filter": "Filter",
+  "filter.subjects": "By subjects",
 
-  "button.createRequest": "Create new request",
+  "subjects.all": "all",
+  "subjects.math": "math",
+  "subjects.physics": "physics",
+  "subjects.chemistry": "chemistry",
+  "subjects.sociology": "sociology",
+  "subjects.english": "english",
+  "subjects.geography": "geography",
+  "subjects.biology": "biology",
+  "subjects.history": "history",
+  "subjects.IT": "IT",
+  "subjects.latin": "latin",
+
+  "button.createRequest": "New request",
   "newRequest.description": "New Request",
   "newRequestForm.grade": "Grade",
-  "newRequestForm.description": "Description",
-  "newRequestForm.availableDates": "Available Time Slots",
+  "newRequestForm.availableDates": "Available time slots",
   "newRequestForm.budget": "Budget",
   "newRequestForm.newTime": "Add time slot",
-  "newRequestForm.educationLevel": "Education Level",
+  "newRequestForm.educationLevel": "Education level",
+  "newRequestForm.additionalInfo": "Additional Information",
 
   "newResponseForm.price": "Price",
 
@@ -84,6 +99,9 @@
   "lessons.titles.educationLevel": "Education lvl",
   "lessons.titles.grade": "Grade",
   "lessons.titles.rating": "Rating",
+  "profile.phoneNumberMissing": "Not set",
+  "profile.aboutMe": "About me",
+  "profile.saveChanges": "Save changes",
 
   "lang.hr": "hr",
   "lang.en": "en"

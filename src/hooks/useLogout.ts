@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 
-import { useMutation } from 'react-query';
+import { useMutation, useQueryClient } from 'react-query';
 
 import { useUserContext } from '@hooks';
 
@@ -10,6 +10,7 @@ export const useLogout = () => {
   const { setUser } = useUserContext();
   const router = useRouter();
   const axios = useAxios();
+  const queryClient = useQueryClient();
 
   const logout = async () => {
     const data = axios.post('/auth/logout');
@@ -20,6 +21,7 @@ export const useLogout = () => {
   return useMutation(logout, {
     onSuccess: () => {
       setUser(null);
+      queryClient.invalidateQueries('profile');
       router.push('/login');
     },
     onError: (error) => {

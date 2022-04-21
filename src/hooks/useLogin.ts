@@ -19,7 +19,7 @@ export const useLogin = () => {
 
   return useMutation(login, {
     onSuccess: () => {
-      let returnUrl = '/';
+      let returnUrl = '/auth';
       if (router.query.returnUrl) {
         returnUrl = router.query.returnUrl as string;
       }

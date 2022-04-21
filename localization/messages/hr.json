@@ -1,6 +1,8 @@
 {
   "appName": "InstruGo",
 
+  "landingPage.description": "Dobro došli na Instrugo!",
+
   "button.register": "Registriraj se",
   "button.login": "Prijavi se",
   "button.createResponse": "Odgovori na zahtjev",
@@ -43,6 +45,19 @@
   "lessons.requests": "Zahtjevi",
 
   "filter": "Filtar",
+  "filter.subjects": "Po predmetima",
+
+  "subjects.all": "all",
+  "subjects.math": "matematika",
+  "subjects.physics": "fizika",
+  "subjects.chemistry": "kemija",
+  "subjects.sociology": "sociologija",
+  "subjects.english": "engleski",
+  "subjects.geography": "geografija",
+  "subjects.biology": "biologija",
+  "subjects.history": "povijest",
+  "subjects.IT": "IT",
+  "subjects.latin": "latinski",
 
   "button.createRequest": "Stvorite novi zahtjev",
 
@@ -85,6 +100,9 @@
   "lessons.titles.educationLevel": "Razina obrazovanja",
   "lessons.titles.grade": "Razred",
   "lessons.titles.rating": "Ocjena",
+  "profile.phoneNumberMissing": "Nije postavljen",
+  "profile.aboutMe": "O meni",
+  "profile.saveChanges": "Spremi promjene",
 
   "lang.hr": "hr",
   "lang.en": "en"

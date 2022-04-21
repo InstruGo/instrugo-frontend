@@ -17,7 +17,7 @@ export const ModalBody = styled('div', {
   backgroundColor: 'white',
   boxSizing: 'border-box',
   overflow: 'auto',
-  margin: '$20 $5',
+  margin: '$24 $2 $5',
   width: '$xl',
   borderRadius: '10px',
   padding: '10px',
@@ -46,8 +46,8 @@ export const ModalBody = styled('div', {
 
 export const ModalClose = styled('div', {
   position: 'absolute',
-  top: '10px',
-  right: '10px',
+  top: '15px',
+  right: '15px',
   cursor: 'pointer',
   backgroundColor: 'white',
 });

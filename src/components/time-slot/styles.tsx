@@ -1,47 +1,26 @@
 import { styled } from 'styles/stitches.config';
 
+export const FormRow = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+  width: '100%',
+  maxWidth: '1400px',
+
+  '@bp2': {
+    flexDirection: 'row',
+  },
+});
+
 export const FormColumn = styled('div', {
   alignItems: 'flex-start',
   display: 'flex',
   flexDirection: 'column',
   width: '100%',
   maxWidth: '450px',
-  variants: {
-    variant: {
-      normal: {
-        padding: '$2 $4',
-      },
-      smallPadding: {
-        padding: '$2 $1',
-      },
-    },
-  },
-
-  defaultVariants: {
-    variant: 'normal',
-  },
 });
-export const FormRow = styled('div', {
-  justifyContent: 'center',
-  alignItems: 'center',
-  display: 'flex',
-  width: '100%',
-  maxWidth: '1400px',
-  variants: {
-    variant: {
-      normal: {
-        padding: '$2 $5',
-      },
-      smallPadding: {
-        padding: '$2 $0',
-      },
-    },
-  },
 
-  defaultVariants: {
-    variant: 'normal',
-  },
-});
 export const DestroyButton = styled('button', {
   border: '0',
   fontFamily: 'inherit',

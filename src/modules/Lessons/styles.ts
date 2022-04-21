@@ -18,9 +18,29 @@ export const StyledHr = styled('hr', {
 export const ControlPanel = styled('div', {
   display: 'flex',
   marginTop: '20px',
+  justifyContent: 'space-between',
   alignItems: 'center',
   '> div + div': {
     marginLeft: '20px',
+  },
+});
+
+export const FilterContainer = styled('div', {
+  marginTop: '10px',
+  backgroundColor: '#eee',
+  borderRadius: '10px',
+  overflow: 'hidden',
+  height: '0',
+});
+
+export const FilterGroup = styled('div', {
+  display: 'flex',
+  padding: '10px',
+  '> button': {
+    textTransform: 'capitalize',
+  },
+  '> button + button': {
+    marginLeft: '10px',
   },
 });
 
@@ -38,4 +58,13 @@ export const TableBody = styled('div', {
   flexWrap: 'wrap',
   padding: '0 $6',
   gap: '$6',
+  justifyContent: 'center',
+  width: '300px',
+  margin: '40px auto 0',
+
+  '@bp1': {
+    margin: '40px 0 0',
+    width: 'auto',
+    justifyContent: 'flex-start',
+  },
 });

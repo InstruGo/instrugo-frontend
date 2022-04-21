@@ -8,6 +8,7 @@ export const AuthDescription = styled('div', {
   color: 'rgb(47, 147, 160)',
   fontWeight: 'bold',
   fontSize: '$lg',
+  userSelect: 'none',
   '@bp1': {
     justifyContent: 'center',
   },

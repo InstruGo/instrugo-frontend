@@ -7,7 +7,7 @@ export const RegistrationFormContainer = styled('form', {
   alignItems: 'center',
   flexDirection: 'column',
   padding: '$8',
-  'div + input': {
+  'div + div': {
     marginTop: '$6',
   },
   '@bp1': {
@@ -21,6 +21,7 @@ export const LabeledCheckbox = styled('div', {
   justifyContent: 'center',
   alignItems: 'center',
   marginTop: '$12',
+  userSelect: 'none',
 });
 
 export const RegisterButton: CSS = {
@@ -35,5 +36,10 @@ export const RegisterButton: CSS = {
 export const AlreadyHaveAccount = styled('div', {
   marginTop: '10px',
   fontSize: '13px',
-  a: { marginLeft: '5px', color: '#3FB2C1' },
+  a: {
+    marginLeft: '5px',
+    color: '#3FB2C1',
+  },
+  'a:hover': { textDecoration: 'underline' },
+  userSelect: 'none',
 });
