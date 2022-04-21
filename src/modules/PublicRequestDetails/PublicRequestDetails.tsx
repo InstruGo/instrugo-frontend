@@ -1,14 +1,17 @@
-import { FormattedMessage } from 'react-intl';
-import Paper from '@mui/material/Paper';
+import { useRouter } from 'next/router';
+
 import { ViewState } from '@devexpress/dx-react-scheduler';
 import {
   Scheduler,
-  DayView,
   WeekView,
   Appointments,
 } from '@devexpress/dx-react-scheduler-material-ui';
+import Paper from '@mui/material/Paper';
+import { FormattedMessage } from 'react-intl';
 
 import { useLesson } from '@hooks';
+import { NewTutorResponseForm } from '@modules/TutorResponseForm/TutorResponseForm';
+
 import {
   RequestDetailsContainer,
   RequestDetailsText,
@@ -19,12 +22,11 @@ import {
   Title,
   CalendarContainer,
 } from './styles';
-import { NewTutorResponseForm } from '@modules/TutorResponseForm/TutorResponseForm';
-import { useRouter } from 'next/router';
 
 interface RequestDetailsProps {
   id: number;
 }
+
 export const PublicRequestDetails = (props: RequestDetailsProps) => {
   const { data, isLoading } = useLesson(props.id);
   const router = useRouter();

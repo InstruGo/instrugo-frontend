@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import React from 'react';
+import React, { SyntheticEvent } from 'react';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
@@ -30,6 +30,10 @@ export const LoginForm = () => {
 
   const onSubmit = (data: LoginFormInputs) => {
     loginUser.mutate(data);
+  };
+
+  const handleKeyPress = (e: SyntheticEvent<HTMLInputElement>) => {
+    console.log(e);
   };
 
   return (
@@ -63,6 +67,7 @@ export const LoginForm = () => {
           type="submit"
           variant="authSubmit"
           placeholderMsgId="button.login"
+          onKeyPress={handleKeyPress}
         />
 
         <NeedAnAccount>

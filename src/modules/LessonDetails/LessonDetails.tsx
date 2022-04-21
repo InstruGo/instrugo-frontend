@@ -1,22 +1,21 @@
-import { FormattedMessage } from 'react-intl';
 import { AiOutlineClockCircle, AiOutlineDollar } from 'react-icons/ai';
-import { MdOutlineMeetingRoom, MdOutlineLocationOn } from 'react-icons/md';
 import { BsPerson, BsBookHalf } from 'react-icons/bs';
 import { FaGraduationCap } from 'react-icons/fa';
+import { MdOutlineMeetingRoom, MdOutlineLocationOn } from 'react-icons/md';
+import { FormattedMessage } from 'react-intl';
 
+import { Button } from '@components';
 import { useLesson } from '@hooks';
+import { useCancelLesson } from '@hooks/useCancelLesson';
+
 import {
   LessonDetailsContainer,
   LessonDetailsText,
   Row,
   Column,
-  FieldDescription,
-  StyledVr,
   Title,
   CardText,
 } from './styles';
-import { Button } from '@components';
-import { useCancelLesson } from '@hooks/useCancelLesson';
 
 interface LessonDetailsProps {
   id: number;

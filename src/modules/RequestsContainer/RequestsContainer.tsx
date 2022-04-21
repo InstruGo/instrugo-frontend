@@ -1,6 +1,6 @@
 import { FormattedMessage } from 'react-intl';
 
-import { Button, Card } from '@components';
+import { Card } from '@components';
 import { useLessonRequests } from '@hooks';
 
 import {

@@ -1,8 +1,6 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
 import { useIntl } from 'react-intl';
-
-import { styled } from 'styles/stitches.config';
 
 import { ErrorsContainer, InputContainer, StyledInput } from './styles';
 

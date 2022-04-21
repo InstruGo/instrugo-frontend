@@ -1,10 +1,14 @@
+import { useRouter } from 'next/router';
 import React from 'react';
-import { CgProfile } from 'react-icons/cg';
+
 import { BsStarHalf, BsCheck2 } from 'react-icons/bs';
+import { CgProfile } from 'react-icons/cg';
 import { ImCross } from 'react-icons/im';
 import { FormattedMessage } from 'react-intl';
 
 import { Button } from '@components';
+import { useResolveLesson } from '@hooks/useResolveLesson';
+
 import {
   ItemRow,
   ResponseContainer,
@@ -12,8 +16,6 @@ import {
   FieldDescription,
   StyledHr,
 } from './styles';
-import { useResolveLesson } from '@hooks/useResolveLesson';
-import { useRouter } from 'next/router';
 
 export interface ResponseProps {
   index: number;

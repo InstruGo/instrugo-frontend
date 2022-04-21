@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import React, { Fragment } from 'react';
 
 import { AiOutlineClockCircle } from 'react-icons/ai';
@@ -6,7 +7,7 @@ import { GoBook } from 'react-icons/go';
 import { MdOutlineMeetingRoom, MdOutlineLocationOn } from 'react-icons/md';
 
 import { Modal } from '@components';
-import { RequestDetails } from '@modules';
+import { LessonDetails } from '@modules';
 
 import {
   CardText,
@@ -16,8 +17,6 @@ import {
   CardStyle,
   ModalButton,
 } from './styles';
-import { LessonDetails } from '@modules';
-import { useRouter } from 'next/router';
 
 type StitchesComponentProps = React.ComponentPropsWithoutRef<typeof CardStyle>;
 

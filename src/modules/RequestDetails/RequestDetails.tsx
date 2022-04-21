@@ -1,14 +1,15 @@
-import { FormattedMessage } from 'react-intl';
-import Paper from '@mui/material/Paper';
 import { ViewState } from '@devexpress/dx-react-scheduler';
 import {
   Scheduler,
-  DayView,
   WeekView,
   Appointments,
 } from '@devexpress/dx-react-scheduler-material-ui';
+import Paper from '@mui/material/Paper';
+import { FormattedMessage } from 'react-intl';
 
+import { TutorResponse } from '@components';
 import { useLesson } from '@hooks';
+
 import {
   RequestDetailsContainer,
   RequestDetailsText,
@@ -20,15 +21,18 @@ import {
   Title,
   CalendarContainer,
 } from './styles';
-import { TutorResponse } from '@components';
 
 interface RequestDetailsProps {
   id: number;
 }
+
 export const RequestDetails = (props: RequestDetailsProps) => {
   const { data, isLoading } = useLesson(props.id);
+
   if (isLoading) return <div>Loading...</div>;
+
   const schedulerData: any = [];
+
   data?.lessonTimeFrames.map(
     (timeFrame: { startTime: string; endTime: string }) => {
       const start = new Date(timeFrame.startTime);
@@ -40,6 +44,7 @@ export const RequestDetails = (props: RequestDetailsProps) => {
       });
     }
   );
+
   const currentDate = schedulerData[0].startDate;
 
   return (

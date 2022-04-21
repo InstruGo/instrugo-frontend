@@ -15,6 +15,7 @@ export const LessonDetailsContainer = styled('div', {
     paddingTop: '$2',
   },
 });
+
 export const Title = styled('div', {
   fontWeight: 'normal',
   fontSize: '20px',
@@ -27,6 +28,7 @@ export const Title = styled('div', {
   paddingBottom: '$5',
   textSize: '$lg',
 });
+
 export const FieldDescription = styled('div', {
   alignItems: 'flex-start',
   display: 'flex',
@@ -48,11 +50,13 @@ export const LessonDetailsText = styled('div', {
   fontSize: '$xl2',
   textAlign: 'center',
 });
+
 export const StyledVr = styled('div', {
   color: '#0E353D',
   backgroundColor: '#0E353D',
   height: '500px',
 });
+
 export const Column = styled('div', {
   justifyContent: 'center',
   alignItems: 'center',
@@ -76,6 +80,7 @@ export const Column = styled('div', {
     variant: 'normal',
   },
 });
+
 export const Row = styled('div', {
   flexGrow: '0',
   justifyContent: 'flex-start',
