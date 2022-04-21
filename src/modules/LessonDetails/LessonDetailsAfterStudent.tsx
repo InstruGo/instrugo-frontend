@@ -25,7 +25,7 @@ interface LessonDetailsAfterProps {
   id: number;
   ratingId: number;
 }
-export const LessonDetailsAfter = (props: LessonDetailsAfterProps) => {
+export const LessonDetailsAfterStudent = (props: LessonDetailsAfterProps) => {
   const { data, isLoading } = useLesson(props.id);
   const rating = useRating(props.ratingId);
   const {

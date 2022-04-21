@@ -4,11 +4,8 @@ import { styled } from '../../../styles/stitches.config';
 
 export const TableStyle = styled('div', {
   width: '100%',
-  // height: '100%',
   border: '2px solid #10434E',
   borderRadius: '10px',
-  // display: 'flex',
-  // flexDirection: 'column',
 });
 export const TableHeader = styled('tr', {
   color: 'white',

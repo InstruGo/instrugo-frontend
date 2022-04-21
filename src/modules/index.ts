@@ -13,4 +13,5 @@ export * from './PublicRequestDetails/PublicRequestDetails';
 export * from './TutorsNavbar/TutorsNavbar';
 export * from './Profile/Profile';
 export * from './LessonDetails/LessonDetails';
-export * from './LessonDetails/LessonDetailsAfter';
+export * from './LessonDetails/LessonDetailsAfterStudent';
+export * from './LessonDetails/LessonDetailsAfterTutor';
