@@ -8,3 +8,5 @@ export * from './withAuth';
 export * from './custom-link/CustomLink';
 export * from './card/Card';
 export * from './tutor-response/TutorResponse';
+export * from './image-with-placeholder/ImageWithPlaceholder';
+export * from './rating/Rating';
