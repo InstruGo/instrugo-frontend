@@ -1,3 +1,4 @@
+import { Rating } from './rating.types';
 import { TutorResponse } from './tutor-response';
 
 export type Lesson = {
@@ -20,4 +21,5 @@ export type Lesson = {
   finalPrice: number;
   lessonTimeFrames: any;
   tutorResponses: TutorResponse[];
+  rating: Rating;
 };

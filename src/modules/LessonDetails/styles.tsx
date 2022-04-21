@@ -1,6 +1,6 @@
 import { styled } from 'styles/stitches.config';
 
-export const LessonDetailsContainer = styled('div', {
+export const LessonDetailsContainer = styled('form', {
   display: 'flex',
   justifyContent: 'center',
   flexDirection: 'column',
@@ -104,4 +104,17 @@ export const CardText = styled('i', {
   padding: '4px',
   fontWeight: 'bold',
   fontSize: '$lg',
+});
+
+export const TextBox = styled('textarea', {
+  height: '70px',
+  width: '100%',
+  maxWidth: '370px',
+  fontSize: '$base',
+  color: '#10434E',
+  border: 'none',
+  padding: '$2 $4',
+  borderRadius: '10px',
+  boxShadow: '0 0 2px #aaa',
+  transition: 'box-shadow 0.4s',
 });

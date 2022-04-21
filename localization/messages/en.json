@@ -64,6 +64,13 @@
   "lessonDetails.description": "Lesson details",
   "lessonDetails.cancelLesson": "Cancel lesson",
 
+  "lessonDetailsAfter.total": "Total",
+  "lessonDetailsAfter.rating": "Rating",
+  "lessonDetailsAfter.pay": "PAY",
+  "lessonDetailsAfter.submit": "Submit rating",
+  "lessonDetailsAfter.review": "Review",
+  "lessonDetailsAfter.submitR": "Submit review",
+
   "lang.hr": "hr",
   "lang.en": "en"
 }

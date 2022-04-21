@@ -96,9 +96,6 @@
   dependencies:
     "@date-io/core" "^2.13.1"
 
-<<<<<<< HEAD
-"@date-io/moment@^2.11.0":
-=======
 "@date-io/moment@^1.3.11":
   version "1.3.13"
   resolved "https://registry.yarnpkg.com/@date-io/moment/-/moment-1.3.13.tgz#56c2772bc4f6675fc6970257e6033e7a7c2960f0"
@@ -106,8 +103,7 @@
   dependencies:
     "@date-io/core" "^1.3.13"
 
-"@date-io/moment@^2.13.1":
->>>>>>> new request from changes and request details changes
+"@date-io/moment@^2.11.0":
   version "2.13.1"
   resolved "https://registry.yarnpkg.com/@date-io/moment/-/moment-2.13.1.tgz#122a51e4bdedf71ff3babb264427737dc022c1e6"
   integrity sha512-XX1X/Tlvl3TdqQy2j0ZUtEJV6Rl8tOyc5WOS3ki52He28Uzme4Ro/JuPWTMBDH63weSWIZDlbR7zBgp3ZA2y1A==
@@ -370,12 +366,6 @@
     prop-types "^15.7.2"
     react-is "^17.0.2"
 
-<<<<<<< HEAD
-"@mui/lab@^5.0.0-alpha.77":
-  version "5.0.0-alpha.77"
-  resolved "https://registry.yarnpkg.com/@mui/lab/-/lab-5.0.0-alpha.77.tgz#0ef32c33f9e55b1a84443d8b011f490503e9d477"
-  integrity sha512-N+XVPqb3/IAH2i6oz2rk0sPogxOws9FNG045702z6cGL/F9lccOxF+3B12GxrHgKt9dmdeGV+BYDIf0bv2W+Eg==
-=======
 "@mui/icons-material@^5.6.1":
   version "5.6.1"
   resolved "https://registry.yarnpkg.com/@mui/icons-material/-/icons-material-5.6.1.tgz#421e2b73992349abb07f8f03074d7e56e20bf7ba"
@@ -383,11 +373,10 @@
   dependencies:
     "@babel/runtime" "^7.17.2"
 
-"@mui/lab@^5.0.0-alpha.74":
-  version "5.0.0-alpha.74"
-  resolved "https://registry.yarnpkg.com/@mui/lab/-/lab-5.0.0-alpha.74.tgz#8744c8a45c3107abbb65d45931725fd878e94b04"
-  integrity sha512-a3spQ3uWzlHVVBLcHqqMXPOwto39EVojaV3+3x102kTwPU6ZT1CsU+nI6+EiGCjZ7hW09gxjhUWxiU3fow9UWA==
->>>>>>> new request from changes and request details changes
+"@mui/lab@^5.0.0-alpha.77":
+  version "5.0.0-alpha.77"
+  resolved "https://registry.yarnpkg.com/@mui/lab/-/lab-5.0.0-alpha.77.tgz#0ef32c33f9e55b1a84443d8b011f490503e9d477"
+  integrity sha512-N+XVPqb3/IAH2i6oz2rk0sPogxOws9FNG045702z6cGL/F9lccOxF+3B12GxrHgKt9dmdeGV+BYDIf0bv2W+Eg==
   dependencies:
     "@babel/runtime" "^7.17.2"
     "@mui/base" "5.0.0-alpha.76"

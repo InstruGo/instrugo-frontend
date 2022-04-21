@@ -54,6 +54,7 @@ export const Card = ({
       <Fragment>
         <ModalButton
           onClick={() => {
+            setLessonDetailsModal(true);
             if (isModal) {
               setLessonDetailsModal(true);
             } else {

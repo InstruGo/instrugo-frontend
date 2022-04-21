@@ -10,7 +10,6 @@ export const useLesson = (id: number) => {
 
   const getLesson = async (): Promise<Lesson> => {
     const response = await axios.get(`/lessons/${id}`);
-
     return response.data;
   };
 
