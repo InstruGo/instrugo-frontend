@@ -6,4 +6,5 @@ export * from './modal/Modal';
 export * from './time-slot/TimeSlot';
 export * from './withAuth';
 export * from './card/Card';
+export * from './table/Table';
 export * from './tutor-response/TutorResponse';

@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import { FormattedMessage } from 'react-intl';
 
 import { useNewRequest, useSubjects } from '@hooks';
-import { Button, TimeSlot, Input } from "@components";
+import { Button, TimeSlot, Input } from '@components';
 import {
   NewRequestFormInputs,
   newRequestFormSchema,

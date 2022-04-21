@@ -25,8 +25,17 @@ export const ControlPanel = styled('div', {
 });
 
 export const LessonsBody = styled('div', {
+  marginTop: '15px',
+  display: 'flex',
+  flexWrap: 'wrap',
+  padding: '0 $6',
+  gap: '$6',
+});
+
+export const TableBody = styled('div', {
   marginTop: '20px',
   display: 'flex',
   flexWrap: 'wrap',
+  padding: '0 $6',
   gap: '$6',
 });

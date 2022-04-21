@@ -71,6 +71,20 @@
   "lessonDetailsAfter.submit": "Ocijeni",
   "lessonDetailsAfter.review": "???",
   "lessonDetailsAfter.submitR": "Pošalji",
+  "lessons.1st_group": "Danas",
+  "lessons.2nd_group": "U sljedećih 7 dana",
+  "lessons.3rd_group": "Nedavno završeno",
+  "lessons.table": "Završeno",
+
+  "lessons.titles.subject": "Predmet",
+  "lessons.titles.dateAndTime": "Datum i vrijeme",
+  "lessons.titles.subfield": "Područje",
+  "lessons.titles.price": "Cijena",
+  "lessons.titles.location": "Lokacija",
+  "lessons.titles.meetingType": "Tip sastanka",
+  "lessons.titles.educationLevel": "Razina obrazovanja",
+  "lessons.titles.grade": "Razred",
+  "lessons.titles.rating": "Ocjena",
 
   "lang.hr": "hr",
   "lang.en": "en"

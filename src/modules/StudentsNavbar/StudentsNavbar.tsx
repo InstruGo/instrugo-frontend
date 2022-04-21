@@ -30,7 +30,7 @@ export const StudentsNavbar = () => {
           <NavLink onClick={() => router.push('/student/home')}>
             <FormattedMessage id={'nav.home'} />
           </NavLink>
-          <NavLink>
+          <NavLink onClick={() => router.push('/student/lessons')}>
             <FormattedMessage id={'nav.myLessons'} />
           </NavLink>
           <NavLink onClick={() => router.push('/student/requests')}>

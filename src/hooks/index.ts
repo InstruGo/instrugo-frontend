@@ -12,3 +12,4 @@ export * from './usePublicRequests';
 export * from './useLessonRequests';
 export * from './useNewTutorResponse';
 export * from './useCancelLesson';
+export * from './useCompletedLessons';
