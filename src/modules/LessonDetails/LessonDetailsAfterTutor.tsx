@@ -1,12 +1,14 @@
-import { FormattedMessage } from 'react-intl';
-import { AiOutlineClockCircle, AiOutlineDollar } from 'react-icons/ai';
-import { BsPerson } from 'react-icons/bs';
-import { Rating } from '@mui/material';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-import { Button, Input } from '@components';
+import { AiOutlineClockCircle, AiOutlineDollar } from 'react-icons/ai';
+import { BsPerson } from 'react-icons/bs';
+import { FormattedMessage } from 'react-intl';
 
+import { Button, Input } from '@components';
 import { useLesson } from '@hooks';
+import { useFeedback } from '@hooks/useFeedback';
+import { NewTutorFeedbackSchema, NewTutorFeedbackInputs } from '@types';
+
 import {
   LessonDetailsContainer,
   LessonDetailsText,
@@ -16,11 +18,6 @@ import {
   CardText,
   TextBox,
 } from './styles';
-import { useCancelLesson } from '@hooks/useCancelLesson';
-import { useState } from 'react';
-import { useRouter } from 'next/router';
-import { newTutorFeedbackSchema, newTutorFeedbackInputs } from '@types';
-import { useFeedback } from '@hooks/useFeedback';
 
 interface LessonDetailsAfterProps {
   id: number;
@@ -35,11 +32,11 @@ export const LessonDetailsAfterTutor = (props: LessonDetailsAfterProps) => {
     handleSubmit,
     setValue,
     formState: { errors },
-  } = useForm<newTutorFeedbackInputs>({
-    resolver: zodResolver(newTutorFeedbackSchema),
+  } = useForm<NewTutorFeedbackInputs>({
+    resolver: zodResolver(NewTutorFeedbackSchema),
   });
 
-  const onSubmit = async (data: newTutorFeedbackInputs) => {
+  const onSubmit = async (data: NewTutorFeedbackInputs) => {
     feedback.mutate(data);
   };
   if (isLoading) return <div>Loading...</div>;
