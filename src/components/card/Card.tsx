@@ -7,7 +7,11 @@ import { GoBook } from 'react-icons/go';
 import { MdOutlineMeetingRoom, MdOutlineLocationOn } from 'react-icons/md';
 
 import { Modal } from '@components';
-import { LessonDetails } from '@modules';
+import {
+  LessonDetails,
+  LessonDetailsAfterStudent,
+  LessonDetailsAfterTutor,
+} from '@modules';
 
 import {
   CardText,
@@ -30,7 +34,7 @@ export interface CardProps extends StitchesComponentProps {
   educationLvl?: string;
   dateAndTime?: string;
   forTutors?: boolean;
-  isModal?: boolean;
+  lessonStatus?: string;
 }
 
 export const Card = ({
@@ -44,7 +48,7 @@ export const Card = ({
   dateAndTime,
   color,
   forTutors,
-  isModal,
+  lessonStatus,
 }: CardProps) => {
   const [showLessonDetailsModal, setLessonDetailsModal] = React.useState(false);
   const router = useRouter();
@@ -53,7 +57,7 @@ export const Card = ({
       <Fragment>
         <ModalButton
           onClick={() => {
-            if (isModal) {
+            if (lessonStatus !== 'Request') {
               setLessonDetailsModal(true);
             } else {
               if (forTutors) {
@@ -116,7 +120,13 @@ export const Card = ({
           shouldShow={showLessonDetailsModal}
           closeAction={() => setLessonDetailsModal(false)}
         >
-          <LessonDetails id={index} />
+          {lessonStatus === 'Pending' && forTutors && (
+            <LessonDetailsAfterTutor id={index} ratingId={1} />
+          )}
+          {lessonStatus === 'Pending' && !forTutors && (
+            <LessonDetailsAfterStudent id={index} ratingId={1} />
+          )}
+          {lessonStatus === 'Completed' && <LessonDetails id={index} />}
         </Modal>
       </Fragment>
     </>

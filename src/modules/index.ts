@@ -13,4 +13,6 @@ export * from './PublicRequestDetails/PublicRequestDetails';
 export * from './TutorsNavbar/TutorsNavbar';
 export * from './PrivateProfile/PrivateProfile';
 export * from './LessonDetails/LessonDetails';
+export * from './LessonDetails/LessonDetailsAfterStudent';
+export * from './LessonDetails/LessonDetailsAfterTutor';
 export * from './LandingPage/LandingPage';

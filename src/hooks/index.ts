@@ -13,3 +13,4 @@ export * from './useLessonRequests';
 export * from './useMenuAnimation';
 export * from './useNewTutorResponse';
 export * from './useCancelLesson';
+export * from './useCompletedLessons';

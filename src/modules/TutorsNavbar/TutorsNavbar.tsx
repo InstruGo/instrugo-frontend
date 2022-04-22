@@ -28,7 +28,7 @@ export const TutorsNavbar = () => {
           <NavLink onClick={() => router.push('/tutor/home')}>
             <FormattedMessage id={'nav.home'} />
           </NavLink>
-          <NavLink>
+          <NavLink onClick={() => router.push('/tutor/lessons')}>
             <FormattedMessage id={'nav.myLessons'} />
           </NavLink>
           <NavLink onClick={() => router.push('/tutor/requests')}>
@@ -50,7 +50,7 @@ export const TutorsNavbar = () => {
             <NavLink onClick={() => router.push('/tutor/home')}>
               <FormattedMessage id={'nav.home'} />
             </NavLink>
-            <NavLink>
+            <NavLink onClick={() => router.push('/tutor/home')}>
               <FormattedMessage id={'nav.myLessons'} />
             </NavLink>
             <NavLink onClick={() => router.push('/tutor/requests')}>

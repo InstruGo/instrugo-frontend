@@ -28,7 +28,7 @@ export const LessonDetails = (props: LessonDetailsProps) => {
   };
   if (isLoading) return <div>Loading...</div>;
   if (!(data?.finalStartTime && data?.finalEndTime))
-    return <div>Loading...</div>;
+    return <div>Lesson time not yet arranged...</div>;
 
   const lessonStart = new Date(data?.finalStartTime);
   const lessonEnd = new Date(data?.finalEndTime);

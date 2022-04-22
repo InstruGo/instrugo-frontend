@@ -7,6 +7,7 @@ export * from './time-slot/TimeSlot';
 export * from './withAuth';
 export * from './custom-link/CustomLink';
 export * from './card/Card';
+export * from './table/Table';
 export * from './tutor-response/TutorResponse';
 export * from './image-with-placeholder/ImageWithPlaceholder';
 export * from './rating/Rating';
