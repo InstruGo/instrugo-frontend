@@ -1,3 +1,6 @@
+import { AiFillGift } from 'react-icons/ai';
+import { FormattedMessage } from 'react-intl';
+
 import {
   ProgressBarContainer,
   RewardsBody,
@@ -7,9 +10,6 @@ import {
   StyledHr,
   Title,
 } from './styles';
-
-import { AiFillGift } from 'react-icons/ai';
-import { FormattedMessage } from 'react-intl';
 
 export const Rewards = () => {
   return (

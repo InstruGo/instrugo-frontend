@@ -1,4 +1,3 @@
-import { Hidden } from '@mui/material';
 import { styled } from 'styles/stitches.config';
 
 export const StyledHeader = styled('div', {

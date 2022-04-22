@@ -1,22 +1,23 @@
-import { useForm } from 'react-hook-form';
 import { useState } from 'react';
+
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Input } from '@components';
+import { useForm } from 'react-hook-form';
 import { FormattedMessage } from 'react-intl';
 
+import { Input } from '@components';
+import { Button, TimeSlot } from '@components';
 import { useNewTutorResponse } from '@hooks';
 
+import {
+  NewTutorResponseFormInputs,
+  newTutorResponseFormSchema,
+} from '../../types/new-tutor-response.type';
 import {
   ResponseFormContainer,
   InputDescription,
   FormColumn,
   FormRow,
 } from './styles';
-import {
-  NewTutorResponseFormInputs,
-  newTutorResponseFormSchema,
-} from '../../types/new-tutor-response.type';
-import { Button, TimeSlot } from '@components';
 
 interface NewResponseProps {
   onFinish?: () => void;

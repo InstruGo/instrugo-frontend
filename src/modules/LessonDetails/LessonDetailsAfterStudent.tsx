@@ -18,7 +18,7 @@ import {
 import { Button, Input } from '@components';
 import { useCancelLesson } from '@hooks/useCancelLesson';
 import { useState } from 'react';
-import { NewStudentRatingInputs, newStudentRatingSchema } from '@types';
+import { NewStudentRatingInputs, NewStudentRatingSchema } from '@types';
 import { useRating } from '@hooks/useRating';
 
 interface LessonDetailsAfterProps {
@@ -35,7 +35,7 @@ export const LessonDetailsAfterStudent = (props: LessonDetailsAfterProps) => {
     getValues,
     formState: { errors },
   } = useForm<NewStudentRatingInputs>({
-    resolver: zodResolver(newStudentRatingSchema),
+    resolver: zodResolver(NewStudentRatingSchema),
   });
 
   const onSubmit = async (data: NewStudentRatingInputs) => {
@@ -43,14 +43,15 @@ export const LessonDetailsAfterStudent = (props: LessonDetailsAfterProps) => {
   };
 
   if (isLoading) return <div>Loading...</div>;
-  // if (!(data?.finalStartTime && data?.finalEndTime))
-  //   return <div>this lesson time not yet arranged...</div>;
+  if (!(data?.finalStartTime && data?.finalEndTime))
+    return <div>this lesson time not yet arranged...</div>;
 
-  // const lessonStart = new Date(data?.finalStartTime);
-  // const lessonEnd = new Date(data?.finalEndTime);
-  // let diffHours = lessonEnd.getHours() - lessonStart.getHours();
-  // const diffMinutes = lessonEnd.getMinutes() - lessonStart.getMinutes();
-  // if (diffMinutes < 0) diffHours--;
+  const lessonStart = new Date(data?.finalStartTime);
+  const lessonEnd = new Date(data?.finalEndTime);
+  let diffHours = lessonEnd.getHours() - lessonStart.getHours();
+  const diffMinutes = lessonEnd.getMinutes() - lessonStart.getMinutes();
+  if (diffMinutes < 0) diffHours--;
+  const totalHours = diffHours + diffMinutes / 60;
   return (
     <>
       <LessonDetailsText>
@@ -64,16 +65,12 @@ export const LessonDetailsAfterStudent = (props: LessonDetailsAfterProps) => {
             <Row>
               <BsPerson />
               <CardText>
-                {/* {data?.tutor.firstName + '  ' + data?.tutor.lastName} */}
+                {data?.tutor.firstName + '  ' + data?.tutor.lastName}
               </CardText>
             </Row>
             <Row>
               <AiOutlineClockCircle />
-              <CardText>
-                {/* {`${lessonStart.getDate()}\/${lessonStart.getMonth()}\/${lessonStart.getFullYear()}`}
-                {',   '}
-                {`${lessonStart.getHours()}:${lessonStart.getMinutes()} - ${lessonEnd.getHours()}:${lessonEnd.getMinutes()}`} */}
-              </CardText>
+              <CardText>{totalHours + ' h'} </CardText>
             </Row>
             <Row>
               <AiOutlineDollar />
@@ -88,7 +85,10 @@ export const LessonDetailsAfterStudent = (props: LessonDetailsAfterProps) => {
               }}
             ></Row>
             <Row>
-              <FormattedMessage id="lessonDetailsAfter.total" />: 240kn
+              <CardText>
+                <FormattedMessage id="lessonDetailsAfter.total" />:{' '}
+                {totalHours * data?.finalPrice + ' kn'}
+              </CardText>
             </Row>
             <Row style={{ justifyContent: 'center' }}>
               <Button style={{ backgroundColor: '#0E353D', width: '80px' }}>

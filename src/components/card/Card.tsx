@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import React, { Fragment } from 'react';
 
 import { AiOutlineClockCircle } from 'react-icons/ai';
@@ -6,7 +7,11 @@ import { GoBook } from 'react-icons/go';
 import { MdOutlineMeetingRoom, MdOutlineLocationOn } from 'react-icons/md';
 
 import { Modal } from '@components';
-import { RequestDetails } from '@modules';
+import {
+  LessonDetails,
+  LessonDetailsAfterStudent,
+  LessonDetailsAfterTutor,
+} from '@modules';
 
 import {
   CardText,
@@ -16,8 +21,6 @@ import {
   CardStyle,
   ModalButton,
 } from './styles';
-import { LessonDetails } from '@modules';
-import { useRouter } from 'next/router';
 
 type StitchesComponentProps = React.ComponentPropsWithoutRef<typeof CardStyle>;
 
@@ -31,7 +34,7 @@ export interface CardProps extends StitchesComponentProps {
   educationLvl?: string;
   dateAndTime?: string;
   forTutors?: boolean;
-  isModal?: boolean;
+  lessonStatus?: string;
 }
 
 export const Card = ({
@@ -45,7 +48,7 @@ export const Card = ({
   dateAndTime,
   color,
   forTutors,
-  isModal,
+  lessonStatus,
 }: CardProps) => {
   const [showLessonDetailsModal, setLessonDetailsModal] = React.useState(false);
   const router = useRouter();
@@ -54,8 +57,7 @@ export const Card = ({
       <Fragment>
         <ModalButton
           onClick={() => {
-            setLessonDetailsModal(true);
-            if (isModal) {
+            if (lessonStatus !== 'Request') {
               setLessonDetailsModal(true);
             } else {
               if (forTutors) {
@@ -118,7 +120,13 @@ export const Card = ({
           shouldShow={showLessonDetailsModal}
           closeAction={() => setLessonDetailsModal(false)}
         >
-          <LessonDetails id={index} />
+          {lessonStatus === 'Pending' && forTutors && (
+            <LessonDetailsAfterTutor id={index} ratingId={1} />
+          )}
+          {lessonStatus === 'Pending' && !forTutors && (
+            <LessonDetailsAfterStudent id={index} ratingId={1} />
+          )}
+          {lessonStatus === 'Completed' && <LessonDetails id={index} />}
         </Modal>
       </Fragment>
     </>

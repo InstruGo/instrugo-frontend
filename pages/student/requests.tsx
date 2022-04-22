@@ -1,9 +1,9 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 
 import { withAuth } from '@components';
 import { StudentsNavbar, RequestsContainer, NewRequestButton } from '@modules';
-import { useRouter } from 'next/router';
 
 const RequestsPage: NextPage = () => {
   const router = useRouter();

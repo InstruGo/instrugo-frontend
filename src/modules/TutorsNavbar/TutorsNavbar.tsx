@@ -1,7 +1,13 @@
-import React from 'react';
-import { FormattedMessage } from 'react-intl';
 import { useRouter } from 'next/router';
+import React from 'react';
+
+import { CgProfile } from 'react-icons/cg';
+import { GiHamburgerMenu } from 'react-icons/gi';
+import { HiOutlineSwitchVertical } from 'react-icons/hi';
+import { FormattedMessage } from 'react-intl';
+
 import { Button, HeaderContainer } from '@components';
+
 import {
   HamburgerMenu,
   NavLink,
@@ -11,10 +17,6 @@ import {
   StyledHeader,
   StyledNavbar,
 } from './styles';
-
-import { CgProfile } from 'react-icons/cg';
-import { HiOutlineSwitchVertical } from 'react-icons/hi';
-import { GiHamburgerMenu } from 'react-icons/gi';
 
 export const TutorsNavbar = () => {
   const [isMenuOpen, setMenuOpen] = React.useState(false);

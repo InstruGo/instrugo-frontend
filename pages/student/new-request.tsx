@@ -1,7 +1,8 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { StudentsNavbar, NewRequestForm } from '@modules';
 import { useRouter } from 'next/router';
+
+import { StudentsNavbar, NewRequestForm } from '@modules';
 
 const RequestsPage: NextPage = () => {
   const router = useRouter();

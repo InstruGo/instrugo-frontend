@@ -34,12 +34,7 @@ const StudentHomepage: NextPage = () => {
       <PageLayout>
         <Rewards />
 
-        <LessonsContainer
-          title={'home.lessons'}
-          home={true}
-          cards={true}
-          filter={true}
-        />
+        <LessonsContainer title={'home.lessons'} home cards filter />
       </PageLayout>
 
       <NewRequestButton onClick={() => router.push('/student/new-request')} />

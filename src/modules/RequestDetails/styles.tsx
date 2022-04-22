@@ -14,10 +14,12 @@ export const RequestDetailsContainer = styled('div', {
     paddingTop: '$2',
   },
 });
+
 export const StyledHr = styled('hr', {
   width: '100%',
   borderTop: 'solid 1px #10434E',
 });
+
 export const ResponsesHeader = styled('div', {
   display: 'flex',
   alignItems: 'flex-start',
@@ -30,6 +32,7 @@ export const CalendarContainer = styled('div', {
   padding: '$10',
   color: '#328fab',
 });
+
 export const Title = styled('div', {
   fontWeight: 'normal',
   fontSize: '20px',
@@ -37,6 +40,7 @@ export const Title = styled('div', {
   whiteSpace: 'nowrap',
   padding: '$0 $5 $0 $2',
 });
+
 export const FieldDescription = styled('div', {
   alignItems: 'flex-start',
   display: 'flex',
@@ -81,6 +85,7 @@ export const Column = styled('div', {
     variant: 'normal',
   },
 });
+
 export const Row = styled('div', {
   justifyContent: 'space-evenly',
   display: 'flex',

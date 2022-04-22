@@ -1,7 +1,6 @@
 import { useQuery } from 'react-query';
 
 import { Lesson } from '@types';
-import { useUserContext } from './useUserContext';
 
 import { useAxios } from './useAxios';
 
