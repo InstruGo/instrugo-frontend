@@ -1,5 +1,7 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 
+import { getCssText } from 'styles/stitches.config';
+
 /**
  * This custom document is rendered on the server. Head contains metadata that all pages have in common.
  *
@@ -7,6 +9,8 @@ import Document, { Html, Head, Main, NextScript } from 'next/document';
  */
 export default class CustomDocument extends Document {
   render() {
+    const styles = getCssText();
+
     return (
       <Html>
         <Head>
@@ -24,13 +28,21 @@ export default class CustomDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
             rel="stylesheet"
           />
+
+          <style dangerouslySetInnerHTML={{ __html: styles }} />
         </Head>
 
-        <body>
+        <body id="fuoc">
           <Main />
-        </body>
+          <NextScript />
 
-        <NextScript />
+          <script
+            dangerouslySetInnerHTML={{
+              __html:
+                "document.getElementById('fuoc').style.display = 'block';",
+            }}
+          />
+        </body>
       </Html>
     );
   }
