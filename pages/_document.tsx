@@ -32,16 +32,9 @@ export default class CustomDocument extends Document {
           <style dangerouslySetInnerHTML={{ __html: styles }} />
         </Head>
 
-        <body id="fuoc">
+        <body>
           <Main />
           <NextScript />
-
-          <script
-            dangerouslySetInnerHTML={{
-              __html:
-                "document.getElementById('fuoc').style.display = 'block';",
-            }}
-          />
         </body>
       </Html>
     );
