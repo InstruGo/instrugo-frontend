@@ -28,6 +28,7 @@ export interface LessonsContainerProps extends StitchesComponentProps {
   filter?: boolean;
   cards?: boolean;
   table?: boolean;
+  respCards?: boolean;
 }
 
 export const LessonsContainer = ({
@@ -36,6 +37,7 @@ export const LessonsContainer = ({
   filter,
   cards,
   table,
+  respCards,
 }: LessonsContainerProps) => {
   const [lessonStatus, setLessonStatus] = React.useState('Pending');
   const { data, isLoading } = useLessons(lessonStatus);
@@ -154,6 +156,7 @@ export const LessonsContainer = ({
                 dateAndTime={lesson.lessonTimeFrames[0].startTime}
                 color={lesson.subject.color}
                 lessonStatus={lesson.status}
+                respCard={respCards}
               />
             ))}
         </LessonsBody>

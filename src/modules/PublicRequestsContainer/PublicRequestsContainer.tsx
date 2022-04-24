@@ -30,6 +30,7 @@ export const PublicRequestsContainer = () => {
         {data.map((lesson) => (
           <Card
             key={lesson.id}
+            lessonStatus={lesson.status}
             index={lesson.id}
             subject={lesson.subject.name}
             subfield={lesson.subfield}

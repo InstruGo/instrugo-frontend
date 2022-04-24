@@ -20,6 +20,7 @@ import {
   CardItem,
   CardStyle,
   ModalButton,
+  Row,
 } from './styles';
 
 type StitchesComponentProps = React.ComponentPropsWithoutRef<typeof CardStyle>;
@@ -35,6 +36,7 @@ export interface CardProps extends StitchesComponentProps {
   dateAndTime?: string;
   forTutors?: boolean;
   lessonStatus?: string;
+  respCard?: boolean;
 }
 
 export const Card = ({
@@ -49,6 +51,7 @@ export const Card = ({
   color,
   forTutors,
   lessonStatus,
+  respCard,
 }: CardProps) => {
   const [showLessonDetailsModal, setLessonDetailsModal] = React.useState(false);
   const router = useRouter();
@@ -57,7 +60,7 @@ export const Card = ({
       <Fragment>
         <ModalButton
           onClick={() => {
-            if (lessonStatus !== 'Request') {
+            if (lessonStatus !== 'Requested') {
               setLessonDetailsModal(true);
             } else {
               if (forTutors) {
@@ -112,6 +115,22 @@ export const Card = ({
                   <FaGraduationCap />
                   <CardText>{`${educationLvl}, ${grade}. grade`}</CardText>
                 </CardItem>
+              )}
+              {respCard && (
+                <>
+                  <Row
+                    style={{
+                      backgroundColor: '#0E353D',
+                      height: '2px',
+                      width: '300px',
+                      padding: '0',
+                    }}
+                  ></Row>
+                  <CardItem>
+                    <AiOutlineClockCircle />
+                    <CardText>01.05.2022. 14:50</CardText>
+                  </CardItem>
+                </>
               )}
             </CardBody>
           </CardStyle>
