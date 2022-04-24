@@ -57,7 +57,7 @@ export const Card = ({
       <Fragment>
         <ModalButton
           onClick={() => {
-            if (lessonStatus !== 'Request') {
+            if (lessonStatus !== 'Requested') {
               setLessonDetailsModal(true);
             } else {
               if (forTutors) {

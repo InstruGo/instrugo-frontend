@@ -38,6 +38,7 @@ export const PublicRequestsContainer = () => {
             grade={lesson.grade}
             educationLvl={lesson.level}
             color={lesson.subject.color}
+            lessonStatus={lesson.status}
             forTutors={true}
           />
         ))}
