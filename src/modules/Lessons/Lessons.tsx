@@ -38,7 +38,7 @@ export const LessonsContainer = ({
   table,
 }: LessonsContainerProps) => {
   const [lessonStatus, setLessonStatus] = React.useState('Pending');
-  const { data, isLoading } = useLessons(lessonStatus);
+  const { data, isLoading } = useLessons({ status: lessonStatus });
 
   const [isFilterOn, setFilterOn] = React.useState(false);
   const [currentSubject, setCurrentSubject] = React.useState<string>('all');

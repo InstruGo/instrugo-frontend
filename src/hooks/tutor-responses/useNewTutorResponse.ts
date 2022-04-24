@@ -2,7 +2,7 @@ import { useMutation, useQueryClient } from 'react-query';
 
 import type { NewTutorResponseFormInputs, TutorResponse } from '@types';
 
-import { useAxios } from './useAxios';
+import { useAxios } from '@hooks';
 
 export const useNewTutorResponse = (lessonId: number) => {
   const axios = useAxios();
@@ -10,15 +10,18 @@ export const useNewTutorResponse = (lessonId: number) => {
   const newResponse = async (
     input: NewTutorResponseFormInputs
   ): Promise<TutorResponse> => {
-    const response = await axios.post('/tutor-responses', input);
+    const response = await axios.post(
+      `/tutor-responses/${lessonId}/respond`,
+      input
+    );
     const data = response.data as TutorResponse;
     return data;
   };
 
   return useMutation(newResponse, {
     onSuccess: () => {
-      queryClient.invalidateQueries('upcomingLessons');
-      queryClient.invalidateQueries('lessonRequests');
+      queryClient.invalidateQueries('lessons');
+      queryClient.invalidateQueries('tutorResponses');
       queryClient.invalidateQueries(`lesson${lessonId}`);
     },
     onError: (error) => {

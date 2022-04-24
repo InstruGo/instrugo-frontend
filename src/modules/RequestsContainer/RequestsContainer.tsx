@@ -1,7 +1,7 @@
 import { FormattedMessage } from 'react-intl';
 
 import { Card } from '@components';
-import { useLessonRequests } from '@hooks';
+import { useLessons } from '@hooks';
 
 import {
   RequestsBody,
@@ -12,7 +12,7 @@ import {
 } from './styles';
 
 export const RequestsContainer = () => {
-  const { data, isLoading } = useLessonRequests();
+  const { data, isLoading } = useLessons({ status: 'Requested' });
 
   if (isLoading) return <div>Loading...</div>;
   if (!data) return <div>No requests...</div>;

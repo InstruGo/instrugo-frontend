@@ -1,17 +1,14 @@
-import { useRouter } from 'next/router';
-
 import { useMutation } from 'react-query';
 
 import type { NewStudentRatingInputs, Rating } from '@types';
 
-import { useAxios } from './useAxios';
+import { useAxios } from '@hooks';
 
 export const useRating = (id: number) => {
-  const router = useRouter();
   const axios = useAxios();
 
   const rate = async (input: NewStudentRatingInputs): Promise<Rating> => {
-    const response = await axios.post(`/ratings/rate/${id}`, input);
+    const response = await axios.patch(`/ratings/rate/${id}`, input);
     return response.data as Rating;
   };
 

@@ -1,14 +1,21 @@
 import { z } from 'zod';
 
 export const newTutorResponseFormSchema = z.object({
-  lessonId: z.number().positive(),
   price: z.number().positive(),
-  tutorTimeFrames: z
-    .object({ startTime: z.string(), endTime: z.string() })
-    .array()
-    .nonempty(),
+  tutorTimeFrame: z.object({ startTime: z.string(), endTime: z.string() }),
 });
 
 export type NewTutorResponseFormInputs = z.infer<
   typeof newTutorResponseFormSchema
+>;
+
+export const updateTutorResponseFormSchema = z.object({
+  price: z.number().positive().optional(),
+  tutorTimeFrame: z
+    .object({ startTime: z.string(), endTime: z.string() })
+    .optional(),
+});
+
+export type UpdateTutorResponseFormInputs = z.infer<
+  typeof updateTutorResponseFormSchema
 >;

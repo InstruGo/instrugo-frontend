@@ -4,7 +4,7 @@ import { useMutation } from 'react-query';
 
 import type { LoginFormInputs, LoginResponse } from '@types';
 
-import { useAxios } from './useAxios';
+import { useAxios } from '@hooks';
 
 export const useLogin = () => {
   const router = useRouter();

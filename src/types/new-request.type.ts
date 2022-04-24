@@ -7,19 +7,20 @@ export enum EducationLevel {
 }
 
 export enum MeetingType {
-  IRL = 'In Person',
-  ONLINE = 'Online',
+  IN_PERSON = 'in-person',
+  ONLINE = 'online',
 }
 
 export const newRequestFormSchema = z.object({
   subjectId: z.number().positive(),
   subfield: z.string().max(100).min(1, 'Područje je obavezno'),
-  level: z.nativeEnum(EducationLevel),
+  educationLevel: z.nativeEnum(EducationLevel),
   grade: z.number().positive(),
   budget: z.number().positive(),
   type: z.nativeEnum(MeetingType),
   location: z.string(),
   description: z.string(),
+  duration: z.number().positive(),
   lessonTimeFrames: z
     .object({ startTime: z.string(), endTime: z.string() })
     .array(),

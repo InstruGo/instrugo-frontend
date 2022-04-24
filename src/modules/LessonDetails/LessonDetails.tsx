@@ -73,7 +73,7 @@ export const LessonDetails = (props: LessonDetailsProps) => {
             </Row>
             <Row>
               <FaGraduationCap />
-              <CardText>{data?.level}</CardText>
+              <CardText>{data?.educationLevel}</CardText>
             </Row>
             <Row>
               <MdOutlineLocationOn />

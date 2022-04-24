@@ -2,25 +2,22 @@ import { useMutation, useQueryClient } from 'react-query';
 
 import type { Lesson } from '@types';
 
-import { useAxios } from './useAxios';
+import { useAxios } from '@hooks';
 
-export const useResolveLesson = (lessonId: number) => {
+export const useCompleteLesson = (lessonId: number) => {
   const axios = useAxios();
   const queryClient = useQueryClient();
-  const resolveLesson = async (input: {
-    tutorResponseId: number;
-    timeFrameId: number;
-  }): Promise<Lesson> => {
-    const response = await axios.post(`/lessons/resolve/${lessonId}`, input);
+
+  const completeLesson = async (): Promise<Lesson> => {
+    const response = await axios.post(`/lessons/completed/${lessonId}`);
     const data = response.data as Lesson;
     return data;
   };
 
-  return useMutation(resolveLesson, {
+  return useMutation(completeLesson, {
     onSuccess: () => {
-      queryClient.invalidateQueries('upcomingLessons');
+      queryClient.invalidateQueries('lessons');
       queryClient.invalidateQueries('publicRequests');
-      queryClient.invalidateQueries('lessonRequests');
       queryClient.invalidateQueries(`lesson${lessonId}`);
     },
     onError: (error) => {

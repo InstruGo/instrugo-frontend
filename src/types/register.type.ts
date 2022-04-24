@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { EducationLevel } from './new-request.type';
 
 export const registerFormSchema = z
   .object({
@@ -9,6 +10,10 @@ export const registerFormSchema = z
     confirmPassword: z.string().min(1, 'Confirm the password'),
     phone: z.string().optional(),
     isTutor: z.boolean().default(false),
+    birthDate: z.string().optional(),
+    description: z.string().optional(),
+    educationLevel: z.nativeEnum(EducationLevel).optional(),
+    grade: z.number().optional(),
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: "Passwords don't match",

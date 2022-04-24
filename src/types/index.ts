@@ -9,3 +9,6 @@ export * from './new-tutor-response.type';
 export * from './student-rating.type';
 export * from './tutor-feedback.type';
 export * from './rating.types';
+export * from './profile-update.type';
+export * from './student-rating.type';
+export * from './time-frame.type';
