@@ -53,6 +53,9 @@
   "home.rewards": "Rewards",
   "home.lessons": "Lessons",
 
+  "tutorsHome.upcoming": "Upcoming lessons",
+  "tutorsHome.recommended": "Recommended requests",
+
   "lessons.upcoming": "Upcoming",
   "lessons.requests": "Requests",
 
