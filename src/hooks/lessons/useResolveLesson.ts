@@ -9,15 +9,17 @@ export const useResolveLesson = (lessonId: number) => {
   const queryClient = useQueryClient();
   const resolveLesson = async (tutorResponseId: number): Promise<Lesson> => {
     const response = await axios.post(`/lessons/resolve/${lessonId}`, {
-      params: { tutorResponseId: tutorResponseId },
+      tutorResponseId: tutorResponseId,
     });
+
     const data = response.data as Lesson;
     return data;
   };
 
   return useMutation(resolveLesson, {
     onSuccess: () => {
-      queryClient.invalidateQueries('lessons');
+      queryClient.invalidateQueries(['lessons', { status: 'Requested' }]);
+      queryClient.invalidateQueries(['lessons', { status: 'Pending' }]);
       queryClient.invalidateQueries('publicRequests');
       queryClient.invalidateQueries(`lesson${lessonId}`);
     },

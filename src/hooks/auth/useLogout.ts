@@ -11,7 +11,7 @@ export const useLogout = () => {
   const queryClient = useQueryClient();
 
   const logout = async () => {
-    const data = axios.post('/auth/logout');
+    const data = await axios.post('/auth/logout');
 
     return data;
   };

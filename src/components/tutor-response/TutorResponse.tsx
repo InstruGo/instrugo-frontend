@@ -39,8 +39,8 @@ export const TutorResponse = ({
 }: ResponseProps) => {
   const acceptResponse = useResolveLesson(lessonId);
   const router = useRouter();
-  const onAcceptClick = async () => {
-    await acceptResponse.mutate(index);
+  const onAcceptClick = () => {
+    acceptResponse.mutate(index);
     router.push('/student/home');
   };
   const start = new Date(timeFrame.startTime);

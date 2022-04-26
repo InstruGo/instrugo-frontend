@@ -16,10 +16,9 @@ import {
   TextBox,
 } from './styles';
 import { Button, Input } from '@components';
-import { useCancelLesson } from '@hooks/useCancelLesson';
 import { useState } from 'react';
 import { NewStudentRatingInputs, NewStudentRatingSchema } from '@types';
-import { useRating } from '@hooks/useRating';
+import { useRating } from '@hooks';
 
 interface LessonDetailsAfterProps {
   id: number;

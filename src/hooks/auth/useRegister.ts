@@ -11,6 +11,7 @@ export const useRegister = () => {
   const axios = useAxios();
 
   const register = async (input: RegisterFormInputs): Promise<void> => {
+    console.log(input);
     await axios.post('/auth/register', input);
   };
 

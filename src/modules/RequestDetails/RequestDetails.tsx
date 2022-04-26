@@ -44,7 +44,6 @@ export const RequestDetails = (props: RequestDetailsProps) => {
       });
     }
   );
-
   const currentDate = schedulerData[0].startDate;
 
   return (

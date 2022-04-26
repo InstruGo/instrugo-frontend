@@ -24,7 +24,22 @@ export const NavLink = styled('div', {
   cursor: 'pointer',
   '&:hover': { textDecoration: 'underline' },
 });
+export const OppenedProfileMenu = styled('div', {
+  position: 'absolute',
+  zIndex: 1,
+  top: '83px',
+  right: '3px',
+  backgroundColor: 'rgb(16, 67, 78)',
+  borderRadius: '10px',
+  flexDirection: 'column',
+  boxSizing: 'border-box',
+  overflow: 'hidden',
+  height: '0',
 
+  'div + div': {
+    marginTop: '20px',
+  },
+});
 export const HamburgerMenu = styled('div', {
   display: 'flex',
   '@bp2': {
@@ -49,11 +64,10 @@ export const OppenedMenu = styled('div', {
 export const RightNavSection = styled('div', { display: 'flex' });
 
 export const ProfileLink = styled('div', {
-  backgroundColor: 'white',
   width: '40px',
-  borderRadius: '50px',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
   cursor: 'pointer',
+  marginLeft: '15px',
 });

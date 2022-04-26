@@ -162,7 +162,6 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
   updateLessonTimeFrames(timeSlots);
   const [subjectId, setSubjectId] = useState<number>(1);
   setValue('subjectId', subjectId);
-
   if (isLoading) return <div>Loading...</div>;
 
   return (
@@ -257,6 +256,17 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
               errors={errors.budget}
               isNumber={true}
             />
+            <InputDescription>
+              <FormattedMessage id="newRequestForm.duration" />: (
+              <FormattedMessage id="newRequestForm.hours" />)
+            </InputDescription>
+            <Input
+              type="number"
+              name="duration"
+              register={register}
+              errors={errors.duration}
+              isNumber={true}
+            />
           </FormColumn>
           <FormColumn style={{ maxWidth: '450px' }}>
             <InputDescription>
@@ -273,6 +283,7 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
                       onDateChange={onDateChange}
                       index={timeSlot.index}
                       onDestroy={destroyTimeSlot}
+                      isSingle={false}
                     />
                   </li>
                 );

@@ -37,6 +37,7 @@ export const RequestsContainer = () => {
             meetingType={lesson.type}
             dateAndTime={lesson.lessonTimeFrames[0].startTime}
             color={lesson.subject.color}
+            lessonStatus={lesson.status}
           />
         ))}
       </RequestsBody>

@@ -126,7 +126,7 @@ export const Card = ({
           {lessonStatus === 'Pending' && !forTutors && (
             <LessonDetailsAfterStudent id={index} ratingId={1} />
           )}
-          {lessonStatus === 'Completed' && <LessonDetails id={index} />}
+          {lessonStatus === 'Pending' && <LessonDetails id={index} />}
         </Modal>
       </Fragment>
     </>
