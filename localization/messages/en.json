@@ -83,6 +83,8 @@
   "newRequestForm.educationLevel": "Education level",
   "newRequestForm.additionalInfo": "Additional Information",
   "newRequestForm.description": "Description",
+  "newRequestForm.duration": "Duration",
+  "newRequestForm.hours": "hours",
 
   "newResponseForm.price": "Price",
 

@@ -83,6 +83,8 @@
   "newRequestForm.budget": "Budžet",
   "newRequestForm.newTime": "Dodaj termin",
   "newRequestForm.educationLevel": "Razina obrazovanja",
+  "newRequestForm.duration": "Trajanje",
+  "newRequestForm.hours": "sati",
 
   "newResponseForm.price": "Cijena",
 
