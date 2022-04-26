@@ -57,7 +57,7 @@ export const Card = ({
       <Fragment>
         <ModalButton
           onClick={() => {
-            if (lessonStatus !== 'Request') {
+            if (lessonStatus !== 'requested') {
               setLessonDetailsModal(true);
             } else {
               if (forTutors) {
@@ -120,13 +120,13 @@ export const Card = ({
           shouldShow={showLessonDetailsModal}
           closeAction={() => setLessonDetailsModal(false)}
         >
-          {lessonStatus === 'Pending' && forTutors && (
+          {lessonStatus === 'pending' && forTutors && (
             <LessonDetailsAfterTutor id={index} ratingId={1} />
           )}
-          {lessonStatus === 'Pending' && !forTutors && (
+          {lessonStatus === 'pending' && !forTutors && (
             <LessonDetailsAfterStudent id={index} ratingId={1} />
           )}
-          {lessonStatus === 'Completed' && <LessonDetails id={index} />}
+          {lessonStatus === 'pending' && <LessonDetails id={index} />}
         </Modal>
       </Fragment>
     </>

@@ -2,9 +2,7 @@ import { useRouter } from 'next/router';
 
 import { useMutation, useQueryClient } from 'react-query';
 
-import { useUserContext } from '@hooks';
-
-import { useAxios } from './useAxios';
+import { useUserContext, useAxios } from '@hooks';
 
 export const useLogout = () => {
   const { setUser } = useUserContext();
@@ -13,7 +11,7 @@ export const useLogout = () => {
   const queryClient = useQueryClient();
 
   const logout = async () => {
-    const data = axios.post('/auth/logout');
+    const data = await axios.post('/auth/logout');
 
     return data;
   };

@@ -12,7 +12,7 @@ import {
 } from './styles';
 
 export const PublicRequestsContainer = () => {
-  const { data, isLoading } = usePublicRequests();
+  const { data, isLoading } = usePublicRequests({});
 
   if (isLoading) return <div>Loading...</div>;
   if (!data) return <div>No public requests...</div>;
@@ -36,8 +36,9 @@ export const PublicRequestsContainer = () => {
             location={lesson.location}
             meetingType={lesson.type}
             grade={lesson.grade}
-            educationLvl={lesson.level}
+            educationLvl={lesson.educationLevel}
             color={lesson.subject.color}
+            lessonStatus={lesson.status}
             forTutors={true}
           />
         ))}

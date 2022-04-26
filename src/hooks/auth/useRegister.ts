@@ -4,7 +4,7 @@ import { useMutation } from 'react-query';
 
 import type { RegisterFormInputs } from '@types';
 
-import { useAxios } from './useAxios';
+import { useAxios } from '@hooks';
 
 export const useRegister = () => {
   const router = useRouter();

@@ -50,11 +50,11 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
   };
 
   const [selectedEducationLevel, setEducationLevel] = useState<EducationLevel>(
-    EducationLevel.ELEMENTARY
+    EducationLevel.ELEMENTARY_SCHOOL
   );
 
   const [selectedMeetingType, setMeetingType] = useState<MeetingType>(
-    MeetingType.IRL
+    MeetingType.IN_PERSON
   );
 
   const onLevelSelect = (e: any) => {
@@ -162,7 +162,6 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
   updateLessonTimeFrames(timeSlots);
   const [subjectId, setSubjectId] = useState<number>(1);
   setValue('subjectId', subjectId);
-
   if (isLoading) return <div>Loading...</div>;
 
   return (
@@ -205,33 +204,35 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
             </InputDescription>
             <RadioInput>
               <input
-                {...register('level', { required: true })}
+                {...register('educationLevel', { required: true })}
                 type="radio"
-                value={EducationLevel.ELEMENTARY}
-                checked={selectedEducationLevel === EducationLevel.ELEMENTARY}
+                value={EducationLevel.ELEMENTARY_SCHOOL}
+                checked={
+                  selectedEducationLevel === EducationLevel.ELEMENTARY_SCHOOL
+                }
                 onChange={onLevelSelect}
               />
-              {EducationLevel.ELEMENTARY}
+              {EducationLevel.ELEMENTARY_SCHOOL}
             </RadioInput>
             <RadioInput>
               <input
-                {...register('level', { required: true })}
+                {...register('educationLevel', { required: true })}
                 type="radio"
-                value={EducationLevel.HIGH}
-                checked={selectedEducationLevel === EducationLevel.HIGH}
+                value={EducationLevel.HIGH_SCHOOL}
+                checked={selectedEducationLevel === EducationLevel.HIGH_SCHOOL}
                 onChange={onLevelSelect}
               />
-              {EducationLevel.HIGH}
+              {EducationLevel.HIGH_SCHOOL}
             </RadioInput>
             <RadioInput>
               <input
-                {...register('level', { required: true })}
+                {...register('educationLevel', { required: true })}
                 type="radio"
-                value={EducationLevel.UNI}
-                checked={selectedEducationLevel === EducationLevel.UNI}
+                value={EducationLevel.UNIVERSITY}
+                checked={selectedEducationLevel === EducationLevel.UNIVERSITY}
                 onChange={onLevelSelect}
               />
-              {EducationLevel.UNI}
+              {EducationLevel.UNIVERSITY}
             </RadioInput>
 
             <InputDescription>
@@ -255,6 +256,17 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
               errors={errors.budget}
               isNumber={true}
             />
+            <InputDescription>
+              <FormattedMessage id="newRequestForm.duration" />: (
+              <FormattedMessage id="newRequestForm.hours" />)
+            </InputDescription>
+            <Input
+              type="number"
+              name="duration"
+              register={register}
+              errors={errors.duration}
+              isNumber={true}
+            />
           </FormColumn>
           <FormColumn style={{ maxWidth: '450px' }}>
             <InputDescription>
@@ -271,6 +283,7 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
                       onDateChange={onDateChange}
                       index={timeSlot.index}
                       onDestroy={destroyTimeSlot}
+                      isSingle={false}
                     />
                   </li>
                 );
@@ -287,11 +300,11 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
               <input
                 {...register('type', { required: true })}
                 type="radio"
-                value={MeetingType.IRL}
-                checked={selectedMeetingType === MeetingType.IRL}
+                value={MeetingType.IN_PERSON}
+                checked={selectedMeetingType === MeetingType.IN_PERSON}
                 onChange={onMeetingSelect}
               />
-              {MeetingType.IRL}
+              {MeetingType.IN_PERSON}
             </RadioInput>
             <RadioInput>
               <input

@@ -5,8 +5,7 @@ import { MdOutlineMeetingRoom, MdOutlineLocationOn } from 'react-icons/md';
 import { FormattedMessage } from 'react-intl';
 
 import { Button } from '@components';
-import { useLesson } from '@hooks';
-import { useCancelLesson } from '@hooks/useCancelLesson';
+import { useLesson, useCancelLesson } from '@hooks';
 
 import {
   LessonDetailsContainer,
@@ -27,6 +26,7 @@ export const LessonDetails = (props: LessonDetailsProps) => {
     const result = await cancelLesson.mutate(props.id);
   };
   if (isLoading) return <div>Loading...</div>;
+
   if (!(data?.finalStartTime && data?.finalEndTime))
     return <div>Lesson time not yet arranged...</div>;
 
@@ -73,7 +73,7 @@ export const LessonDetails = (props: LessonDetailsProps) => {
             </Row>
             <Row>
               <FaGraduationCap />
-              <CardText>{data?.level}</CardText>
+              <CardText>{data?.educationLevel}</CardText>
             </Row>
             <Row>
               <MdOutlineLocationOn />

@@ -44,7 +44,6 @@ export const RequestDetails = (props: RequestDetailsProps) => {
       });
     }
   );
-
   const currentDate = schedulerData[0].startDate;
 
   return (
@@ -64,7 +63,7 @@ export const RequestDetails = (props: RequestDetailsProps) => {
             </FieldDescription>
             <FieldDescription>
               <FormattedMessage id="newRequestForm.educationLevel" />:{' '}
-              {data?.level}
+              {data?.educationLevel}
             </FieldDescription>
 
             <FieldDescription>
@@ -127,7 +126,7 @@ export const RequestDetails = (props: RequestDetailsProps) => {
                   : undefined
               }
               price={response.price}
-              timeslots={response.tutorResponseTimeFrames}
+              timeFrame={response.tutorResponseTimeFrame}
             />
           );
         })}

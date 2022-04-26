@@ -2,7 +2,7 @@ import { useMutation, useQueryClient } from 'react-query';
 
 import type { NewRequestFormInputs, Lesson } from '@types';
 
-import { useAxios } from './useAxios';
+import { useAxios } from '@hooks';
 
 export const useNewRequest = () => {
   const axios = useAxios();
@@ -17,8 +17,7 @@ export const useNewRequest = () => {
 
   return useMutation(newRequest, {
     onSuccess: () => {
-      queryClient.invalidateQueries('upcomingLessons');
-      queryClient.invalidateQueries('lessonRequests');
+      queryClient.invalidateQueries('lessons');
       queryClient.invalidateQueries('publicRequests');
     },
     onError: (error) => {

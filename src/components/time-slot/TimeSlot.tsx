@@ -19,6 +19,7 @@ interface TimeSlotProps {
   ) => void;
   index: number;
   onDestroy: (index: number) => void;
+  isSingle: boolean;
 }
 export const TimeSlot = (props: TimeSlotProps) => {
   const [date, setDate] = useState<Date>(props.date);
@@ -67,14 +68,16 @@ export const TimeSlot = (props: TimeSlotProps) => {
             renderInput={(params) => <TextField {...params} />}
           />
         </FormColumn>
-        <DestroyButton
-          onClick={() => {
-            props.onDestroy(props.index);
-            setDestroyed(true);
-          }}
-        >
-          X
-        </DestroyButton>
+        {!props.isSingle && (
+          <DestroyButton
+            onClick={() => {
+              props.onDestroy(props.index);
+              setDestroyed(true);
+            }}
+          >
+            X
+          </DestroyButton>
+        )}
       </FormRow>
     </LocalizationProvider>
   );

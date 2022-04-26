@@ -1,20 +1,20 @@
 import { useQuery } from 'react-query';
 
 import { useAxios } from '@hooks';
-import { Lesson } from '@types';
+import { Lesson, LessonFilter } from '@types';
 
-export const useLessons = (status: string) => {
+export const useLessons = (filter: LessonFilter) => {
   const axios = useAxios();
 
-  const getLessons = async (status: string): Promise<Lesson[]> => {
+  const getLessons = async (filter: LessonFilter): Promise<Lesson[]> => {
     const response = await axios.get(`/lessons`, {
-      params: { status: status },
+      params: filter,
     });
 
     return response.data;
   };
 
-  return useQuery([`upcomingLessons`, status], () => getLessons(status), {
+  return useQuery([`lessons`, filter], () => getLessons(filter), {
     onSuccess: () => {},
     onError: (error) => {
       console.log(error);

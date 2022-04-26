@@ -2,7 +2,7 @@ import { useQuery } from 'react-query';
 
 import { Subject } from '@types';
 
-import { useAxios } from './useAxios';
+import { useAxios } from '@hooks';
 
 export const useSubjects = () => {
   const axios = useAxios();

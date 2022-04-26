@@ -39,7 +39,7 @@ export const PublicRequestDetails = (props: RequestDetailsProps) => {
       schedulerData.push({
         startDate: start.toString(),
         endDate: end.toString(),
-        title: 'Available timeslot',
+        title: 'Available timeslots',
       });
     }
   );
@@ -62,7 +62,7 @@ export const PublicRequestDetails = (props: RequestDetailsProps) => {
             </FieldDescription>
             <FieldDescription>
               <FormattedMessage id="newRequestForm.educationLevel" />:{' '}
-              {data?.level}
+              {data?.educationLevel}
             </FieldDescription>
 
             <FieldDescription>

@@ -1,12 +1,13 @@
 import { useRouter } from 'next/router';
-import React from 'react';
+import React, { useLayoutEffect, useRef, useState } from 'react';
 
-import { CgProfile } from 'react-icons/cg';
+import { BsPersonCircle } from 'react-icons/bs';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { HiOutlineSwitchVertical } from 'react-icons/hi';
 import { FormattedMessage } from 'react-intl';
 
-import { Button, HeaderContainer } from '@components';
+import { Button, HeaderContainer, CustomLink } from '@components';
+import { useMenuAnimation, useLogout } from '@hooks';
 
 import {
   HamburgerMenu,
@@ -16,11 +17,32 @@ import {
   RightNavSection,
   StyledHeader,
   StyledNavbar,
+  OppenedProfileMenu,
 } from './styles';
 
 export const TutorsNavbar = () => {
-  const [isMenuOpen, setMenuOpen] = React.useState(false);
+  const logout = useLogout();
   const router = useRouter();
+
+  const [isMenuOpen, setMenuOpen] = useState(false);
+  const [isProfileOpen, setProfileOpen] = useState(false);
+
+  const profileRef = useRef<HTMLDivElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  const handleOpenProfile = () => {
+    setProfileOpen(!isProfileOpen);
+    setMenuOpen(false);
+  };
+
+  const { menuAnimation: navbarMenuAnimation } = useMenuAnimation();
+  const { menuAnimation: profileMenuAnimation } = useMenuAnimation();
+
+  useLayoutEffect(() => {
+    navbarMenuAnimation(menuRef, isMenuOpen);
+    profileMenuAnimation(profileRef, isProfileOpen);
+  }, [isMenuOpen, isProfileOpen, navbarMenuAnimation, profileMenuAnimation]);
+
   return (
     <HeaderContainer>
       <StyledHeader>
@@ -70,7 +92,23 @@ export const TutorsNavbar = () => {
             </div>
           </Button>
           <ProfileLink>
-            <CgProfile size={'32px'} />
+            <BsPersonCircle
+              size={'41px'}
+              color="#fff"
+              onClick={handleOpenProfile}
+            />
+
+            <OppenedProfileMenu ref={profileRef}>
+              <NavLink style={{ margin: '20px 15px' }}>
+                <CustomLink href="/profile">Profile</CustomLink>
+              </NavLink>
+              <NavLink
+                onClick={() => logout.mutate()}
+                style={{ margin: '20px 15px' }}
+              >
+                <a>Log out</a>
+              </NavLink>
+            </OppenedProfileMenu>
           </ProfileLink>
         </RightNavSection>
       </StyledHeader>

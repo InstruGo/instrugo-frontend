@@ -11,3 +11,10 @@ export type Rating = {
   student: User;
   tutor: User;
 };
+
+export type RatingFilter = {
+  studentRating?: number;
+  lessonId?: number;
+  studentId?: number;
+  tutorId?: number;
+};
