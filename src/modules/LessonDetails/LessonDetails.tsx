@@ -26,7 +26,7 @@ export const LessonDetails = (props: LessonDetailsProps) => {
     const result = await cancelLesson.mutate(props.id);
   };
   if (isLoading) return <div>Loading...</div>;
-  console.log(data);
+
   if (!(data?.finalStartTime && data?.finalEndTime))
     return <div>Lesson time not yet arranged...</div>;
 
