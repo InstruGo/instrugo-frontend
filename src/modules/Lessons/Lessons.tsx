@@ -37,7 +37,7 @@ export const LessonsContainer = ({
   cards,
   table,
 }: LessonsContainerProps) => {
-  const [lessonStatus, setLessonStatus] = React.useState('Pending');
+  const [lessonStatus, setLessonStatus] = React.useState('pending');
   const { data, isLoading } = useLessons({ status: lessonStatus });
 
   const [isFilterOn, setFilterOn] = React.useState(false);
@@ -79,17 +79,17 @@ export const LessonsContainer = ({
         {home && (
           <div>
             <Button
-              variant={lessonStatus === 'Pending' ? 'primary' : 'secondary'}
+              variant={lessonStatus === 'pending' ? 'primary' : 'secondary'}
               onClick={() => setLessonStatus('Pending')}
             >
               <FormattedMessage id="lessons.upcoming" />
             </Button>
             <Button
-              variant={lessonStatus === 'Pending' ? 'secondary' : 'primary'}
+              variant={lessonStatus === 'pending' ? 'secondary' : 'primary'}
               style={{
                 marginLeft: '10px',
               }}
-              onClick={() => setLessonStatus('Requested')}
+              onClick={() => setLessonStatus('requested')}
             >
               <FormattedMessage id="lessons.requests" />
             </Button>

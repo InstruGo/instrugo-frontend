@@ -12,7 +12,7 @@ import {
 } from './styles';
 
 export const RequestsContainer = () => {
-  const { data, isLoading } = useLessons({ status: 'Requested' });
+  const { data, isLoading } = useLessons({ status: 'requested' });
 
   if (isLoading) return <div>Loading...</div>;
   if (!data) return <div>No requests...</div>;
