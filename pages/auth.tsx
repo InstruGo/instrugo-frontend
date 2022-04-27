@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 
 import { withAuth } from '@components';
 import { Loader } from '@components/icons';
-import { useHomeRedirect } from '@hooks/useHomeRedirect';
+import { useHomeRedirect } from '@hooks';
 
 const AuthRedirect: NextPage = () => {
   const redirect = useHomeRedirect();

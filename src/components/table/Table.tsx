@@ -1,5 +1,11 @@
 import React, { Fragment } from 'react';
+
 import { FormattedMessage } from 'react-intl';
+
+import { Modal } from '@components';
+import { useLessons } from '@hooks';
+import { LessonDetails } from '@modules';
+
 import {
   TableHeader,
   TableBody,
@@ -8,11 +14,6 @@ import {
   TableTitles,
   TableData,
 } from './styles';
-
-import { useLessons } from '@hooks';
-
-import { Modal } from '@components';
-import { LessonDetails } from '@modules';
 
 type StitchesComponentProps = React.ComponentPropsWithoutRef<typeof TableStyle>;
 
