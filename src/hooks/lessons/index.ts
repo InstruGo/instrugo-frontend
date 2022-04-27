@@ -6,3 +6,4 @@ export * from './useLessons';
 export * from './useNewRequest';
 export * from './usePublicRequests';
 export * from './useResolveLesson';
+export * from './useUpdateRequest';

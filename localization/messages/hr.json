@@ -46,6 +46,7 @@
   "nav.switch.tutor": "Prebaci se na studenta",
   "nav.publicRequests": "Javni zahtjevi",
   "nav.tutorResponses": "Moji odgovori",
+  "nav.becomeTutor": "Postani instruktor",
 
   "home.rewards": "Nagrade",
   "home.lessons": "Lekcije",
@@ -72,9 +73,13 @@
   "subjects.latin": "latinski",
 
   "button.createRequest": "Stvorite novi zahtjev",
+  "button.edit": "Uredi",
+  "button.updateRequest": "Ažuriraj zahtjev",
 
   "student.request.requests": "Moji zahtjevi",
   "tutor.request.requests": "Javni zahtjevi",
+
+  "updateRequest.description": "Uredite svoj zahtjev",
 
   "newRequest.description": "Novi Zahtjev",
   "newRequestForm.grade": "Razred/Godina",
@@ -84,7 +89,7 @@
   "newRequestForm.newTime": "Dodaj termin",
   "newRequestForm.educationLevel": "Razina obrazovanja",
   "newRequestForm.duration": "Trajanje",
-  "newRequestForm.hours": "sati",
+  "newRequestForm.minutes": "minuta",
 
   "newResponseForm.price": "Cijena",
 

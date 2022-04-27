@@ -7,7 +7,7 @@ import {
 import Paper from '@mui/material/Paper';
 import { FormattedMessage } from 'react-intl';
 
-import { TutorResponse } from '@components';
+import { TutorResponse, Button } from '@components';
 import { useLesson } from '@hooks';
 
 import {
@@ -21,6 +21,7 @@ import {
   Title,
   CalendarContainer,
 } from './styles';
+import { useRouter } from 'next/router';
 
 interface RequestDetailsProps {
   id: number;
@@ -28,6 +29,7 @@ interface RequestDetailsProps {
 
 export const RequestDetails = (props: RequestDetailsProps) => {
   const { data, isLoading } = useLesson(props.id);
+  const router = useRouter();
 
   if (isLoading) return <div>Loading...</div>;
 
@@ -87,6 +89,19 @@ export const RequestDetails = (props: RequestDetailsProps) => {
               {data?.description}
             </FieldDescription>
           </Column>
+          <Column style={{ justifyContent: 'center', maxWidth: '100px' }}>
+            <Button
+              variant="primary"
+              onClick={() =>
+                router.push({
+                  pathname: '/student/edit-request/[id]',
+                  query: { id: props.id },
+                })
+              }
+            >
+              <FormattedMessage id="button.edit" />
+            </Button>
+          </Column>
         </Row>
         <Row>
           <Column>
@@ -95,6 +110,7 @@ export const RequestDetails = (props: RequestDetailsProps) => {
             </FieldDescription>
           </Column>
           <Column />
+          <Column style={{ maxWidth: '100px' }} />
         </Row>
         <CalendarContainer>
           <Paper>

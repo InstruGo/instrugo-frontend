@@ -7,7 +7,12 @@ import { HiOutlineSwitchVertical } from 'react-icons/hi';
 import { FormattedMessage } from 'react-intl';
 
 import { Button, CustomLink, HeaderContainer } from '@components';
-import { useLogout, useMenuAnimation } from '@hooks';
+import {
+  useBecomeTutor,
+  useLogout,
+  useMenuAnimation,
+  useUserContext,
+} from '@hooks';
 
 import {
   Clickable,
@@ -20,10 +25,13 @@ import {
   StyledHeader,
   StyledNavbar,
 } from './styles';
+import { UserRole } from '@types';
 
 export const StudentsNavbar = () => {
   const router = useRouter();
   const logout = useLogout();
+  const becomeTutor = useBecomeTutor();
+  const { user } = useUserContext();
 
   const [isMenuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -39,6 +47,14 @@ export const StudentsNavbar = () => {
   const handleOpenProfile = () => {
     setProfileOpen(!isProfileOpen);
     setMenuOpen(false);
+  };
+
+  const switchToTutor = () => {
+    router.push('/tutor/home');
+  };
+  const becomeATutor = () => {
+    becomeTutor.mutate();
+    router.push('/tutor/home');
   };
 
   // Animations for navbar hamburger menu and profile menu
@@ -96,14 +112,21 @@ export const StudentsNavbar = () => {
         </HamburgerMenu>
 
         <RightNavSection>
-          <Button variant="switch" onClick={() => router.push('/tutor/home')}>
-            {/* <Button
+          <Button
             variant="switch"
-            onClick={() => router.push('/tutor/requests')}
-          > */}
+            onClick={
+              user?.role === UserRole.TUTOR ? switchToTutor : becomeATutor
+            }
+          >
             <HiOutlineSwitchVertical size={'25px'} />
             <div style={{ marginLeft: '10px' }}>
-              <FormattedMessage id="nav.switch" />
+              <FormattedMessage
+                id={
+                  user?.role === UserRole.TUTOR
+                    ? 'nav.switch'
+                    : 'nav.becomeTutor'
+                }
+              />
             </div>
           </Button>
           <ProfileLink>

@@ -12,3 +12,4 @@ export * from './rating.types';
 export * from './profile-update.type';
 export * from './student-rating.type';
 export * from './time-frame.type';
+export * from './update-request.type';
