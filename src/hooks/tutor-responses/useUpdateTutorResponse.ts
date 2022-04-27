@@ -1,8 +1,7 @@
 import { useMutation, useQueryClient } from 'react-query';
 
-import type { UpdateTutorResponseFormInputs, TutorResponse } from '@types';
-
 import { useAxios } from '@hooks';
+import type { UpdateTutorResponseFormInputs, TutorResponse } from '@types';
 
 export const useUpdateTutorResponse = (
   lessonId: number,
@@ -18,6 +17,7 @@ export const useUpdateTutorResponse = (
       `/tutor-responses/${lessonId}/respond`,
       input
     );
+
     const data = response.data as TutorResponse;
     return data;
   };

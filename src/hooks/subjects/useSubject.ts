@@ -1,6 +1,6 @@
-import { useAxios } from '@hooks';
 import { useQuery } from 'react-query';
 
+import { useAxios } from '@hooks';
 import { Subject } from '@types';
 
 export const useSubject = (id: number) => {

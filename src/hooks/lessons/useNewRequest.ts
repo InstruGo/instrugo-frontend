@@ -1,8 +1,7 @@
 import { useMutation, useQueryClient } from 'react-query';
 
-import type { NewRequestFormInputs, Lesson } from '@types';
-
 import { useAxios } from '@hooks';
+import type { NewRequestFormInputs, Lesson } from '@types';
 
 export const useNewRequest = () => {
   const axios = useAxios();

@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import React, { Fragment } from 'react';
+import React, { useState, Fragment } from 'react';
 
 import { AiOutlineClockCircle } from 'react-icons/ai';
 import { FaGraduationCap } from 'react-icons/fa';
@@ -50,8 +50,9 @@ export const Card = ({
   forTutors,
   lessonStatus,
 }: CardProps) => {
-  const [showLessonDetailsModal, setLessonDetailsModal] = React.useState(false);
   const router = useRouter();
+  const [showLessonDetailsModal, setLessonDetailsModal] = useState(false);
+
   return (
     <>
       <Fragment>
@@ -78,7 +79,7 @@ export const Card = ({
             <CardHeader style={{ backgroundColor: color, borderColor: color }}>
               {subject}
             </CardHeader>
-            {/* <CardBody style={{ backgroundColor: color + '20' }}> */}
+
             <CardBody>
               {dateAndTime && (
                 <CardItem>

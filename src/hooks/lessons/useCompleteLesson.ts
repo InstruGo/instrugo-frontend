@@ -1,8 +1,7 @@
 import { useMutation, useQueryClient } from 'react-query';
 
-import type { Lesson } from '@types';
-
 import { useAxios } from '@hooks';
+import type { Lesson } from '@types';
 
 export const useCompleteLesson = (lessonId: number) => {
   const axios = useAxios();

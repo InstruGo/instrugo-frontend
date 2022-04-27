@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useLayoutEffect } from 'react';
 
 import { BiFilter } from 'react-icons/bi';
 import { FormattedMessage } from 'react-intl';
@@ -37,11 +37,11 @@ export const LessonsContainer = ({
   cards,
   table,
 }: LessonsContainerProps) => {
-  const [lessonStatus, setLessonStatus] = React.useState('Pending');
+  const [lessonStatus, setLessonStatus] = useState('pending');
   const { data, isLoading } = useLessons({ status: lessonStatus });
 
-  const [isFilterOn, setFilterOn] = React.useState(false);
-  const [currentSubject, setCurrentSubject] = React.useState<string>('all');
+  const [isFilterOn, setFilterOn] = useState(false);
+  const [currentSubject, setCurrentSubject] = useState('all');
   const filterMenuRef = React.useRef<HTMLDivElement>(null);
 
   const { data: subjects } = useSubjects();
@@ -49,7 +49,7 @@ export const LessonsContainer = ({
   const [filtersBySubjects, setFiltersBySubjects] = useState(['all']);
 
   // Available filters
-  React.useEffect(() => {
+  useEffect(() => {
     if (subjects)
       setFiltersBySubjects(['all', ...subjects.map((sub) => sub.name)]);
   }, [subjects]);
@@ -59,7 +59,8 @@ export const LessonsContainer = ({
   };
 
   const { menuAnimation: filterMenuAnimation } = useMenuAnimation();
-  React.useLayoutEffect(() => {
+
+  useLayoutEffect(() => {
     filterMenuAnimation(filterMenuRef, isFilterOn);
   }, [filterMenuAnimation, isFilterOn]);
 
@@ -79,17 +80,17 @@ export const LessonsContainer = ({
         {home && (
           <div>
             <Button
-              variant={lessonStatus === 'Pending' ? 'primary' : 'secondary'}
-              onClick={() => setLessonStatus('Pending')}
+              variant={lessonStatus === 'pending' ? 'primary' : 'secondary'}
+              onClick={() => setLessonStatus('pending')}
             >
               <FormattedMessage id="lessons.upcoming" />
             </Button>
             <Button
-              variant={lessonStatus === 'Pending' ? 'secondary' : 'primary'}
+              variant={lessonStatus === 'pending' ? 'secondary' : 'primary'}
               style={{
                 marginLeft: '10px',
               }}
-              onClick={() => setLessonStatus('Requested')}
+              onClick={() => setLessonStatus('requested')}
             >
               <FormattedMessage id="lessons.requests" />
             </Button>

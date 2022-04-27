@@ -20,7 +20,7 @@ type StitchesComponentProps = React.ComponentPropsWithoutRef<typeof TableStyle>;
 export interface TableProps extends StitchesComponentProps {}
 
 export const Table = () => {
-  const { data, isLoading } = useLessons({ status: 'Completed' });
+  const { data, isLoading } = useLessons({ status: 'completed' });
 
   const [showLessonDetailsModal, setLessonDetailsModal] = React.useState(false);
 
