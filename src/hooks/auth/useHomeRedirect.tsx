@@ -14,10 +14,11 @@ export const useHomeRedirect = () => {
         });
         break;
       case 'tutor':
+      case 'admin':
         router.push('/tutor/home', '/tutor/home', { locale: router.locale });
         break;
       default:
-        break;
+        router.push('/login');
     }
   };
 
