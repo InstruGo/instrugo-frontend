@@ -1,8 +1,7 @@
 import { useMutation, useQueryClient } from 'react-query';
 
-import type { ProfileUpdateFormInputs, User } from '@types';
-
 import { useAxios } from '@hooks';
+import type { ProfileUpdateFormInputs, User } from '@types';
 
 export const useUpdateProfile = () => {
   const axios = useAxios();

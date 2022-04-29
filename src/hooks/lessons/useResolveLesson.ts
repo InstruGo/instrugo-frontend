@@ -1,8 +1,7 @@
 import { useMutation, useQueryClient } from 'react-query';
 
-import type { Lesson } from '@types';
-
 import { useAxios } from '@hooks';
+import type { Lesson } from '@types';
 
 export const useResolveLesson = (lessonId: number) => {
   const axios = useAxios();
@@ -18,8 +17,8 @@ export const useResolveLesson = (lessonId: number) => {
 
   return useMutation(resolveLesson, {
     onSuccess: () => {
-      queryClient.invalidateQueries(['lessons', { status: 'Requested' }]);
-      queryClient.invalidateQueries(['lessons', { status: 'Pending' }]);
+      queryClient.invalidateQueries(['lessons', { status: 'requested' }]);
+      queryClient.invalidateQueries(['lessons', { status: 'pending' }]);
       queryClient.invalidateQueries('publicRequests');
       queryClient.invalidateQueries(`lesson${lessonId}`);
     },

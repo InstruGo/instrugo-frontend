@@ -5,7 +5,12 @@ import Axios, { AxiosInstance } from 'axios';
 
 import { useLogout } from '@hooks';
 
-export const AxiosContext = createContext<AxiosInstance>(Axios);
+export const AxiosContext = createContext<AxiosInstance>(
+  Axios.create({
+    baseURL: getConfig().publicRuntimeConfig.apiUrl,
+    withCredentials: true,
+  })
+);
 
 export const AxiosProvider = ({
   children,

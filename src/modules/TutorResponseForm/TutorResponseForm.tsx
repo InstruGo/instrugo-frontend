@@ -5,8 +5,9 @@ import { useForm } from 'react-hook-form';
 import { FormattedMessage } from 'react-intl';
 
 import { Input } from '@components';
-import { Button, TimeSlot } from '@components';
+import { TimeSlot } from '@components';
 import { useNewTutorResponse } from '@hooks';
+import { useTutorResponses } from '@hooks/tutor-responses/useTutorResponses';
 
 import {
   NewTutorResponseFormInputs,
@@ -18,7 +19,6 @@ import {
   FormColumn,
   FormRow,
 } from './styles';
-import { useTutorResponses } from '@hooks/tutor-responses/useTutorResponses';
 
 interface NewResponseProps {
   onFinish?: () => void;
@@ -103,48 +103,49 @@ export const NewTutorResponseForm = ({
   };
 
   updateTutorTimeFrame(timeSlot);
-  if (isLoading) return <div>Loading...</div>;
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
-    <>
-      <ResponseFormContainer onSubmit={handleSubmit(onSubmit)}>
-        <FormRow>
-          <FormColumn style={{ maxWidth: '600px' }}>
-            <InputDescription>
-              <FormattedMessage id="newRequestForm.availableDates" />:
-            </InputDescription>
-            <TimeSlot
-              date={timeSlot.date}
-              startTime={timeSlot.startTime}
-              endTime={timeSlot.endTime}
-              onDateChange={onDateChange}
-              index={0}
-              onDestroy={() => {}}
-              isSingle
-            />
+    <ResponseFormContainer onSubmit={handleSubmit(onSubmit)}>
+      <FormRow>
+        <FormColumn style={{ maxWidth: '600px' }}>
+          <InputDescription>
+            <FormattedMessage id="newRequestForm.availableDates" />:
+          </InputDescription>
+          <TimeSlot
+            date={timeSlot.date}
+            startTime={timeSlot.startTime}
+            endTime={timeSlot.endTime}
+            onDateChange={onDateChange}
+            index={0}
+            onDestroy={() => {}}
+            isSingle
+          />
 
-            <InputDescription>
-              <FormattedMessage id="newResponseForm.price" />: (kn/h)
-            </InputDescription>
-            <Input
-              type="number"
-              name="price"
-              register={register}
-              errors={errors.price}
-              isNumber={true}
-            />
-          </FormColumn>
-        </FormRow>
-        <FormRow>
-          <FormColumn style={{ alignItems: 'center' }}>
-            <Input
-              type="submit"
-              variant="authSubmit"
-              placeholderMsgId="button.createResponse"
-            />
-          </FormColumn>
-        </FormRow>
-      </ResponseFormContainer>
-    </>
+          <InputDescription>
+            <FormattedMessage id="newResponseForm.price" />: (kn/h)
+          </InputDescription>
+          <Input
+            type="number"
+            name="price"
+            register={register}
+            errors={errors.price}
+            isNumber={true}
+          />
+        </FormColumn>
+      </FormRow>
+      <FormRow>
+        <FormColumn style={{ alignItems: 'center' }}>
+          <Input
+            type="submit"
+            variant="authSubmit"
+            placeholderMsgId="button.createResponse"
+          />
+        </FormColumn>
+      </FormRow>
+    </ResponseFormContainer>
   );
 };

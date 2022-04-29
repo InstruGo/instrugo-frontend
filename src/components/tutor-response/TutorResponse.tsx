@@ -8,6 +8,7 @@ import { FormattedMessage } from 'react-intl';
 
 import { Button } from '@components';
 import { useResolveLesson } from '@hooks';
+import { TimeFrame } from '@types';
 
 import {
   ItemRow,
@@ -16,7 +17,6 @@ import {
   FieldDescription,
   StyledHr,
 } from './styles';
-import { TimeFrame } from '@types';
 
 export interface ResponseProps {
   index: number;

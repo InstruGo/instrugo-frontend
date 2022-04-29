@@ -1,8 +1,7 @@
 import { useMutation } from 'react-query';
 
-import type { NewStudentRatingInputs, Rating } from '@types';
-
 import { useAxios } from '@hooks';
+import type { NewStudentRatingInputs, Rating } from '@types';
 
 export const useRating = (id: number) => {
   const axios = useAxios();

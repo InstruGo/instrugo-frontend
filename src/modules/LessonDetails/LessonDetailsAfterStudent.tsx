@@ -1,11 +1,16 @@
-import { FormattedMessage } from 'react-intl';
+import { useState } from 'react';
+
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Rating } from '@mui/material';
+import { useForm } from 'react-hook-form';
 import { AiOutlineClockCircle, AiOutlineDollar } from 'react-icons/ai';
 import { BsPerson } from 'react-icons/bs';
-import { Rating } from '@mui/material';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
+import { FormattedMessage } from 'react-intl';
 
-import { useLesson } from '@hooks';
+import { Button, Input } from '@components';
+import { useLesson, useRating } from '@hooks';
+import { NewStudentRatingInputs, NewStudentRatingSchema } from '@types';
+
 import {
   LessonDetailsContainer,
   LessonDetailsText,
@@ -13,12 +18,7 @@ import {
   Column,
   Title,
   CardText,
-  TextBox,
 } from './styles';
-import { Button, Input } from '@components';
-import { useState } from 'react';
-import { NewStudentRatingInputs, NewStudentRatingSchema } from '@types';
-import { useRating } from '@hooks';
 
 interface LessonDetailsAfterProps {
   id: number;
@@ -41,16 +41,25 @@ export const LessonDetailsAfterStudent = (props: LessonDetailsAfterProps) => {
     rating.mutate(data);
   };
 
-  if (isLoading) return <div>Loading...</div>;
-  if (!(data?.finalStartTime && data?.finalEndTime))
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!(data?.finalStartTime && data?.finalEndTime)) {
     return <div>this lesson time not yet arranged...</div>;
+  }
 
   const lessonStart = new Date(data?.finalStartTime);
   const lessonEnd = new Date(data?.finalEndTime);
   let diffHours = lessonEnd.getHours() - lessonStart.getHours();
   const diffMinutes = lessonEnd.getMinutes() - lessonStart.getMinutes();
-  if (diffMinutes < 0) diffHours--;
+
+  if (diffMinutes < 0) {
+    diffHours--;
+  }
+
   const totalHours = diffHours + diffMinutes / 60;
+
   return (
     <>
       <LessonDetailsText>

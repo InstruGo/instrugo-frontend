@@ -19,7 +19,6 @@ export const useLogout = () => {
   return useMutation(logout, {
     onSuccess: () => {
       setUser(null);
-      queryClient.invalidateQueries('profile');
       router.push('/login');
     },
     onError: (error) => {

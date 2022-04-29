@@ -1,10 +1,20 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import { useEffect } from 'react';
+
+import { useQueryClient } from 'react-query';
 
 import { LoginForm } from '@modules';
 import { AuthLayout } from '@modules/AuthLayout/AuthLayout';
 
 const Login: NextPage = () => {
+  const queryClient = useQueryClient();
+
+  useEffect(() => {
+    queryClient.clear();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div>
       <Head>

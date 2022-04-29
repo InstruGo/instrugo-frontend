@@ -1,12 +1,12 @@
 import { useMutation, useQueryClient } from 'react-query';
 
-import type { NewTutorResponseFormInputs, TutorResponse } from '@types';
-
 import { useAxios } from '@hooks';
+import type { NewTutorResponseFormInputs, TutorResponse } from '@types';
 
 export const useNewTutorResponse = (lessonId: number) => {
   const axios = useAxios();
   const queryClient = useQueryClient();
+
   const newResponse = async (
     input: NewTutorResponseFormInputs
   ): Promise<TutorResponse> => {

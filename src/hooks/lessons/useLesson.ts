@@ -1,8 +1,7 @@
 import { useQuery } from 'react-query';
 
-import { Lesson } from '@types';
-
 import { useAxios } from '@hooks';
+import { Lesson } from '@types';
 
 export const useLesson = (id: number) => {
   const axios = useAxios();

@@ -2,9 +2,8 @@ import { useRouter } from 'next/router';
 
 import { useMutation } from 'react-query';
 
-import type { RegisterFormInputs } from '@types';
-
 import { useAxios } from '@hooks';
+import type { RegisterFormInputs } from '@types';
 
 export const useRegister = () => {
   const router = useRouter();

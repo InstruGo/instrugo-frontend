@@ -1,9 +1,9 @@
-import { Rating } from './rating.types';
-import { TutorResponse } from './tutor-response';
-import { TimeFrame } from './time-frame.type';
-import { User } from './user.types';
-import { Subject } from './subjects.types';
 import { EducationLevel, MeetingType } from './new-request.type';
+import { Rating } from './rating.types';
+import { Subject } from './subjects.types';
+import { TimeFrame } from './time-frame.type';
+import { TutorResponse } from './tutor-response';
+import { User } from './user.types';
 
 export type Lesson = {
   id: number;
