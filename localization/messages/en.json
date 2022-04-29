@@ -91,6 +91,7 @@
   "newRequestForm.minutes": "minutes",
 
   "newResponseForm.price": "Price",
+  "newResponseForm.timeError": "Time Frame should be contained in lesson time frames!",
 
   "requestDetails.description": "Request details",
   "requestDetails.tutorResponses": "Tutor responses",

@@ -92,6 +92,7 @@
   "newRequestForm.minutes": "minuta",
 
   "newResponseForm.price": "Cijena",
+  "newResponseForm.timeError": "Vrijeme mora biti sadržano unutar dostupnih termina!",
 
   "requestDetails.description": "Detalji zahtjeva",
   "requestDetails.tutorResponses": "Odgovori instruktora",

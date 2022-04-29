@@ -30,7 +30,7 @@ interface RequestDetailsProps {
 export const PublicRequestDetails = (props: RequestDetailsProps) => {
   const { data, isLoading } = useLesson(props.id);
   const router = useRouter();
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading || !data) return <div>Loading...</div>;
   const schedulerData: any = [];
   data?.lessonTimeFrames.map(
     (timeFrame: { startTime: string; endTime: string }) => {
@@ -114,6 +114,7 @@ export const PublicRequestDetails = (props: RequestDetailsProps) => {
             router.push('/tutor/requests'); //change to tutor responses when page is made
           }}
           lessonId={props.id}
+          lessonTimeFrames={data?.lessonTimeFrames}
         />
       </RequestDetailsContainer>
     </>

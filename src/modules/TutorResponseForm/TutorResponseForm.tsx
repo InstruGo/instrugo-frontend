@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
@@ -7,12 +7,12 @@ import { FormattedMessage } from 'react-intl';
 import { Input } from '@components';
 import { TimeSlot } from '@components';
 import { useNewTutorResponse } from '@hooks';
-import { useTutorResponses } from '@hooks/tutor-responses/useTutorResponses';
 
 import {
   NewTutorResponseFormInputs,
   newTutorResponseFormSchema,
-} from '../../types/new-tutor-response.type';
+  TimeFrame,
+} from '@types';
 import {
   ResponseFormContainer,
   InputDescription,
@@ -23,18 +23,43 @@ import {
 interface NewResponseProps {
   onFinish?: () => void;
   lessonId: number;
+  lessonTimeFrames: TimeFrame[];
+}
+interface SimpleTimeFrame {
+  startTime: string;
+  endTime: string;
+}
+function contains(lessonTimeFrame: TimeFrame, another: SimpleTimeFrame) {
+  return (
+    new Date(another.startTime) >= new Date(lessonTimeFrame.startTime) &&
+    new Date(another.endTime) <= new Date(lessonTimeFrame.endTime)
+  );
+}
+function containsTimeFrame(
+  lessonTimeFrames: TimeFrame[],
+  timeFrame: SimpleTimeFrame
+) {
+  for (const lessonTimeFrame of lessonTimeFrames) {
+    if (contains(lessonTimeFrame, timeFrame)) {
+      return true;
+    }
+  }
+
+  return false;
 }
 export const NewTutorResponseForm = ({
   onFinish,
   lessonId,
+  lessonTimeFrames,
 }: NewResponseProps) => {
   const newResponse = useNewTutorResponse(lessonId);
-  const { data, isLoading } = useTutorResponses();
 
   const {
     register,
     handleSubmit,
     setValue,
+    setError,
+    clearErrors,
     formState: { errors },
   } = useForm<NewTutorResponseFormInputs>({
     resolver: zodResolver(newTutorResponseFormSchema),
@@ -82,10 +107,13 @@ export const NewTutorResponseForm = ({
       secondsStart
     );
     const end = new Date(year, month, day, hourEnd, minutesEnd, secondsEnd);
-    setValue(`tutorTimeFrame`, {
+    const timeFrame: SimpleTimeFrame = {
       startTime: start.toISOString(),
       endTime: end.toISOString(),
-    });
+    };
+
+    setValue(`tutorTimeFrame`, timeFrame);
+    return timeFrame;
   };
 
   const onDateChange = (
@@ -95,18 +123,23 @@ export const NewTutorResponseForm = ({
     endTime: Date
   ) => {
     updateTimeSlot({ date: date, startTime: startTime, endTime: endTime });
-    updateTutorTimeFrame({
+    const timeFrame = updateTutorTimeFrame({
       date: date,
       startTime: startTime,
       endTime: endTime,
     });
+
+    if (!containsTimeFrame(lessonTimeFrames, timeFrame)) {
+      setError('tutorTimeFrame.startTime', {
+        type: 'manual',
+        message: 'Time Frame should be contained in lesson time frames!',
+      });
+      return;
+    }
+    clearErrors('tutorTimeFrame');
   };
 
   updateTutorTimeFrame(timeSlot);
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <ResponseFormContainer onSubmit={handleSubmit(onSubmit)}>
@@ -124,7 +157,11 @@ export const NewTutorResponseForm = ({
             onDestroy={() => {}}
             isSingle
           />
-
+          {errors.tutorTimeFrame?.startTime && (
+            <p style={{ color: 'red' }}>
+              <FormattedMessage id="newResponseForm.timeError" />
+            </p>
+          )}
           <InputDescription>
             <FormattedMessage id="newResponseForm.price" />: (kn/h)
           </InputDescription>
@@ -143,6 +180,7 @@ export const NewTutorResponseForm = ({
             type="submit"
             variant="authSubmit"
             placeholderMsgId="button.createResponse"
+            disabled={errors.tutorTimeFrame?.startTime !== undefined}
           />
         </FormColumn>
       </FormRow>
