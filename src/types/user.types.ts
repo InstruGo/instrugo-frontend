@@ -21,8 +21,18 @@ export type User = {
   createdOn: Date;
   modifiedOn: Date;
   subjects: Subject[];
-  averageRating: number;
+  averageRating: string;
   ratingsCount: number;
 };
 
 export type OptionalUser = User | null;
+
+export interface PublicUser {
+  id: number;
+  firstName: string;
+  lastName: string;
+  avatarUrl: string;
+  averageRating: string;
+  description: string;
+  subjects: Subject[];
+}
