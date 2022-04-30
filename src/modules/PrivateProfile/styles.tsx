@@ -35,12 +35,6 @@ export const EditButtonStyles = {
   },
 };
 
-export const SaveChangesButtonStyles = {
-  position: 'absolute',
-  top: '20px',
-  right: '20px',
-};
-
 export const ProfileName = styled('div', {
   fontWeight: 'bold',
   fontSize: '$xl3',
@@ -93,15 +87,76 @@ export const Details = styled('div', {
 export const Subjects = styled('div', {
   alignSelf: 'flex-start',
   marginTop: '$8',
-});
-
-export const AboutMe = styled('div', {
-  marginTop: '$8',
   ':first-child': {
     fontWeight: 'bold',
     fontSize: '$lg',
   },
   'div + div': {
     marginTop: '$3',
+  },
+  li: {
+    marginTop: '$3',
+    textTransform: 'capitalize',
+  },
+});
+
+export const AboutMe = styled('div', {
+  marginTop: '$8',
+  alignSelf: 'flex-start',
+  ':first-child': {
+    fontWeight: 'bold',
+    fontSize: '$lg',
+  },
+  'div + div': {
+    marginTop: '$3',
+  },
+});
+
+// Edit form
+export const EditFormContainer = styled('form', {
+  padding: '$6',
+  '> div + div': {
+    marginTop: '$5',
+  },
+  textarea: {
+    marginTop: '$3',
+  },
+});
+
+export const FormTitle = styled('div', {
+  fontWeight: 'bold',
+  textTransform: 'uppercase',
+  marginBottom: '$6',
+  borderBottom: '1px solid black',
+  paddingBottom: '$1',
+});
+
+export const InputContainer = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  fontWeight: 'bold',
+  ':first-child:first-letter': { textTransform: 'uppercase' },
+
+  '> div + div': {
+    marginTop: '$1',
+  },
+
+  '@bp2': {
+    flexDirection: 'row',
+    alignItems: 'center',
+
+    '> div + div': {
+      marginLeft: '$4',
+    },
+  },
+});
+
+export const Description = styled('textarea', {
+  width: '100%',
+  height: '100px',
+  resize: 'none',
+  padding: '$1',
+  '&:focus-visible': {
+    outline: 'none',
   },
 });

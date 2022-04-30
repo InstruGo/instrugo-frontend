@@ -18,6 +18,7 @@ export const ContentLayout = styled('div', {
   flexDirection: 'column',
   alignItems: 'center',
   padding: '$12 $4 $4',
+  minHeight: '65vh',
 
   '> div': {
     width: '90%',

@@ -107,8 +107,14 @@ export const Row = styled('div', {
 export const CardText = styled('i', {
   display: 'flex',
   padding: '4px',
-  fontWeight: 'bold',
   fontSize: '$lg',
+});
+
+export const TutorLink = styled('div', {
+  '&:hover': {
+    opacity: '0.5',
+    cursor: 'pointer',
+  },
 });
 
 export const TextBox = styled('textarea', {

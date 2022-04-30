@@ -6,3 +6,4 @@ export * from './useUpdateProfile';
 export * from './useUserContext';
 export * from './useHomeRedirect';
 export * from './useRegister';
+export * from './usePublicProfile';

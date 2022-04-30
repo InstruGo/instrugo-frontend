@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import { AiOutlineClockCircle, AiOutlineDollar } from 'react-icons/ai';
 import { BsPerson, BsBookHalf } from 'react-icons/bs';
 import { FaGraduationCap } from 'react-icons/fa';
@@ -6,6 +8,7 @@ import { FormattedMessage } from 'react-intl';
 
 import { Button } from '@components';
 import { useLesson, useCancelLesson } from '@hooks';
+import { PublicProfile } from '@modules';
 
 import {
   LessonDetailsContainer,
@@ -14,6 +17,7 @@ import {
   Column,
   Title,
   CardText,
+  TutorLink,
 } from './styles';
 
 interface LessonDetailsProps {
@@ -22,9 +26,13 @@ interface LessonDetailsProps {
 export const LessonDetails = (props: LessonDetailsProps) => {
   const { data, isLoading } = useLesson(props.id);
   const cancelLesson = useCancelLesson(props.id);
+
   const onCancel = async () => {
     const result = await cancelLesson.mutate(props.id);
   };
+
+  const [showPublicProfile, setShowProfile] = useState(false);
+
   if (isLoading) return <div>Loading...</div>;
 
   if (!(data?.finalStartTime && data?.finalEndTime))
@@ -58,7 +66,14 @@ export const LessonDetails = (props: LessonDetailsProps) => {
             <Row>
               <BsPerson />
               <CardText>
-                {data?.tutor.firstName + '  ' + data?.tutor.lastName}
+                <TutorLink onClick={() => setShowProfile(true)}>
+                  {data?.tutor.firstName + '  ' + data?.tutor.lastName}
+                </TutorLink>
+                <PublicProfile
+                  userId={data.tutor.id}
+                  showProfile={showPublicProfile}
+                  setShowProfile={setShowProfile}
+                />
               </CardText>
             </Row>
             <Row>

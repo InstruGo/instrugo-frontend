@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { optional, z } from 'zod';
 
 import { EducationLevel } from './new-request.type';
 
@@ -17,7 +17,10 @@ export const profileUpdateFormSchema = z.object({
   birthDate: z.string().optional(),
   description: z.string().optional(),
   educationLevel: z.nativeEnum(EducationLevel).optional(),
-  grade: z.number().optional(),
+  grade: z.preprocess(
+    (grade) => parseInt(grade as string),
+    z.number().optional()
+  ),
   subjectIds: z.number().array().optional(),
 });
 
