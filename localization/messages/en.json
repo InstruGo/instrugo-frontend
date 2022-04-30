@@ -98,6 +98,7 @@
   "requestDetails.responseForm": "Your response",
   "lessonDetails.description": "Lesson details",
   "lessonDetails.cancelLesson": "Cancel lesson",
+  "lessonDetails.payment": "Lesson payment",
 
   "lessonDetailsAfter.total": "Total",
   "lessonDetailsAfter.rating": "Rating",

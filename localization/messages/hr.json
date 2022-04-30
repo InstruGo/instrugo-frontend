@@ -99,6 +99,7 @@
   "requestDetails.responseForm": "Tvoj odgovor",
   "lessonDetails.description": "Detalji instrukcija",
   "lessonDetails.cancelLesson": "Otkaži instrukcije",
+  "lessonDetails.payment": "Plaćanje instrukcija",
 
   "lessonDetailsAfter.total": "Ukupno",
   "lessonDetailsAfter.rating": "Ocjena",

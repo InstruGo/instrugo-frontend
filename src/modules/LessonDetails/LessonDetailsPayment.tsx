@@ -7,14 +7,8 @@ import { FormattedMessage } from 'react-intl';
 import { Button } from '@components';
 import { useLesson, useResolveLesson } from '@hooks';
 
-import {
-  LessonDetailsContainer,
-  LessonDetailsText,
-  Row,
-  Column,
-  Title,
-  CardText,
-} from './styles';
+import { LessonDetailsText, Row, Column, CardText } from './styles';
+import { useRouter } from 'next/router';
 
 interface LessonDetailsPaymentProps {
   id: number;
@@ -23,10 +17,11 @@ interface LessonDetailsPaymentProps {
 export const LessonDetailsPayment = (props: LessonDetailsPaymentProps) => {
   const { data, isLoading } = useLesson(props.id);
   const acceptResponse = useResolveLesson(props.id);
+  const router = useRouter();
 
   const onAccept = async () => {
-    console.log(props);
     acceptResponse.mutate(props.responseId);
+    router.push('/student/home');
   };
 
   if (isLoading) {
@@ -59,7 +54,7 @@ export const LessonDetailsPayment = (props: LessonDetailsPaymentProps) => {
   return (
     <>
       <LessonDetailsText>
-        <FormattedMessage id="lessonDetails.description" />
+        <FormattedMessage id="lessonDetails.payment" />
       </LessonDetailsText>
       <div
         style={{ display: 'flex', justifyContent: 'center', height: '100%' }}
