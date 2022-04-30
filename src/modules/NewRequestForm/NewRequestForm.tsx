@@ -41,6 +41,10 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
     formState: { errors },
   } = useForm<NewRequestFormInputs>({
     resolver: zodResolver(newRequestFormSchema),
+    defaultValues: {
+      educationLevel: user?.educationLevel,
+      grade: user?.grade,
+    },
   });
 
   const onSubmit = async (data: NewRequestFormInputs) => {
@@ -52,7 +56,9 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
   };
 
   const [selectedEducationLevel, setEducationLevel] = useState<EducationLevel>(
-    EducationLevel.ELEMENTARY_SCHOOL
+    user?.educationLevel
+      ? user.educationLevel
+      : EducationLevel.ELEMENTARY_SCHOOL
   );
 
   const [selectedMeetingType, setMeetingType] = useState<MeetingType>(
@@ -164,12 +170,6 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
   updateLessonTimeFrames(timeSlots);
   const [subjectId, setSubjectId] = useState<number>(1);
   setValue('subjectId', subjectId);
-  if (user?.grade) {
-    setValue('grade', user.grade);
-  }
-  if (user?.educationLevel) {
-    setValue('educationLevel', user.educationLevel);
-  }
   if (isLoading) return <div>Loading...</div>;
 
   return (

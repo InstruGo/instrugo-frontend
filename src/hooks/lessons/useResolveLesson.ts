@@ -7,9 +7,11 @@ export const useResolveLesson = (lessonId: number) => {
   const axios = useAxios();
   const queryClient = useQueryClient();
   const resolveLesson = async (tutorResponseId: number): Promise<Lesson> => {
+    console.log(lessonId, tutorResponseId);
     const response = await axios.post(`/lessons/resolve/${lessonId}`, {
       tutorResponseId: tutorResponseId,
     });
+    console.log('done');
 
     const data = response.data as Lesson;
     return data;

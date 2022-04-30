@@ -17,3 +17,4 @@ export * from './LessonDetails/LessonDetailsAfterStudent';
 export * from './LessonDetails/LessonDetailsAfterTutor';
 export * from './LandingPage/LandingPage';
 export * from './NewRequestForm/UpdateRequestForm';
+export * from './LessonDetails/LessonDetailsPayment';

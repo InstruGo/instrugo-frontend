@@ -6,9 +6,10 @@ import { CgProfile } from 'react-icons/cg';
 import { ImCross } from 'react-icons/im';
 import { FormattedMessage } from 'react-intl';
 
-import { Button } from '@components';
+import { Button, Modal } from '@components';
 import { useResolveLesson } from '@hooks';
 import { TimeFrame } from '@types';
+import { LessonDetailsPayment } from '@modules';
 
 import {
   ItemRow,
@@ -37,14 +38,10 @@ export const TutorResponse = ({
   price,
   timeFrame,
 }: ResponseProps) => {
-  const acceptResponse = useResolveLesson(lessonId);
-  const router = useRouter();
-  const onAcceptClick = () => {
-    acceptResponse.mutate(index);
-    router.push('/student/home');
-  };
   const start = new Date(timeFrame.startTime);
   const end = new Date(timeFrame.endTime);
+  const [showLessonPaymentModal, setLessonPaymentModal] = React.useState(false);
+
   return (
     <>
       <ResponseContainer>
@@ -83,7 +80,7 @@ export const TutorResponse = ({
         </ResponseItem>
         <ResponseItem style={{ flexGrow: '1' }}>
           <Button
-            onClick={onAcceptClick}
+            onClick={() => setLessonPaymentModal(true)}
             style={{
               backgroundColor: '#fff',
               color: '#26a644',
@@ -96,7 +93,6 @@ export const TutorResponse = ({
         </ResponseItem>
         <ResponseItem style={{ flexGrow: '1' }}>
           <Button
-            onClick={onAcceptClick}
             style={{
               backgroundColor: '#fff',
               color: '#c93030',
@@ -106,6 +102,12 @@ export const TutorResponse = ({
             <ImCross />
           </Button>
         </ResponseItem>
+        <Modal
+          shouldShow={showLessonPaymentModal}
+          closeAction={() => setLessonPaymentModal(false)}
+        >
+          <LessonDetailsPayment id={lessonId} responseId={index} />
+        </Modal>
       </ResponseContainer>
       <StyledHr />
     </>
