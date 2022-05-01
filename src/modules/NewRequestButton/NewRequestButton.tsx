@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import React from 'react';
 
 import { FaPlus } from 'react-icons/fa';
@@ -6,9 +7,6 @@ import { FormattedMessage } from 'react-intl';
 import { Button } from '@components';
 
 const ButtonStyles = {
-  position: 'fixed !important',
-  bottom: '20px',
-  right: '20px',
   borderRadius: '100px',
   padding: '15px 25px',
   fontSize: '20px',
@@ -18,9 +16,14 @@ const ButtonStyles = {
   '> svg': { marginRight: '15px' },
 };
 
-export const NewRequestButton = ({ onClick }: { onClick: () => void }) => {
+export const NewRequestButton = () => {
+  const router = useRouter();
+
   return (
-    <Button onClick={onClick} css={ButtonStyles}>
+    <Button
+      onClick={() => router.push('/student/new-request')}
+      css={ButtonStyles}
+    >
       <FaPlus size="25px" />
       <FormattedMessage id="button.createRequest" />
     </Button>

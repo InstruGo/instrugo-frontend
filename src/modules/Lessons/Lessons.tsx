@@ -1,9 +1,11 @@
-import React, { useState, useEffect, useLayoutEffect } from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 
 import { BiFilter } from 'react-icons/bi';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 
-import { Button, Card, Table, Calendar } from '@components';
+import { Button, Card, Dropdown, Table, Calendar } from '@components';
+import { NewRequestButton } from '@modules';
+import { MeetingType } from '@types';
 import {
   useLessons,
   useMenuAnimation,
@@ -13,7 +15,7 @@ import {
 
 import {
   ControlPanel,
-  FilterContainer,
+  FilterMenuContainer,
   FilterGroup,
   LessonsBody,
   LessonsHeader,
@@ -44,33 +46,71 @@ export const LessonsContainer = ({
   table,
   respCards,
 }: LessonsContainerProps) => {
-  const [lessonStatus, setLessonStatus] = useState('pending');
-  const { data, isLoading } = useLessons({ status: lessonStatus });
+  const intl = useIntl();
+
   const { data: responseData } = useTutorResponses();
 
-  const [isFilterOn, setFilterOn] = useState(false);
-  const [currentSubject, setCurrentSubject] = useState('all');
   const filterMenuRef = React.useRef<HTMLDivElement>(null);
+  const [isFilterMenuExpanded, setFilterMenuExpanded] = useState(false);
 
+  // Filter states
+
+  // Status
+  const [lessonStatus, setLessonStatus] = useState('requested');
+
+  // Subjects
   const { data: subjects } = useSubjects();
+  const subjectFilterOptions = [
+    'all',
+    ...(subjects?.map((sub) => sub.name) || []),
+  ];
+  const [currentSubjectId, setCurrentSubjectId] = useState<
+    number | undefined
+  >();
 
-  const [filtersBySubjects, setFiltersBySubjects] = useState(['all']);
+  // Meeting type
+  const [currentMeetingType, setCurrentMeetingType] = useState<
+    string | undefined
+  >();
+  const meetingTypeOptions = [
+    { key: 'all', value: intl.formatMessage({ id: 'meetingType.all' }) },
+    {
+      key: 'in-person',
+      value: intl.formatMessage({ id: 'meetingType.inPerson' }),
+    },
+    { key: 'online', value: intl.formatMessage({ id: 'meetingType.online' }) },
+  ];
 
-  // Available filters
-  useEffect(() => {
-    if (subjects)
-      setFiltersBySubjects(['all', ...subjects.map((sub) => sub.name)]);
-  }, [subjects]);
-
-  const selectFilter = (subject: any) => {
-    setCurrentSubject(subject);
+  // Filter handlers
+  const handleSubjectSelect = (selectedSubject: string) => {
+    if (selectedSubject === 'all') setCurrentSubjectId(undefined);
+    else {
+      // Find id of the selected subject name
+      const selectedSubjectId = subjects?.find(
+        (subject) => subject.name === selectedSubject
+      )?.id;
+      setCurrentSubjectId(selectedSubjectId);
+    }
   };
 
+  const handleMeetingTypeSelect = (selectedMeetingType: string) => {
+    if (selectedMeetingType === 'all') setCurrentMeetingType(undefined);
+    else setCurrentMeetingType(selectedMeetingType);
+  };
+
+  // Fetch lessons with given filter
+  const { data, isLoading } = useLessons({
+    status: lessonStatus,
+    subjectIds: currentSubjectId ? [currentSubjectId] : undefined,
+    type: currentMeetingType as MeetingType,
+  });
+
+  // Filter menu animation
   const { menuAnimation: filterMenuAnimation } = useMenuAnimation();
 
   useLayoutEffect(() => {
-    filterMenuAnimation(filterMenuRef, isFilterOn);
-  }, [filterMenuAnimation, isFilterOn]);
+    filterMenuAnimation(filterMenuRef, isFilterMenuExpanded);
+  }, [filterMenuAnimation, isFilterMenuExpanded]);
 
   if (isLoading) return <div>Loading...</div>;
   if (!data) return <div>No lessons...</div>;
@@ -87,7 +127,7 @@ export const LessonsContainer = ({
 
       <ControlPanel>
         {home && (
-          <div>
+          <>
             <Button
               variant={lessonStatus === 'pending' ? 'primary' : 'secondary'}
               onClick={() => setLessonStatus('pending')}
@@ -95,7 +135,7 @@ export const LessonsContainer = ({
               <FormattedMessage id="lessons.upcoming" />
             </Button>
             <Button
-              variant={lessonStatus === 'pending' ? 'secondary' : 'primary'}
+              variant={lessonStatus === 'requested' ? 'primary' : 'secondary'}
               style={{
                 marginLeft: '10px',
               }}
@@ -103,96 +143,109 @@ export const LessonsContainer = ({
             >
               <FormattedMessage id="lessons.requests" />
             </Button>
-          </div>
+            <Button
+              variant={lessonStatus === 'completed' ? 'primary' : 'secondary'}
+              style={{
+                marginLeft: '10px',
+              }}
+              onClick={() => setLessonStatus('completed')}
+            >
+              <FormattedMessage id="lessons.recentlyFinished" />
+            </Button>
+          </>
         )}
         {filter && (
-          <div
+          <Button
             style={{
-              marginLeft: '20px',
+              backgroundColor: 'white',
+              color: '#10434E',
+              fontWeight: 'bold',
+              display: 'flex',
+              alignItems: 'center',
+              marginLeft: '10px',
+              boxShadow: 'none',
             }}
+            onClick={() => setFilterMenuExpanded(!isFilterMenuExpanded)}
           >
-            <Button
-              style={{
-                backgroundColor: 'white',
-                color: '#10434E',
-                fontWeight: 'bold',
-                display: 'flex',
-                alignItems: 'center',
-              }}
-              onClick={() => setFilterOn(!isFilterOn)}
-            >
-              <BiFilter size="20px" />
-              <div style={{ marginLeft: '5px' }}>
-                <FormattedMessage id="filter" />
-              </div>
-            </Button>
-          </div>
+            <BiFilter size="20px" />
+            <div style={{ marginLeft: '5px' }}>
+              <FormattedMessage id="filter" />
+            </div>
+          </Button>
         )}
+        <div
+          style={{ flexGrow: 1, display: 'flex', justifyContent: 'flex-end' }}
+        >
+          <NewRequestButton />
+        </div>
       </ControlPanel>
 
-      <FilterContainer ref={filterMenuRef}>
-        <div style={{ margin: '10px 0 0 10px' }}>
-          <FormattedMessage id="filter.subjects" />
-        </div>
+      <FilterMenuContainer ref={filterMenuRef}>
         <FilterGroup>
-          {filtersBySubjects.map((filterName, i) => {
-            return (
-              <Button key={i} onClick={() => selectFilter(filterName)}>
-                <FormattedMessage id={`subjects.${filterName}`} />
-              </Button>
-            );
-          })}
+          <div>
+            <FormattedMessage id="filter.subjects" />
+          </div>
+          <Dropdown
+            options={subjectFilterOptions.map((filterName) => {
+              return {
+                key: filterName,
+                value: intl.formatMessage({ id: `subjects.${filterName}` }),
+              };
+            })}
+            onOptionSelect={handleSubjectSelect}
+          />
         </FilterGroup>
-      </FilterContainer>
+        <FilterGroup>
+          <div>
+            <FormattedMessage id="lessons.titles.meetingType" />:
+          </div>
+          <Dropdown
+            options={meetingTypeOptions}
+            onOptionSelect={handleMeetingTypeSelect as any}
+          />
+        </FilterGroup>
+      </FilterMenuContainer>
 
       {cards &&
         !respCards &&
         (lessonStatus !== 'pending' ? (
           <LessonsBody style={{ height: '200px' }}>
-            {data
-              .filter(
-                (lesson) =>
-                  currentSubject === 'all' ||
-                  lesson.subject.name === currentSubject
-              )
-              .map((lesson) => (
-                <Card
-                  key={lesson.id}
-                  index={lesson.id}
-                  subject={lesson.subject.name}
-                  subfield={lesson.subfield}
-                  location={lesson.location}
-                  meetingType={lesson.type}
-                  dateAndTime={lesson.lessonTimeFrames[0].startTime}
-                  color={lesson.subject.color}
-                  lessonStatus={lesson.status}
-                  price={lesson.budget}
-                  responseStart={new Date()}
-                  responseEnd={new Date()}
-                  respCard={false}
-                />
-              ))}
+            {data.map((lesson) => (
+              <Card
+                key={lesson.id}
+                index={lesson.id}
+                subject={lesson.subject.name}
+                subfield={lesson.subfield}
+                location={lesson.location}
+                meetingType={lesson.type}
+                dateAndTime={
+                  lesson.lessonTimeFrames[0]?.startTime
+                    ? lesson.lessonTimeFrames[0].startTime
+                    : lesson.finalStartTime
+                }
+                color={lesson.subject.color}
+                lessonStatus={lesson.status}
+                price={lesson.budget}
+                responseStart={new Date()}
+                responseEnd={new Date()}
+                respCard={false}
+              />
+            ))}
           </LessonsBody>
         ) : (
           <Calendar
-            timeFrames={data
-              .filter(
-                (lesson) =>
-                  currentSubject === 'all' ||
-                  lesson.subject.name === currentSubject
-              )
-              .map((lesson) => {
-                const timeFrame = {
-                  id: 0,
-                  startTime: lesson.finalStartTime,
-                  endTime: lesson.finalEndTime,
-                };
-                return {
-                  timeFrame: timeFrame,
-                  color: lesson.subject.color,
-                  title: lesson.subject.name,
-                };
-              })}
+            timeFrames={data.map((lesson) => {
+              const timeFrame = {
+                id: 0,
+                startTime: lesson.finalStartTime,
+                endTime: lesson.finalEndTime,
+              };
+              return {
+                timeFrame: timeFrame,
+                color: lesson.subject.color,
+                title: lesson.subject.name,
+              };
+            })}
           />
         ))}
 

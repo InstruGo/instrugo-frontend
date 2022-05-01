@@ -8,7 +8,6 @@ import { Button, ImageWithPlaceholder, Modal, Rating } from '@components';
 import { Loader } from '@components/icons';
 import { StudentsNavbar } from '@modules';
 import { OptionalUser } from '@types';
-import { EducationLevel } from '@types';
 
 import { EditProfileForm } from './EditProfileForm';
 import {

@@ -77,6 +77,7 @@
 
   "lessons.upcoming": "Upcoming",
   "lessons.requests": "Requests",
+  "lessons.recentlyFinished": "Recently finished",
 
   "filter": "Filter",
   "filter.subjects": "By subjects",
@@ -92,6 +93,10 @@
   "subjects.history": "history",
   "subjects.IT": "IT",
   "subjects.latin": "latin",
+
+  "meetingType.all": "all",
+  "meetingType.inPerson": "in person",
+  "meetingType.online": "online",
 
   "button.createRequest": "New request",
   "updateRequest.description": "Update your request",

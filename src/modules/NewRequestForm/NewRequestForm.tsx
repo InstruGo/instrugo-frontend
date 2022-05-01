@@ -8,12 +8,12 @@ import { Button, TimeSlot, Input } from '@components';
 import { useNewRequest, useSubjects, useUserContext } from '@hooks';
 
 import {
-  NewRequestFormInputs,
-  newRequestFormSchema,
   EducationLevel,
   MeetingType,
-  Lesson,
+  NewRequestFormInputs,
+  newRequestFormSchema,
 } from '@types';
+
 import {
   NewRequestFormContainer,
   InputDescription,

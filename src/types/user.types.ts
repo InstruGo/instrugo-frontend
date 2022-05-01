@@ -1,4 +1,3 @@
-import { EducationLevel } from './new-request.type';
 import { Subject } from './subjects.types';
 
 export enum UserRole {
@@ -35,4 +34,10 @@ export interface PublicUser {
   averageRating: string;
   description: string;
   subjects: Subject[];
+}
+
+export enum EducationLevel {
+  HIGH_SCHOOL = 'high-school',
+  ELEMENTARY_SCHOOL = 'elementary-school',
+  UNIVERSITY = 'university',
 }
