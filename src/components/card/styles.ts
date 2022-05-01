@@ -4,7 +4,7 @@ import { styled } from '../../../styles/stitches.config';
 
 export const CardStyle = styled('div', {
   width: '14rem',
-  height: '8rem',
+  height: '10rem',
   border: '2px solid #3FB2C1',
   borderRadius: '10px',
   display: 'flex',
@@ -57,4 +57,27 @@ export const CardItem = styled('div', {
   alignItems: 'center',
   paddingLeft: '20px',
   height: '20%',
+});
+
+export const Row = styled('div', {
+  flexGrow: '0',
+  justifyContent: 'flex-start',
+  alignItems: 'center',
+  display: 'flex',
+  width: '50%',
+  variants: {
+    variant: {
+      normal: {
+        padding: '$2 $5',
+      },
+      bigPadding: {
+        padding: '$2 $5',
+        justifyContent: 'flex-start',
+      },
+    },
+  },
+
+  defaultVariants: {
+    variant: 'normal',
+  },
 });

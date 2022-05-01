@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import React, { useState, Fragment } from 'react';
 
-import { AiOutlineClockCircle } from 'react-icons/ai';
+import { AiOutlineClockCircle, AiOutlineDollar } from 'react-icons/ai';
 import { FaGraduationCap } from 'react-icons/fa';
 import { GoBook } from 'react-icons/go';
 import { MdOutlineMeetingRoom, MdOutlineLocationOn } from 'react-icons/md';
@@ -20,6 +20,7 @@ import {
   CardItem,
   CardStyle,
   ModalButton,
+  Row,
 } from './styles';
 
 type StitchesComponentProps = React.ComponentPropsWithoutRef<typeof CardStyle>;
@@ -35,6 +36,10 @@ export interface CardProps extends StitchesComponentProps {
   dateAndTime?: string;
   forTutors?: boolean;
   lessonStatus?: string;
+  respCard?: boolean;
+  price?: number;
+  responseStart: Date;
+  responseEnd: Date;
 }
 
 export const Card = ({
@@ -49,6 +54,10 @@ export const Card = ({
   color,
   forTutors,
   lessonStatus,
+  respCard,
+  price,
+  responseStart,
+  responseEnd,
 }: CardProps) => {
   const router = useRouter();
   const [showLessonDetailsModal, setLessonDetailsModal] = useState(false);
@@ -113,6 +122,30 @@ export const Card = ({
                   <FaGraduationCap />
                   <CardText>{`${educationLvl}, ${grade}. grade`}</CardText>
                 </CardItem>
+              )}
+              {respCard && (
+                <>
+                  <Row
+                    style={{
+                      backgroundColor: '#0E353D',
+                      height: '2px',
+                      width: '200px',
+                      padding: '0',
+                    }}
+                  ></Row>
+                  <CardItem>
+                    <AiOutlineClockCircle />
+                    <CardText>
+                      {`${responseStart.getDate()}\/${responseStart.getMonth()}\/${responseStart.getFullYear()}`}
+                      {',   '}
+                      {`${responseStart.getHours()}:${responseStart.getMinutes()} - ${responseEnd.getHours()}:${responseEnd.getMinutes()}`}
+                    </CardText>
+                  </CardItem>
+                  <CardItem>
+                    <AiOutlineDollar />
+                    <CardText>{price + ' kn'}</CardText>
+                  </CardItem>
+                </>
               )}
             </CardBody>
           </CardStyle>
