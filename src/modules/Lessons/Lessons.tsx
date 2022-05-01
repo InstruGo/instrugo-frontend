@@ -146,7 +146,7 @@ export const LessonsContainer = ({
       </FilterContainer>
 
       {cards &&
-        !responseData &&
+        !respCards &&
         (lessonStatus !== 'pending' ? (
           <LessonsBody style={{ height: '200px' }}>
             {data
@@ -166,7 +166,7 @@ export const LessonsContainer = ({
                   dateAndTime={lesson.lessonTimeFrames[0].startTime}
                   color={lesson.subject.color}
                   lessonStatus={lesson.status}
-                  price={lesson.tutorResponses[0].price}
+                  price={lesson.budget}
                   responseStart={new Date()}
                   responseEnd={new Date()}
                   respCard={false}
