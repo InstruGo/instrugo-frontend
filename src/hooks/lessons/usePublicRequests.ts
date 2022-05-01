@@ -5,12 +5,12 @@ import { Lesson, PoolFilter } from '@types';
 
 export const usePublicRequests = (filter: PoolFilter) => {
   const axios = useAxios();
-  const getPublicRequests = async (filter: PoolFilter): Promise<Lesson[]> => {
-    const response = await axios.get(`/lessons/pool`);
+  const getPublicRequests = async (): Promise<Lesson[]> => {
+    const response = await axios.get(`/lessons/pool`, { params: filter });
     return response.data as Lesson[];
   };
 
-  return useQuery([`publicRequests`, filter], () => getPublicRequests(filter), {
+  return useQuery([`publicRequests`, filter], () => getPublicRequests(), {
     onSuccess: () => {},
     onError: (error) => {
       console.log(error);

@@ -4,7 +4,11 @@ import { useRouter } from 'next/router';
 import React from 'react';
 
 import { withAuth } from '@components';
-import { LessonsContainer, TutorsNavbar } from '@modules';
+import {
+  LessonsContainer,
+  PublicRequestsContainer,
+  TutorsNavbar,
+} from '@modules';
 import { styled } from 'styles/stitches.config';
 
 const PageLayout = styled('div', {
@@ -28,7 +32,13 @@ const TutorHomepage: NextPage = () => {
 
       <PageLayout>
         <LessonsContainer title={'tutorsHome.upcoming'} cards />
-        <LessonsContainer title={'tutorsHome.recommended'} cards filter />
+        {/* <LessonsContainer
+          title={'tutorsHome.recommended'}
+          cards
+          filter
+          isTutor
+        /> */}
+        <PublicRequestsContainer title={'tutorsHome.recommended'} />
       </PageLayout>
     </div>
   );

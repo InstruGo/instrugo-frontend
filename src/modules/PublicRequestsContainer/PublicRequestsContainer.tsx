@@ -1,7 +1,7 @@
 import { FormattedMessage } from 'react-intl';
 
 import { Card } from '@components';
-import { usePublicRequests } from '@hooks';
+import { usePublicRequests, useUserContext } from '@hooks';
 
 import {
   RequestsBody,
@@ -11,8 +11,17 @@ import {
   Title,
 } from './styles';
 
-export const PublicRequestsContainer = () => {
-  const { data, isLoading } = usePublicRequests({});
+interface publicRequestProps {
+  title: string;
+}
+export const PublicRequestsContainer = ({ title }: publicRequestProps) => {
+  const { user } = useUserContext();
+  const subjectIds: number[] = [];
+  if (user) {
+    user.subjects.map((subject) => subjectIds.push(subject.id));
+  }
+  const filter = subjectIds !== [] ? { subjectIds: subjectIds } : {};
+  const { data, isLoading } = usePublicRequests(filter);
 
   if (isLoading) return <div>Loading...</div>;
   if (!data) return <div>No public requests...</div>;
@@ -21,7 +30,7 @@ export const PublicRequestsContainer = () => {
     <StyledContainer>
       <LessonsHeader>
         <Title>
-          <FormattedMessage id="tutor.request.requests" />
+          <FormattedMessage id={title} />
         </Title>
         <StyledHr />
       </LessonsHeader>

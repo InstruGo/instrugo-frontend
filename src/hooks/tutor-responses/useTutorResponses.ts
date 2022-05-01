@@ -5,7 +5,6 @@ import { TutorResponse } from '@types';
 
 export const useTutorResponses = () => {
   const axios = useAxios();
-
   const getResponses = async (): Promise<TutorResponse[]> => {
     const response = await axios.get(`/tutor-responses`);
 
