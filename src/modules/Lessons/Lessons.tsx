@@ -4,9 +4,14 @@ import { BiFilter } from 'react-icons/bi';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import { Button, Card, Dropdown, Table } from '@components';
-import { useLessons, useMenuAnimation, useSubjects } from '@hooks';
 import { NewRequestButton } from '@modules';
 import { MeetingType } from '@types';
+import {
+  useLessons,
+  useMenuAnimation,
+  useSubjects,
+  useTutorResponses,
+} from '@hooks';
 
 import {
   ControlPanel,
@@ -30,6 +35,7 @@ export interface LessonsContainerProps extends StitchesComponentProps {
   filter?: boolean;
   cards?: boolean;
   table?: boolean;
+  respCards?: boolean;
 }
 
 export const LessonsContainer = ({
@@ -38,8 +44,13 @@ export const LessonsContainer = ({
   filter,
   cards,
   table,
+  respCards,
 }: LessonsContainerProps) => {
   const intl = useIntl();
+        
+  const [lessonStatus, setLessonStatus] = useState('pending');
+  const { data, isLoading } = useLessons({ status: lessonStatus });
+  const { data: responseData } = useTutorResponses();
 
   const filterMenuRef = React.useRef<HTMLDivElement>(null);
   const [isFilterMenuExpanded, setFilterMenuExpanded] = useState(false);
@@ -105,7 +116,8 @@ export const LessonsContainer = ({
 
   if (isLoading) return <div>Loading...</div>;
   if (!data) return <div>No lessons...</div>;
-
+  if (!responseData) return <div>No responses...</div>;
+  
   return (
     <StyledContainer>
       <LessonsHeader>
@@ -196,23 +208,48 @@ export const LessonsContainer = ({
         </FilterGroup>
       </FilterMenuContainer>
 
+      {cards && !responseData && (
+        <LessonsBody style={{ height: '200px' }}>
+          {data
+            .map((lesson) => (
+              <Card
+                key={lesson.id}
+                index={lesson.id}
+                subject={lesson.subject.name}
+                subfield={lesson.subfield}
+                location={lesson.location}
+                meetingType={lesson.type}
+                dateAndTime={lesson.lessonTimeFrames[0].startTime}
+                color={lesson.subject.color}
+                lessonStatus={lesson.status}
+                price={lesson.tutorResponses[0].price}
+                responseStart={new Date()}
+                responseEnd={new Date()}
+                respCard={false}
+              />
+            ))}
+        </LessonsBody>
+      )}
+
       {cards && (
         <LessonsBody style={{ height: '200px' }}>
-          {data.map((lesson) => (
+          {responseData.map((response) => (
             <Card
-              key={lesson.id}
-              index={lesson.id}
-              subject={lesson.subject.name}
-              subfield={lesson.subfield}
-              location={lesson.location}
-              meetingType={lesson.type}
-              dateAndTime={
-                lesson.lessonTimeFrames.length !== 0
-                  ? lesson.lessonTimeFrames[0].startTime
-                  : undefined
+              key={response.lesson.id}
+              index={response.lesson.id}
+              subject={response.lesson.subject.name}
+              subfield={response.lesson.subfield}
+              location={response.lesson.location}
+              meetingType={response.lesson.type}
+              dateAndTime={response.tutorResponseTimeFrame.startTime}
+              color={response.lesson.subject.color}
+              lessonStatus={response.lesson.status}
+              price={response.price}
+              responseStart={
+                new Date(response.tutorResponseTimeFrame.startTime)
               }
-              color={lesson.subject.color}
-              lessonStatus={lesson.status}
+              responseEnd={new Date(response.tutorResponseTimeFrame.endTime)}
+              respCard={respCards}
             />
           ))}
         </LessonsBody>
