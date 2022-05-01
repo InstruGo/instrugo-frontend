@@ -75,7 +75,7 @@ export const LessonsContainer = ({
   if (isLoading) return <div>Loading...</div>;
   if (!data) return <div>No lessons...</div>;
   if (!responseData) return <div>No responses...</div>;
-  console.log(responseData);
+  
   return (
     <StyledContainer>
       <LessonsHeader>
