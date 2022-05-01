@@ -40,14 +40,8 @@ export const PublicRequestsContainer = () => {
             educationLvl={lesson.educationLevel}
             color={lesson.subject.color}
             forTutors={true}
-            responseStart={
-              new Date(
-                lesson.tutorResponses[0].tutorResponseTimeFrame.startTime
-              )
-            }
-            responseEnd={
-              new Date(lesson.tutorResponses[0].tutorResponseTimeFrame.endTime)
-            }
+            responseStart={new Date()}
+            responseEnd={new Date()}
           />
         ))}
       </RequestsBody>

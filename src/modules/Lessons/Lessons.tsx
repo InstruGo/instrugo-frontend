@@ -4,7 +4,12 @@ import { BiFilter } from 'react-icons/bi';
 import { FormattedMessage } from 'react-intl';
 
 import { Button, Card, Table } from '@components';
-import { useLessons, useMenuAnimation, useSubjects } from '@hooks';
+import {
+  useLessons,
+  useMenuAnimation,
+  useSubjects,
+  useTutorResponses,
+} from '@hooks';
 
 import {
   ControlPanel,
@@ -41,6 +46,7 @@ export const LessonsContainer = ({
 }: LessonsContainerProps) => {
   const [lessonStatus, setLessonStatus] = useState('pending');
   const { data, isLoading } = useLessons({ status: lessonStatus });
+  const { data: responseData } = useTutorResponses();
 
   const [isFilterOn, setFilterOn] = useState(false);
   const [currentSubject, setCurrentSubject] = useState('all');
@@ -68,7 +74,8 @@ export const LessonsContainer = ({
 
   if (isLoading) return <div>Loading...</div>;
   if (!data) return <div>No lessons...</div>;
-
+  if (!responseData) return <div>No responses...</div>;
+  console.log(responseData);
   return (
     <StyledContainer>
       <LessonsHeader>
@@ -138,7 +145,7 @@ export const LessonsContainer = ({
         </FilterGroup>
       </FilterContainer>
 
-      {cards && (
+      {cards && !responseData && (
         <LessonsBody style={{ height: '200px' }}>
           {data
             .filter(
@@ -158,19 +165,35 @@ export const LessonsContainer = ({
                 color={lesson.subject.color}
                 lessonStatus={lesson.status}
                 price={lesson.tutorResponses[0].price}
-                responseStart={
-                  new Date(
-                    lesson?.tutorResponses[0].tutorResponseTimeFrame.startTime
-                  )
-                }
-                responseEnd={
-                  new Date(
-                    lesson?.tutorResponses[0].tutorResponseTimeFrame.endTime
-                  )
-                }
-                respCard={respCards}
+                responseStart={new Date()}
+                responseEnd={new Date()}
+                respCard={false}
               />
             ))}
+        </LessonsBody>
+      )}
+
+      {cards && (
+        <LessonsBody style={{ height: '200px' }}>
+          {responseData.map((response) => (
+            <Card
+              key={response.lesson.id}
+              index={response.lesson.id}
+              subject={response.lesson.subject.name}
+              subfield={response.lesson.subfield}
+              location={response.lesson.location}
+              meetingType={response.lesson.type}
+              dateAndTime={response.tutorResponseTimeFrame.startTime}
+              color={response.lesson.subject.color}
+              lessonStatus={response.lesson.status}
+              price={response.price}
+              responseStart={
+                new Date(response.tutorResponseTimeFrame.startTime)
+              }
+              responseEnd={new Date(response.tutorResponseTimeFrame.endTime)}
+              respCard={respCards}
+            />
+          ))}
         </LessonsBody>
       )}
 

@@ -4,7 +4,7 @@ import { styled } from '../../../styles/stitches.config';
 
 export const CardStyle = styled('div', {
   width: '14rem',
-  height: '8rem',
+  height: '10rem',
   border: '2px solid #3FB2C1',
   borderRadius: '10px',
   display: 'flex',

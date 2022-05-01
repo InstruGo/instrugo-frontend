@@ -9,7 +9,7 @@ const TutorResponses: NextPage = () => {
         <title>InstruGo | Tutor lessons</title>
       </Head>
       <TutorsNavbar />
-      <LessonsContainer title="responsesPage.title" respCards filter />
+      <LessonsContainer title="responsesPage.title" cards respCards filter />
     </div>
   );
 };
