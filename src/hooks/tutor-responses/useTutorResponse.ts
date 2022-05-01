@@ -3,7 +3,7 @@ import { useQuery } from 'react-query';
 import { useAxios } from '@hooks';
 import { TutorResponse } from '@types';
 
-export const useTutorResponses = (responseId: number) => {
+export const useTutorResponse = (responseId: number) => {
   const axios = useAxios();
 
   const getResponse = async (responseId: number): Promise<TutorResponse> => {

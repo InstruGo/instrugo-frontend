@@ -30,6 +30,7 @@ export const PublicRequestsContainer = () => {
         {data.map((lesson) => (
           <Card
             key={lesson.id}
+            lessonStatus={lesson.status}
             index={lesson.id}
             subject={lesson.subject.name}
             subfield={lesson.subfield}
@@ -38,8 +39,9 @@ export const PublicRequestsContainer = () => {
             grade={lesson.grade}
             educationLvl={lesson.educationLevel}
             color={lesson.subject.color}
-            lessonStatus={lesson.status}
             forTutors={true}
+            responseStart={new Date()}
+            responseEnd={new Date()}
           />
         ))}
       </RequestsBody>
