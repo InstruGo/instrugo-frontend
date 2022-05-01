@@ -156,6 +156,17 @@ export const LessonsContainer = ({
                 dateAndTime={lesson.lessonTimeFrames[0].startTime}
                 color={lesson.subject.color}
                 lessonStatus={lesson.status}
+                price={lesson.tutorResponses[0].price}
+                responseStart={
+                  new Date(
+                    lesson?.tutorResponses[0].tutorResponseTimeFrames[0].startTime
+                  )
+                }
+                responseEnd={
+                  new Date(
+                    lesson?.tutorResponses[0].tutorResponseTimeFrames[0].endTime
+                  )
+                }
                 respCard={respCards}
               />
             ))}

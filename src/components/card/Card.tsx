@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import React, { Fragment } from 'react';
 
-import { AiOutlineClockCircle } from 'react-icons/ai';
+import { AiOutlineClockCircle, AiOutlineDollar } from 'react-icons/ai';
 import { FaGraduationCap } from 'react-icons/fa';
 import { GoBook } from 'react-icons/go';
 import { MdOutlineMeetingRoom, MdOutlineLocationOn } from 'react-icons/md';
@@ -37,6 +37,9 @@ export interface CardProps extends StitchesComponentProps {
   forTutors?: boolean;
   lessonStatus?: string;
   respCard?: boolean;
+  price?: number;
+  responseStart: Date;
+  responseEnd: Date;
 }
 
 export const Card = ({
@@ -52,6 +55,9 @@ export const Card = ({
   forTutors,
   lessonStatus,
   respCard,
+  price,
+  responseStart,
+  responseEnd,
 }: CardProps) => {
   const [showLessonDetailsModal, setLessonDetailsModal] = React.useState(false);
   const router = useRouter();
@@ -122,13 +128,21 @@ export const Card = ({
                     style={{
                       backgroundColor: '#0E353D',
                       height: '2px',
-                      width: '300px',
+                      width: '200px',
                       padding: '0',
                     }}
                   ></Row>
                   <CardItem>
                     <AiOutlineClockCircle />
-                    <CardText>01.05.2022. 14:50</CardText>
+                    <CardText>
+                      {`${responseStart.getDate()}\/${responseStart.getMonth()}\/${responseStart.getFullYear()}`}
+                      {',   '}
+                      {`${responseStart.getHours()}:${responseStart.getMinutes()} - ${responseEnd.getHours()}:${responseEnd.getMinutes()}`}
+                    </CardText>
+                  </CardItem>
+                  <CardItem>
+                    <AiOutlineDollar />
+                    <CardText>{price + ' kn'}</CardText>
                   </CardItem>
                 </>
               )}
