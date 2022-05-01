@@ -138,7 +138,7 @@ export const RequestDetails = (props: RequestDetailsProps) => {
               lastName={response.tutor.lastName}
               avgRating={
                 response.tutor.ratingsCount != 0
-                  ? response.tutor.averageRating
+                  ? parseInt(response.tutor.averageRating)
                   : undefined
               }
               price={response.price}

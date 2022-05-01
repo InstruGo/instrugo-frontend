@@ -18,3 +18,4 @@ export * from './LessonDetails/LessonDetailsAfterTutor';
 export * from './LandingPage/LandingPage';
 export * from './NewRequestForm/UpdateRequestForm';
 export * from './LessonDetails/LessonDetailsPayment';
+export * from './PublicProfile/PublicProfile';

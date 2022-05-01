@@ -18,6 +18,7 @@ export const ContentLayout = styled('div', {
   flexDirection: 'column',
   alignItems: 'center',
   padding: '$12 $4 $4',
+  minHeight: '65vh',
 
   '> div': {
     width: '90%',
@@ -173,7 +174,7 @@ export const FeatureDescription = styled('div', {
     maxWidth: '800px',
   },
 
-  img: {
+  '> div + div': {
     margin: '$24 0 0 0',
     maxWidth: '319px',
   },
@@ -182,7 +183,7 @@ export const FeatureDescription = styled('div', {
     flexDirection: 'row',
     justifyContent: 'space-between',
 
-    img: {
+    '> div + div': {
       margin: '0 0 0 $24',
     },
   },

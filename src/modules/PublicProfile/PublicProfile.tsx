@@ -1,8 +1,19 @@
-import { Modal } from '@components';
+import { FormattedMessage } from 'react-intl';
+
+import { ImageWithPlaceholder, Modal, Rating } from '@components';
+import { Loader } from '@components/icons';
+import { usePublicProfile } from '@hooks';
+
+import {
+  Description,
+  ProfileContainer,
+  PublicProfileName,
+  Subjects,
+  SubjectsList,
+} from './styles';
 
 /**
- * This component will get user info by userId and open a modal.
- * When close action is performed modal is closed and idle, awaiting next
+ * Only tutor profiles are publicly available.
  */
 
 interface PublicProfileProps {
@@ -16,11 +27,65 @@ export const PublicProfile = ({
   showProfile,
   setShowProfile,
 }: PublicProfileProps) => {
-  // Here will be used getUser hook and display appropriate info
+  const { data: publicProfile } = usePublicProfile(userId);
+
+  const hasSubjects =
+    publicProfile?.subjects && publicProfile?.subjects.length !== 0;
+
+  if (!publicProfile)
+    return (
+      <Modal shouldShow={showProfile} closeAction={() => setShowProfile(false)}>
+        <ProfileContainer>
+          <Loader width="40px" height="40px" />
+        </ProfileContainer>
+      </Modal>
+    );
 
   return (
     <Modal shouldShow={showProfile} closeAction={() => setShowProfile(false)}>
-      display user info...
+      <ProfileContainer>
+        <ImageWithPlaceholder
+          avatarUrl={publicProfile?.avatarUrl}
+          placeholder="/profilePlaceholder.png"
+          width="200px"
+          height="200px"
+          round
+        />
+
+        <PublicProfileName>
+          {publicProfile.firstName + ' ' + publicProfile.lastName}
+        </PublicProfileName>
+
+        <Rating rating={parseInt(publicProfile.averageRating)} />
+
+        <div>
+          {publicProfile.description && (
+            <Description>
+              <div>
+                <FormattedMessage id="profile.aboutMe" />
+              </div>
+              <div>{publicProfile.description}</div>
+            </Description>
+          )}
+
+          {hasSubjects && (
+            <Subjects>
+              <div>
+                <FormattedMessage id="tutor.subjectsTitle" />:
+              </div>
+              <SubjectsList>
+                {publicProfile.subjects.map((subject) => {
+                  return (
+                    <div key={subject.id} style={{ color: `${subject.color}` }}>
+                      {subject.name}
+                    </div>
+                  );
+                })}
+              </SubjectsList>
+            </Subjects>
+          )}
+        </div>
+      </ProfileContainer>
     </Modal>
   );
 };
