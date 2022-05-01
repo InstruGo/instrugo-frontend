@@ -3,7 +3,7 @@ import React, { useState, useEffect, useLayoutEffect } from 'react';
 import { BiFilter } from 'react-icons/bi';
 import { FormattedMessage } from 'react-intl';
 
-import { Button, Card, Table } from '@components';
+import { Button, Card, Table, Calendar } from '@components';
 import { useLessons, useMenuAnimation, useSubjects } from '@hooks';
 
 import {
@@ -141,29 +141,51 @@ export const LessonsContainer = ({
         </FilterGroup>
       </FilterContainer>
 
-      {cards && (
-        <LessonsBody style={{ height: '200px' }}>
-          {data
-            .filter(
-              (lesson) =>
-                currentSubject === 'all' ||
-                lesson.subject.name === currentSubject
-            )
-            .map((lesson) => (
-              <Card
-                key={lesson.id}
-                index={lesson.id}
-                subject={lesson.subject.name}
-                subfield={lesson.subfield}
-                location={lesson.location}
-                meetingType={lesson.type}
-                dateAndTime={lesson.lessonTimeFrames[0].startTime}
-                color={lesson.subject.color}
-                lessonStatus={lesson.status}
-              />
-            ))}
-        </LessonsBody>
-      )}
+      {cards &&
+        (lessonStatus !== 'pending' ? (
+          <LessonsBody style={{ height: '200px' }}>
+            {data
+              .filter(
+                (lesson) =>
+                  currentSubject === 'all' ||
+                  lesson.subject.name === currentSubject
+              )
+              .map((lesson) => (
+                <Card
+                  key={lesson.id}
+                  index={lesson.id}
+                  subject={lesson.subject.name}
+                  subfield={lesson.subfield}
+                  location={lesson.location}
+                  meetingType={lesson.type}
+                  dateAndTime={lesson.lessonTimeFrames[0].startTime}
+                  color={lesson.subject.color}
+                  lessonStatus={lesson.status}
+                />
+              ))}
+          </LessonsBody>
+        ) : (
+          <Calendar
+            timeFrames={data
+              .filter(
+                (lesson) =>
+                  currentSubject === 'all' ||
+                  lesson.subject.name === currentSubject
+              )
+              .map((lesson) => {
+                const timeFrame = {
+                  id: 0,
+                  startTime: lesson.finalStartTime,
+                  endTime: lesson.finalEndTime,
+                };
+                return {
+                  timeFrame: timeFrame,
+                  color: lesson.subject.color,
+                  title: lesson.subject.name,
+                };
+              })}
+          />
+        ))}
 
       {table && (
         <TableBody>
