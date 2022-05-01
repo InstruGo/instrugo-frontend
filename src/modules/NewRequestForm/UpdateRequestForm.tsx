@@ -5,15 +5,15 @@ import { useForm } from 'react-hook-form';
 import { FormattedMessage } from 'react-intl';
 
 import { Button, TimeSlot, Input } from '@components';
-import { useNewRequest, useSubjects, useUserContext } from '@hooks';
+import { useUpdateRequest, useSubjects } from '@hooks';
 
 import {
+  UpdateRequestFormInputs,
+  updateRequestFormSchema,
   EducationLevel,
   MeetingType,
-  NewRequestFormInputs,
-  newRequestFormSchema,
+  Lesson,
 } from '@types';
-
 import {
   NewRequestFormContainer,
   InputDescription,
@@ -28,27 +28,26 @@ import {
 
 interface NewRequestProps {
   onFinish?: () => void;
+  lessonData: Lesson;
 }
 
-export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
+export const UpdateRequestForm = ({
+  onFinish,
+  lessonData,
+}: NewRequestProps) => {
   const { data, isLoading } = useSubjects();
-  const { user } = useUserContext();
-  const newRequest = useNewRequest();
+  const updateRequest = useUpdateRequest(lessonData.id);
   const {
     register,
     handleSubmit,
     setValue,
     formState: { errors },
-  } = useForm<NewRequestFormInputs>({
-    resolver: zodResolver(newRequestFormSchema),
-    defaultValues: {
-      educationLevel: user?.educationLevel,
-      grade: user?.grade,
-    },
+  } = useForm<UpdateRequestFormInputs>({
+    resolver: zodResolver(updateRequestFormSchema),
   });
 
-  const onSubmit = async (data: NewRequestFormInputs) => {
-    newRequest.mutate(data);
+  const onSubmit = async (input: UpdateRequestFormInputs) => {
+    updateRequest.mutate(input);
 
     if (onFinish) {
       onFinish();
@@ -56,9 +55,7 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
   };
 
   const [selectedEducationLevel, setEducationLevel] = useState<EducationLevel>(
-    user?.educationLevel
-      ? user.educationLevel
-      : EducationLevel.ELEMENTARY_SCHOOL
+    EducationLevel.ELEMENTARY_SCHOOL
   );
 
   const [selectedMeetingType, setMeetingType] = useState<MeetingType>(
@@ -72,16 +69,31 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
   const onMeetingSelect = (e: any) => {
     setMeetingType(e.target.value);
   };
-
-  const [slotCount, setSlotCount] = useState(0);
-  const [timeSlots, updateTimeSlots] = useState([
-    {
-      index: slotCount,
-      date: new Date(),
-      startTime: new Date(),
-      endTime: new Date(),
-    },
-  ]);
+  if (lessonData) {
+    setValue('subjectId', lessonData.subject.id);
+    setValue('subfield', lessonData.subfield);
+    setValue('educationLevel', lessonData.educationLevel);
+    setValue('grade', lessonData.grade);
+    setValue('budget', lessonData.budget);
+    setValue('duration', lessonData.duration);
+    setValue('description', lessonData.description);
+    setValue('type', lessonData.type);
+    setValue('location', lessonData.location);
+    setValue('lessonTimeFrames', lessonData.lessonTimeFrames);
+  }
+  let tempSlots: any[] = [];
+  let cnt = 0;
+  lessonData.lessonTimeFrames.map((timeframe) => {
+    tempSlots.push({
+      index: cnt,
+      date: new Date(timeframe.startTime),
+      startTime: new Date(timeframe.startTime),
+      endTime: new Date(timeframe.endTime),
+    });
+    cnt++;
+  });
+  const [slotCount, setSlotCount] = useState(cnt);
+  const [timeSlots, updateTimeSlots] = useState(tempSlots);
 
   const updateLessonTimeFrames = (tempSlots: any) => {
     const lessonTimeFrames = [];
@@ -166,16 +178,16 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
 
     updateTimeSlots(tempSlots);
   };
-
   updateLessonTimeFrames(timeSlots);
-  const [subjectId, setSubjectId] = useState<number>(1);
+  const [subjectId, setSubjectId] = useState<number>(lessonData.subject.id);
   setValue('subjectId', subjectId);
+
   if (isLoading) return <div>Loading...</div>;
 
   return (
     <>
       <NewRequestText>
-        <FormattedMessage id="newRequest.description" />
+        <FormattedMessage id="updateRequest.description" />
       </NewRequestText>
 
       <NewRequestFormContainer onSubmit={handleSubmit(onSubmit)}>
@@ -344,7 +356,7 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
             <Input
               type="submit"
               variant="authSubmit"
-              placeholderMsgId="button.createRequest"
+              placeholderMsgId="button.updateRequest"
             />
           </FormColumn>
         </FormRow>

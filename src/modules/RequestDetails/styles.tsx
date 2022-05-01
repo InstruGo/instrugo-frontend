@@ -65,7 +65,7 @@ export const RequestDetailsText = styled('div', {
 });
 
 export const Column = styled('div', {
-  alignItems: 'flex-start',
+  alignItems: 'center',
   display: 'flex',
   flexDirection: 'column',
   width: '100%',

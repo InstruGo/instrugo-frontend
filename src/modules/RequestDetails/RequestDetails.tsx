@@ -1,14 +1,8 @@
-import { ViewState } from '@devexpress/dx-react-scheduler';
-import {
-  Scheduler,
-  WeekView,
-  Appointments,
-} from '@devexpress/dx-react-scheduler-material-ui';
-import Paper from '@mui/material/Paper';
 import { FormattedMessage } from 'react-intl';
 
-import { TutorResponse } from '@components';
+import { TutorResponse, Button, Calendar } from '@components';
 import { useLesson } from '@hooks';
+import { TimeFrame } from '@types';
 
 import {
   RequestDetailsContainer,
@@ -21,6 +15,7 @@ import {
   Title,
   CalendarContainer,
 } from './styles';
+import { useRouter } from 'next/router';
 
 interface RequestDetailsProps {
   id: number;
@@ -28,23 +23,18 @@ interface RequestDetailsProps {
 
 export const RequestDetails = (props: RequestDetailsProps) => {
   const { data, isLoading } = useLesson(props.id);
+  const router = useRouter();
 
-  if (isLoading) return <div>Loading...</div>;
-
-  const schedulerData: any = [];
-
-  data?.lessonTimeFrames.map(
-    (timeFrame: { startTime: string; endTime: string }) => {
-      const start = new Date(timeFrame.startTime);
-      const end = new Date(timeFrame.endTime);
-      schedulerData.push({
-        startDate: start.toString(),
-        endDate: end.toString(),
-        title: 'Available timeslot',
-      });
-    }
+  if (isLoading || !data) return <div>Loading...</div>;
+  const timeFrames: { timeFrame: TimeFrame; color: string; title: string }[] =
+    [];
+  data?.lessonTimeFrames.map((timeFrame) =>
+    timeFrames.push({
+      timeFrame: timeFrame,
+      color: 'rgba(63, 178, 193, 0.85)',
+      title: 'Available timeslot',
+    })
   );
-  const currentDate = schedulerData[0].startDate;
 
   return (
     <>
@@ -87,6 +77,19 @@ export const RequestDetails = (props: RequestDetailsProps) => {
               {data?.description}
             </FieldDescription>
           </Column>
+          <Column style={{ justifyContent: 'center', maxWidth: '100px' }}>
+            <Button
+              variant="primary"
+              onClick={() =>
+                router.push({
+                  pathname: '/student/edit-request/[id]',
+                  query: { id: props.id },
+                })
+              }
+            >
+              <FormattedMessage id="button.edit" />
+            </Button>
+          </Column>
         </Row>
         <Row>
           <Column>
@@ -95,15 +98,10 @@ export const RequestDetails = (props: RequestDetailsProps) => {
             </FieldDescription>
           </Column>
           <Column />
+          <Column style={{ maxWidth: '100px' }} />
         </Row>
         <CalendarContainer>
-          <Paper>
-            <Scheduler data={schedulerData}>
-              <ViewState currentDate={currentDate} />
-              <WeekView startDayHour={5} endDayHour={23} cellDuration={120} />
-              <Appointments />
-            </Scheduler>
-          </Paper>
+          <Calendar timeFrames={timeFrames} />
         </CalendarContainer>
         <ResponsesHeader>
           <Title>

@@ -15,6 +15,8 @@
   "button.register": "Register",
   "button.login": "Log In",
   "button.createResponse": "Create response",
+  "button.edit": "Edit",
+  "button.updateRequest": "Update request",
 
   "confirmPassword": "Confirm password",
 
@@ -63,6 +65,7 @@
   "nav.switch.tutor": "Switch to student",
   "nav.publicRequests": "Requests",
   "nav.tutorResponses": "My responses",
+  "nav.becomeTutor": "Become a tutor",
 
   "home.rewards": "Rewards",
   "home.lessons": "Lessons",
@@ -96,6 +99,7 @@
   "meetingType.online": "online",
 
   "button.createRequest": "New request",
+  "updateRequest.description": "Update your request",
   "newRequest.description": "New Request",
   "newRequestForm.grade": "Grade",
   "newRequestForm.availableDates": "Available time slots",
@@ -105,15 +109,17 @@
   "newRequestForm.additionalInfo": "Additional Information",
   "newRequestForm.description": "Description",
   "newRequestForm.duration": "Duration",
-  "newRequestForm.hours": "hours",
+  "newRequestForm.minutes": "minutes",
 
   "newResponseForm.price": "Price",
+  "newResponseForm.timeError": "Time Frame should be contained in lesson time frames!",
 
   "requestDetails.description": "Request details",
   "requestDetails.tutorResponses": "Tutor responses",
   "requestDetails.responseForm": "Your response",
   "lessonDetails.description": "Lesson details",
   "lessonDetails.cancelLesson": "Cancel lesson",
+  "lessonDetails.payment": "Lesson payment",
 
   "lessonDetailsAfter.total": "Total",
   "lessonDetailsAfter.rating": "Rating",

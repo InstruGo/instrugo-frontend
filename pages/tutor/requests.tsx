@@ -12,7 +12,7 @@ const RequestsPage: NextPage = () => {
       </Head>
 
       <TutorsNavbar />
-      <PublicRequestsContainer />
+      <PublicRequestsContainer title={'tutor.request.requests'} />
     </div>
   );
 };

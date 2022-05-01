@@ -3,7 +3,7 @@ import React, { useState, useLayoutEffect } from 'react';
 import { BiFilter } from 'react-icons/bi';
 import { FormattedMessage, useIntl } from 'react-intl';
 
-import { Button, Card, Dropdown, Table } from '@components';
+import { Button, Card, Dropdown, Table, Calendar } from '@components';
 import { NewRequestButton } from '@modules';
 import { MeetingType } from '@types';
 import {
@@ -47,9 +47,7 @@ export const LessonsContainer = ({
   respCards,
 }: LessonsContainerProps) => {
   const intl = useIntl();
-        
-  const [lessonStatus, setLessonStatus] = useState('pending');
-  const { data, isLoading } = useLessons({ status: lessonStatus });
+
   const { data: responseData } = useTutorResponses();
 
   const filterMenuRef = React.useRef<HTMLDivElement>(null);
@@ -58,7 +56,7 @@ export const LessonsContainer = ({
   // Filter states
 
   // Status
-  const [lessonStatus, setLessonStatus] = useState('pending');
+  const [lessonStatus, setLessonStatus] = useState('requested');
 
   // Subjects
   const { data: subjects } = useSubjects();
@@ -117,7 +115,7 @@ export const LessonsContainer = ({
   if (isLoading) return <div>Loading...</div>;
   if (!data) return <div>No lessons...</div>;
   if (!responseData) return <div>No responses...</div>;
-  
+
   return (
     <StyledContainer>
       <LessonsHeader>
@@ -208,10 +206,11 @@ export const LessonsContainer = ({
         </FilterGroup>
       </FilterMenuContainer>
 
-      {cards && !responseData && (
-        <LessonsBody style={{ height: '200px' }}>
-          {data
-            .map((lesson) => (
+      {cards &&
+        !respCards &&
+        (lessonStatus !== 'pending' ? (
+          <LessonsBody style={{ height: '200px' }}>
+            {data.map((lesson) => (
               <Card
                 key={lesson.id}
                 index={lesson.id}
@@ -219,17 +218,36 @@ export const LessonsContainer = ({
                 subfield={lesson.subfield}
                 location={lesson.location}
                 meetingType={lesson.type}
-                dateAndTime={lesson.lessonTimeFrames[0].startTime}
+                dateAndTime={
+                  lesson.lessonTimeFrames[0]?.startTime
+                    ? lesson.lessonTimeFrames[0].startTime
+                    : lesson.finalStartTime
+                }
                 color={lesson.subject.color}
                 lessonStatus={lesson.status}
-                price={lesson.tutorResponses[0].price}
+                price={lesson.budget}
                 responseStart={new Date()}
                 responseEnd={new Date()}
                 respCard={false}
               />
             ))}
-        </LessonsBody>
-      )}
+          </LessonsBody>
+        ) : (
+          <Calendar
+            timeFrames={data.map((lesson) => {
+              const timeFrame = {
+                id: 0,
+                startTime: lesson.finalStartTime,
+                endTime: lesson.finalEndTime,
+              };
+              return {
+                timeFrame: timeFrame,
+                color: lesson.subject.color,
+                title: lesson.subject.name,
+              };
+            })}
+          />
+        ))}
 
       {cards && (
         <LessonsBody style={{ height: '200px' }}>
