@@ -1,5 +1,6 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
+
 import { StudentsNavbar, LessonsContainer } from '@modules';
 
 const Lessonspage: NextPage = () => {

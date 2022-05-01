@@ -1,17 +1,18 @@
 import { useQuery } from 'react-query';
 
 import { useAxios } from '@hooks';
-import { Lesson } from '@types';
+import { Subject } from '@types';
 
-export const usePublicRequests = () => {
+export const useSubjects = () => {
   const axios = useAxios();
-  const getPublicRequests = async (): Promise<Lesson[]> => {
-    const response = await axios.get(`/lessons/pool`);
+
+  const getSubjects = async (): Promise<Subject[]> => {
+    const response = await axios.get(`/subjects`);
 
     return response.data;
   };
 
-  return useQuery('publicRequests', getPublicRequests, {
+  return useQuery('subjects', getSubjects, {
     onSuccess: () => {},
     onError: (error) => {
       console.log(error);

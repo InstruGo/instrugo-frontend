@@ -44,7 +44,6 @@ export const RequestDetails = (props: RequestDetailsProps) => {
       });
     }
   );
-
   const currentDate = schedulerData[0].startDate;
 
   return (
@@ -64,7 +63,7 @@ export const RequestDetails = (props: RequestDetailsProps) => {
             </FieldDescription>
             <FieldDescription>
               <FormattedMessage id="newRequestForm.educationLevel" />:{' '}
-              {data?.level}
+              {data?.educationLevel}
             </FieldDescription>
 
             <FieldDescription>
@@ -123,11 +122,11 @@ export const RequestDetails = (props: RequestDetailsProps) => {
               lastName={response.tutor.lastName}
               avgRating={
                 response.tutor.ratingsCount != 0
-                  ? response.tutor.averageRating
+                  ? parseInt(response.tutor.averageRating)
                   : undefined
               }
               price={response.price}
-              timeslots={response.tutorResponseTimeFrames}
+              timeFrame={response.tutorResponseTimeFrame}
             />
           );
         })}

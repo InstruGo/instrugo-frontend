@@ -1,12 +1,10 @@
 import { useQuery } from 'react-query';
 
-import { useUserContext } from '@hooks';
+import { useUserContext, useAxios } from '@hooks';
 import type { User } from '@types';
 
-import { useAxios } from './useAxios';
-
 export const useProfile = () => {
-  const { setUser } = useUserContext();
+  const { user, setUser } = useUserContext();
   const axios = useAxios();
 
   const getProfile = async (): Promise<User> => {
@@ -22,5 +20,6 @@ export const useProfile = () => {
     },
     staleTime: Infinity,
     retry: false,
+    enabled: !user,
   });
 };

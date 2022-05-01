@@ -1,19 +1,17 @@
 import { useQuery } from 'react-query';
 
+import { useAxios } from '@hooks';
 import { Subject } from '@types';
 
-import { useAxios } from './useAxios';
-
-export const useSubjects = () => {
+export const useSubject = (id: number) => {
   const axios = useAxios();
 
-  const getSubjects = async (): Promise<Subject[]> => {
-    const response = await axios.get(`/subjects`);
-
+  const getSubject = async (): Promise<Subject[]> => {
+    const response = await axios.get(`/subjects/${id}`);
     return response.data;
   };
 
-  return useQuery('subjects', getSubjects, {
+  return useQuery(`subject${id}`, getSubject, {
     onSuccess: () => {},
     onError: (error) => {
       console.log(error);

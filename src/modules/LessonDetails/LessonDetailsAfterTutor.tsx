@@ -5,8 +5,7 @@ import { BsPerson } from 'react-icons/bs';
 import { FormattedMessage } from 'react-intl';
 
 import { Button, Input } from '@components';
-import { useLesson } from '@hooks';
-import { useFeedback } from '@hooks/useFeedback';
+import { useLesson, useFeedback } from '@hooks';
 import { NewTutorFeedbackSchema, NewTutorFeedbackInputs } from '@types';
 
 import {

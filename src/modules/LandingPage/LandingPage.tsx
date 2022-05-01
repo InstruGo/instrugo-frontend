@@ -118,7 +118,15 @@ export const LandingPage = () => {
           <div>
             <FormattedMessage id="landingPage.lessons" />
           </div>
-          <img src="/lessons.png" alt="lessonsImage" />
+          <div style={{ width: '320px', height: '210px' }}>
+            <Image
+              src="/lessons.png"
+              alt="lessonsImage"
+              width="320px"
+              height="210px"
+              layout="fixed"
+            />
+          </div>
         </FeatureDescription>
 
         <Separator />
@@ -132,7 +140,15 @@ export const LandingPage = () => {
               <FormattedMessage id="landingPage.ratings" />
             </p>
           </div>
-          <img src="/ratings.png" alt="lessonsImage" width="400px" />
+          <div style={{ width: '320px', height: '375px' }}>
+            <Image
+              src="/ratings.png"
+              alt="lessonsImage"
+              width="320px"
+              height="375px"
+              layout="fixed"
+            />
+          </div>
         </FeatureDescription>
       </ContentLayout>
 

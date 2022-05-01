@@ -1,8 +1,7 @@
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 
-import { useProfile } from '../hooks/useProfile';
-import { useUserContext } from '../hooks/useUserContext';
+import { useProfile, useUserContext } from '@hooks';
 
 export const withAuth = (Component: NextPage) => {
   const AuthenticatedComponent = () => {

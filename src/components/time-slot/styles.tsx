@@ -7,6 +7,7 @@ export const FormRow = styled('div', {
   alignItems: 'center',
   width: '100%',
   maxWidth: '1400px',
+  padding: '$2',
 
   '@bp2': {
     flexDirection: 'row',

@@ -1,5 +1,11 @@
 import React, { Fragment } from 'react';
+
 import { FormattedMessage } from 'react-intl';
+
+import { Modal } from '@components';
+import { useLessons } from '@hooks';
+import { LessonDetails } from '@modules';
+
 import {
   TableHeader,
   TableBody,
@@ -9,17 +15,12 @@ import {
   TableData,
 } from './styles';
 
-import { useCompletedLessons } from '@hooks';
-
-import { Modal } from '@components';
-import { LessonDetails } from '@modules';
-
 type StitchesComponentProps = React.ComponentPropsWithoutRef<typeof TableStyle>;
 
 export interface TableProps extends StitchesComponentProps {}
 
 export const Table = () => {
-  const { data, isLoading } = useCompletedLessons();
+  const { data, isLoading } = useLessons({ status: 'completed' });
 
   const [showLessonDetailsModal, setLessonDetailsModal] = React.useState(false);
 
@@ -76,7 +77,7 @@ export const Table = () => {
                   <TableData>{'0kn'}</TableData>
                   <TableData>{lesson.location}</TableData>
                   <TableData>{lesson.type}</TableData>
-                  <TableData>{lesson.level}</TableData>
+                  <TableData>{lesson.educationLevel}</TableData>
                   <TableData>{lesson.grade}</TableData>
                   {/* <TableData>{lesson.rating}</TableData> */}
                   <Modal

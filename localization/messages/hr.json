@@ -31,6 +31,18 @@
   "user.email": "e-mail",
   "user.password": "lozinka",
   "user.phone": "broj mobitela",
+  "user.birthDate": "Birth date",
+  "user.description": "About you",
+  "user.educationLevel": "Education level",
+  "user.edit": "Uredi svoj profil",
+  "user.noRating": "Nema recenzija",
+  "user.age": "Dob",
+  "user.lessonsLearned": "Lessons",
+  "user.lessonsGIven": "Lessons",
+  "user.elementary-school": "Osnovna škola",
+  "user.high-school": "Srednja škola",
+  "user.university": "Fakultet",
+  "user.grade": "Razred",
 
   "card.subject": "Predmet",
   "card.dateAndTime": "Datum i vrijeme",
@@ -52,6 +64,8 @@
 
   "lessons.upcoming": "Nadolazeće",
   "lessons.requests": "Zahtjevi",
+
+  "tutor.subjectsTitle": "Predmeti u kojima sam iskusan",
 
   "tutorsHome.upcoming": "Nadolazeće",
   "tutorsHome.recommended": "Preporučeno",
@@ -85,6 +99,8 @@
   "newRequestForm.budget": "Budžet",
   "newRequestForm.newTime": "Dodaj termin",
   "newRequestForm.educationLevel": "Razina obrazovanja",
+  "newRequestForm.duration": "Trajanje",
+  "newRequestForm.hours": "sati",
 
   "newResponseForm.price": "Cijena",
 
@@ -116,6 +132,9 @@
   "lessons.titles.rating": "Ocjena",
   "profile.phoneNumberMissing": "Nije postavljen",
   "profile.aboutMe": "O meni",
+  "profile.noDescription": "Nema opisa",
+  "profile.noSubjects": "Nema predmeta",
+  "profile.noEducationLevel": "Razina obrazovanja nije postavljena",
   "profile.saveChanges": "Spremi promjene",
 
   "footer.support": "Podrška",

@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import React, { Fragment } from 'react';
+import React, { useState, Fragment } from 'react';
 
 import { AiOutlineClockCircle, AiOutlineDollar } from 'react-icons/ai';
 import { FaGraduationCap } from 'react-icons/fa';
@@ -59,14 +59,15 @@ export const Card = ({
   responseStart,
   responseEnd,
 }: CardProps) => {
-  const [showLessonDetailsModal, setLessonDetailsModal] = React.useState(false);
   const router = useRouter();
+  const [showLessonDetailsModal, setLessonDetailsModal] = useState(false);
+
   return (
     <>
       <Fragment>
         <ModalButton
           onClick={() => {
-            if (lessonStatus !== 'Requested') {
+            if (lessonStatus !== 'requested') {
               setLessonDetailsModal(true);
             } else {
               if (forTutors) {
@@ -87,7 +88,7 @@ export const Card = ({
             <CardHeader style={{ backgroundColor: color, borderColor: color }}>
               {subject}
             </CardHeader>
-            {/* <CardBody style={{ backgroundColor: color + '20' }}> */}
+
             <CardBody>
               {dateAndTime && (
                 <CardItem>
@@ -153,13 +154,13 @@ export const Card = ({
           shouldShow={showLessonDetailsModal}
           closeAction={() => setLessonDetailsModal(false)}
         >
-          {lessonStatus === 'Pending' && forTutors && (
+          {lessonStatus === 'pending' && forTutors && (
             <LessonDetailsAfterTutor id={index} ratingId={1} />
           )}
-          {lessonStatus === 'Pending' && !forTutors && (
+          {lessonStatus === 'pending' && !forTutors && (
             <LessonDetailsAfterStudent id={index} ratingId={1} />
           )}
-          {lessonStatus === 'Completed' && <LessonDetails id={index} />}
+          {lessonStatus === 'pending' && <LessonDetails id={index} />}
         </Modal>
       </Fragment>
     </>

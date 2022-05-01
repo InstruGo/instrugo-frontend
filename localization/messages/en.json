@@ -31,6 +31,18 @@
   "user.email": "e-mail",
   "user.password": "password",
   "user.phone": "phone number",
+  "user.birthDate": "Birth date",
+  "user.description": "About you",
+  "user.educationLevel": "Education level",
+  "user.edit": "Edit your profile",
+  "user.noRating": "No ratings",
+  "user.age": "Age",
+  "user.lessonsLearned": "Lessons",
+  "user.lessonsGiven": "Lessons",
+  "user.elementary-school": "Elementary school",
+  "user.high-school": "High school",
+  "user.university": "University",
+  "user.grade": "Grade",
 
   "card.subject": "Subject",
   "card.dateAndTime": "Date And Time",
@@ -41,6 +53,8 @@
 
   "student.request.requests": "My requests",
   "tutor.request.requests": "Public requests",
+
+  "tutor.subjectsTitle": "Subjects I'm good at",
 
   "nav.home": "Home",
   "nav.myLessons": "My Lessons",
@@ -85,6 +99,8 @@
   "newRequestForm.educationLevel": "Education level",
   "newRequestForm.additionalInfo": "Additional Information",
   "newRequestForm.description": "Description",
+  "newRequestForm.duration": "Duration",
+  "newRequestForm.hours": "hours",
 
   "newResponseForm.price": "Price",
 
@@ -116,6 +132,9 @@
   "lessons.titles.rating": "Rating",
   "profile.phoneNumberMissing": "Not set",
   "profile.aboutMe": "About me",
+  "profile.noDescription": "No description",
+  "profile.noSubjects": "No subjects",
+  "profile.noEducationLevel": "Education level not set",
   "profile.saveChanges": "Save changes",
 
   "footer.support": "Support",

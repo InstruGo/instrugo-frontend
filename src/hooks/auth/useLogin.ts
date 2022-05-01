@@ -2,9 +2,8 @@ import { useRouter } from 'next/router';
 
 import { useMutation } from 'react-query';
 
+import { useAxios } from '@hooks';
 import type { LoginFormInputs, LoginResponse } from '@types';
-
-import { useAxios } from './useAxios';
 
 export const useLogin = () => {
   const router = useRouter();

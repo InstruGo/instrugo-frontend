@@ -1,12 +1,10 @@
-import Link from 'next/link';
-
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { FormattedMessage } from 'react-intl';
 
 import { CustomLink, Input } from '@components';
 
-import { useRegister } from '../../hooks/useRegister';
+import { useRegister } from '../../hooks/auth/useRegister';
 import {
   RegisterFormInputs,
   registerFormSchema,

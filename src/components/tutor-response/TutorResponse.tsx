@@ -7,7 +7,8 @@ import { ImCross } from 'react-icons/im';
 import { FormattedMessage } from 'react-intl';
 
 import { Button } from '@components';
-import { useResolveLesson } from '@hooks/useResolveLesson';
+import { useResolveLesson } from '@hooks';
+import { TimeFrame } from '@types';
 
 import {
   ItemRow,
@@ -24,7 +25,7 @@ export interface ResponseProps {
   lastName: string;
   avgRating?: number;
   price: number;
-  timeslots: [any];
+  timeFrame: TimeFrame;
 }
 
 export const TutorResponse = ({
@@ -34,17 +35,16 @@ export const TutorResponse = ({
   lastName,
   avgRating,
   price,
-  timeslots,
+  timeFrame,
 }: ResponseProps) => {
   const acceptResponse = useResolveLesson(lessonId);
   const router = useRouter();
-  const onAcceptClick = async () => {
-    await acceptResponse.mutate({
-      tutorResponseId: index,
-      timeFrameId: timeslots[0].id,
-    });
+  const onAcceptClick = () => {
+    acceptResponse.mutate(index);
     router.push('/student/home');
   };
+  const start = new Date(timeFrame.startTime);
+  const end = new Date(timeFrame.endTime);
   return (
     <>
       <ResponseContainer>
@@ -72,23 +72,14 @@ export const TutorResponse = ({
           </FieldDescription>
         </ResponseItem>
         <ResponseItem style={{ justifyContent: 'flex-start' }}>
-          {timeslots.map(
-            (timeFrame: { startTime: string; endTime: string }) => {
-              const start = new Date(timeFrame.startTime);
-              const end = new Date(timeFrame.endTime);
-              const idx = timeslots.indexOf(timeFrame);
-              return (
-                <FieldDescription key={idx} style={{ justifyContent: 'left' }}>
-                  <ItemRow>
-                    {`${start.getDate()}\/${start.getMonth()}\/${start.getFullYear()}`}
-                  </ItemRow>
-                  <ItemRow>
-                    {`${start.getHours()}:${start.getMinutes()} - ${end.getHours()}:${end.getMinutes()}`}
-                  </ItemRow>
-                </FieldDescription>
-              );
-            }
-          )}
+          <FieldDescription style={{ justifyContent: 'left' }}>
+            <ItemRow>
+              {`${start.getDate()}\/${start.getMonth()}\/${start.getFullYear()}`}
+            </ItemRow>
+            <ItemRow>
+              {`${start.getHours()}:${start.getMinutes()} - ${end.getHours()}:${end.getMinutes()}`}
+            </ItemRow>
+          </FieldDescription>
         </ResponseItem>
         <ResponseItem style={{ flexGrow: '1' }}>
           <Button
