@@ -6,13 +6,13 @@ import { FormattedMessage } from 'react-intl';
 
 import { Button, TimeSlot, Input } from '@components';
 import { useNewRequest, useSubjects } from '@hooks';
-
 import {
-  NewRequestFormInputs,
-  newRequestFormSchema,
   EducationLevel,
   MeetingType,
-} from '../../types/new-request.type';
+  NewRequestFormInputs,
+  newRequestFormSchema,
+} from '@types';
+
 import {
   NewRequestFormContainer,
   InputDescription,

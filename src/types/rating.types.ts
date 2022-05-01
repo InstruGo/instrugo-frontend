@@ -1,4 +1,4 @@
-import { Lesson } from './lessons.types';
+import { Lesson } from './lesson.types';
 import { User } from './user.types';
 
 export type Rating = {

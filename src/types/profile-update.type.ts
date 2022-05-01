@@ -1,6 +1,6 @@
-import { optional, z } from 'zod';
+import { z } from 'zod';
 
-import { EducationLevel } from './new-request.type';
+import { EducationLevel } from './user.types';
 
 export const profileUpdateFormSchema = z.object({
   firstName: z

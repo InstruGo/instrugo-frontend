@@ -1,15 +1,7 @@
 import { z } from 'zod';
 
-export enum EducationLevel {
-  HIGH_SCHOOL = 'high-school',
-  ELEMENTARY_SCHOOL = 'elementary-school',
-  UNIVERSITY = 'university',
-}
-
-export enum MeetingType {
-  IN_PERSON = 'in-person',
-  ONLINE = 'online',
-}
+import { MeetingType } from './lesson.types';
+import { EducationLevel } from './user.types';
 
 export const newRequestFormSchema = z.object({
   subjectId: z.number().positive(),
