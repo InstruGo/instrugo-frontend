@@ -1,9 +1,14 @@
-import { EducationLevel, MeetingType } from './new-request.type';
 import { Rating } from './rating.types';
 import { Subject } from './subjects.types';
 import { TimeFrame } from './time-frame.type';
 import { TutorResponse } from './tutor-response';
+import { EducationLevel } from './user.types';
 import { User } from './user.types';
+
+export enum MeetingType {
+  IN_PERSON = 'in-person',
+  ONLINE = 'online',
+}
 
 export type Lesson = {
   id: number;

@@ -10,6 +10,7 @@ import {
   StyledHr,
   Title,
 } from './styles';
+import { NewRequestButton } from '@modules/NewRequestButton/NewRequestButton';
 
 export const RequestsContainer = () => {
   const { data, isLoading } = useLessons({ status: 'requested' });
@@ -41,6 +42,8 @@ export const RequestsContainer = () => {
           />
         ))}
       </RequestsBody>
+
+      <NewRequestButton />
     </StyledContainer>
   );
 };

@@ -15,7 +15,6 @@ const RequestsPage: NextPage = () => {
 
       <StudentsNavbar />
       <RequestsContainer />
-      <NewRequestButton onClick={() => router.push('/student/new-request')} />
     </div>
   );
 };

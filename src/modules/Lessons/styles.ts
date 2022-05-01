@@ -18,23 +18,24 @@ export const StyledHr = styled('hr', {
 export const ControlPanel = styled('div', {
   display: 'flex',
   marginTop: '20px',
-  justifyContent: 'space-between',
   alignItems: 'center',
   '> div + div': {
     marginLeft: '20px',
   },
 });
 
-export const FilterContainer = styled('div', {
+export const FilterMenuContainer = styled('div', {
   marginTop: '10px',
   backgroundColor: '#eee',
   borderRadius: '10px',
   overflow: 'hidden',
   height: '0',
+  display: 'flex',
 });
 
 export const FilterGroup = styled('div', {
   display: 'flex',
+  flexDirection: 'column',
   padding: '10px',
   '> button': {
     textTransform: 'capitalize',

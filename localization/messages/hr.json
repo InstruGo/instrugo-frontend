@@ -64,6 +64,7 @@
 
   "lessons.upcoming": "Nadolazeće",
   "lessons.requests": "Zahtjevi",
+  "lessons.recentlyFinished": "Nedavno završeno",
 
   "tutor.subjectsTitle": "Predmeti u kojima sam iskusan",
 
@@ -73,7 +74,7 @@
   "filter": "Filtar",
   "filter.subjects": "Po predmetima",
 
-  "subjects.all": "all",
+  "subjects.all": "sve",
   "subjects.math": "matematika",
   "subjects.physics": "fizika",
   "subjects.chemistry": "kemija",
@@ -84,6 +85,10 @@
   "subjects.history": "povijest",
   "subjects.IT": "IT",
   "subjects.latin": "latinski",
+
+  "meetingType.all": "sve",
+  "meetingType.inPerson": "uživo",
+  "meetingType.online": "online",
 
   "button.createRequest": "Stvorite novi zahtjev",
 
