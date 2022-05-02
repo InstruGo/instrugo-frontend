@@ -20,6 +20,7 @@ export const FormColumn = styled('div', {
   flexDirection: 'column',
   width: '100%',
   maxWidth: '450px',
+  padding: '$1',
 });
 
 export const DestroyButton = styled('button', {
@@ -34,6 +35,10 @@ export const DestroyButton = styled('button', {
   padding: '$2 $3',
   '&:focus-visible': { outline: 'none' },
   height: '$2',
+  cursor: 'pointer',
+  '&:hover': {
+    backgroundColor: '#f2f2f2',
+  },
 
   variants: {
     variant: {

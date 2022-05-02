@@ -76,7 +76,7 @@ export const LessonsContainer = ({
     { key: 'all', value: intl.formatMessage({ id: 'meetingType.all' }) },
     {
       key: 'in-person',
-      value: intl.formatMessage({ id: 'meetingType.inPerson' }),
+      value: intl.formatMessage({ id: 'meetingType.in-person' }),
     },
     { key: 'online', value: intl.formatMessage({ id: 'meetingType.online' }) },
   ];

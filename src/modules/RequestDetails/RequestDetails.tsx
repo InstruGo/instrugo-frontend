@@ -14,6 +14,8 @@ import {
   ResponsesHeader,
   Title,
   CalendarContainer,
+  FieldTitle,
+  EditText,
 } from './styles';
 import { useRouter } from 'next/router';
 
@@ -45,39 +47,67 @@ export const RequestDetails = (props: RequestDetailsProps) => {
         <Row>
           <Column>
             <FieldDescription>
-              <FormattedMessage id="card.subject" />: {data?.subject.name}
+              <FieldTitle>
+                <FormattedMessage id="card.subject" />
+              </FieldTitle>
+              : <FormattedMessage id={`subjects.${data?.subject.name}`} />
             </FieldDescription>
 
             <FieldDescription>
-              <FormattedMessage id="card.subfield" />: {data?.subfield}
+              <FieldTitle>
+                <FormattedMessage id="card.subfield" />
+              </FieldTitle>
+              : {data?.subfield}
             </FieldDescription>
             <FieldDescription>
-              <FormattedMessage id="newRequestForm.educationLevel" />:{' '}
-              {data?.educationLevel}
+              <FieldTitle>
+                <FormattedMessage id="newRequestForm.educationLevel" />
+              </FieldTitle>
+              :{' '}
+              <FormattedMessage id={`educationLevel.${data?.educationLevel}`} />
             </FieldDescription>
 
             <FieldDescription>
-              <FormattedMessage id="newRequestForm.grade" />: {data?.grade}.
+              <FieldTitle>
+                <FormattedMessage id="newRequestForm.grade" />
+              </FieldTitle>
+              : {data?.grade}.
             </FieldDescription>
           </Column>
           <Column>
             <FieldDescription>
-              <FormattedMessage id="newRequestForm.budget" />: {data?.budget}{' '}
-              kn/h
+              <FieldTitle>
+                <FormattedMessage id="newRequestForm.budget" />
+              </FieldTitle>
+              : {data?.budget} kn/h
             </FieldDescription>
             <FieldDescription>
-              <FormattedMessage id="card.meetingType" />: {data?.type}
+              <FieldTitle>
+                <FormattedMessage id="card.meetingType" />
+              </FieldTitle>
+              : <FormattedMessage id={`meetingType.${data?.type}`} />
             </FieldDescription>
 
             <FieldDescription>
-              <FormattedMessage id="card.location" />: {data?.location}
+              <FieldTitle>
+                <FormattedMessage id="card.location" />
+              </FieldTitle>
+              : {data?.location}
             </FieldDescription>
             <FieldDescription>
-              <FormattedMessage id="newRequestForm.description" />:{' '}
-              {data?.description}
+              <FieldTitle>
+                <FormattedMessage id="newRequestForm.description" />
+              </FieldTitle>
+              : {data?.description}
             </FieldDescription>
           </Column>
-          <Column style={{ justifyContent: 'center', maxWidth: '100px' }}>
+          <Column
+            style={{
+              justifyContent: 'center',
+              alignItems: 'flex-start',
+              maxWidth: '200px',
+            }}
+          >
             <Button
               variant="primary"
               onClick={() =>
@@ -87,14 +117,19 @@ export const RequestDetails = (props: RequestDetailsProps) => {
                 })
               }
             >
-              <FormattedMessage id="button.edit" />
+              <EditText>
+                <FormattedMessage id="button.edit" />
+              </EditText>
             </Button>
           </Column>
         </Row>
         <Row>
           <Column>
             <FieldDescription>
-              <FormattedMessage id="newRequestForm.availableDates" />:{' '}
+              <FieldTitle>
+                <FormattedMessage id="newRequestForm.availableDates" />
+              </FieldTitle>
+              :{' '}
             </FieldDescription>
           </Column>
           <Column />

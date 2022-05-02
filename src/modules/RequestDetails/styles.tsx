@@ -40,14 +40,22 @@ export const Title = styled('div', {
   whiteSpace: 'nowrap',
   padding: '$0 $5 $0 $2',
 });
+export const EditText = styled('div', {
+  fontWeight: 'normal',
+  fontSize: '$lg',
+  color: '#fffff',
+  whiteSpace: 'nowrap',
+  padding: '$0 $2 $0 $2',
+});
 
 export const FieldDescription = styled('div', {
-  alignItems: 'flex-start',
+  alignItems: 'center',
+  justifyContent: 'flex-start',
   display: 'flex',
   padding: '$4 0 $1 0',
   width: '100%',
   maxWidth: '400px',
-  fontSize: '26',
+  fontSize: '$lg',
   font: 'Roboto',
   color: '#0E353D',
 });
@@ -59,9 +67,16 @@ export const RequestDetailsText = styled('div', {
   padding: '$3 $3',
   boxSizing: 'border-box',
   color: 'rgb(47, 147, 160)',
-  fontWeight: 'bold',
-  fontSize: '$xl2',
+  fontSize: '$xl3',
   textAlign: 'center',
+});
+export const FieldTitle = styled('div', {
+  alignItems: 'center',
+  justifyContent: 'center',
+  fontSize: '$lg',
+  font: 'Roboto',
+  color: '#0E353D',
+  fontWeight: 'bold',
 });
 
 export const Column = styled('div', {
