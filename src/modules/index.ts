@@ -20,3 +20,6 @@ export * from './NewRequestForm/UpdateRequestForm';
 export * from './LessonDetails/LessonDetailsPayment';
 export * from './PublicProfile/PublicProfile';
 export * from './TutorResponseForm/TutorResponseForm';
+export * from './LessonCard/LessonCard';
+export * from './LessonsContainer/LessonsContainer';
+export * from './LessonsWithFilter/LessonsWithFilter';

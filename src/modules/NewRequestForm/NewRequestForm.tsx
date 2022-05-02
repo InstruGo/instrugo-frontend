@@ -191,11 +191,13 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
                 setValue('subjectId', parseInt(e.target.value, 10));
               }}
             >
-              {data?.map((subject) => (
-                <DropdownOption key={subject.id} value={subject.id}>
-                  {subject.name}
-                </DropdownOption>
-              ))}
+              {data?.map((subject) => {
+                return (
+                  <DropdownOption key={subject.id} value={subject.id}>
+                    {subject.name}
+                  </DropdownOption>
+                );
+              })}
             </Dropdown>
 
             <InputDescription>

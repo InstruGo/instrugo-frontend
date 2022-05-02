@@ -3,15 +3,10 @@ import React, { useState, useLayoutEffect } from 'react';
 import { BiFilter } from 'react-icons/bi';
 import { FormattedMessage, useIntl } from 'react-intl';
 
-import { Button, Card, Dropdown, Table, Calendar } from '@components';
-import { NewRequestButton } from '@modules';
-import { MeetingType } from '@types';
-import {
-  useLessons,
-  useMenuAnimation,
-  useSubjects,
-  useTutorResponses,
-} from '@hooks';
+import { Button, Dropdown, Table, Calendar } from '@components';
+import { useMenuAnimation, useSubjects, useTutorResponses } from '@hooks';
+import { LessonsContainer, NewRequestButton } from '@modules';
+import { LessonFilter, MeetingType } from '@types';
 
 import {
   ControlPanel,
@@ -38,7 +33,7 @@ export interface LessonsContainerProps extends StitchesComponentProps {
   respCards?: boolean;
 }
 
-export const LessonsContainer = ({
+export const Lessons = ({
   title,
   home,
   filter,
@@ -48,7 +43,7 @@ export const LessonsContainer = ({
 }: LessonsContainerProps) => {
   const intl = useIntl();
 
-  const { data: responseData } = useTutorResponses();
+  //const { data: responseData } = useTutorResponses();
 
   const filterMenuRef = React.useRef<HTMLDivElement>(null);
   const [isFilterMenuExpanded, setFilterMenuExpanded] = useState(false);
@@ -98,13 +93,6 @@ export const LessonsContainer = ({
     else setCurrentMeetingType(selectedMeetingType);
   };
 
-  // Fetch lessons with given filter
-  const { data, isLoading } = useLessons({
-    status: lessonStatus,
-    subjectIds: currentSubjectId ? [currentSubjectId] : undefined,
-    type: currentMeetingType as MeetingType,
-  });
-
   // Filter menu animation
   const { menuAnimation: filterMenuAnimation } = useMenuAnimation();
 
@@ -112,9 +100,7 @@ export const LessonsContainer = ({
     filterMenuAnimation(filterMenuRef, isFilterMenuExpanded);
   }, [filterMenuAnimation, isFilterMenuExpanded]);
 
-  if (isLoading) return <div>Loading...</div>;
-  if (!data) return <div>No lessons...</div>;
-  if (!responseData) return <div>No responses...</div>;
+  //if (!responseData) return <div>No responses...</div>;
 
   return (
     <StyledContainer>
@@ -206,30 +192,12 @@ export const LessonsContainer = ({
         </FilterGroup>
       </FilterMenuContainer>
 
-      {cards &&
+      {/* {cards &&
         !respCards &&
         (lessonStatus !== 'pending' ? (
           <LessonsBody style={{ height: '200px' }}>
             {data.map((lesson) => (
-              <Card
-                key={lesson.id}
-                index={lesson.id}
-                subject={lesson.subject.name}
-                subfield={lesson.subfield}
-                location={lesson.location}
-                meetingType={lesson.type}
-                dateAndTime={
-                  lesson.lessonTimeFrames[0]?.startTime
-                    ? lesson.lessonTimeFrames[0].startTime
-                    : lesson.finalStartTime
-                }
-                color={lesson.subject.color}
-                lessonStatus={lesson.status}
-                price={lesson.budget}
-                responseStart={new Date()}
-                responseEnd={new Date()}
-                respCard={false}
-              />
+              <LessonCard key={lesson.id} lesson={lesson} />
             ))}
           </LessonsBody>
         ) : (
@@ -247,30 +215,18 @@ export const LessonsContainer = ({
               };
             })}
           />
-        ))}
+        ))} */}
 
       {cards && (
-        <LessonsBody style={{ height: '200px' }}>
-          {responseData.map((response) => (
-            <Card
-              key={response.lesson.id}
-              index={response.lesson.id}
-              subject={response.lesson.subject.name}
-              subfield={response.lesson.subfield}
-              location={response.lesson.location}
-              meetingType={response.lesson.type}
-              dateAndTime={response.tutorResponseTimeFrame.startTime}
-              color={response.lesson.subject.color}
-              lessonStatus={response.lesson.status}
-              price={response.price}
-              responseStart={
-                new Date(response.tutorResponseTimeFrame.startTime)
-              }
-              responseEnd={new Date(response.tutorResponseTimeFrame.endTime)}
-              respCard={respCards}
-            />
-          ))}
-        </LessonsBody>
+        <LessonsContainer
+          filter={
+            {
+              status: lessonStatus,
+              subjectIds: currentSubjectId ? [currentSubjectId] : undefined,
+              type: currentMeetingType as MeetingType,
+            } as LessonFilter
+          }
+        />
       )}
 
       {table && (

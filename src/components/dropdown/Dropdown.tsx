@@ -2,7 +2,7 @@ import React from 'react';
 
 interface DropdownProps {
   // Values to be available in the dropdown
-  options: Record<string, string>[];
+  options: { key: string; value: string }[];
   // Passed setter from parent component will be used to get the currently selected value of the dropdown component
   onOptionSelect: (value: string) => void;
 }

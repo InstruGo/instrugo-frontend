@@ -1,7 +1,8 @@
 import { FormattedMessage } from 'react-intl';
 
-import { Card } from '@components';
 import { useLessons } from '@hooks';
+import { LessonCard } from '@modules';
+import { NewRequestButton } from '@modules';
 
 import {
   RequestsBody,
@@ -10,7 +11,6 @@ import {
   StyledHr,
   Title,
 } from './styles';
-import { NewRequestButton } from '@modules/NewRequestButton/NewRequestButton';
 
 export const RequestsContainer = () => {
   const { data, isLoading } = useLessons({ status: 'requested' });
@@ -28,19 +28,9 @@ export const RequestsContainer = () => {
       </LessonsHeader>
 
       <RequestsBody style={{ height: '200px' }}>
-        {data.map((lesson) => (
-          <Card
-            key={lesson.id}
-            index={lesson.id}
-            subject={lesson.subject.name}
-            subfield={lesson.subfield}
-            location={lesson.location}
-            meetingType={lesson.type}
-            dateAndTime={lesson.lessonTimeFrames[0].startTime}
-            color={lesson.subject.color}
-            lessonStatus={lesson.status}
-          />
-        ))}
+        {data.map((lesson) => {
+          return <LessonCard key={lesson.id} lesson={lesson} />;
+        })}
       </RequestsBody>
 
       <NewRequestButton />
