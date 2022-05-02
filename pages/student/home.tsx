@@ -1,15 +1,9 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
 import React from 'react';
 
 import { withAuth } from '@components';
-import {
-  LessonsContainer,
-  NewRequestButton,
-  Rewards,
-  StudentsNavbar,
-} from '@modules';
+import { LessonsContainer, Rewards, StudentsNavbar } from '@modules';
 import { styled } from 'styles/stitches.config';
 
 const PageLayout = styled('div', {
@@ -20,7 +14,6 @@ const PageLayout = styled('div', {
 });
 
 const StudentHomepage: NextPage = () => {
-  const router = useRouter();
   return (
     <div>
       <Head>

@@ -17,7 +17,7 @@ export const withAuth = (Component: NextPage) => {
       router.push('/login');
     }
 
-    return !!user ? <Component /> : null;
+    return user ? <Component /> : null;
   };
 
   return AuthenticatedComponent;

@@ -4,14 +4,14 @@ import { BiFilter } from 'react-icons/bi';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import { Button, Card, Dropdown, Table, Calendar } from '@components';
-import { NewRequestButton } from '@modules';
-import { MeetingType } from '@types';
 import {
   useLessons,
   useMenuAnimation,
   useSubjects,
   useTutorResponses,
 } from '@hooks';
+import { NewRequestButton } from '@modules';
+import { MeetingType } from '@types';
 
 import {
   ControlPanel,
@@ -47,8 +47,6 @@ export const LessonsContainer = ({
   respCards,
 }: LessonsContainerProps) => {
   const intl = useIntl();
-
-  const { data: responseData } = useTutorResponses();
 
   const filterMenuRef = React.useRef<HTMLDivElement>(null);
   const [isFilterMenuExpanded, setFilterMenuExpanded] = useState(false);
@@ -114,7 +112,6 @@ export const LessonsContainer = ({
 
   if (isLoading) return <div>Loading...</div>;
   if (!data) return <div>No lessons...</div>;
-  if (!responseData) return <div>No responses...</div>;
 
   return (
     <StyledContainer>
@@ -248,30 +245,6 @@ export const LessonsContainer = ({
             })}
           />
         ))}
-
-      {cards && (
-        <LessonsBody style={{ height: '200px' }}>
-          {responseData.map((response) => (
-            <Card
-              key={response.lesson.id}
-              index={response.lesson.id}
-              subject={response.lesson.subject.name}
-              subfield={response.lesson.subfield}
-              location={response.lesson.location}
-              meetingType={response.lesson.type}
-              dateAndTime={response.tutorResponseTimeFrame.startTime}
-              color={response.lesson.subject.color}
-              lessonStatus={response.lesson.status}
-              price={response.price}
-              responseStart={
-                new Date(response.tutorResponseTimeFrame.startTime)
-              }
-              responseEnd={new Date(response.tutorResponseTimeFrame.endTime)}
-              respCard={respCards}
-            />
-          ))}
-        </LessonsBody>
-      )}
 
       {table && (
         <TableBody>

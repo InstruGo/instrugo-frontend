@@ -10,6 +10,7 @@ export const useProfile = () => {
   const getProfile = async (): Promise<User> => {
     const response = await axios.get('/auth/profile');
     const user = response.data as User;
+
     return user;
   };
 

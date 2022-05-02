@@ -7,6 +7,8 @@ import { useQueryClient } from 'react-query';
 import { LoginForm } from '@modules';
 import { AuthLayout } from '@modules/AuthLayout/AuthLayout';
 
+import { withLoginRedirect } from '../src/components/withLoginRedirect';
+
 const Login: NextPage = () => {
   const queryClient = useQueryClient();
 
@@ -28,4 +30,4 @@ const Login: NextPage = () => {
   );
 };
 
-export default Login;
+export default withLoginRedirect(Login);
