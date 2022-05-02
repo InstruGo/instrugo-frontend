@@ -44,7 +44,6 @@ export const NewRequestText = styled('div', {
   padding: '$3 $3',
   boxSizing: 'border-box',
   color: 'rgb(47, 147, 160)',
-  fontWeight: 'bold',
   fontSize: '$xl3',
   textAlign: 'center',
 });

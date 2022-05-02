@@ -93,7 +93,7 @@ export const PublicRequestDetails = (props: RequestDetailsProps) => {
               </FieldTitle>
               : {data?.location}
             </FieldDescription>
-            <FieldDescription>
+            <FieldDescription style={{ alignItems: 'flex-start' }}>
               <FieldTitle>
                 <FormattedMessage id="newRequestForm.description" />
               </FieldTitle>

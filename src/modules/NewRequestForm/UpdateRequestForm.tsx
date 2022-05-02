@@ -232,7 +232,7 @@ export const UpdateRequestForm = ({
                 }
                 onChange={onLevelSelect}
               />
-              {EducationLevel.ELEMENTARY_SCHOOL}
+              <FormattedMessage id="educationLevel.elementary-school" />
             </RadioInput>
             <RadioInput>
               <input
@@ -242,7 +242,7 @@ export const UpdateRequestForm = ({
                 checked={selectedEducationLevel === EducationLevel.HIGH_SCHOOL}
                 onChange={onLevelSelect}
               />
-              {EducationLevel.HIGH_SCHOOL}
+              <FormattedMessage id="educationLevel.high-school" />
             </RadioInput>
             <RadioInput>
               <input
@@ -252,7 +252,7 @@ export const UpdateRequestForm = ({
                 checked={selectedEducationLevel === EducationLevel.UNIVERSITY}
                 onChange={onLevelSelect}
               />
-              {EducationLevel.UNIVERSITY}
+              <FormattedMessage id="educationLevel.university" />
             </RadioInput>
 
             <InputDescription>
@@ -324,7 +324,7 @@ export const UpdateRequestForm = ({
                 checked={selectedMeetingType === MeetingType.IN_PERSON}
                 onChange={onMeetingSelect}
               />
-              {MeetingType.IN_PERSON}
+              <FormattedMessage id="meetingType.in-person" />
             </RadioInput>
             <RadioInput>
               <input
@@ -334,7 +334,7 @@ export const UpdateRequestForm = ({
                 checked={selectedMeetingType === MeetingType.ONLINE}
                 onChange={onMeetingSelect}
               />
-              {MeetingType.ONLINE}
+              <FormattedMessage id="meetingType.online" />
             </RadioInput>
             <InputDescription>
               <FormattedMessage id="card.location" />:
