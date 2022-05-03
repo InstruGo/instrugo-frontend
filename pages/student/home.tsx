@@ -3,7 +3,7 @@ import Head from 'next/head';
 import React from 'react';
 
 import { TitledSection, withAuth } from '@components';
-import { Rewards, StudentsNavbar } from '@modules';
+import { Navbar, Rewards } from '@modules';
 import { LessonsWithFilter } from '@modules';
 import { styled } from 'styles/stitches.config';
 
@@ -23,7 +23,7 @@ const StudentHomepage: NextPage = () => {
         </title>
       </Head>
 
-      <StudentsNavbar />
+      <Navbar />
 
       <PageLayout>
         <TitledSection titleMsgId="home.rewards">

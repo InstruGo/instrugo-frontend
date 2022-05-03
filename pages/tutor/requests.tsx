@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 
 import { withAuth } from '@components';
-import { TutorsNavbar, PublicRequestsContainer } from '@modules';
+import { PublicRequestsContainer, Navbar } from '@modules';
 
 const RequestsPage: NextPage = () => {
   return (
@@ -11,7 +11,8 @@ const RequestsPage: NextPage = () => {
         <title>InstruGo | Public requests</title>
       </Head>
 
-      <TutorsNavbar />
+      <Navbar />
+
       <PublicRequestsContainer title={'tutor.request.requests'} />
     </div>
   );

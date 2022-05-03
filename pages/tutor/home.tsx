@@ -3,11 +3,7 @@ import Head from 'next/head';
 import React from 'react';
 
 import { TitledSection, withAuth } from '@components';
-import {
-  LessonsContainer,
-  PublicRequestsContainer,
-  TutorsNavbar,
-} from '@modules';
+import { LessonsContainer, Navbar, PublicRequestsContainer } from '@modules';
 import { PageLayout } from 'pages/student/home';
 
 const TutorHomepage: NextPage = () => {
@@ -19,7 +15,7 @@ const TutorHomepage: NextPage = () => {
         </title>
       </Head>
 
-      <TutorsNavbar />
+      <Navbar />
 
       <PageLayout>
         <TitledSection titleMsgId="tutorsHome.upcoming">
