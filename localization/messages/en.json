@@ -25,7 +25,7 @@
   "registration.alreadyHaveAnAccount": "Already have an account?",
 
   "login.forgotPassword": "Forgot password?",
-  "login.description": "Log in to use our services",
+  "login.description": "Welcome back!",
   "login.needAnAccount": "Need an account?",
 
   "user.firstName": "first name",
@@ -52,6 +52,7 @@
   "card.meetingType": "Meeting Type",
   "card.location": "Location",
   "card.educationLevel": "Education lvl",
+  "card.grade": "grade",
 
   "student.request.requests": "My requests",
   "tutor.request.requests": "Public requests",

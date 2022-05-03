@@ -23,7 +23,7 @@
   "registration.alreadyHaveAnAccount": "Već imate korisnički račun?",
 
   "login.forgotPassword": "Zaboravili ste lozinku?",
-  "login.description": "Prijavite se za korištenje naših usluga",
+  "login.description": "Dobrodošli natrag!",
   "login.needAnAccount": "Nemate korisnički račun?",
 
   "user.firstName": "ime",
@@ -50,6 +50,7 @@
   "card.meetingType": "Tip sastanka",
   "card.location": "Lokacija",
   "card.educationLevel": "Razina obrazovanja",
+  "card.grade": "razred",
 
   "nav.home": "Početna",
   "nav.myLessons": "Moje instrukcije",
@@ -90,11 +91,11 @@
   "subjects.latin": "Latinski",
 
   "meetingType.all": "sve",
-  "meetingType.inPerson": "uživo",
+  "meetingType.in-person": "uživo",
   "meetingType.online": "online",
 
-  "educationLevel.elementarySchool": "osnovna škola",
-  "educationLevel.highSchool": "srednja škola",
+  "educationLevel.elementary-school": "osnovna škola",
+  "educationLevel.high-school": "srednja škola",
   "educationLevel.university": "fakultet",
 
   "button.createRequest": "Stvorite novi zahtjev",
