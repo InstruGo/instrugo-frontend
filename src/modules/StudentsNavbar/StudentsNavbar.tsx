@@ -13,6 +13,7 @@ import {
   useMenuAnimation,
   useUserContext,
 } from '@hooks';
+import { UserRole } from '@types';
 
 import {
   Clickable,
@@ -25,7 +26,6 @@ import {
   StyledHeader,
   StyledNavbar,
 } from './styles';
-import { UserRole } from '@types';
 
 export const StudentsNavbar = () => {
   const router = useRouter();

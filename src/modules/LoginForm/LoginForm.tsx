@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import React, { SyntheticEvent } from 'react';
+import React from 'react';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
@@ -33,60 +33,53 @@ export const LoginForm = () => {
     loginUser.mutate(data);
   };
 
-  const handleKeyPress = (e: SyntheticEvent<HTMLInputElement>) => {
-    console.log(e);
-  };
-
   return (
-    <>
-      <LoginFormContainer onSubmit={handleSubmit(onSubmit)}>
-        <Input
-          name="email"
-          register={register}
-          errors={errors.email}
-          type="email"
-          placeholderMsgId="user.email"
-        />
+    <LoginFormContainer onSubmit={handleSubmit(onSubmit)}>
+      <Input
+        name="email"
+        register={register}
+        errors={errors.email}
+        type="email"
+        placeholderMsgId="user.email"
+      />
 
-        <Input
-          name="password"
-          register={register}
-          errors={errors.password}
-          type="password"
-          placeholderMsgId="user.password"
-        />
+      <Input
+        name="password"
+        register={register}
+        errors={errors.password}
+        type="password"
+        placeholderMsgId="user.password"
+      />
 
-        <ForgotPassContainer>
-          <Link href="/login">
-            <a>
-              <FormattedMessage id="login.forgotPassword" />
-            </a>
-          </Link>
-        </ForgotPassContainer>
+      <ForgotPassContainer>
+        <Link href="/login">
+          <a>
+            <FormattedMessage id="login.forgotPassword" />
+          </a>
+        </Link>
+      </ForgotPassContainer>
 
-        <Input
-          type="submit"
-          variant="authSubmit"
-          placeholderMsgId="button.login"
-          onKeyPress={handleKeyPress}
-        />
+      <Input
+        type="submit"
+        variant="authSubmit"
+        placeholderMsgId="button.login"
+      />
 
-        <NeedAnAccount>
-          <FormattedMessage id="login.needAnAccount" />
-          <CustomLink href="/register">
-            <FormattedMessage id="button.register" />
-          </CustomLink>
-        </NeedAnAccount>
+      <NeedAnAccount>
+        <FormattedMessage id="login.needAnAccount" />
+        <CustomLink href="/register">
+          <FormattedMessage id="button.register" />
+        </CustomLink>
+      </NeedAnAccount>
 
-        <LoaderContainer>
-          {loginUser.isLoading && (
-            <Loader fill="#10434E" width="40px" height="40px" />
-          )}
-          {loginUser.isSuccess && (
-            <IoCheckmarkCircle fill="#23b067" size="40px" />
-          )}
-        </LoaderContainer>
-      </LoginFormContainer>
-    </>
+      <LoaderContainer>
+        {loginUser.isLoading && (
+          <Loader fill="#10434E" width="40px" height="40px" />
+        )}
+        {loginUser.isSuccess && (
+          <IoCheckmarkCircle fill="#23b067" size="40px" />
+        )}
+      </LoaderContainer>
+    </LoginFormContainer>
   );
 };
