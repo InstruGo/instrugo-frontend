@@ -3,23 +3,27 @@ import { styled } from 'styles/stitches.config';
 export const CardContainer = styled('div', {});
 
 export const CardStyle = styled('div', {
-  width: '14rem',
-  height: '10rem',
+  width: '18rem',
+  height: '13rem',
   border: '2px solid #3FB2C1',
   borderRadius: '10px',
   display: 'flex',
   flexDirection: 'column',
+  cursor: 'pointer',
+  '&:hover': {
+    backgroundColor: '#f2f2f2',
+  },
 });
 
 export const CardHeader = styled('div', {
   display: 'flex',
   color: 'white',
   justifyContent: 'space-between',
-  fontSize: '$lg',
+  fontSize: '$xl',
   fontWeight: '$semibold',
   borderBottom: '1px solid #3FB2C1',
   backgroundColor: '#3FB2C1',
-  height: '2',
+  height: '3',
   alignItems: 'center',
   borderTopLeftRadius: '6px',
   borderTopRightRadius: '6px',
@@ -32,7 +36,7 @@ export const CardBody = styled('div', {
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',
-  fontSize: '$xs',
+  fontSize: '$m',
   height: '100%',
   width: '100%',
 });
