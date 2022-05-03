@@ -1,3 +1,5 @@
+import { useRouter } from 'next/router';
+
 import { useMutation } from 'react-query';
 
 import { useAxios, useUserContext } from '@hooks';
@@ -5,6 +7,7 @@ import { User } from '@types';
 
 export const useBecomeTutor = () => {
   const axios = useAxios();
+  const router = useRouter();
   const { setUser } = useUserContext();
 
   const becomeTutor = async (): Promise<User> => {
@@ -20,6 +23,7 @@ export const useBecomeTutor = () => {
   return useMutation(becomeTutor, {
     onSuccess: (data) => {
       setUser(data);
+      router.push('/tutor/home');
     },
     onError: (error) => {
       console.log(error);

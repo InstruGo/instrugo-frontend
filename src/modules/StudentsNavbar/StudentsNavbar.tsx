@@ -54,7 +54,6 @@ export const StudentsNavbar = () => {
   };
   const becomeATutor = () => {
     becomeTutor.mutate();
-    router.push('/tutor/home');
   };
 
   // Animations for navbar hamburger menu and profile menu

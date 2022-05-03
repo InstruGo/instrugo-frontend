@@ -22,11 +22,11 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       messages={messages}
     >
       <QueryClientProvider client={queryClient}>
-        <AxiosProvider>
-          <UserContextProvider>
+        <UserContextProvider>
+          <AxiosProvider>
             <Component {...pageProps} />
-          </UserContextProvider>
-        </AxiosProvider>
+          </AxiosProvider>
+        </UserContextProvider>
       </QueryClientProvider>
     </IntlProvider>
   );
