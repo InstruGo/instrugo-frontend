@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { useIntl } from 'react-intl';
 
@@ -31,12 +31,12 @@ export const Input = ({
 
   const [isErrorDismissed, dismissError] = React.useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     dismissError(false);
   }, [errors]);
 
   return (
-    <InputContainer style={style}>
+    <InputContainer>
       <StyledInput
         placeholder={
           placeholderMsgId

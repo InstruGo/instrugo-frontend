@@ -3,8 +3,8 @@ import { useRouter } from 'next/router';
 import { useUserContext } from './useUserContext';
 
 export const useHomeRedirect = () => {
-  const { user } = useUserContext();
   const router = useRouter();
+  const { user } = useUserContext();
 
   const redirect = () => {
     switch (user?.role) {

@@ -1,4 +1,5 @@
 import getConfig from 'next/config';
+import { useRouter } from 'next/router';
 import React, { createContext, useMemo } from 'react';
 
 import Axios, { AxiosInstance } from 'axios';
@@ -15,6 +16,7 @@ export const AxiosContext = createContext<AxiosInstance>(
 export const AxiosProvider = ({
   children,
 }: React.PropsWithChildren<unknown>) => {
+  const router = useRouter();
   const logout = useLogout();
   const { publicRuntimeConfig } = getConfig();
 
@@ -29,14 +31,14 @@ export const AxiosProvider = ({
         return response;
       },
       (error) => {
-        if (error.response.status === 401) {
+        if (error.response.status === 401 && router.pathname !== '/login') {
           logout.mutate();
         }
       }
     );
 
     return axios;
-  }, [logout, publicRuntimeConfig.apiUrl]);
+  }, [logout, publicRuntimeConfig.apiUrl, router.pathname]);
 
   return React.createElement(AxiosContext.Provider, { value: auth }, children);
 };

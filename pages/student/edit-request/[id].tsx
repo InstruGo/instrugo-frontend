@@ -1,8 +1,9 @@
 import type { NextPage } from 'next';
-import { useRouter } from 'next/router';
 import Head from 'next/head';
-import { StudentsNavbar, UpdateRequestForm } from '@modules';
+import { useRouter } from 'next/router';
+
 import { useLesson } from '@hooks';
+import { StudentsNavbar, UpdateRequestForm } from '@modules';
 
 const EditRequestPage: NextPage = () => {
   const router = useRouter();

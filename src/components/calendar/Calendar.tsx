@@ -11,6 +11,7 @@ import {
   Resources,
 } from '@devexpress/dx-react-scheduler-material-ui';
 import Paper from '@mui/material/Paper';
+
 import { TimeFrame } from '@types';
 
 interface CalendarProps {
