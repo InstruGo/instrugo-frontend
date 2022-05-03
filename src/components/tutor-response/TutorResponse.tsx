@@ -8,8 +8,8 @@ import { FormattedMessage } from 'react-intl';
 
 import { Button, Modal } from '@components';
 import { useResolveLesson } from '@hooks';
-import { TimeFrame } from '@types';
 import { LessonDetailsPayment } from '@modules';
+import { TimeFrame } from '@types';
 
 import {
   ItemRow,
