@@ -14,7 +14,7 @@ export const CardStyle = styled('div', {
 export const CardHeader = styled('div', {
   display: 'flex',
   color: 'white',
-  justifyContent: 'center',
+  justifyContent: 'space-between',
   fontSize: '$lg',
   fontWeight: '$semibold',
   borderBottom: '1px solid #3FB2C1',
@@ -23,7 +23,7 @@ export const CardHeader = styled('div', {
   alignItems: 'center',
   borderTopLeftRadius: '6px',
   borderTopRightRadius: '6px',
-  padding: '5px 0px',
+  padding: '$2',
 });
 
 export const CardBody = styled('div', {

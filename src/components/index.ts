@@ -5,7 +5,6 @@ export * from './modal/Modal';
 export * from './time-slot/TimeSlot';
 export * from './withAuth';
 export * from './custom-link/CustomLink';
-export * from './table/Table';
 export * from './tutor-response/TutorResponse';
 export * from './image-with-placeholder/ImageWithPlaceholder';
 export * from './rating/Rating';

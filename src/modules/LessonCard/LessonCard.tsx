@@ -51,7 +51,8 @@ export const LessonCard = ({ lesson, response }: CardProps) => {
     }
   };
 
-  const hasTimeFrames = lesson.lessonTimeFrames.length !== 0;
+  const hasTimeFrames =
+    lesson.lessonTimeFrames && lesson.lessonTimeFrames.length !== 0;
 
   const responseStartDate = response
     ? new Date(response.tutorResponseTimeFrame.startTime)
@@ -78,7 +79,21 @@ export const LessonCard = ({ lesson, response }: CardProps) => {
               borderColor: lesson.subject.color,
             }}
           >
-            {lesson.subject.name}
+            <div style={{ textTransform: 'capitalize' }}>
+              {lesson.subject.name}
+            </div>
+            <div
+              style={{
+                fontSize: '12px',
+                color: '#555',
+                border: '1px solid white',
+                padding: '5px 10px',
+                borderRadius: '100px',
+                backgroundColor: 'rgba(255, 255, 255, 0.7)',
+              }}
+            >
+              {lesson.status}
+            </div>
           </CardHeader>
 
           <CardBody>

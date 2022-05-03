@@ -7,7 +7,7 @@ import { Rewards, StudentsNavbar } from '@modules';
 import { LessonsWithFilter } from '@modules';
 import { styled } from 'styles/stitches.config';
 
-const PageLayout = styled('div', {
+export const PageLayout = styled('div', {
   padding: '20px',
   '> div + div': {
     marginTop: '$10',
