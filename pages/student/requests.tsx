@@ -1,12 +1,12 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
 
-import { withAuth } from '@components';
-import { StudentsNavbar, RequestsContainer, NewRequestButton } from '@modules';
+import { TitledSection, withAuth } from '@components';
+import { StudentsNavbar, LessonsContainer, NewRequestButton } from '@modules';
+
+import { PageLayout } from './home';
 
 const RequestsPage: NextPage = () => {
-  const router = useRouter();
   return (
     <div>
       <Head>
@@ -14,7 +14,14 @@ const RequestsPage: NextPage = () => {
       </Head>
 
       <StudentsNavbar />
-      <RequestsContainer />
+
+      <PageLayout>
+        <TitledSection titleMsgId="student.request.requests">
+          <NewRequestButton />
+
+          <LessonsContainer filter={{ status: 'requested' }} />
+        </TitledSection>
+      </PageLayout>
     </div>
   );
 };

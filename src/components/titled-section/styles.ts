@@ -7,6 +7,7 @@ export const SectionHeader = styled('div', {
   alignItems: 'center',
   fontWeight: 'bold',
   fontSize: '$xl',
+  whiteSpace: 'nowrap',
 });
 
 export const StyledHr = styled('hr', {

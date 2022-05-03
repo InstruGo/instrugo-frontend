@@ -1,5 +1,3 @@
-import { CSS } from '@stitches/react';
-
 import { styled } from '../../../styles/stitches.config';
 
 export const TableStyle = styled('div', {
@@ -7,6 +5,16 @@ export const TableStyle = styled('div', {
   border: '2px solid #10434E',
   borderRadius: '10px',
 });
+
+export const TableBody = styled('table', {
+  backgroundColor: 'rgba(63, 178, 193, 0.2)',
+  justifyContent: 'flex-start',
+  alignItems: 'center',
+  fontSize: '$xs',
+  height: '100%',
+  width: '100%',
+});
+
 export const TableHeader = styled('tr', {
   color: 'white',
   justifyContent: 'center',
@@ -19,17 +27,10 @@ export const TableHeader = styled('tr', {
   padding: '0px 0px',
   width: '100%',
 });
+
 export const StyledHr = styled('hr', {
   width: '100%',
   borderTop: 'solid 1px #10434E',
-});
-export const TableBody = styled('table', {
-  backgroundColor: 'rgba(63, 178, 193, 0.2)',
-  justifyContent: 'flex-start',
-  alignItems: 'center',
-  fontSize: '$xs',
-  height: '100%',
-  width: '100%',
 });
 
 export const TableText = styled('i', {
@@ -50,6 +51,7 @@ export const TableItem = styled('tr', {
   paddingBottom: '12px',
   height: '30px',
 });
+
 export const TableData = styled('td', {
   cursor: 'pointer',
   paddingTop: '$3',
@@ -58,6 +60,7 @@ export const TableData = styled('td', {
   alignItems: 'center',
   height: '30px',
 });
+
 export const TableTitles = styled('th', {
   paddingTop: '12px',
   paddingBottom: '12px',
