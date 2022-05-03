@@ -73,7 +73,7 @@ export const RequestDetailsText = styled('div', {
 export const FieldTitle = styled('div', {
   alignItems: 'center',
   justifyContent: 'center',
-  fontSize: '$lg',
+  fontSize: '$xl',
   font: 'Roboto',
   color: '#0E353D',
   fontWeight: 'bold',
