@@ -64,6 +64,10 @@ export const LessonsTable = ({ filter }: LessonsTableProps) => {
         </TableHeader>
         {lessons.map((lesson) => {
           const date = new Date(lesson.finalStartTime);
+          const rating =
+            lesson.rating && lesson.rating.studentRating
+              ? lesson.rating.studentRating
+              : '';
           return (
             <TableItem
               key={lesson.id}
@@ -78,10 +82,16 @@ export const LessonsTable = ({ filter }: LessonsTableProps) => {
               </TableData>
               <TableData>{'0kn'}</TableData>
               <TableData>{lesson.location}</TableData>
-              <TableData>{lesson.type}</TableData>
-              <TableData>{lesson.educationLevel}</TableData>
+              <TableData>
+                <FormattedMessage id={`meetingType.${lesson.type}`} />
+              </TableData>
+              <TableData>
+                <FormattedMessage
+                  id={`educationLevel.${lesson.educationLevel}`}
+                />
+              </TableData>
               <TableData>{lesson.grade}</TableData>
-              {/* <TableData>{lesson.rating}</TableData> */}
+              <TableData>{rating}</TableData>
               <Modal
                 shouldShow={showLessonDetailsModal}
                 closeAction={() => setLessonDetailsModal(false)}
