@@ -1,23 +1,25 @@
-import { useMutation, useQueryClient } from 'react-query';
+import { useMutation } from 'react-query';
 
 import { useAxios, useUserContext } from '@hooks';
-import { UserRole } from '@types';
+import { User } from '@types';
 
 export const useBecomeTutor = () => {
-  const { user, setUser } = useUserContext();
   const axios = useAxios();
-  const queryClient = useQueryClient();
-  const becomeTutor = async (): Promise<void> => {
-    const result = await axios.post('/auth/become-a-tutor');
+  const { setUser } = useUserContext();
+
+  const becomeTutor = async (): Promise<User> => {
+    const response = await axios.post('/auth/become-a-tutor');
+
+    if (!response || !response.data) {
+      throw new Error();
+    }
+
+    return response.data as User;
   };
 
   return useMutation(becomeTutor, {
-    onSuccess: () => {
-      queryClient.invalidateQueries('profile');
-      if (user) {
-        user.role = UserRole.TUTOR;
-        setUser(user);
-      }
+    onSuccess: (data) => {
+      setUser(data);
     },
     onError: (error) => {
       console.log(error);
