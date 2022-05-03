@@ -1,6 +1,6 @@
-import { CSS } from '@stitches/react';
+import { styled } from 'styles/stitches.config';
 
-import { styled } from '../../../styles/stitches.config';
+export const CardContainer = styled('div', {});
 
 export const CardStyle = styled('div', {
   width: '14rem',
@@ -10,15 +10,7 @@ export const CardStyle = styled('div', {
   display: 'flex',
   flexDirection: 'column',
 });
-export const ModalButton = styled('button', {
-  background: 'none',
-  color: 'inherit',
-  border: 'none',
-  padding: '0px',
-  font: 'inherit',
-  cursor: 'pointer',
-  outline: 'inherit',
-});
+
 export const CardHeader = styled('div', {
   display: 'flex',
   color: 'white',

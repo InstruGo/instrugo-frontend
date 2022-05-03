@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { TutorsNavbar, LessonsContainer } from '@modules';
+import { TutorsNavbar, Lessons } from '@modules';
 
 const TutorResponses: NextPage = () => {
   return (
@@ -9,7 +9,7 @@ const TutorResponses: NextPage = () => {
         <title>InstruGo | Tutor lessons</title>
       </Head>
       <TutorsNavbar />
-      <LessonsContainer title="responsesPage.title" cards respCards filter />
+      <Lessons title="responsesPage.title" cards respCards filter />
     </div>
   );
 };
