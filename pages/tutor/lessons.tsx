@@ -1,7 +1,9 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 
-import { TutorsNavbar, LessonsContainer } from '@modules';
+import { TitledSection } from '@components';
+import { TutorsNavbar, LessonsContainer, LessonsTable } from '@modules';
+import { PageLayout } from 'pages/student/home';
 
 const Lessonspage: NextPage = () => {
   return (
@@ -9,12 +11,26 @@ const Lessonspage: NextPage = () => {
       <Head>
         <title>InstruGo | Tutor lessons</title>
       </Head>
-      <TutorsNavbar />
-      <LessonsContainer title="lessons.1st_group" cards={true} />
-      <LessonsContainer title="lessons.2nd_group" cards={true} />
-      <LessonsContainer title="lessons.3rd_group" cards={true} />
 
-      <LessonsContainer title="lessons.table" table={true} />
+      <TutorsNavbar />
+
+      <PageLayout>
+        <TitledSection titleMsgId="lessons.1st_group">
+          <LessonsContainer filter={{ status: 'pending' }} />
+        </TitledSection>
+
+        <TitledSection titleMsgId="lessons.2nd_group">
+          <LessonsContainer filter={{ status: 'pending' }} />
+        </TitledSection>
+
+        <TitledSection titleMsgId="lessons.3rd_group">
+          <LessonsContainer filter={{ status: 'pending' }} />
+        </TitledSection>
+
+        <TitledSection titleMsgId="lessons.table">
+          <LessonsTable filter={{ status: 'completed' }} />
+        </TitledSection>
+      </PageLayout>
     </div>
   );
 };

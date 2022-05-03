@@ -6,7 +6,6 @@ import { FormattedMessage } from 'react-intl';
 
 import { Button, TimeSlot, Input } from '@components';
 import { useUpdateRequest, useSubjects } from '@hooks';
-
 import {
   UpdateRequestFormInputs,
   updateRequestFormSchema,
@@ -14,6 +13,7 @@ import {
   MeetingType,
   Lesson,
 } from '@types';
+
 import {
   NewRequestFormContainer,
   InputDescription,
@@ -203,11 +203,13 @@ export const UpdateRequestForm = ({
                 setValue('subjectId', parseInt(e.target.value, 10));
               }}
             >
-              {data?.map((subject) => (
-                <DropdownOption key={subject.id} value={subject.id}>
-                  {subject.name}
-                </DropdownOption>
-              ))}
+              {data?.map((subject) => {
+                return (
+                  <DropdownOption key={subject.id} value={subject.id}>
+                    {subject.name}
+                  </DropdownOption>
+                );
+              })}
             </Dropdown>
 
             <InputDescription>

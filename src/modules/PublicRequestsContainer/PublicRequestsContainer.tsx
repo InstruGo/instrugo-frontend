@@ -1,7 +1,7 @@
 import { FormattedMessage } from 'react-intl';
 
-import { Card } from '@components';
 import { usePublicRequests, useUserContext } from '@hooks';
+import { LessonCard } from '@modules';
 
 import {
   RequestsBody,
@@ -36,23 +36,9 @@ export const PublicRequestsContainer = ({ title }: publicRequestProps) => {
       </LessonsHeader>
 
       <RequestsBody style={{ height: '200px' }}>
-        {data.map((lesson) => (
-          <Card
-            key={lesson.id}
-            lessonStatus={lesson.status}
-            index={lesson.id}
-            subject={lesson.subject.name}
-            subfield={lesson.subfield}
-            location={lesson.location}
-            meetingType={lesson.type}
-            grade={lesson.grade}
-            educationLvl={lesson.educationLevel}
-            color={lesson.subject.color}
-            forTutors={true}
-            responseStart={new Date()}
-            responseEnd={new Date()}
-          />
-        ))}
+        {data.map((lesson) => {
+          return <LessonCard key={lesson.id} lesson={lesson} />;
+        })}
       </RequestsBody>
     </StyledContainer>
   );
