@@ -13,17 +13,19 @@ const educationlevel: Record<string, EducationLevel> = {
   university: EducationLevel.UNIVERSITY,
 };
 
+type FilterValueType =
+  | string
+  | number
+  | number[]
+  | EducationLevel
+  | MeetingType
+  | undefined;
+
 export const useLessonFilter = (initialFilter?: LessonFilter) => {
   const [filter, setFilterInner] = useState<LessonFilter>(initialFilter || {});
 
   const setFilter = (key: string, value: string) => {
-    let filterValue:
-      | string
-      | number
-      | number[]
-      | EducationLevel
-      | MeetingType
-      | undefined;
+    let filterValue: FilterValueType;
 
     switch (key) {
       case 'subjectIds':
