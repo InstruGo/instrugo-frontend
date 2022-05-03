@@ -49,6 +49,7 @@ export const withAuth = (Component: NextPage) => {
           returnUrl: router.pathname,
         },
       });
+      return null;
     }
 
     if (!authorizationCheck(user)) {
