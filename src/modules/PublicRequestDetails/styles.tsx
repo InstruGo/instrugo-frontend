@@ -47,7 +47,7 @@ export const FieldTitle = styled('div', {
   fontSize: '$lg',
   font: 'Roboto',
   color: '#0E353D',
-  fontWeight: '900',
+  fontWeight: '$black',
 });
 
 export const FieldDescription = styled('div', {
