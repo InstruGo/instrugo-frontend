@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 import { Button, TimeSlot, Input } from '@components';
 import { useNewRequest, useSubjects, useUserContext } from '@hooks';
@@ -46,7 +46,7 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
       grade: user?.grade,
     },
   });
-
+  const intl = useIntl();
   const onSubmit = async (data: NewRequestFormInputs) => {
     newRequest.mutate(data);
 
@@ -170,6 +170,15 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
   updateLessonTimeFrames(timeSlots);
   const [subjectId, setSubjectId] = useState<number>(1);
   setValue('subjectId', subjectId);
+
+  const meetingTypeOptions = [
+    {
+      key: 'in-person',
+      value: intl.formatMessage({ id: 'meetingType.inPerson' }),
+    },
+    { key: 'online', value: intl.formatMessage({ id: 'meetingType.online' }) },
+  ];
+
   if (isLoading) return <div>Loading...</div>;
 
   return (
@@ -191,13 +200,11 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
                 setValue('subjectId', parseInt(e.target.value, 10));
               }}
             >
-              {data?.map((subject) => {
-                return (
-                  <DropdownOption key={subject.id} value={subject.id}>
-                    {subject.name}
-                  </DropdownOption>
-                );
-              })}
+              {data?.map((subject) => (
+                <DropdownOption key={subject.id} value={subject.id}>
+                  {intl.formatMessage({ id: `subjects.${subject.name}` })}
+                </DropdownOption>
+              ))}
             </Dropdown>
 
             <InputDescription>
@@ -222,7 +229,7 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
                 }
                 onChange={onLevelSelect}
               />
-              {EducationLevel.ELEMENTARY_SCHOOL}
+              <FormattedMessage id="educationLevel.elementary-school" />
             </RadioInput>
             <RadioInput>
               <input
@@ -232,7 +239,7 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
                 checked={selectedEducationLevel === EducationLevel.HIGH_SCHOOL}
                 onChange={onLevelSelect}
               />
-              {EducationLevel.HIGH_SCHOOL}
+              <FormattedMessage id="educationLevel.high-school" />
             </RadioInput>
             <RadioInput>
               <input
@@ -242,7 +249,7 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
                 checked={selectedEducationLevel === EducationLevel.UNIVERSITY}
                 onChange={onLevelSelect}
               />
-              {EducationLevel.UNIVERSITY}
+              <FormattedMessage id="educationLevel.university" />
             </RadioInput>
 
             <InputDescription>
@@ -314,7 +321,7 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
                 checked={selectedMeetingType === MeetingType.IN_PERSON}
                 onChange={onMeetingSelect}
               />
-              {MeetingType.IN_PERSON}
+              <FormattedMessage id="meetingType.in-person" />
             </RadioInput>
             <RadioInput>
               <input
@@ -324,7 +331,7 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
                 checked={selectedMeetingType === MeetingType.ONLINE}
                 onChange={onMeetingSelect}
               />
-              {MeetingType.ONLINE}
+              <FormattedMessage id="meetingType.online" />
             </RadioInput>
             <InputDescription>
               <FormattedMessage id="card.location" />:
