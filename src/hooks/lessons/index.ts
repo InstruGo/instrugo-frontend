@@ -7,3 +7,4 @@ export * from './useNewRequest';
 export * from './usePublicRequests';
 export * from './useResolveLesson';
 export * from './useUpdateRequest';
+export * from './useLessonFilter';

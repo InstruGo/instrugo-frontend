@@ -1,20 +1,5 @@
 import { styled } from 'styles/stitches.config';
 
-export const RewardsContainer = styled('div', {});
-
-export const RewardsHeader = styled('div', {
-  display: 'flex',
-  alignItems: 'center',
-});
-
-export const Title = styled('div', { fontWeight: 'bold', fontSize: '22px' });
-
-export const StyledHr = styled('hr', {
-  marginLeft: '20px',
-  width: '100%',
-  borderTop: 'solid 1px #10434E',
-});
-
 export const RewardsBody = styled('div', {
   display: 'flex',
   flexDirection: 'column',

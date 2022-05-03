@@ -1,6 +1,10 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { TutorsNavbar, LessonsContainer } from '@modules';
+
+import { TitledSection } from '@components';
+import { TutorsNavbar } from '@modules';
+import { ResponsesContainer } from '@modules/ResponsesContainer/ResponsesContainer';
+import { PageLayout } from 'pages/student/home';
 
 const TutorResponses: NextPage = () => {
   return (
@@ -8,8 +12,14 @@ const TutorResponses: NextPage = () => {
       <Head>
         <title>InstruGo | Tutor lessons</title>
       </Head>
+
       <TutorsNavbar />
-      <LessonsContainer title="responsesPage.title" cards respCards filter />
+
+      <PageLayout>
+        <TitledSection titleMsgId="responsesPage.title">
+          <ResponsesContainer />
+        </TitledSection>
+      </PageLayout>
     </div>
   );
 };
