@@ -14,7 +14,14 @@ export const ResponsesContainer = () => {
     );
 
   return (
-    <div style={{ display: 'flex' }}>
+    <div
+      style={{
+        display: 'flex',
+        gap: '30px',
+        flexWrap: 'wrap',
+        paddingLeft: '20px',
+      }}
+    >
       {responseIds?.map((response) => {
         return <ResponseContainer key={response.id} responseId={response.id} />;
       })}

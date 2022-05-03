@@ -139,7 +139,7 @@ export const LessonCard = ({ lesson, response }: CardProps) => {
                   style={{
                     backgroundColor: '#0E353D',
                     height: '2px',
-                    width: '200px',
+                    width: '250px',
                     padding: '0',
                   }}
                 ></Row>

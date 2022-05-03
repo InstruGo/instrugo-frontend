@@ -18,7 +18,14 @@ export const LessonsContainer = ({ filter }: LessonsContainerProps) => {
     );
 
   return (
-    <div style={{ display: 'flex' }}>
+    <div
+      style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        gap: '30px',
+        paddingLeft: '20px',
+      }}
+    >
       {lessons?.map((lesson) => {
         return <LessonCard key={lesson.id} lesson={lesson} />;
       })}
