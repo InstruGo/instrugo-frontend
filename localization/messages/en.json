@@ -62,11 +62,11 @@
   "nav.home": "Home",
   "nav.myLessons": "My Lessons",
   "nav.myRequests": "My Requests",
-  "nav.switch": "Switch to tutor",
-  "nav.switch.tutor": "Switch to student",
   "nav.publicRequests": "Requests",
   "nav.tutorResponses": "My responses",
-  "nav.becomeTutor": "Become a tutor",
+  "nav.becomeATutor": "Become a tutor",
+  "nav.switchToTutor": "Switch to tutor",
+  "nav.switchToStudent": "Switch to student",
 
   "home.rewards": "Rewards",
   "home.lessons": "Lessons",
@@ -96,7 +96,7 @@
   "subjects.latin": "Latin",
 
   "meetingType.all": "all",
-  "meetingType.in-person": "in person",
+  "meetingType.inPerson": "in person",
   "meetingType.online": "online",
 
   "educationLevel.elementary-school": "elementary school",

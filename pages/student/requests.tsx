@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 
 import { TitledSection, withAuth } from '@components';
-import { StudentsNavbar, LessonsContainer, NewRequestButton } from '@modules';
+import { LessonsContainer, NewRequestButton, Navbar } from '@modules';
 
 import { PageLayout } from './home';
 
@@ -13,7 +13,7 @@ const RequestsPage: NextPage = () => {
         <title>InstruGo | Student requests</title>
       </Head>
 
-      <StudentsNavbar />
+      <Navbar />
 
       <PageLayout>
         <TitledSection titleMsgId="student.request.requests">

@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 
 import { TitledSection } from '@components';
-import { TutorsNavbar } from '@modules';
+import { Navbar } from '@modules';
 import { ResponsesContainer } from '@modules/ResponsesContainer/ResponsesContainer';
 import { PageLayout } from 'pages/student/home';
 
@@ -13,7 +13,7 @@ const TutorResponses: NextPage = () => {
         <title>InstruGo | Tutor lessons</title>
       </Head>
 
-      <TutorsNavbar />
+      <Navbar />
 
       <PageLayout>
         <TitledSection titleMsgId="responsesPage.title">

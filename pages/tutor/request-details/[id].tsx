@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
-import { TutorsNavbar, PublicRequestDetails } from '@modules';
+import { PublicRequestDetails, Navbar } from '@modules';
 
 const RequestDetailsPage: NextPage = () => {
   const router = useRouter();
@@ -14,7 +14,8 @@ const RequestDetailsPage: NextPage = () => {
         <title>InstruGo | Request details</title>
       </Head>
 
-      <TutorsNavbar />
+      <Navbar />
+
       <PublicRequestDetails id={id} />
     </div>
   );
