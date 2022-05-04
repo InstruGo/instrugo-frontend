@@ -5,6 +5,7 @@ import { AiOutlineClockCircle, AiOutlineDollar } from 'react-icons/ai';
 import { FaGraduationCap } from 'react-icons/fa';
 import { GoBook } from 'react-icons/go';
 import { MdOutlineMeetingRoom, MdOutlineLocationOn } from 'react-icons/md';
+import { FormattedMessage } from 'react-intl';
 
 import { Modal } from '@components';
 import { useUserContext } from '@hooks';
@@ -24,7 +25,6 @@ import {
   CardContainer,
   Row,
 } from './styles';
-import { FormattedMessage } from 'react-intl';
 
 type StitchesComponentProps = React.ComponentPropsWithoutRef<typeof CardStyle>;
 
@@ -39,6 +39,8 @@ export const LessonCard = ({ lesson, response }: CardProps) => {
   const { user } = useUserContext();
 
   const [showLessonDetailsModal, setLessonDetailsModal] = useState(false);
+
+  const [isHovered, setIsHovered] = useState(false);
 
   const handleCardClick = () => {
     if (lesson.status !== 'requested') setLessonDetailsModal(true);

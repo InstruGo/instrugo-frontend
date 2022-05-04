@@ -136,7 +136,7 @@ export const RequestDetails = (props: RequestDetailsProps) => {
           <Column style={{ maxWidth: '100px' }} />
         </Row>
         <CalendarContainer>
-          <Calendar timeFrames={timeFrames} />
+          <Calendar requestTimeframes={timeFrames} />
         </CalendarContainer>
         <ResponsesHeader>
           <Title>

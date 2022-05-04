@@ -2,8 +2,8 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import React from 'react';
 
-import { TitledSection, withAuth } from '@components';
-import { LessonsContainer, Navbar, PublicRequestsContainer } from '@modules';
+import { Calendar, TitledSection, withAuth } from '@components';
+import { Navbar, PublicRequestsContainer } from '@modules';
 import { PageLayout } from 'pages/student/home';
 
 const TutorHomepage: NextPage = () => {
@@ -19,7 +19,7 @@ const TutorHomepage: NextPage = () => {
 
       <PageLayout>
         <TitledSection titleMsgId="tutorsHome.upcoming">
-          <LessonsContainer filter={{ status: 'pending' }} />
+          <Calendar pending />
         </TitledSection>
 
         <PublicRequestsContainer title={'tutorsHome.recommended'} />

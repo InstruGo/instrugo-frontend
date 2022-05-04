@@ -10,7 +10,7 @@ export const ControlPanel = styled('div', {
 });
 
 export const FilterMenuContainer = styled('div', {
-  marginTop: '$5',
+  margin: '$5 0',
   backgroundColor: '#eee',
   borderRadius: '10px',
   overflow: 'hidden',
@@ -22,9 +22,7 @@ export const FilterGroup = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   padding: '10px',
-  '> button': {
-    textTransform: 'capitalize',
-  },
+  '> div': { marginBottom: '$2' },
   '> button + button': {
     marginLeft: '10px',
   },

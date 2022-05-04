@@ -90,9 +90,9 @@
   "subjects.IT": "IT",
   "subjects.latin": "Latinski",
 
-  "meetingType.all": "sve",
-  "meetingType.in-person": "uživo",
-  "meetingType.online": "online",
+  "meetingType.all": "Sve",
+  "meetingType.in-person": "Uživo",
+  "meetingType.online": "Online",
 
   "educationLevel.elementary-school": "osnovna škola",
   "educationLevel.high-school": "srednja škola",
