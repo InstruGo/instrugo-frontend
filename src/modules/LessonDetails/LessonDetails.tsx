@@ -6,7 +6,7 @@ import { FaGraduationCap } from 'react-icons/fa';
 import { MdOutlineMeetingRoom, MdOutlineLocationOn } from 'react-icons/md';
 import { FormattedMessage } from 'react-intl';
 
-import { Button } from '@components';
+import { Button, Loader } from '@components';
 import { useLesson, useCancelLesson } from '@hooks';
 import { PublicProfile } from '@modules';
 
@@ -33,7 +33,9 @@ export const LessonDetails = (props: LessonDetailsProps) => {
 
   const [showPublicProfile, setShowProfile] = useState(false);
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) {
+    return <Loader />;
+  }
 
   if (!(data?.finalStartTime && data?.finalEndTime))
     return <div>Lesson time not yet arranged...</div>;

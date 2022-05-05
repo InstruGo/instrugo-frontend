@@ -2,8 +2,7 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import React, { useEffect } from 'react';
 
-import { withAuth } from '@components';
-import { Loader } from '@components/icons';
+import { Loader, withAuth } from '@components';
 import { useHomeRedirect } from '@hooks';
 
 const AuthRedirect: NextPage = () => {
@@ -21,11 +20,7 @@ const AuthRedirect: NextPage = () => {
         </title>
       </Head>
 
-      <div
-        style={{ display: 'flex', justifyContent: 'center', marginTop: '50px' }}
-      >
-        <Loader width="40px" />
-      </div>
+      <Loader />
     </div>
   );
 };

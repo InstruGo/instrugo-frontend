@@ -2,9 +2,9 @@ import { useRouter } from 'next/router';
 
 import { FormattedMessage } from 'react-intl';
 
+import { Calendar, Loader } from '@components';
 import { useLesson } from '@hooks';
 import { NewTutorResponseForm } from '@modules';
-import { Calendar } from '@components';
 import { TimeFrame } from '@types';
 
 import {
@@ -26,9 +26,14 @@ interface RequestDetailsProps {
 export const PublicRequestDetails = ({ id }: RequestDetailsProps) => {
   const { data, isLoading } = useLesson(id);
   const router = useRouter();
-  if (isLoading || !data) return <div>Loading...</div>;
+
+  if (isLoading || !data) {
+    return <Loader />;
+  }
+
   const timeFrames: { timeFrame: TimeFrame; color: string; title: string }[] =
     [];
+
   data?.lessonTimeFrames.map((timeFrame) =>
     timeFrames.push({
       timeFrame: timeFrame,

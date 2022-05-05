@@ -4,7 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
 
-import { Button, TimeSlot, Input } from '@components';
+import { Button, TimeSlot, Input, Loader } from '@components';
 import { useNewRequest, useSubjects, useUserContext } from '@hooks';
 import {
   EducationLevel,
@@ -153,6 +153,7 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
 
     updateTimeSlots(tempSlots);
   };
+
   const onAddTimeSlot = () => {
     let tempSlots = timeSlots;
     setSlotCount(slotCount + 1);
@@ -170,7 +171,9 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
   const [subjectId, setSubjectId] = useState<number>(1);
   setValue('subjectId', subjectId);
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <>

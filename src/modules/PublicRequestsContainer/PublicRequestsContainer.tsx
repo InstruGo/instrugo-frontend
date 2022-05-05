@@ -1,5 +1,6 @@
 import { FormattedMessage } from 'react-intl';
 
+import { Loader } from '@components';
 import { usePublicRequests, useUserContext } from '@hooks';
 import { LessonCard } from '@modules';
 
@@ -27,7 +28,7 @@ export const PublicRequestsContainer = ({ title }: publicRequestProps) => {
   const { data, isLoading } = usePublicRequests(filter);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   if (!data) {

@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 
 import { useQueryClient } from 'react-query';
 
+import { Loader } from '@components';
 import { useProfile, useUserContext, useHomeRedirect } from '@hooks';
 import { OptionalUser, UserRole } from '@types';
 
@@ -39,7 +40,7 @@ export const withAuth = (Component: NextPage) => {
     }, [isLoggedIn]);
 
     if (isLoading) {
-      return <div>Loading...</div>;
+      return <Loader />;
     }
 
     if (isError) {

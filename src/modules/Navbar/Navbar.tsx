@@ -6,8 +6,7 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 import { HiOutlineSwitchVertical } from 'react-icons/hi';
 import { FormattedMessage } from 'react-intl';
 
-import { Button, CustomLink, HeaderContainer } from '@components';
-import { Loader } from '@components/icons';
+import { Button, CustomLink, HeaderContainer, Loader } from '@components';
 import {
   useBecomeTutor,
   useLogout,
@@ -20,8 +19,8 @@ import {
   Clickable,
   HamburgerMenu,
   NavLink,
-  OppenedMenu,
-  OppenedProfileMenu,
+  OpenedMenu,
+  OpenedProfileMenu,
   ProfileLink,
   RightNavSection,
   StyledHeader,
@@ -50,7 +49,6 @@ export const Navbar = () => {
     setMenuOpen(false);
   };
 
-  // Animations for navbar hamburger menu and profile menu
   const { menuAnimation: navbarMenuAnimation } = useMenuAnimation();
   const { menuAnimation: profileMenuAnimation } = useMenuAnimation();
 
@@ -59,21 +57,12 @@ export const Navbar = () => {
     profileMenuAnimation(profileRef, isProfileOpen);
   }, [isMenuOpen, isProfileOpen, navbarMenuAnimation, profileMenuAnimation]);
 
-  if (!user) {
-    return (
-      <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <Loader width="40px" height="40px" />
-      </div>
-    );
-  }
-
   const becomeATutor = () => {
     becomeTutor.mutate();
-    router.push('/tutor/home');
   };
 
   const handleSwitchAction = () => {
-    if (user.role === UserRole.STUDENT) {
+    if (user?.role === UserRole.STUDENT) {
       becomeATutor();
     } else {
       if (router.pathname.startsWith('/tutor')) router.push('/student/home');
@@ -82,11 +71,15 @@ export const Navbar = () => {
   };
 
   const switchButtonMsgId =
-    user.role === UserRole.STUDENT
+    user?.role === UserRole.STUDENT
       ? 'nav.becomeATutor'
       : router.pathname.startsWith('/student')
       ? 'nav.switchToTutor'
       : 'nav.switchToStudent';
+
+  if (!user) {
+    return <Loader />;
+  }
 
   return (
     <HeaderContainer>
@@ -140,7 +133,7 @@ export const Navbar = () => {
           </Clickable>
 
           {router.pathname.startsWith('/student') ? (
-            <OppenedMenu ref={menuRef}>
+            <OpenedMenu ref={menuRef}>
               <NavLink style={{ margin: '20px 15px' }}>
                 <CustomLink href="/student/home">
                   <FormattedMessage id={'nav.home'} />
@@ -156,9 +149,9 @@ export const Navbar = () => {
                   <FormattedMessage id={'nav.myRequests'} />
                 </CustomLink>
               </NavLink>
-            </OppenedMenu>
+            </OpenedMenu>
           ) : (
-            <OppenedMenu ref={menuRef}>
+            <OpenedMenu ref={menuRef}>
               <NavLink style={{ margin: '20px 15px' }}>
                 <CustomLink href="/tutor/home">
                   <FormattedMessage id={'nav.home'} />
@@ -179,7 +172,7 @@ export const Navbar = () => {
                   <FormattedMessage id={'nav.tutorResponses'} />
                 </CustomLink>
               </NavLink>
-            </OppenedMenu>
+            </OpenedMenu>
           )}
         </HamburgerMenu>
 
@@ -198,7 +191,7 @@ export const Navbar = () => {
               onClick={handleOpenProfile}
             />
 
-            <OppenedProfileMenu ref={profileRef}>
+            <OpenedProfileMenu ref={profileRef}>
               <NavLink style={{ margin: '20px 15px' }}>
                 <CustomLink href="/profile">
                   <FormattedMessage id={'nav.profile'} />
@@ -212,7 +205,7 @@ export const Navbar = () => {
                   <FormattedMessage id={'nav.logout'} />
                 </a>
               </NavLink>
-            </OppenedProfileMenu>
+            </OpenedProfileMenu>
           </ProfileLink>
         </RightNavSection>
       </StyledHeader>

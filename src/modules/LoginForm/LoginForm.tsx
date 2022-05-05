@@ -6,8 +6,7 @@ import { useForm } from 'react-hook-form';
 import { IoCheckmarkCircle } from 'react-icons/io5';
 import { FormattedMessage } from 'react-intl';
 
-import { CustomLink, Input } from '@components';
-import { Loader } from '@components/icons';
+import { CustomLink, Input, LoaderIcon } from '@components';
 import { useLogin } from '@hooks';
 import { LoginFormInputs, loginFormSchema } from '@types';
 
@@ -74,7 +73,7 @@ export const LoginForm = () => {
 
       <LoaderContainer>
         {loginUser.isLoading && (
-          <Loader fill="#10434E" width="40px" height="40px" />
+          <LoaderIcon fill="#10434E" width="40px" height="40px" />
         )}
         {loginUser.isSuccess && (
           <IoCheckmarkCircle fill="#23b067" size="40px" />

@@ -1,6 +1,8 @@
+import { useRouter } from 'next/router';
+
 import { FormattedMessage } from 'react-intl';
 
-import { TutorResponse, Button, Calendar } from '@components';
+import { TutorResponse, Button, Calendar, Loader } from '@components';
 import { useLesson } from '@hooks';
 import { TimeFrame } from '@types';
 
@@ -17,19 +19,22 @@ import {
   FieldTitle,
   EditText,
 } from './styles';
-import { useRouter } from 'next/router';
 
 interface RequestDetailsProps {
   id: number;
 }
 
 export const RequestDetails = (props: RequestDetailsProps) => {
-  const { data, isLoading } = useLesson(props.id);
   const router = useRouter();
+  const { data, isLoading } = useLesson(props.id);
 
-  if (isLoading || !data) return <div>Loading...</div>;
+  if (isLoading || !data) {
+    return <Loader />;
+  }
+
   const timeFrames: { timeFrame: TimeFrame; color: string; title: string }[] =
     [];
+
   data?.lessonTimeFrames.map((timeFrame) =>
     timeFrames.push({
       timeFrame: timeFrame,

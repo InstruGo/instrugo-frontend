@@ -7,7 +7,7 @@ import { AiOutlineClockCircle, AiOutlineDollar } from 'react-icons/ai';
 import { BsPerson } from 'react-icons/bs';
 import { FormattedMessage } from 'react-intl';
 
-import { Button, Input } from '@components';
+import { Button, Input, Loader } from '@components';
 import { useLesson, useRating } from '@hooks';
 import { NewStudentRatingInputs, NewStudentRatingSchema } from '@types';
 
@@ -42,7 +42,7 @@ export const LessonDetailsAfterStudent = (props: LessonDetailsAfterProps) => {
   };
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   if (!(data?.finalStartTime && data?.finalEndTime)) {
