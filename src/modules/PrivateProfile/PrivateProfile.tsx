@@ -96,6 +96,7 @@ export const PrivateProfile = () => {
             <AiOutlineMail size="20px" />
             <div className="detail">{user.email}</div>
           </div>
+
           <div>
             <AiOutlinePhone size="20px" />
             <div className="detail">
@@ -106,6 +107,7 @@ export const PrivateProfile = () => {
               )}
             </div>
           </div>
+
           {user.role === 'student' && (
             <div>
               <MdOutlineSchool size="20px" />
@@ -114,6 +116,19 @@ export const PrivateProfile = () => {
                   <FormattedMessage id={`user.${user.educationLevel}`} />
                 ) : (
                   <FormattedMessage id="profile.noEducationLevel" />
+                )}
+              </div>
+            </div>
+          )}
+
+          {user.role === 'student' && (
+            <div>
+              <MdOutlineSchool size="20px" />
+              <div className="detail">
+                {user.grade ? (
+                  `${user.grade}. grade`
+                ) : (
+                  <FormattedMessage id="profile.noGrade" />
                 )}
               </div>
             </div>
