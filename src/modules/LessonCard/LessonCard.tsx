@@ -40,8 +40,6 @@ export const LessonCard = ({ lesson, response }: CardProps) => {
 
   const [showLessonDetailsModal, setLessonDetailsModal] = useState(false);
 
-  const [isHovered, setIsHovered] = useState(false);
-
   const handleCardClick = () => {
     if (lesson.status !== 'requested') setLessonDetailsModal(true);
     else {
