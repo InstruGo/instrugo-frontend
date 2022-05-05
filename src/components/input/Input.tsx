@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { useIntl } from 'react-intl';
 
@@ -29,12 +29,6 @@ export const Input = ({
 }: InputProps) => {
   const intl = useIntl();
 
-  const [isErrorDismissed, dismissError] = React.useState(false);
-
-  useEffect(() => {
-    dismissError(false);
-  }, [errors]);
-
   return (
     <InputContainer>
       <StyledInput
@@ -54,12 +48,11 @@ export const Input = ({
             : undefined
         }
         {...(register && name && register(name, { valueAsNumber: isNumber }))}
-        onChange={() => dismissError(true)}
         {...rest}
       />
       {errors && (
         <ErrorsContainer>
-          {!isErrorDismissed && <span>{errors.message}</span>}
+          <span>{errors.message}</span>
         </ErrorsContainer>
       )}
     </InputContainer>

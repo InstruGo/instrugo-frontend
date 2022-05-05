@@ -27,6 +27,7 @@
   "login.forgotPassword": "Forgot password?",
   "login.description": "Log in to use our services",
   "login.needAnAccount": "Need an account?",
+  "login.emailAddressFormat": "E-mail address format is incorrect",
 
   "user.firstName": "first name",
   "user.lastName": "last name",

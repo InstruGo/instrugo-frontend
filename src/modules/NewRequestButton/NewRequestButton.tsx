@@ -8,8 +8,8 @@ import { Button } from '@components';
 
 const ButtonStyles = {
   borderRadius: '100px',
-  padding: '15px 25px',
-  fontSize: '20px',
+  padding: '10px 20px',
+  fontSize: '1.1rem',
   display: 'flex',
   alignItems: 'center',
 
