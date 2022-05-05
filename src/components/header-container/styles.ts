@@ -10,13 +10,13 @@ export const StyledHeaderContainer = styled('div', {
 
 export const LogoContainer = styled('div', {
   flexBasis: '50px',
-  marginLeft: '15px',
+  marginLeft: '$6',
 });
 
 export const ChildrenContainer = styled('div', {
   display: 'flex',
   width: '100%',
   height: '100%',
-  margin: '0 15px',
+  margin: '0 $6',
   alignItems: 'center',
 });

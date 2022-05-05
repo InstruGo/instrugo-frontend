@@ -97,9 +97,9 @@
   "meetingType.in-person": "Uživo",
   "meetingType.online": "Online",
 
-  "educationLevel.elementary-school": "osnovna škola",
-  "educationLevel.high-school": "srednja škola",
-  "educationLevel.university": "fakultet",
+  "educationLevel.elementary-school": "Osnovna škola",
+  "educationLevel.high-school": "Srednja škola",
+  "educationLevel.university": "Fakultet",
 
   "button.createRequest": "Stvorite novi zahtjev",
   "button.edit": "Uredi",

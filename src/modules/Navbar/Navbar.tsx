@@ -65,8 +65,8 @@ export const Navbar = () => {
     if (user?.role === UserRole.STUDENT) {
       becomeATutor();
     } else {
-      if (router.pathname.startsWith('/tutor')) router.push('/student/home');
-      else router.push('/tutor/home');
+      if (router.pathname.startsWith('/student')) router.push('/tutor/home');
+      else router.push('/student/home');
     }
   };
 
@@ -84,7 +84,8 @@ export const Navbar = () => {
   return (
     <HeaderContainer>
       <StyledHeader>
-        {router.pathname.startsWith('/student') ? (
+        {user.role === UserRole.STUDENT ||
+        router.pathname.startsWith('/student') ? (
           <StyledNavbar>
             <NavLink>
               <CustomLink href="/student/home">

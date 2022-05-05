@@ -14,7 +14,6 @@ export const ResponsesContainer = () => {
         display: 'flex',
         gap: '30px',
         flexWrap: 'wrap',
-        paddingLeft: '20px',
       }}
     >
       {responseIds?.map((response) => {

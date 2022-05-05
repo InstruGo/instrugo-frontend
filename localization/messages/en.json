@@ -102,9 +102,9 @@
   "meetingType.in-person": "In person",
   "meetingType.online": "Online",
 
-  "educationLevel.elementary-school": "elementary school",
-  "educationLevel.high-school": "high school",
-  "educationLevel.university": "university",
+  "educationLevel.elementary-school": "Elementary school",
+  "educationLevel.high-school": "High school",
+  "educationLevel.university": "University",
 
   "button.createRequest": "Create new request",
   "updateRequest.description": "Update your request",

@@ -65,6 +65,7 @@ export const LessonDetailsAfterStudent = (props: LessonDetailsAfterProps) => {
       <LessonDetailsText>
         <FormattedMessage id="lessonDetails.description" />
       </LessonDetailsText>
+
       <LessonDetailsContainer onSubmit={handleSubmit(onSubmit)}>
         <div
           style={{ display: 'flex', justifyContent: 'center', height: '100%' }}
@@ -76,14 +77,17 @@ export const LessonDetailsAfterStudent = (props: LessonDetailsAfterProps) => {
                 {data?.tutor.firstName + '  ' + data?.tutor.lastName}
               </CardText>
             </Row>
+
             <Row>
               <AiOutlineClockCircle />
               <CardText>{totalHours + ' h'} </CardText>
             </Row>
+
             <Row>
               <AiOutlineDollar />
               <CardText>{data?.finalPrice + '  kn/h'}</CardText>
             </Row>
+
             <Row
               style={{
                 backgroundColor: '#0E353D',
@@ -92,18 +96,15 @@ export const LessonDetailsAfterStudent = (props: LessonDetailsAfterProps) => {
                 padding: '0',
               }}
             ></Row>
+
             <Row>
               <CardText>
                 <FormattedMessage id="lessonDetailsAfter.total" />:{' '}
                 {totalHours * data?.finalPrice + ' kn'}
               </CardText>
             </Row>
-            <Row style={{ justifyContent: 'center' }}>
-              <Button style={{ backgroundColor: '#0E353D', width: '80px' }}>
-                <FormattedMessage id="lessonDetailsAfter.pay"></FormattedMessage>
-              </Button>
-            </Row>
           </Column>
+
           <div
             style={{
               backgroundColor: '#0E353D',
@@ -111,6 +112,7 @@ export const LessonDetailsAfterStudent = (props: LessonDetailsAfterProps) => {
               borderRadius: '6px',
             }}
           ></div>
+
           <Column style={{ justifyContent: 'center', alignItems: 'center' }}>
             <Title style={{ paddingLeft: '100px' }}>
               <FormattedMessage id="lessonDetailsAfter.rating" />:
@@ -123,6 +125,7 @@ export const LessonDetailsAfterStudent = (props: LessonDetailsAfterProps) => {
                 if (newValue) setValue('studentRating', newValue);
               }}
             />
+
             <Row style={{ justifyContent: 'center' }}>
               <Input
                 type="submit"

@@ -25,6 +25,6 @@ export const LessonsContainer = ({ filter }: LessonsContainerProps) => {
 const StyledContainer = styled('div', {
   display: 'flex',
   flexWrap: 'wrap',
-  gap: '10px',
+  gap: '$5',
   marginTop: '$4',
 });
