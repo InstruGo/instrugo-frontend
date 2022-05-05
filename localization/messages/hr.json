@@ -44,6 +44,7 @@
   "user.high-school": "Srednja škola",
   "user.university": "Fakultet",
   "user.grade": "Razred",
+  "user.subjects": "Predmeti",
 
   "card.subject": "Predmet",
   "card.dateAndTime": "Datum i vrijeme",
@@ -156,6 +157,7 @@
   "profile.noDescription": "Nema opisa",
   "profile.noSubjects": "Nema predmeta",
   "profile.noEducationLevel": "Razina obrazovanja nije postavljena",
+  "profile.noGrade": "Razred nije postavljen",
   "profile.saveChanges": "Spremi promjene",
 
   "footer.support": "Podrška",

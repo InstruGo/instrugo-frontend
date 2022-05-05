@@ -1,15 +1,18 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
+import Select from 'react-select';
 
-import { Input } from '@components';
-import { useUpdateProfile } from '@hooks';
+import { Input, Loader } from '@components';
+import { useSubjects, useUpdateProfile } from '@hooks';
 import {
   OptionalUser,
   ProfileUpdateFormInputs,
   profileUpdateFormSchema,
 } from '@types';
 
+import { EducationLevel, UserRole } from '../../types/user.types';
+import { DropdownOption, Dropdown } from '../NewRequestForm/styles';
 import {
   Description,
   EditFormContainer,
@@ -24,21 +27,38 @@ interface EditProfileFormProps {
 
 export const EditProfileForm = ({ user, setEditing }: EditProfileFormProps) => {
   const intl = useIntl();
-  const registerUser = useUpdateProfile();
+  const updateProfile = useUpdateProfile(setEditing);
+  const { data, isLoading } = useSubjects();
+
+  const subjectSelectOptions = data?.map((subject) => ({
+    value: subject.id,
+    label: intl.formatMessage({ id: `subjects.${subject.name}` }),
+  }));
+
+  const usersSubjectsDefault = user?.subjects.map((subject) => ({
+    value: subject.id,
+    label: intl.formatMessage({ id: `subjects.${subject.name}` }),
+  }));
+  const usersSubjectIds = user?.subjects.map((subject) => subject.id);
 
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors },
   } = useForm<ProfileUpdateFormInputs>({
     resolver: zodResolver(profileUpdateFormSchema),
   });
 
   const onSubmit = (data: ProfileUpdateFormInputs) => {
-    registerUser.mutate(data);
+    updateProfile.mutate(data);
   };
 
   const birthDate = user?.birthDate ? new Date(user?.birthDate) : undefined;
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <EditFormContainer onSubmit={handleSubmit(onSubmit)}>
@@ -108,18 +128,22 @@ export const EditProfileForm = ({ user, setEditing }: EditProfileFormProps) => {
         />
       </div>
 
-      <InputContainer>
-        <div>
-          <FormattedMessage id="user.educationLevel" />:
-        </div>
-        <Input
-          name="educationLevel"
-          placeholderMsgId={intl.formatMessage({ id: 'user.educationLevel' })}
-          defaultValue={user?.educationLevel}
-          register={register}
-          errors={errors.educationLevel}
-        />
-      </InputContainer>
+      <div style={{ fontWeight: 'bold' }}>
+        <FormattedMessage id="user.educationLevel" />:
+      </div>
+      <Dropdown
+        defaultValue={user?.educationLevel}
+        style={{ margin: '10px 0' }}
+        {...register('educationLevel')}
+      >
+        <DropdownOption key={0} value=""></DropdownOption>
+
+        {Object.values(EducationLevel).map((educationLevel, index) => (
+          <DropdownOption key={index + 1} value={educationLevel}>
+            {intl.formatMessage({ id: `educationLevel.${educationLevel}` })}
+          </DropdownOption>
+        ))}
+      </Dropdown>
 
       <InputContainer>
         <div>
@@ -133,14 +157,47 @@ export const EditProfileForm = ({ user, setEditing }: EditProfileFormProps) => {
           defaultValue={user?.grade}
           register={register}
           errors={errors.grade}
+          min={1}
         />
+      </InputContainer>
+
+      <InputContainer>
+        <div>
+          <FormattedMessage id="user.subjects" />:
+        </div>
+        {user?.role !== UserRole.STUDENT && (
+          <Controller
+            control={control}
+            defaultValue={usersSubjectIds}
+            name="subjectIds"
+            render={({ field }) => (
+              <Select
+                isMulti
+                defaultValue={usersSubjectsDefault}
+                ref={field.ref}
+                options={subjectSelectOptions}
+                styles={selectStyles}
+                onChange={(values) =>
+                  field.onChange(values.map((value) => value.value))
+                }
+              />
+            )}
+          ></Controller>
+        )}
       </InputContainer>
 
       <Input
         type="submit"
         placeholderMsgId="profile.saveChanges"
-        style={{ marginTop: '50px' }}
+        style={{ cursor: 'pointer' }}
       />
     </EditFormContainer>
   );
+};
+
+const selectStyles = {
+  container: (provided: any) => ({
+    ...provided,
+    width: 500,
+  }),
 };

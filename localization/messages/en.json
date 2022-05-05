@@ -46,6 +46,7 @@
   "user.high-school": "High school",
   "user.university": "University",
   "user.grade": "Grade",
+  "user.subjects": "Subjects",
 
   "card.subject": "Subject",
   "card.dateAndTime": "Date And Time",
@@ -156,6 +157,7 @@
   "profile.noDescription": "No description",
   "profile.noSubjects": "No subjects",
   "profile.noEducationLevel": "Education level not set",
+  "profile.noGrade": "Grade not set",
   "profile.saveChanges": "Save changes",
 
   "footer.support": "Support",

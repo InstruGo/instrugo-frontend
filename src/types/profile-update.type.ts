@@ -13,13 +13,22 @@ export const profileUpdateFormSchema = z.object({
     .max(100)
     .min(1, 'The last name field is required')
     .optional(),
-  phone: z.string().optional(),
-  birthDate: z.string().optional(),
+  phone: z.preprocess(
+    (phone) => (phone ? phone : undefined),
+    z.string().optional()
+  ),
+  birthDate: z.preprocess(
+    (birthDate) => (birthDate !== '' ? birthDate : undefined),
+    z.string().optional()
+  ),
   description: z.string().optional(),
-  educationLevel: z.nativeEnum(EducationLevel).optional(),
+  educationLevel: z.preprocess(
+    (educationLevel) => (educationLevel !== '' ? educationLevel : undefined),
+    z.nativeEnum(EducationLevel).optional()
+  ),
   grade: z.preprocess(
-    (grade) => parseInt(grade as string),
-    z.number().optional()
+    (grade) => (grade !== '' ? parseInt(grade as string) : undefined),
+    z.number().positive().optional()
   ),
   subjectIds: z.number().array().optional(),
 });

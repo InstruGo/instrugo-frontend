@@ -112,10 +112,12 @@ export const Dropdown = styled('select', {
   borderRadius: '5px',
   boxSizing: 'content-box',
   padding: '$1 $2',
+  textTransform: 'capitalize',
 });
 
 export const DropdownOption = styled('option', {
   font: 'Montserrat',
   backgroundColor: '#fff',
   color: '#10434E',
+  textTransform: 'capitalize',
 });
