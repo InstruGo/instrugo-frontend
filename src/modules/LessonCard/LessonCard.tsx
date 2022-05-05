@@ -21,12 +21,14 @@ import {
   CardHeader,
   CardBody,
   CardItem,
-  CardStyle,
   CardContainer,
-  Row,
+  ResponseSeparator,
 } from './styles';
+import lessons from 'pages/student/lessons';
 
-type StitchesComponentProps = React.ComponentPropsWithoutRef<typeof CardStyle>;
+type StitchesComponentProps = React.ComponentPropsWithoutRef<
+  typeof CardContainer
+>;
 
 export interface CardProps extends StitchesComponentProps {
   lesson: Lesson;
@@ -56,9 +58,7 @@ export const LessonCard = ({ lesson, response }: CardProps) => {
   };
 
   const lessonTime =
-    lesson.status === 'completed'
-      ? lesson.finalStartTime
-      : lesson.lessonTimeFrames[0].startTime;
+    lesson.status !== 'requested' ? lesson.finalStartTime : undefined;
 
   const responseStartDate = response
     ? new Date(response.tutorResponseTimeFrame.startTime)
@@ -79,32 +79,21 @@ export const LessonCard = ({ lesson, response }: CardProps) => {
 
   return (
     <div>
-      <CardContainer onClick={handleCardClick}>
-        <CardStyle style={{ borderColor: lesson.subject.color }}>
-          <CardHeader
-            style={{
-              backgroundColor: lesson.subject.color,
-              borderColor: lesson.subject.color,
-            }}
-          >
-            <div style={{ textTransform: 'capitalize' }}>
-              <FormattedMessage id={`subjects.${lesson.subject.name}`} />
-            </div>
-            <div
-              style={{
-                fontSize: '12px',
-                color: '#555',
-                border: '1px solid white',
-                padding: '5px 10px',
-                borderRadius: '100px',
-                backgroundColor: 'rgba(255, 255, 255, 0.7)',
-              }}
-            >
-              {lesson.status}
-            </div>
-          </CardHeader>
+      <CardContainer
+        style={{ borderColor: lesson.subject.color }}
+        onClick={handleCardClick}
+      >
+        <CardHeader
+          style={{
+            backgroundColor: lesson.subject.color,
+            borderColor: lesson.subject.color,
+          }}
+        >
+          <FormattedMessage id={`subjects.${lesson.subject.name}`} />
+        </CardHeader>
 
-          <CardBody>
+        <CardBody>
+          {lessonTime && (
             <CardItem>
               <AiOutlineClockCircle />
               <CardText>
@@ -118,58 +107,59 @@ export const LessonCard = ({ lesson, response }: CardProps) => {
                 }).format(new Date(lessonTime))}
               </CardText>
             </CardItem>
+          )}
 
-            <CardItem>
-              <GoBook />
-              <CardText>{lesson.subfield}</CardText>
-            </CardItem>
-            <CardItem>
-              <MdOutlineMeetingRoom />
-              <CardText>{lesson.type}</CardText>
-            </CardItem>
-            <CardItem>
-              <MdOutlineLocationOn />
-              <CardText>{lesson.location}</CardText>
-            </CardItem>
+          <CardItem>
+            <GoBook />
+            <CardText>{lesson.subfield}</CardText>
+          </CardItem>
 
-            {lesson.grade && lesson.educationLevel && (
+          <CardItem>
+            <MdOutlineMeetingRoom />
+            <CardText>
+              <FormattedMessage id={`meetingType.${lesson.type}`} />
+            </CardText>
+          </CardItem>
+
+          <CardItem>
+            <MdOutlineLocationOn />
+            <CardText>{lesson.location}</CardText>
+          </CardItem>
+
+          {lesson.grade && lesson.educationLevel && (
+            <CardItem>
+              <FaGraduationCap />
+              <CardText>
+                <FormattedMessage
+                  id={`educationLevel.${lesson.educationLevel}`}
+                />
+                {`, ${lesson.grade}. `} <FormattedMessage id="card.grade" />
+              </CardText>
+            </CardItem>
+          )}
+
+          {response && (
+            <>
+              <ResponseSeparator
+                style={{ backgroundColor: lesson.subject.color }}
+              />
+
               <CardItem>
-                <FaGraduationCap />
+                <AiOutlineClockCircle />
                 <CardText>
-                  <FormattedMessage
-                    id={`educationLevel.${lesson.educationLevel}`}
-                  />
-                  {`, ${lesson.grade}. `} <FormattedMessage id="card.grade" />
+                  {responseDateDisplay}
+                  {',   '}
+                  {responseTimeIntervalDisplay}
                 </CardText>
               </CardItem>
-            )}
 
-            {response && (
-              <>
-                <Row
-                  style={{
-                    backgroundColor: '#0E353D',
-                    height: '2px',
-                    width: '250px',
-                    padding: '0',
-                  }}
-                ></Row>
-                <CardItem>
-                  <AiOutlineClockCircle />
-                  <CardText>
-                    {responseDateDisplay}
-                    {',   '}
-                    {responseTimeIntervalDisplay}
-                  </CardText>
-                </CardItem>
-                <CardItem>
-                  <AiOutlineDollar />
-                  <CardText>{lesson.budget + ' kn'}</CardText>
-                </CardItem>
-              </>
-            )}
-          </CardBody>
-        </CardStyle>
+              <CardItem>
+                <AiOutlineDollar />
+                <CardText>{lesson.budget + ' kn'}</CardText>
+              </CardItem>
+            </>
+          )}
+        </CardBody>
       </CardContainer>
 
       <Modal

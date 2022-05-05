@@ -1,10 +1,7 @@
 import { styled } from 'styles/stitches.config';
 
-export const CardContainer = styled('div', {});
-
-export const CardStyle = styled('div', {
+export const CardContainer = styled('div', {
   width: '18rem',
-  height: '13rem',
   border: '2px solid #3FB2C1',
   borderRadius: '10px',
   display: 'flex',
@@ -23,7 +20,6 @@ export const CardHeader = styled('div', {
   fontWeight: '$semibold',
   borderBottom: '1px solid #3FB2C1',
   backgroundColor: '#3FB2C1',
-  height: '3',
   alignItems: 'center',
   borderTopLeftRadius: '6px',
   borderTopRightRadius: '6px',
@@ -31,49 +27,29 @@ export const CardHeader = styled('div', {
 });
 
 export const CardBody = styled('div', {
-  display: 'flex',
   backgroundColor: 'rgba(63, 178, 193, 0.0)',
-  flexDirection: 'column',
-  justifyContent: 'center',
-  alignItems: 'center',
   fontSize: '$m',
-  height: '100%',
   width: '100%',
-});
+  padding: '$3 $2',
+  boxSizing: 'border-box',
 
-export const CardText = styled('i', {
-  display: 'flex',
-  padding: '4px',
+  '> div + div': {
+    marginTop: '$3',
+  },
 });
 
 export const CardItem = styled('div', {
   display: 'flex',
-  justifyContent: 'start',
-  width: '$full',
   alignItems: 'center',
-  paddingLeft: '20px',
-  height: '20%',
+  boxSizing: 'border-box',
 });
 
-export const Row = styled('div', {
-  flexGrow: '0',
-  justifyContent: 'flex-start',
-  alignItems: 'center',
+export const CardText = styled('div', {
   display: 'flex',
-  width: '50%',
-  variants: {
-    variant: {
-      normal: {
-        padding: '$2 $5',
-      },
-      bigPadding: {
-        padding: '$2 $5',
-        justifyContent: 'flex-start',
-      },
-    },
-  },
+  marginLeft: '$2',
+});
 
-  defaultVariants: {
-    variant: 'normal',
-  },
+export const ResponseSeparator = styled('div', {
+  height: '1px',
+  width: '100%',
 });
