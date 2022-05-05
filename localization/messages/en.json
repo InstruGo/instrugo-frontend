@@ -95,9 +95,9 @@
   "subjects.IT": "IT",
   "subjects.latin": "Latin",
 
-  "meetingType.all": "all",
-  "meetingType.inPerson": "in person",
-  "meetingType.online": "online",
+  "meetingType.all": "All",
+  "meetingType.inPerson": "In person",
+  "meetingType.online": "Online",
 
   "educationLevel.elementary-school": "elementary school",
   "educationLevel.high-school": "high school",

@@ -5,7 +5,6 @@ export const StyledContainer = styled('div', {});
 export const LessonsHeader = styled('div', {
   display: 'flex',
   alignItems: 'center',
-  padding: '$2 $2',
 });
 
 export const Title = styled('div', {
@@ -20,8 +19,7 @@ export const StyledHr = styled('hr', {
 });
 
 export const RequestsBody = styled('div', {
-  marginTop: '20px',
-  marginLeft: '$6',
+  marginTop: '$4',
   display: 'flex',
   flexWrap: 'wrap',
   gap: '$6',

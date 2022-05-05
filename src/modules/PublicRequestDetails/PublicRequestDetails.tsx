@@ -23,8 +23,8 @@ interface RequestDetailsProps {
   id: number;
 }
 
-export const PublicRequestDetails = (props: RequestDetailsProps) => {
-  const { data, isLoading } = useLesson(props.id);
+export const PublicRequestDetails = ({ id }: RequestDetailsProps) => {
+  const { data, isLoading } = useLesson(id);
   const router = useRouter();
   if (isLoading || !data) return <div>Loading...</div>;
   const timeFrames: { timeFrame: TimeFrame; color: string; title: string }[] =
@@ -113,7 +113,7 @@ export const PublicRequestDetails = (props: RequestDetailsProps) => {
           <Column />
         </Row>
         <CalendarContainer>
-          <Calendar timeFrames={timeFrames} />
+          <Calendar requestTimeframes={timeFrames} />
         </CalendarContainer>
         <ResponseHeader>
           <Title>
@@ -124,7 +124,7 @@ export const PublicRequestDetails = (props: RequestDetailsProps) => {
           onFinish={() => {
             router.push('/tutor/requests'); //change to tutor responses when page is made
           }}
-          lessonId={props.id}
+          lessonId={id}
           lessonTimeFrames={data?.lessonTimeFrames}
         />
       </RequestDetailsContainer>

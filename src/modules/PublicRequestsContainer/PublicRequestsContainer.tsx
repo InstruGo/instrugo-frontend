@@ -35,7 +35,7 @@ export const PublicRequestsContainer = ({ title }: publicRequestProps) => {
         <StyledHr />
       </LessonsHeader>
 
-      <RequestsBody style={{ height: '200px' }}>
+      <RequestsBody>
         {data.map((lesson) => {
           return <LessonCard key={lesson.id} lesson={lesson} />;
         })}
