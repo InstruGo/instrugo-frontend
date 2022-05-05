@@ -200,13 +200,17 @@ export const Navbar = () => {
 
             <OppenedProfileMenu ref={profileRef}>
               <NavLink style={{ margin: '20px 15px' }}>
-                <CustomLink href="/profile">Profile</CustomLink>
+                <CustomLink href="/profile">
+                  <FormattedMessage id={'nav.profile'} />
+                </CustomLink>
               </NavLink>
               <NavLink
                 onClick={() => logout.mutate()}
                 style={{ margin: '20px 15px' }}
               >
-                <a>Log out</a>
+                <a>
+                  <FormattedMessage id={'nav.logout'} />
+                </a>
               </NavLink>
             </OppenedProfileMenu>
           </ProfileLink>

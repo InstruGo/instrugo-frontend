@@ -8,12 +8,6 @@ interface LessonsContainerProps {
   filter: LessonFilter;
 }
 
-const StyledContainer = styled('div', {
-  display: 'flex',
-  flexWrap: 'wrap',
-  gap: '10px',
-});
-
 export const LessonsContainer = ({ filter }: LessonsContainerProps) => {
   const { data: lessons, isLoading } = useLessons(filter);
 
@@ -32,3 +26,10 @@ export const LessonsContainer = ({ filter }: LessonsContainerProps) => {
     </StyledContainer>
   );
 };
+
+const StyledContainer = styled('div', {
+  display: 'flex',
+  flexWrap: 'wrap',
+  gap: '10px',
+  marginTop: '$4',
+});

@@ -61,6 +61,8 @@
   "nav.becomeATutor": "Postani instruktor",
   "nav.switchToTutor": "Prebaci se na instruktora",
   "nav.switchToStudent": "Prebaci se na studenta",
+  "nav.profile": "Profil",
+  "nav.logout": "Odjavi se",
 
   "home.rewards": "Nagrade",
   "home.lessons": "Lekcije",
@@ -134,11 +136,11 @@
   "lessonDetailsAfter.submit": "Ocijeni",
   "lessonDetailsAfter.review": "???",
   "lessonDetailsAfter.submitR": "Pošalji",
+
   "lessons.1st_group": "Danas",
   "lessons.2nd_group": "U sljedećih 7 dana",
   "lessons.3rd_group": "Nedavno završeno",
   "lessons.table": "Završeno",
-
   "lessons.titles.subject": "Predmet",
   "lessons.titles.dateAndTime": "Datum i vrijeme",
   "lessons.titles.subfield": "Područje",
@@ -148,6 +150,7 @@
   "lessons.titles.educationLevel": "Razina obrazovanja",
   "lessons.titles.grade": "Razred",
   "lessons.titles.rating": "Ocjena",
+
   "profile.phoneNumberMissing": "Nije postavljen",
   "profile.aboutMe": "O meni",
   "profile.noDescription": "Nema opisa",
