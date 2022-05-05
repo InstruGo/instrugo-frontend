@@ -24,7 +24,6 @@ export const Input = ({
   placeholderMsgId,
   defaultValueMsgId,
   isNumber,
-  style,
   ...rest
 }: InputProps) => {
   const intl = useIntl();

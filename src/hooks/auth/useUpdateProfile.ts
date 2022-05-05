@@ -1,11 +1,12 @@
-import { useMutation, useQueryClient } from 'react-query';
+import { useMutation } from 'react-query';
 
-import { useAxios } from '@hooks';
+import { useAxios, useUserContext } from '@hooks';
 import type { ProfileUpdateFormInputs, User } from '@types';
 
-export const useUpdateProfile = () => {
+export const useUpdateProfile = (onSuccess?: (editing: boolean) => void) => {
   const axios = useAxios();
-  const queryClient = useQueryClient();
+  const { setUser } = useUserContext();
+
   const updateProfile = async (
     input: ProfileUpdateFormInputs
   ): Promise<User> => {
@@ -15,8 +16,9 @@ export const useUpdateProfile = () => {
   };
 
   return useMutation(updateProfile, {
-    onSuccess: () => {
-      queryClient.invalidateQueries('profile');
+    onSuccess: (data) => {
+      setUser(data);
+      onSuccess?.(false);
     },
     onError: () => {},
   });

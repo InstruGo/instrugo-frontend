@@ -10,6 +10,8 @@ import {
   profileUpdateFormSchema,
 } from '@types';
 
+import { EducationLevel } from '../../types/user.types';
+import { DropdownOption, Dropdown } from '../NewRequestForm/styles';
 import {
   Description,
   EditFormContainer,
@@ -24,7 +26,7 @@ interface EditProfileFormProps {
 
 export const EditProfileForm = ({ user, setEditing }: EditProfileFormProps) => {
   const intl = useIntl();
-  const registerUser = useUpdateProfile();
+  const updateProfile = useUpdateProfile(setEditing);
 
   const {
     register,
@@ -35,7 +37,7 @@ export const EditProfileForm = ({ user, setEditing }: EditProfileFormProps) => {
   });
 
   const onSubmit = (data: ProfileUpdateFormInputs) => {
-    registerUser.mutate(data);
+    updateProfile.mutate(data);
   };
 
   const birthDate = user?.birthDate ? new Date(user?.birthDate) : undefined;
@@ -108,18 +110,22 @@ export const EditProfileForm = ({ user, setEditing }: EditProfileFormProps) => {
         />
       </div>
 
-      <InputContainer>
-        <div>
-          <FormattedMessage id="user.educationLevel" />:
-        </div>
-        <Input
-          name="educationLevel"
-          placeholderMsgId={intl.formatMessage({ id: 'user.educationLevel' })}
-          defaultValue={user?.educationLevel}
-          register={register}
-          errors={errors.educationLevel}
-        />
-      </InputContainer>
+      <div style={{ fontWeight: 'bold' }}>
+        <FormattedMessage id="user.educationLevel" />:
+      </div>
+      <Dropdown
+        defaultValue={user?.educationLevel}
+        style={{ margin: '10px 0' }}
+        {...register('educationLevel')}
+      >
+        <DropdownOption key={0} value=""></DropdownOption>
+
+        {Object.values(EducationLevel).map((educationLevel, index) => (
+          <DropdownOption key={index + 1} value={educationLevel}>
+            {intl.formatMessage({ id: `educationLevel.${educationLevel}` })}
+          </DropdownOption>
+        ))}
+      </Dropdown>
 
       <InputContainer>
         <div>
@@ -133,13 +139,14 @@ export const EditProfileForm = ({ user, setEditing }: EditProfileFormProps) => {
           defaultValue={user?.grade}
           register={register}
           errors={errors.grade}
+          min={1}
         />
       </InputContainer>
 
       <Input
         type="submit"
         placeholderMsgId="profile.saveChanges"
-        style={{ marginTop: '50px' }}
+        style={{ cursor: 'pointer' }}
       />
     </EditFormContainer>
   );

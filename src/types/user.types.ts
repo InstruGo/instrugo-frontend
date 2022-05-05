@@ -1,9 +1,9 @@
 import { Subject } from './subjects.types';
 
 export enum UserRole {
-  ADMIN = 'admin',
   STUDENT = 'student',
   TUTOR = 'tutor',
+  ADMIN = 'admin',
 }
 export type User = {
   id: number;
@@ -37,7 +37,7 @@ export interface PublicUser {
 }
 
 export enum EducationLevel {
-  HIGH_SCHOOL = 'high-school',
   ELEMENTARY_SCHOOL = 'elementary-school',
+  HIGH_SCHOOL = 'high-school',
   UNIVERSITY = 'university',
 }
