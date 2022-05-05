@@ -2,6 +2,7 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
+import { withAuth } from '@components';
 import { RequestDetails, Navbar } from '@modules';
 
 const RequestDetailsPage: NextPage = () => {
@@ -22,4 +23,4 @@ const RequestDetailsPage: NextPage = () => {
   );
 };
 
-export default RequestDetailsPage;
+export default withAuth(RequestDetailsPage);

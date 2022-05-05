@@ -22,6 +22,7 @@ export const HeaderContainer = ({
 }: React.PropsWithChildren<StitchesComponentProps>) => {
   const { user } = useUserContext();
   const router = useRouter();
+
   const homeRoute = user
     ? user.role === UserRole.STUDENT
       ? '/student/home'

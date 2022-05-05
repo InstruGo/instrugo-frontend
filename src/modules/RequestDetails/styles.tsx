@@ -40,6 +40,7 @@ export const Title = styled('div', {
   whiteSpace: 'nowrap',
   padding: '$0 $5 $0 $2',
 });
+
 export const EditText = styled('div', {
   fontWeight: 'normal',
   fontSize: '$lg',
@@ -70,6 +71,7 @@ export const RequestDetailsText = styled('div', {
   fontSize: '$xl3',
   textAlign: 'center',
 });
+
 export const FieldTitle = styled('div', {
   alignItems: 'center',
   justifyContent: 'center',

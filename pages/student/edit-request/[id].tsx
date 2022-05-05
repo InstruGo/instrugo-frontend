@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
-import { Loader } from '@components';
+import { Loader, withAuth } from '@components';
 import { useLesson } from '@hooks';
 import { Navbar, UpdateRequestForm } from '@modules';
 
@@ -32,4 +32,4 @@ const EditRequestPage: NextPage = () => {
   );
 };
 
-export default EditRequestPage;
+export default withAuth(EditRequestPage);

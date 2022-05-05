@@ -9,6 +9,7 @@ const RequestDetailsPage: NextPage = () => {
   const router = useRouter();
   const query = router.query;
   const id = Number(query.id);
+
   return (
     <div>
       <Head>

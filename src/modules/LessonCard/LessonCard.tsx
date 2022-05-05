@@ -35,7 +35,6 @@ export interface CardProps extends StitchesComponentProps {
 
 export const LessonCard = ({ lesson, response }: CardProps) => {
   const router = useRouter();
-
   const { user } = useUserContext();
 
   const [showLessonDetailsModal, setLessonDetailsModal] = useState(false);
@@ -43,12 +42,16 @@ export const LessonCard = ({ lesson, response }: CardProps) => {
   const handleCardClick = () => {
     if (lesson.status !== 'requested') setLessonDetailsModal(true);
     else {
-      if (user) {
-        router.push({
-          pathname: `/${user.role}/request-details/[id]`,
-          query: { id: lesson.id },
-        });
+      let activeRole = 'student';
+
+      if (router.pathname.startsWith('/tutor')) {
+        activeRole = 'tutor';
       }
+
+      router.push({
+        pathname: `/${activeRole}/request-details/[id]`,
+        query: { id: lesson.id },
+      });
     }
   };
 
@@ -56,9 +59,6 @@ export const LessonCard = ({ lesson, response }: CardProps) => {
     lesson.status === 'completed'
       ? lesson.finalStartTime
       : lesson.lessonTimeFrames[0].startTime;
-
-  const hasTimeFrames =
-    lesson.lessonTimeFrames && lesson.lessonTimeFrames.length !== 0;
 
   const responseStartDate = response
     ? new Date(response.tutorResponseTimeFrame.startTime)
