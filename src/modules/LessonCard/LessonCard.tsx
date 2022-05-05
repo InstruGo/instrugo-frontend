@@ -5,6 +5,7 @@ import { AiOutlineClockCircle, AiOutlineDollar } from 'react-icons/ai';
 import { FaGraduationCap } from 'react-icons/fa';
 import { GoBook } from 'react-icons/go';
 import { MdOutlineMeetingRoom, MdOutlineLocationOn } from 'react-icons/md';
+import { FormattedMessage } from 'react-intl';
 
 import { Modal } from '@components';
 import { useUserContext } from '@hooks';
@@ -51,6 +52,11 @@ export const LessonCard = ({ lesson, response }: CardProps) => {
     }
   };
 
+  const lessonTime =
+    lesson.status === 'completed'
+      ? lesson.finalStartTime
+      : lesson.lessonTimeFrames[0].startTime;
+
   const hasTimeFrames =
     lesson.lessonTimeFrames && lesson.lessonTimeFrames.length !== 0;
 
@@ -80,7 +86,7 @@ export const LessonCard = ({ lesson, response }: CardProps) => {
             }}
           >
             <div style={{ textTransform: 'capitalize' }}>
-              {lesson.subject.name}
+              <FormattedMessage id={`subjects.${lesson.subject.name}`} />
             </div>
             <div
               style={{
@@ -97,21 +103,19 @@ export const LessonCard = ({ lesson, response }: CardProps) => {
           </CardHeader>
 
           <CardBody>
-            {hasTimeFrames && (
-              <CardItem>
-                <AiOutlineClockCircle />
-                <CardText>
-                  {new Intl.DateTimeFormat('en-GB', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: '2-digit',
-                    hour: '2-digit',
-                    minute: '2-digit',
-                    hour12: false,
-                  }).format(new Date(lesson.lessonTimeFrames[0].startTime))}
-                </CardText>
-              </CardItem>
-            )}
+            <CardItem>
+              <AiOutlineClockCircle />
+              <CardText>
+                {new Intl.DateTimeFormat('en-GB', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: '2-digit',
+                  hour: '2-digit',
+                  minute: '2-digit',
+                  hour12: false,
+                }).format(new Date(lessonTime))}
+              </CardText>
+            </CardItem>
 
             <CardItem>
               <GoBook />
@@ -129,7 +133,12 @@ export const LessonCard = ({ lesson, response }: CardProps) => {
             {lesson.grade && lesson.educationLevel && (
               <CardItem>
                 <FaGraduationCap />
-                <CardText>{`${lesson.educationLevel}, ${lesson.grade}. grade`}</CardText>
+                <CardText>
+                  <FormattedMessage
+                    id={`educationLevel.${lesson.educationLevel}`}
+                  />
+                  {`, ${lesson.grade}. `} <FormattedMessage id="card.grade" />
+                </CardText>
               </CardItem>
             )}
 
@@ -165,10 +174,10 @@ export const LessonCard = ({ lesson, response }: CardProps) => {
         shouldShow={showLessonDetailsModal}
         closeAction={() => setLessonDetailsModal(false)}
       >
-        {lesson.status === 'pending' && user?.role === 'tutor' && (
+        {lesson.status === 'completed' && user?.role === 'tutor' && (
           <LessonDetailsAfterTutor id={lesson.id} ratingId={1} />
         )}
-        {lesson.status === 'pending' && user?.role === 'student' && (
+        {lesson.status === 'completed' && user?.role === 'student' && (
           <LessonDetailsAfterStudent id={lesson.id} ratingId={1} />
         )}
         {lesson.status === 'pending' && <LessonDetails id={lesson.id} />}

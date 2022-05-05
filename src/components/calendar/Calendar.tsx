@@ -10,17 +10,46 @@ import {
   DateNavigator,
   Resources,
 } from '@devexpress/dx-react-scheduler-material-ui';
+import { useLessons } from '@hooks';
 import Paper from '@mui/material/Paper';
 
-import { TimeFrame } from '@types';
+import { Lesson, TimeFrame } from '@types';
+
+type TimeFrames = { timeFrame: TimeFrame; color: string; title: string }[];
 
 interface CalendarProps {
-  timeFrames: { timeFrame: TimeFrame; color: string; title: string }[];
+  pending?: boolean;
+  requestTimeframes?: TimeFrames;
 }
-export const Calendar = ({ timeFrames }: CalendarProps) => {
+
+/**
+ * This Calendar component is currently used in one of these two cases:
+ * 1. displays all pending lessons (with start and end times)
+ * 2. displays all timeframes of a single lesson request
+ * @param param0
+ * @returns
+ */
+export const Calendar = ({ pending, requestTimeframes }: CalendarProps) => {
+  const { data: lessons } = useLessons({ status: 'pending' });
+
+  const pendingTimeframes: TimeFrames | undefined = lessons?.map((lesson) => {
+    return {
+      timeFrame: {
+        id: 0,
+        startTime: lesson.finalStartTime,
+        endTime: lesson.finalEndTime,
+      } as TimeFrame,
+      color: lesson.subject.color,
+      title: lesson.subject.name,
+    };
+  });
+
   const schedulerData: any = [];
   const instances: any = [];
-  timeFrames.map(
+
+  const timeframes = pending ? pendingTimeframes : requestTimeframes;
+
+  (timeframes || []).map(
     (timeFrame: { timeFrame: TimeFrame; color: string; title: string }) => {
       const start = new Date(timeFrame.timeFrame.startTime);
       const end = new Date(timeFrame.timeFrame.endTime);
@@ -37,6 +66,7 @@ export const Calendar = ({ timeFrames }: CalendarProps) => {
       });
     }
   );
+
   const resources = [
     {
       fieldName: 'type',
@@ -44,9 +74,11 @@ export const Calendar = ({ timeFrames }: CalendarProps) => {
       instances: instances,
     },
   ];
+
   const today = new Date().toISOString();
   const currentDate =
     schedulerData !== [] ? schedulerData[0]?.startDate : today;
+
   return (
     <Paper>
       <Scheduler data={schedulerData}>

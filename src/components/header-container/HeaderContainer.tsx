@@ -1,8 +1,10 @@
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import React from 'react';
 
 import { CustomLink } from '@components';
 import { useUserContext } from '@hooks';
+import { UserRole } from '@types';
 
 import {
   ChildrenContainer,
@@ -19,8 +21,11 @@ export const HeaderContainer = ({
   ...rest
 }: React.PropsWithChildren<StitchesComponentProps>) => {
   const { user } = useUserContext();
+  const router = useRouter();
   const homeRoute = user
-    ? user.role === 'student'
+    ? user.role === UserRole.STUDENT
+      ? '/student/home'
+      : router.pathname.startsWith('/student')
       ? '/student/home'
       : '/tutor/home'
     : '';

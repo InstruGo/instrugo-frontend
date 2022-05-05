@@ -25,7 +25,7 @@
   "registration.alreadyHaveAnAccount": "Already have an account?",
 
   "login.forgotPassword": "Forgot password?",
-  "login.description": "Log in to use our services",
+  "login.description": "Welcome back!",
   "login.needAnAccount": "Need an account?",
   "login.emailAddressFormat": "E-mail address format is incorrect",
 
@@ -53,6 +53,7 @@
   "card.meetingType": "Meeting Type",
   "card.location": "Location",
   "card.educationLevel": "Education lvl",
+  "card.grade": "grade",
 
   "student.request.requests": "My requests",
   "tutor.request.requests": "Public requests",
@@ -62,11 +63,11 @@
   "nav.home": "Home",
   "nav.myLessons": "My Lessons",
   "nav.myRequests": "My Requests",
-  "nav.switch": "Switch to tutor",
-  "nav.switch.tutor": "Switch to student",
   "nav.publicRequests": "Requests",
   "nav.tutorResponses": "My responses",
-  "nav.becomeTutor": "Become a tutor",
+  "nav.becomeATutor": "Become a tutor",
+  "nav.switchToTutor": "Switch to tutor",
+  "nav.switchToStudent": "Switch to student",
 
   "home.rewards": "Rewards",
   "home.lessons": "Lessons",
@@ -95,9 +96,9 @@
   "subjects.IT": "IT",
   "subjects.latin": "Latin",
 
-  "meetingType.all": "all",
-  "meetingType.in-person": "in person",
-  "meetingType.online": "online",
+  "meetingType.all": "All",
+  "meetingType.inPerson": "In person",
+  "meetingType.online": "Online",
 
   "educationLevel.elementary-school": "elementary school",
   "educationLevel.high-school": "high school",

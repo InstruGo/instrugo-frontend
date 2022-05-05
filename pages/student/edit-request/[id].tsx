@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 import { useLesson } from '@hooks';
-import { StudentsNavbar, UpdateRequestForm } from '@modules';
+import { Navbar, UpdateRequestForm } from '@modules';
 
 const EditRequestPage: NextPage = () => {
   const router = useRouter();
@@ -17,7 +17,7 @@ const EditRequestPage: NextPage = () => {
         <title>InstruGo | Request details</title>
       </Head>
 
-      <StudentsNavbar />
+      <Navbar />
       <UpdateRequestForm
         onFinish={() => router.push('/student/requests')}
         lessonData={data}

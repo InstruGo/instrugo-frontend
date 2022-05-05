@@ -3,7 +3,7 @@ import { useLayoutEffect, useRef, useState } from 'react';
 import { BiFilter } from 'react-icons/bi';
 import { FormattedMessage } from 'react-intl';
 
-import { Button, Dropdown } from '@components';
+import { Button, Calendar, Dropdown } from '@components';
 import { useLessonFilter, useMenuAnimation } from '@hooks';
 import { LessonsContainer, NewRequestButton } from '@modules';
 
@@ -74,7 +74,7 @@ export const LessonsWithFilter = () => {
       <FilterMenuContainer ref={filterMenuRef}>
         <FilterGroup>
           <div>
-            <FormattedMessage id="filter.subjects" />
+            <FormattedMessage id="filter.subjects" />:
           </div>
           <Dropdown
             options={subjectOptions}
@@ -93,7 +93,11 @@ export const LessonsWithFilter = () => {
         </FilterGroup>
       </FilterMenuContainer>
 
-      <LessonsContainer filter={filter} />
+      {filter.status !== 'pending' ? (
+        <LessonsContainer filter={filter} />
+      ) : (
+        <Calendar pending />
+      )}
     </div>
   );
 };

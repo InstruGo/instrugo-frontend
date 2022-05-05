@@ -23,7 +23,7 @@
   "registration.alreadyHaveAnAccount": "Već imate korisnički račun?",
 
   "login.forgotPassword": "Zaboravili ste lozinku?",
-  "login.description": "Prijavite se za korištenje naših usluga",
+  "login.description": "Dobrodošli natrag!",
   "login.needAnAccount": "Nemate korisnički račun?",
   "login.emailAddressFormat": "Format e-mail adrese nije ispravan",
 
@@ -51,15 +51,16 @@
   "card.meetingType": "Tip sastanka",
   "card.location": "Lokacija",
   "card.educationLevel": "Razina obrazovanja",
+  "card.grade": "razred",
 
   "nav.home": "Početna",
   "nav.myLessons": "Moje instrukcije",
   "nav.myRequests": "Moji zahtjevi",
-  "nav.switch": "Prebaci se na instruktora",
-  "nav.switch.tutor": "Prebaci se na studenta",
   "nav.publicRequests": "Javni zahtjevi",
   "nav.tutorResponses": "Moji odgovori",
-  "nav.becomeTutor": "Postani instruktor",
+  "nav.becomeATutor": "Postani instruktor",
+  "nav.switchToTutor": "Prebaci se na instruktora",
+  "nav.switchToStudent": "Prebaci se na studenta",
 
   "home.rewards": "Nagrade",
   "home.lessons": "Lekcije",
@@ -90,12 +91,12 @@
   "subjects.IT": "IT",
   "subjects.latin": "Latinski",
 
-  "meetingType.all": "sve",
-  "meetingType.inPerson": "uživo",
-  "meetingType.online": "online",
+  "meetingType.all": "Sve",
+  "meetingType.in-person": "Uživo",
+  "meetingType.online": "Online",
 
-  "educationLevel.elementarySchool": "osnovna škola",
-  "educationLevel.highSchool": "srednja škola",
+  "educationLevel.elementary-school": "osnovna škola",
+  "educationLevel.high-school": "srednja škola",
   "educationLevel.university": "fakultet",
 
   "button.createRequest": "Stvorite novi zahtjev",

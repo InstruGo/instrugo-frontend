@@ -6,7 +6,7 @@ import { FormattedMessage } from 'react-intl';
 
 import { Button, ImageWithPlaceholder, Modal, Rating } from '@components';
 import { Loader } from '@components/icons';
-import { StudentsNavbar } from '@modules';
+import { Navbar } from '@modules';
 import { OptionalUser } from '@types';
 
 import { EditProfileForm } from './EditProfileForm';
@@ -29,7 +29,7 @@ export const PrivateProfile = ({ user }: { user: OptionalUser }) => {
   if (!user)
     return (
       <>
-        <StudentsNavbar />
+        <Navbar />
         <ProfileLayout style={{ marginTop: '50px' }}>
           <Loader width="40px" height="40px" />
         </ProfileLayout>
@@ -40,7 +40,7 @@ export const PrivateProfile = ({ user }: { user: OptionalUser }) => {
 
   return (
     <>
-      <StudentsNavbar />
+      <Navbar />
       <ProfileLayout>
         <ProfileCard>
           <Button css={EditButtonStyles} onClick={() => setEditing(true)}>
