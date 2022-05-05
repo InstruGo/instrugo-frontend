@@ -153,9 +153,12 @@ export const InputContainer = styled('div', {
 
 export const Description = styled('textarea', {
   width: '100%',
-  height: '100px',
+  height: '120px',
   resize: 'none',
-  padding: '$1',
+  padding: '$2',
+  fontSize: '0.9rem',
+  border: '2px solid black',
+  borderRadius: '10px',
   '&:focus-visible': {
     outline: 'none',
   },

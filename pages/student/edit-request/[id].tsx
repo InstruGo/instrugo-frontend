@@ -2,15 +2,21 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
+import { Loader, withAuth } from '@components';
 import { useLesson } from '@hooks';
 import { Navbar, UpdateRequestForm } from '@modules';
 
 const EditRequestPage: NextPage = () => {
   const router = useRouter();
   const query = router.query;
+
   const id = Number(query.id);
   const { data, isLoading } = useLesson(id);
-  if (isLoading || !data) return <div>Loading...</div>;
+
+  if (isLoading || !data) {
+    return <Loader />;
+  }
+
   return (
     <div>
       <Head>
@@ -26,4 +32,4 @@ const EditRequestPage: NextPage = () => {
   );
 };
 
-export default EditRequestPage;
+export default withAuth(EditRequestPage);

@@ -10,7 +10,13 @@ export const useRegister = () => {
   const axios = useAxios();
 
   const register = async (input: RegisterFormInputs): Promise<void> => {
-    await axios.post('/auth/register', input);
+    const response = await axios.post('/auth/register', input);
+
+    if (!response) {
+      throw new Error();
+    }
+
+    return response.data;
   };
 
   return useMutation(register, {

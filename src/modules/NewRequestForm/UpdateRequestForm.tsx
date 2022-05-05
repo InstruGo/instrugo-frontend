@@ -4,7 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { FormattedMessage } from 'react-intl';
 
-import { Button, TimeSlot, Input } from '@components';
+import { Button, TimeSlot, Input, Loader } from '@components';
 import { useUpdateRequest, useSubjects } from '@hooks';
 import {
   UpdateRequestFormInputs,
@@ -37,6 +37,7 @@ export const UpdateRequestForm = ({
 }: NewRequestProps) => {
   const { data, isLoading } = useSubjects();
   const updateRequest = useUpdateRequest(lessonData.id);
+
   const {
     register,
     handleSubmit,
@@ -69,6 +70,7 @@ export const UpdateRequestForm = ({
   const onMeetingSelect = (e: any) => {
     setMeetingType(e.target.value);
   };
+
   if (lessonData) {
     setValue('subjectId', lessonData.subject.id);
     setValue('subfield', lessonData.subfield);
@@ -81,6 +83,7 @@ export const UpdateRequestForm = ({
     setValue('location', lessonData.location);
     setValue('lessonTimeFrames', lessonData.lessonTimeFrames);
   }
+
   let tempSlots: any[] = [];
   let cnt = 0;
   lessonData.lessonTimeFrames.map((timeframe) => {
@@ -92,6 +95,7 @@ export const UpdateRequestForm = ({
     });
     cnt++;
   });
+
   const [slotCount, setSlotCount] = useState(cnt);
   const [timeSlots, updateTimeSlots] = useState(tempSlots);
 
@@ -166,6 +170,7 @@ export const UpdateRequestForm = ({
 
     updateTimeSlots(tempSlots);
   };
+
   const onAddTimeSlot = () => {
     let tempSlots = timeSlots;
     setSlotCount(slotCount + 1);
@@ -178,11 +183,14 @@ export const UpdateRequestForm = ({
 
     updateTimeSlots(tempSlots);
   };
+
   updateLessonTimeFrames(timeSlots);
   const [subjectId, setSubjectId] = useState<number>(lessonData.subject.id);
   setValue('subjectId', subjectId);
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <>

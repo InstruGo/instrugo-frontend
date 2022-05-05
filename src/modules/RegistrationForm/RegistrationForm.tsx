@@ -17,6 +17,7 @@ import {
 
 export const RegistrationForm = () => {
   const registerUser = useRegister();
+
   const {
     register,
     handleSubmit,
@@ -25,7 +26,13 @@ export const RegistrationForm = () => {
     resolver: zodResolver(registerFormSchema),
   });
 
-  const onSubmit = (data: RegisterFormInputs) => registerUser.mutate(data);
+  const onSubmit = (data: RegisterFormInputs) => {
+    if (data.phone === '') {
+      delete data.phone;
+    }
+
+    registerUser.mutate(data);
+  };
 
   return (
     <>

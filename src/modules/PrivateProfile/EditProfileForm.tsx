@@ -1,6 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 import { Input } from '@components';
 import { useUpdateProfile } from '@hooks';
@@ -23,7 +23,9 @@ interface EditProfileFormProps {
 }
 
 export const EditProfileForm = ({ user, setEditing }: EditProfileFormProps) => {
+  const intl = useIntl();
   const registerUser = useUpdateProfile();
+
   const {
     register,
     handleSubmit,
@@ -32,7 +34,9 @@ export const EditProfileForm = ({ user, setEditing }: EditProfileFormProps) => {
     resolver: zodResolver(profileUpdateFormSchema),
   });
 
-  const onSubmit = (data: ProfileUpdateFormInputs) => registerUser.mutate(data);
+  const onSubmit = (data: ProfileUpdateFormInputs) => {
+    registerUser.mutate(data);
+  };
 
   const birthDate = user?.birthDate ? new Date(user?.birthDate) : undefined;
 
@@ -48,7 +52,8 @@ export const EditProfileForm = ({ user, setEditing }: EditProfileFormProps) => {
         </div>
         <Input
           name="firstName"
-          placeholderMsgId={user?.firstName}
+          placeholderMsgId={intl.formatMessage({ id: 'user.firstName' })}
+          defaultValue={user?.firstName}
           register={register}
           errors={errors.firstName}
         />
@@ -60,7 +65,8 @@ export const EditProfileForm = ({ user, setEditing }: EditProfileFormProps) => {
         </div>
         <Input
           name="lastName"
-          placeholderMsgId={user?.lastName}
+          placeholderMsgId={intl.formatMessage({ id: 'user.lastName' })}
+          defaultValue={user?.lastName}
           register={register}
           errors={errors.lastName}
         />
@@ -72,7 +78,8 @@ export const EditProfileForm = ({ user, setEditing }: EditProfileFormProps) => {
         </div>
         <Input
           name="phone"
-          placeholderMsgId={user?.phone || 'user.phone'}
+          placeholderMsgId={'user.phone'}
+          defaultValue={user?.phone}
           register={register}
           errors={errors.phone}
         />
@@ -84,22 +91,20 @@ export const EditProfileForm = ({ user, setEditing }: EditProfileFormProps) => {
         </div>
         <Input
           name="birthDate"
-          placeholderMsgId={
-            birthDate?.toLocaleDateString('hr') || 'user.birthDate'
-          }
-          onClick={function (e) {
-            e.currentTarget.type = 'date';
-          }}
+          placeholderMsgId={'user.birthDate'}
+          defaultValue={birthDate?.toLocaleDateString('en-CA')}
+          type="date"
           register={register}
           errors={errors.birthDate}
         />
       </InputContainer>
 
       <div style={{ fontWeight: 'bold' }}>
-        <FormattedMessage id="user.description" />
+        <FormattedMessage id="user.description" />:
         <Description
           name="description"
-          placeholder={user?.description || 'user.description'}
+          placeholder={intl.formatMessage({ id: 'user.description' })}
+          defaultValue={user?.description}
         />
       </div>
 
@@ -109,9 +114,8 @@ export const EditProfileForm = ({ user, setEditing }: EditProfileFormProps) => {
         </div>
         <Input
           name="educationLevel"
-          placeholderMsgId={
-            `user.${user?.educationLevel}` || 'user.educationLevel'
-          }
+          placeholderMsgId={intl.formatMessage({ id: 'user.educationLevel' })}
+          defaultValue={user?.educationLevel}
           register={register}
           errors={errors.educationLevel}
         />
@@ -121,10 +125,12 @@ export const EditProfileForm = ({ user, setEditing }: EditProfileFormProps) => {
         <div>
           <FormattedMessage id="user.grade" />:
         </div>
+
         <Input
           name="grade"
           type="number"
-          placeholderMsgId={`${user?.grade}` || 'user.grade'}
+          placeholderMsgId={intl.formatMessage({ id: 'user.grade' })}
+          defaultValue={user?.grade}
           register={register}
           errors={errors.grade}
         />

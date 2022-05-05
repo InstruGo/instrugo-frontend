@@ -41,7 +41,7 @@ export const Clickable = styled('div', {
   },
 });
 
-export const OppenedMenu = styled('div', {
+export const OpenedMenu = styled('div', {
   position: 'absolute',
   zIndex: 1,
   top: '83px',
@@ -68,7 +68,7 @@ export const ProfileLink = styled('div', {
   marginLeft: '15px',
 });
 
-export const OppenedProfileMenu = styled('div', {
+export const OpenedProfileMenu = styled('div', {
   position: 'absolute',
   zIndex: 1,
   top: '83px',

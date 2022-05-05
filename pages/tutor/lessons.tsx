@@ -1,11 +1,11 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 
-import { TitledSection } from '@components';
+import { TitledSection, withAuth } from '@components';
 import { LessonsContainer, LessonsTable, Navbar } from '@modules';
 import { PageLayout } from 'pages/student/home';
 
-const Lessonspage: NextPage = () => {
+const LessonsPage: NextPage = () => {
   return (
     <div>
       <Head>
@@ -35,4 +35,4 @@ const Lessonspage: NextPage = () => {
   );
 };
 
-export default Lessonspage;
+export default withAuth(LessonsPage);

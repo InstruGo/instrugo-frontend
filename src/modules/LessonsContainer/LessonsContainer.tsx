@@ -1,4 +1,4 @@
-import { Loader } from '@components/icons';
+import { Loader } from '@components';
 import { useLessons } from '@hooks';
 import { LessonCard } from '@modules';
 import { LessonFilter } from '@types';
@@ -8,21 +8,10 @@ interface LessonsContainerProps {
   filter: LessonFilter;
 }
 
-const StyledContainer = styled('div', {
-  display: 'flex',
-  flexWrap: 'wrap',
-  gap: '10px',
-});
-
 export const LessonsContainer = ({ filter }: LessonsContainerProps) => {
   const { data: lessons, isLoading } = useLessons(filter);
 
-  if (isLoading)
-    return (
-      <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <Loader width="40px" height="40px" />
-      </div>
-    );
+  if (isLoading) return <Loader />;
 
   return (
     <StyledContainer>
@@ -32,3 +21,10 @@ export const LessonsContainer = ({ filter }: LessonsContainerProps) => {
     </StyledContainer>
   );
 };
+
+const StyledContainer = styled('div', {
+  display: 'flex',
+  flexWrap: 'wrap',
+  gap: '10px',
+  marginTop: '$4',
+});

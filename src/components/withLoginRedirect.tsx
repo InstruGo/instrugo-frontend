@@ -1,5 +1,6 @@
 import { NextPage } from 'next';
 
+import { Loader } from '@components';
 import { useHomeRedirect, useProfile } from '@hooks';
 
 export const withLoginRedirect = (Component: NextPage) => {
@@ -8,7 +9,7 @@ export const withLoginRedirect = (Component: NextPage) => {
     const { isLoading, isSuccess } = useProfile();
 
     if (isLoading) {
-      return <div>Loading...</div>;
+      return <Loader />;
     }
 
     if (isSuccess) {

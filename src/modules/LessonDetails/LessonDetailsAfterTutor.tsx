@@ -4,7 +4,7 @@ import { AiOutlineClockCircle, AiOutlineDollar } from 'react-icons/ai';
 import { BsPerson } from 'react-icons/bs';
 import { FormattedMessage } from 'react-intl';
 
-import { Button, Input } from '@components';
+import { Button, Input, Loader } from '@components';
 import { useLesson, useFeedback } from '@hooks';
 import { NewTutorFeedbackSchema, NewTutorFeedbackInputs } from '@types';
 
@@ -29,7 +29,6 @@ export const LessonDetailsAfterTutor = (props: LessonDetailsAfterProps) => {
   const {
     register,
     handleSubmit,
-    setValue,
     formState: { errors },
   } = useForm<NewTutorFeedbackInputs>({
     resolver: zodResolver(NewTutorFeedbackSchema),
@@ -38,7 +37,11 @@ export const LessonDetailsAfterTutor = (props: LessonDetailsAfterProps) => {
   const onSubmit = async (data: NewTutorFeedbackInputs) => {
     feedback.mutate(data);
   };
-  if (isLoading) return <div>Loading...</div>;
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
   // if (!(data?.finalStartTime && data?.finalEndTime))
   //   return <div>this lesson time not yet arranged...</div>;
 
@@ -47,6 +50,7 @@ export const LessonDetailsAfterTutor = (props: LessonDetailsAfterProps) => {
   // let diffHours = lessonEnd.getHours() - lessonStart.getHours();
   // const diffMinutes = lessonEnd.getMinutes() - lessonStart.getMinutes();
   // if (diffMinutes < 0) diffHours--;
+
   return (
     <>
       <LessonDetailsText>

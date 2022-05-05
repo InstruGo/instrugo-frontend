@@ -1,14 +1,14 @@
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 
 import { AiOutlineClockCircle, AiOutlineDollar } from 'react-icons/ai';
 import { BsPerson } from 'react-icons/bs';
 import { FormattedMessage } from 'react-intl';
 
-import { Button } from '@components';
+import { Button, Loader } from '@components';
 import { useLesson, useResolveLesson } from '@hooks';
 
 import { LessonDetailsText, Row, Column, CardText } from './styles';
-import { useRouter } from 'next/router';
 
 interface LessonDetailsPaymentProps {
   id: number;
@@ -25,8 +25,9 @@ export const LessonDetailsPayment = (props: LessonDetailsPaymentProps) => {
   };
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
+
   const tutorResponse = data?.tutorResponses.filter((response) => {
     return response.id === props.responseId;
   })[0];

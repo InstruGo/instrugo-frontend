@@ -1,6 +1,6 @@
 import { IconWrapper, IconWrapperProps } from './IconWrapper';
 
-export const LogInIcon = ({ width, height, fill }: IconWrapperProps) => {
+export const LoginIcon = ({ width, height, fill }: IconWrapperProps) => {
   return (
     <IconWrapper fill={fill} width={width} height={height}>
       <g>

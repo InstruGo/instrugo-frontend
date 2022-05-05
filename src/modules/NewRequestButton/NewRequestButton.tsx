@@ -6,16 +6,6 @@ import { FormattedMessage } from 'react-intl';
 
 import { Button } from '@components';
 
-const ButtonStyles = {
-  borderRadius: '100px',
-  padding: '15px 25px',
-  fontSize: '20px',
-  display: 'flex',
-  alignItems: 'center',
-
-  '> svg': { marginRight: '15px' },
-};
-
 export const NewRequestButton = () => {
   const router = useRouter();
 
@@ -28,4 +18,14 @@ export const NewRequestButton = () => {
       <FormattedMessage id="button.createRequest" />
     </Button>
   );
+};
+
+const ButtonStyles = {
+  borderRadius: '100px',
+  padding: '10px 20px',
+  fontSize: '1.1rem',
+  display: 'flex',
+  alignItems: 'center',
+
+  '> svg': { marginRight: '15px' },
 };

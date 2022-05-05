@@ -7,13 +7,6 @@ import { Navbar, Rewards } from '@modules';
 import { LessonsWithFilter } from '@modules';
 import { styled } from 'styles/stitches.config';
 
-export const PageLayout = styled('div', {
-  padding: '20px',
-  '> div + div': {
-    marginTop: '$10',
-  },
-});
-
 const StudentHomepage: NextPage = () => {
   return (
     <div>
@@ -39,3 +32,10 @@ const StudentHomepage: NextPage = () => {
 };
 
 export default withAuth(StudentHomepage);
+
+export const PageLayout = styled('div', {
+  padding: '20px',
+  '> div + div': {
+    marginTop: '$10',
+  },
+});

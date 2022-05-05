@@ -1,6 +1,8 @@
+import { useRouter } from 'next/router';
+
 import { FormattedMessage } from 'react-intl';
 
-import { TutorResponse, Button, Calendar } from '@components';
+import { TutorResponse, Button, Calendar, Loader } from '@components';
 import { useLesson } from '@hooks';
 import { TimeFrame } from '@types';
 
@@ -17,19 +19,18 @@ import {
   FieldTitle,
   EditText,
 } from './styles';
-import { useRouter } from 'next/router';
 
 interface RequestDetailsProps {
   id: number;
 }
 
 export const RequestDetails = (props: RequestDetailsProps) => {
-  const { data, isLoading } = useLesson(props.id);
   const router = useRouter();
+  const { data, isLoading } = useLesson(props.id);
 
-  if (isLoading || !data) return <div>Loading...</div>;
   const timeFrames: { timeFrame: TimeFrame; color: string; title: string }[] =
     [];
+
   data?.lessonTimeFrames.map((timeFrame) =>
     timeFrames.push({
       timeFrame: timeFrame,
@@ -38,11 +39,20 @@ export const RequestDetails = (props: RequestDetailsProps) => {
     })
   );
 
+  if (isLoading) {
+    return <Loader />;
+  }
+
+  if (!data) {
+    return <div>No details for this lesson.</div>;
+  }
+
   return (
     <>
       <RequestDetailsText>
         <FormattedMessage id="requestDetails.description" />
       </RequestDetailsText>
+
       <RequestDetailsContainer>
         <Row>
           <Column>
@@ -101,6 +111,7 @@ export const RequestDetails = (props: RequestDetailsProps) => {
               : {data?.description}
             </FieldDescription>
           </Column>
+
           <Column
             style={{
               justifyContent: 'center',
@@ -123,21 +134,23 @@ export const RequestDetails = (props: RequestDetailsProps) => {
             </Button>
           </Column>
         </Row>
+
         <Row>
           <Column>
             <FieldDescription>
               <FieldTitle>
-                <FormattedMessage id="newRequestForm.availableDates" />
+                <FormattedMessage id="newRequestForm.availableDates" />:
               </FieldTitle>
-              :{' '}
             </FieldDescription>
           </Column>
           <Column />
           <Column style={{ maxWidth: '100px' }} />
         </Row>
+
         <CalendarContainer>
           <Calendar requestTimeframes={timeFrames} />
         </CalendarContainer>
+
         <ResponsesHeader>
           <Title>
             <FormattedMessage id="requestDetails.tutorResponses" />
@@ -145,6 +158,7 @@ export const RequestDetails = (props: RequestDetailsProps) => {
 
           <StyledHr />
         </ResponsesHeader>
+
         {data?.tutorResponses.map((response) => {
           return (
             <TutorResponse

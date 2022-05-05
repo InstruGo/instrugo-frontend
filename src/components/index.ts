@@ -12,3 +12,5 @@ export * from './dropdown/Dropdown';
 export * from './withLoginRedirect';
 export * from './withAuth';
 export * from './titled-section/TitledSection';
+export * from './loader/Loader';
+export * from './icons';

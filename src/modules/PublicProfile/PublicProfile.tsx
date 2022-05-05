@@ -1,7 +1,6 @@
 import { FormattedMessage } from 'react-intl';
 
-import { ImageWithPlaceholder, Modal, Rating } from '@components';
-import { Loader } from '@components/icons';
+import { ImageWithPlaceholder, Modal, Rating, Loader } from '@components';
 import { usePublicProfile } from '@hooks';
 
 import {
@@ -36,7 +35,7 @@ export const PublicProfile = ({
     return (
       <Modal shouldShow={showProfile} closeAction={() => setShowProfile(false)}>
         <ProfileContainer>
-          <Loader width="40px" height="40px" />
+          <Loader />
         </ProfileContainer>
       </Modal>
     );

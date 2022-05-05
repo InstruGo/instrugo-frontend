@@ -2,12 +2,14 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
+import { withAuth } from '@components';
 import { PublicRequestDetails, Navbar } from '@modules';
 
 const RequestDetailsPage: NextPage = () => {
   const router = useRouter();
   const query = router.query;
   const id = Number(query.id);
+
   return (
     <div>
       <Head>
@@ -21,4 +23,4 @@ const RequestDetailsPage: NextPage = () => {
   );
 };
 
-export default RequestDetailsPage;
+export default withAuth(RequestDetailsPage);

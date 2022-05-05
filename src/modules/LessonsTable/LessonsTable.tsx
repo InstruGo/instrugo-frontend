@@ -2,7 +2,7 @@ import React from 'react';
 
 import { FormattedMessage } from 'react-intl';
 
-import { Modal } from '@components';
+import { Loader, Modal } from '@components';
 import { useLessons } from '@hooks';
 import { LessonDetails } from '@modules';
 import { LessonFilter } from '@types';
@@ -27,8 +27,13 @@ export const LessonsTable = ({ filter }: LessonsTableProps) => {
 
   const [showLessonDetailsModal, setLessonDetailsModal] = React.useState(false);
 
-  if (isLoading) return <div>Loading...</div>;
-  if (!lessons) return <div>No completed lessons...</div>;
+  if (isLoading) {
+    return <Loader />;
+  }
+
+  if (!lessons) {
+    return <div>No completed lessons...</div>;
+  }
 
   return (
     <TableStyle>

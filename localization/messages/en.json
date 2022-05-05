@@ -27,6 +27,7 @@
   "login.forgotPassword": "Forgot password?",
   "login.description": "Welcome back!",
   "login.needAnAccount": "Need an account?",
+  "login.emailAddressFormat": "E-mail address format is incorrect",
 
   "user.firstName": "first name",
   "user.lastName": "last name",
@@ -34,7 +35,7 @@
   "user.password": "password",
   "user.phone": "phone number",
   "user.birthDate": "Birth date",
-  "user.description": "About you",
+  "user.description": "About me",
   "user.educationLevel": "Education level",
   "user.edit": "Edit your profile",
   "user.noRating": "No ratings",
@@ -67,6 +68,8 @@
   "nav.becomeATutor": "Become a tutor",
   "nav.switchToTutor": "Switch to tutor",
   "nav.switchToStudent": "Switch to student",
+  "nav.profile": "Profile",
+  "nav.logout": "Log out",
 
   "home.rewards": "Rewards",
   "home.lessons": "Lessons",
@@ -96,7 +99,7 @@
   "subjects.latin": "Latin",
 
   "meetingType.all": "All",
-  "meetingType.inPerson": "In person",
+  "meetingType.in-person": "In person",
   "meetingType.online": "Online",
 
   "educationLevel.elementary-school": "elementary school",
@@ -132,6 +135,7 @@
   "lessonDetailsAfter.submit": "Submit rating",
   "lessonDetailsAfter.review": "Review",
   "lessonDetailsAfter.submitR": "Submit review",
+
   "lessons.1st_group": "Today",
   "lessons.2nd_group": "In the next 7 days",
   "lessons.3rd_group": "Recently completed",
@@ -146,6 +150,7 @@
   "lessons.titles.educationLevel": "Education lvl",
   "lessons.titles.grade": "Grade",
   "lessons.titles.rating": "Rating",
+
   "profile.phoneNumberMissing": "Not set",
   "profile.aboutMe": "About me",
   "profile.noDescription": "No description",
