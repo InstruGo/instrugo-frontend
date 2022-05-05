@@ -6,7 +6,6 @@ import { FormattedMessage, useIntl } from 'react-intl';
 
 import { Button, TimeSlot, Input } from '@components';
 import { useNewRequest, useSubjects, useUserContext } from '@hooks';
-
 import {
   EducationLevel,
   MeetingType,
@@ -170,14 +169,6 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
   updateLessonTimeFrames(timeSlots);
   const [subjectId, setSubjectId] = useState<number>(1);
   setValue('subjectId', subjectId);
-
-  const meetingTypeOptions = [
-    {
-      key: 'in-person',
-      value: intl.formatMessage({ id: 'meetingType.inPerson' }),
-    },
-    { key: 'online', value: intl.formatMessage({ id: 'meetingType.online' }) },
-  ];
 
   if (isLoading) return <div>Loading...</div>;
 

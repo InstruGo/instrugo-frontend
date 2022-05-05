@@ -59,12 +59,13 @@ export const Navbar = () => {
     profileMenuAnimation(profileRef, isProfileOpen);
   }, [isMenuOpen, isProfileOpen, navbarMenuAnimation, profileMenuAnimation]);
 
-  if (!user)
+  if (!user) {
     return (
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         <Loader width="40px" height="40px" />
       </div>
     );
+  }
 
   const becomeATutor = () => {
     becomeTutor.mutate();
