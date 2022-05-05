@@ -63,6 +63,7 @@ export const LessonCard = ({ lesson, response }: CardProps) => {
   const responseStartDate = response
     ? new Date(response.tutorResponseTimeFrame.startTime)
     : undefined;
+
   const responseEndDate = response
     ? new Date(response.tutorResponseTimeFrame.endTime)
     : undefined;
@@ -70,6 +71,7 @@ export const LessonCard = ({ lesson, response }: CardProps) => {
   const responseDateDisplay = responseStartDate
     ? `${responseStartDate.getDate()}\/${responseStartDate.getMonth()}\/${responseStartDate.getFullYear()}`
     : undefined;
+
   const responseTimeIntervalDisplay =
     responseStartDate && responseEndDate
       ? `${responseStartDate.getHours()}:${responseStartDate.getMinutes()} - ${responseEndDate.getHours()}:${responseEndDate.getMinutes()}`

@@ -8,7 +8,10 @@ export const useNewRequest = () => {
   const queryClient = useQueryClient();
 
   const newRequest = async (input: NewRequestFormInputs): Promise<Lesson> => {
-    const response = await axios.post('/lessons', input);
+    const response = await axios.post('/lessons', {
+      ...input,
+      subjectId: parseInt(input.subjectId),
+    });
 
     const data = response.data as Lesson;
     return data;

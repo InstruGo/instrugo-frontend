@@ -4,7 +4,7 @@ import { MeetingType } from './lesson.types';
 import { EducationLevel } from './user.types';
 
 export const newRequestFormSchema = z.object({
-  subjectId: z.number().positive(),
+  subjectId: z.string().min(1),
   subfield: z.string().max(200).min(1),
   educationLevel: z.nativeEnum(EducationLevel),
   grade: z.number().positive().min(1),

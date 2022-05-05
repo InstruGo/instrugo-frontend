@@ -30,9 +30,11 @@ interface NewRequestProps {
 }
 
 export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
-  const { data, isLoading } = useSubjects();
+  const intl = useIntl();
   const { user } = useUserContext();
   const newRequest = useNewRequest();
+  const { data, isLoading } = useSubjects();
+
   const {
     register,
     handleSubmit,
@@ -45,7 +47,7 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
       grade: user?.grade,
     },
   });
-  const intl = useIntl();
+
   const onSubmit = async (data: NewRequestFormInputs) => {
     newRequest.mutate(data);
 
@@ -168,11 +170,13 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
   };
 
   updateLessonTimeFrames(timeSlots);
-  const [subjectId, setSubjectId] = useState<number>(1);
-  setValue('subjectId', subjectId);
 
   if (isLoading) {
     return <Loader />;
+  }
+
+  if (!data) {
+    return <div>Subjects could not be fetched.</div>;
   }
 
   return (
@@ -187,14 +191,8 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
             <InputDescription>
               <FormattedMessage id="card.subject" />:{' '}
             </InputDescription>
-            <Dropdown
-              value={subjectId}
-              onChange={(e) => {
-                setSubjectId(parseInt(e.target.value, 10));
-                setValue('subjectId', parseInt(e.target.value, 10));
-              }}
-            >
-              {data?.map((subject) => (
+            <Dropdown defaultValue={data[0].id} {...register('subjectId')}>
+              {data.map((subject) => (
                 <DropdownOption key={subject.id} value={subject.id}>
                   {intl.formatMessage({ id: `subjects.${subject.name}` })}
                 </DropdownOption>
@@ -225,6 +223,7 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
               />
               <FormattedMessage id="educationLevel.elementary-school" />
             </RadioInput>
+
             <RadioInput>
               <input
                 {...register('educationLevel', { required: true })}
@@ -235,6 +234,7 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
               />
               <FormattedMessage id="educationLevel.high-school" />
             </RadioInput>
+
             <RadioInput>
               <input
                 {...register('educationLevel', { required: true })}
@@ -267,6 +267,7 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
               errors={errors.budget}
               isNumber={true}
             />
+
             <InputDescription>
               <FormattedMessage id="newRequestForm.duration" />: (
               <FormattedMessage id="newRequestForm.minutes" />)
@@ -279,6 +280,7 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
               isNumber={true}
             />
           </FormColumn>
+
           <FormColumn style={{ maxWidth: '450px' }}>
             <InputDescription>
               <FormattedMessage id="newRequestForm.availableDates" />:
@@ -327,6 +329,7 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
               />
               <FormattedMessage id="meetingType.online" />
             </RadioInput>
+
             <InputDescription>
               <FormattedMessage id="card.location" />:
             </InputDescription>
@@ -335,6 +338,7 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
               register={register}
               errors={errors.location}
             />
+
             <InputDescription>
               <FormattedMessage id="newRequestForm.description" />:{' '}
             </InputDescription>
