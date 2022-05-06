@@ -141,6 +141,7 @@
   "lessons.2nd_group": "In the next 7 days",
   "lessons.3rd_group": "Recently completed",
   "lessons.table": "Completed",
+  "lessons.noLessons": "No lessons.",
 
   "lessons.titles.subject": "Subject",
   "lessons.titles.dateAndTime": "Date And Time",

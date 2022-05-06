@@ -12,9 +12,17 @@ export const StyledNavbar = styled('div', {
     display: 'flex',
   },
   alignItems: 'center',
-  'div + div': {
-    marginLeft: '30px',
+  '> div + div': {
+    marginLeft: '$3',
   },
+});
+
+export const NavLinkDecorator = styled('div', {
+  height: '$full',
+  display: 'flex',
+  alignItems: 'center',
+  padding: '0 $3',
+  borderRadius: '5px',
 });
 
 export const NavLink = styled('div', {

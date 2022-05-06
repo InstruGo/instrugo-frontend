@@ -17,7 +17,14 @@ const RequestsPage: NextPage = () => {
 
       <PageLayout>
         <TitledSection titleMsgId="student.request.requests">
-          <NewRequestButton />
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'flex-end',
+            }}
+          >
+            <NewRequestButton />
+          </div>
 
           <LessonsContainer filter={{ status: 'requested' }} />
         </TitledSection>

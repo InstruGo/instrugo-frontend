@@ -17,5 +17,5 @@ export const StyledHr = styled('hr', {
 });
 
 export const SectionContent = styled('div', {
-  marginTop: '$3',
+  marginTop: '$8',
 });
