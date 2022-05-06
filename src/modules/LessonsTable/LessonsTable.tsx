@@ -67,45 +67,54 @@ export const LessonsTable = ({ filter }: LessonsTableProps) => {
             <FormattedMessage id="lessons.titles.rating" />
           </TableTitles>
         </TableHeader>
-        {lessons.map((lesson) => {
-          const date = new Date(lesson.finalStartTime);
-          const rating =
-            lesson.rating && lesson.rating.studentRating
-              ? lesson.rating.studentRating
-              : '';
-          return (
-            <TableItem
-              key={lesson.id}
-              onClick={() => setLessonDetailsModal(true)}
-            >
-              <TableData>{lesson.subject.name}</TableData>
-              <TableData>{lesson.subfield}</TableData>
-              <TableData>
-                {`${date.getDate()}\/${date.getMonth()}\/${date.getFullYear()}`}
-                {',   '}
-                {`${date.getHours()}:${date.getMinutes()}`}
-              </TableData>
-              <TableData>{'0kn'}</TableData>
-              <TableData>{lesson.location}</TableData>
-              <TableData>
-                <FormattedMessage id={`meetingType.${lesson.type}`} />
-              </TableData>
-              <TableData>
-                <FormattedMessage
-                  id={`educationLevel.${lesson.educationLevel}`}
-                />
-              </TableData>
-              <TableData>{lesson.grade}</TableData>
-              <TableData>{rating}</TableData>
-              <Modal
-                shouldShow={showLessonDetailsModal}
-                closeAction={() => setLessonDetailsModal(false)}
+
+        {lessons.length !== 0 ? (
+          lessons.map((lesson) => {
+            const date = new Date(lesson.finalStartTime);
+            const rating =
+              lesson.rating && lesson.rating.studentRating
+                ? lesson.rating.studentRating
+                : '';
+            return (
+              <TableItem
+                key={lesson.id}
+                onClick={() => setLessonDetailsModal(true)}
               >
-                <LessonDetails id={lesson.id} />
-              </Modal>
-            </TableItem>
-          );
-        })}
+                <TableData>{lesson.subject.name}</TableData>
+                <TableData>{lesson.subfield}</TableData>
+                <TableData>
+                  {`${date.getDate()}\/${date.getMonth()}\/${date.getFullYear()}`}
+                  {',   '}
+                  {`${date.getHours()}:${date.getMinutes()}`}
+                </TableData>
+                <TableData>{'0kn'}</TableData>
+                <TableData>{lesson.location}</TableData>
+                <TableData>
+                  <FormattedMessage id={`meetingType.${lesson.type}`} />
+                </TableData>
+                <TableData>
+                  <FormattedMessage
+                    id={`educationLevel.${lesson.educationLevel}`}
+                  />
+                </TableData>
+                <TableData>{lesson.grade}</TableData>
+                <TableData>{rating}</TableData>
+                <Modal
+                  shouldShow={showLessonDetailsModal}
+                  closeAction={() => setLessonDetailsModal(false)}
+                >
+                  <LessonDetails id={lesson.id} />
+                </Modal>
+              </TableItem>
+            );
+          })
+        ) : (
+          <TableItem>
+            <TableData>
+              <FormattedMessage id="lessons.noLessons" />
+            </TableData>
+          </TableItem>
+        )}
       </TableBody>
     </TableStyle>
   );

@@ -19,7 +19,7 @@ export const StyledHr = styled('hr', {
 });
 
 export const RequestsBody = styled('div', {
-  marginTop: '$4',
+  marginTop: '$10',
   display: 'flex',
   flexWrap: 'wrap',
   gap: '$6',

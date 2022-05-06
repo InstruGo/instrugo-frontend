@@ -2,6 +2,7 @@ import { Loader } from '@components';
 import { useLessons } from '@hooks';
 import { LessonCard } from '@modules';
 import { LessonFilter } from '@types';
+import { FormattedMessage } from 'react-intl';
 import { styled } from 'styles/stitches.config';
 
 interface LessonsContainerProps {
@@ -15,9 +16,13 @@ export const LessonsContainer = ({ filter }: LessonsContainerProps) => {
 
   return (
     <StyledContainer>
-      {lessons?.map((lesson) => {
-        return <LessonCard key={lesson.id} lesson={lesson} />;
-      })}
+      {lessons && lessons.length !== 0 ? (
+        lessons.map((lesson) => {
+          return <LessonCard key={lesson.id} lesson={lesson} />;
+        })
+      ) : (
+        <FormattedMessage id="lessons.noLessons" />
+      )}
     </StyledContainer>
   );
 };

@@ -10,10 +10,11 @@ import {
   DateNavigator,
   Resources,
 } from '@devexpress/dx-react-scheduler-material-ui';
-import { useLessons } from '@hooks';
 import Paper from '@mui/material/Paper';
 
-import { Lesson, TimeFrame } from '@types';
+import { Loader } from '@components';
+import { useLessons } from '@hooks';
+import { TimeFrame } from '@types';
 
 type TimeFrames = { timeFrame: TimeFrame; color: string; title: string }[];
 
@@ -30,7 +31,7 @@ interface CalendarProps {
  * @returns
  */
 export const Calendar = ({ pending, requestTimeframes }: CalendarProps) => {
-  const { data: lessons } = useLessons({ status: 'pending' });
+  const { data: lessons, isLoading } = useLessons({ status: 'pending' });
 
   const pendingTimeframes: TimeFrames | undefined = lessons?.map((lesson) => {
     return {
@@ -78,6 +79,10 @@ export const Calendar = ({ pending, requestTimeframes }: CalendarProps) => {
   const today = new Date().toISOString();
   const currentDate =
     schedulerData !== [] ? schedulerData[0]?.startDate : today;
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <Paper>

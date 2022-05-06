@@ -36,6 +36,6 @@ export default withAuth(StudentHomepage);
 export const PageLayout = styled('div', {
   padding: '20px',
   '> div + div': {
-    marginTop: '$10',
+    marginTop: '$24',
   },
 });

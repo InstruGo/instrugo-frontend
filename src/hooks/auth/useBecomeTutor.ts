@@ -1,11 +1,12 @@
 import { useRouter } from 'next/router';
 
-import { useMutation } from 'react-query';
+import { useMutation, useQueryClient } from 'react-query';
 
 import { useAxios, useUserContext } from '@hooks';
 import { User } from '@types';
 
 export const useBecomeTutor = () => {
+  const queryClient = useQueryClient();
   const axios = useAxios();
   const router = useRouter();
   const { setUser } = useUserContext();
@@ -23,6 +24,7 @@ export const useBecomeTutor = () => {
   return useMutation(becomeTutor, {
     onSuccess: (data) => {
       setUser(data);
+      queryClient.removeQueries('lessons');
       router.push('/tutor/home');
     },
     onError: (error) => {

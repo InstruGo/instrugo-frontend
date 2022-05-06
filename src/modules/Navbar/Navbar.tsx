@@ -5,6 +5,7 @@ import { BsPersonCircle } from 'react-icons/bs';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { HiOutlineSwitchVertical } from 'react-icons/hi';
 import { FormattedMessage } from 'react-intl';
+import { useQueryClient } from 'react-query';
 
 import { Button, CustomLink, HeaderContainer, Loader } from '@components';
 import {
@@ -19,6 +20,7 @@ import {
   Clickable,
   HamburgerMenu,
   NavLink,
+  NavLinkDecorator,
   OpenedMenu,
   OpenedProfileMenu,
   ProfileLink,
@@ -28,6 +30,7 @@ import {
 } from './styles';
 
 export const Navbar = () => {
+  const queryClient = useQueryClient();
   const router = useRouter();
   const logout = useLogout();
   const becomeTutor = useBecomeTutor();
@@ -65,8 +68,13 @@ export const Navbar = () => {
     if (user?.role === UserRole.STUDENT) {
       becomeATutor();
     } else {
-      if (router.pathname.startsWith('/student')) router.push('/tutor/home');
-      else router.push('/student/home');
+      queryClient.removeQueries('lessons');
+
+      if (router.pathname.startsWith('/student')) {
+        router.push('/tutor/home');
+      } else {
+        router.push('/student/home');
+      }
     }
   };
 
@@ -76,6 +84,8 @@ export const Navbar = () => {
       : router.pathname.startsWith('/student')
       ? 'nav.switchToTutor'
       : 'nav.switchToStudent';
+
+  const currentUrl = router.pathname;
 
   if (!user) {
     return <Loader />;
@@ -87,44 +97,100 @@ export const Navbar = () => {
         {user.role === UserRole.STUDENT ||
         router.pathname.startsWith('/student') ? (
           <StyledNavbar>
-            <NavLink>
-              <CustomLink href="/student/home">
-                <FormattedMessage id={'nav.home'} />
-              </CustomLink>
-            </NavLink>
-            <NavLink>
-              <CustomLink href="/student/lessons">
-                <FormattedMessage id={'nav.myLessons'} />
-              </CustomLink>
-            </NavLink>
-            <NavLink>
-              <CustomLink href="/student/requests">
-                <FormattedMessage id={'nav.myRequests'} />
-              </CustomLink>
-            </NavLink>
+            <NavLinkDecorator
+              style={{
+                backgroundColor:
+                  currentUrl === '/student/home' ? '#06333c' : 'transparent',
+              }}
+            >
+              <NavLink>
+                <CustomLink href="/student/home">
+                  <FormattedMessage id={'nav.home'} />
+                </CustomLink>
+              </NavLink>
+            </NavLinkDecorator>
+
+            <NavLinkDecorator
+              style={{
+                backgroundColor:
+                  currentUrl === '/student/lessons' ? '#06333c' : 'transparent',
+              }}
+            >
+              <NavLink>
+                <CustomLink href="/student/lessons">
+                  <FormattedMessage id={'nav.myLessons'} />
+                </CustomLink>
+              </NavLink>
+            </NavLinkDecorator>
+
+            <NavLinkDecorator
+              style={{
+                backgroundColor:
+                  currentUrl === '/student/requests'
+                    ? '#06333c'
+                    : 'transparent',
+              }}
+            >
+              <NavLink>
+                <CustomLink href="/student/requests">
+                  <FormattedMessage id={'nav.myRequests'} />
+                </CustomLink>
+              </NavLink>
+            </NavLinkDecorator>
           </StyledNavbar>
         ) : (
           <StyledNavbar>
-            <NavLink>
-              <CustomLink href="/tutor/home">
-                <FormattedMessage id={'nav.home'} />
-              </CustomLink>
-            </NavLink>
-            <NavLink>
-              <CustomLink href="/tutor/lessons">
-                <FormattedMessage id={'nav.myLessons'} />
-              </CustomLink>
-            </NavLink>
-            <NavLink>
-              <CustomLink href="/tutor/requests">
-                <FormattedMessage id={'nav.publicRequests'} />
-              </CustomLink>
-            </NavLink>
-            <NavLink>
-              <CustomLink href="/tutor/responses">
-                <FormattedMessage id={'nav.tutorResponses'} />
-              </CustomLink>
-            </NavLink>
+            <NavLinkDecorator
+              style={{
+                backgroundColor:
+                  currentUrl === '/tutor/home' ? '#06333c' : 'transparent',
+              }}
+            >
+              <NavLink>
+                <CustomLink href="/tutor/home">
+                  <FormattedMessage id={'nav.home'} />
+                </CustomLink>
+              </NavLink>
+            </NavLinkDecorator>
+
+            <NavLinkDecorator
+              style={{
+                backgroundColor:
+                  currentUrl === '/tutor/lessons' ? '#06333c' : 'transparent',
+              }}
+            >
+              <NavLink>
+                <CustomLink href="/tutor/lessons">
+                  <FormattedMessage id={'nav.myLessons'} />
+                </CustomLink>
+              </NavLink>
+            </NavLinkDecorator>
+
+            <NavLinkDecorator
+              style={{
+                backgroundColor:
+                  currentUrl === '/tutor/requests' ? '#06333c' : 'transparent',
+              }}
+            >
+              <NavLink>
+                <CustomLink href="/tutor/requests">
+                  <FormattedMessage id={'nav.publicRequests'} />
+                </CustomLink>
+              </NavLink>
+            </NavLinkDecorator>
+
+            <NavLinkDecorator
+              style={{
+                backgroundColor:
+                  currentUrl === '/tutor/responses' ? '#06333c' : 'transparent',
+              }}
+            >
+              <NavLink>
+                <CustomLink href="/tutor/responses">
+                  <FormattedMessage id={'nav.tutorResponses'} />
+                </CustomLink>
+              </NavLink>
+            </NavLinkDecorator>
           </StyledNavbar>
         )}
 
