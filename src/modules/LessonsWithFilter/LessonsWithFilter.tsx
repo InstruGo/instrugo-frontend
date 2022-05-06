@@ -23,7 +23,8 @@ export const LessonsWithFilter = () => {
   const filterMenuRef = useRef<HTMLDivElement>(null);
   const [isFilterMenuOpen, setFilterMenuOpen] = useState(false);
 
-  const { subjectOptions, meetingTypeOptions } = useAvailableFilterOptions();
+  const { subjectOptions, meetingTypeOptions, educationLevelOptions } =
+    useAvailableFilterOptions();
 
   // Filter menu animation
   const { menuAnimation: filterMenuAnimation } = useMenuAnimation();
@@ -91,12 +92,31 @@ export const LessonsWithFilter = () => {
             onOptionSelect={(value: string) => setFilter('type', value)}
           />
         </FilterGroup>
+
+        <FilterGroup>
+          <div>
+            <FormattedMessage id="lessons.titles.educationLevel" />:
+          </div>
+          <Dropdown
+            options={educationLevelOptions}
+            onOptionSelect={(value: string) =>
+              setFilter('educationLevel', value)
+            }
+          />
+        </FilterGroup>
       </FilterMenuContainer>
 
       {filter.status !== 'pending' ? (
         <LessonsContainer filter={filter} />
       ) : (
-        <Calendar pending />
+        <>
+          <div style={{ fontSize: '20px', fontWeight: 'bold' }}>
+            <FormattedMessage id="calendar.title" />
+          </div>
+          <div style={{ marginTop: '20px' }}>
+            <Calendar filter={filter} />
+          </div>
+        </>
       )}
     </div>
   );

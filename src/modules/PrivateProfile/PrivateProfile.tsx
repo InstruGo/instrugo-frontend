@@ -11,8 +11,9 @@ import {
   Rating,
   Loader,
 } from '@components';
-import { useUserContext } from '@hooks';
+import { useLessons, useUserContext } from '@hooks';
 
+import { UserRole } from '@types';
 import { EditProfileForm } from './EditProfileForm';
 import {
   AboutMe,
@@ -30,6 +31,12 @@ import { getAgeFromBirthDate } from './utils';
 export const PrivateProfile = () => {
   const { user } = useUserContext();
   const [isEditing, setEditing] = useState(false);
+
+  const { data: lessonsLearned } = useLessons({});
+
+  const { data: lessonsGiven } = useLessons({
+    isLessonTutor: true,
+  });
 
   const hasSubjects = user?.subjects && user?.subjects.length !== 0;
 
@@ -74,19 +81,20 @@ export const PrivateProfile = () => {
             </div>
             <div>{getAgeFromBirthDate(user.birthDate)}</div>
           </Stat>
-          {user.role === 'student' ? (
-            <Stat>
-              <div>
-                <FormattedMessage id="user.lessonsLearned" />
-              </div>
-              <div>428</div>
-            </Stat>
-          ) : (
+
+          <Stat>
+            <div>
+              <FormattedMessage id="user.lessonsLearned" />
+            </div>
+            <div>{lessonsLearned ? lessonsLearned.length : 0}</div>
+          </Stat>
+
+          {user.role === UserRole.TUTOR && (
             <Stat>
               <div>
                 <FormattedMessage id="user.lessonsGiven" />
               </div>
-              <div>428</div>
+              <div>{lessonsGiven ? lessonsGiven.length : 0}</div>
             </Stat>
           )}
         </Stats>

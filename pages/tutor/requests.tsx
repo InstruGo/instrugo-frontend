@@ -1,8 +1,8 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 
-import { withAuth } from '@components';
-import { PublicRequestsContainer, Navbar } from '@modules';
+import { TitledSection, withAuth } from '@components';
+import { PublicRequestsWithFilter, Navbar } from '@modules';
 
 import { PageLayout } from '../student/home';
 
@@ -16,7 +16,9 @@ const RequestsPage: NextPage = () => {
       <Navbar />
 
       <PageLayout>
-        <PublicRequestsContainer title={'tutor.request.requests'} />
+        <TitledSection titleMsgId="tutor.request.requests">
+          <PublicRequestsWithFilter />
+        </TitledSection>
       </PageLayout>
     </div>
   );
