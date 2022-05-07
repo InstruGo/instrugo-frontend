@@ -4,7 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Rating } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import { AiOutlineClockCircle, AiOutlineDollar } from 'react-icons/ai';
-import { BsPerson } from 'react-icons/bs';
+import { BsPerson, BsBookHalf } from 'react-icons/bs';
 import { FormattedMessage } from 'react-intl';
 
 import { Button, Input, Loader } from '@components';
@@ -22,16 +22,13 @@ import {
 
 interface LessonDetailsAfterProps {
   id: number;
-  ratingId: number;
 }
 export const LessonDetailsAfterStudent = (props: LessonDetailsAfterProps) => {
   const { data, isLoading } = useLesson(props.id);
-  const rating = useRating(props.ratingId);
+  const rating = useRating(props.id);
   const {
-    register,
     handleSubmit,
     setValue,
-    getValues,
     formState: { errors },
   } = useForm<NewStudentRatingInputs>({
     resolver: zodResolver(NewStudentRatingSchema),
@@ -40,7 +37,7 @@ export const LessonDetailsAfterStudent = (props: LessonDetailsAfterProps) => {
   const onSubmit = async (data: NewStudentRatingInputs) => {
     rating.mutate(data);
   };
-
+  const [studentRating, setStudentRating] = useState(0);
   if (isLoading) {
     return <Loader />;
   }
@@ -71,6 +68,20 @@ export const LessonDetailsAfterStudent = (props: LessonDetailsAfterProps) => {
           style={{ display: 'flex', justifyContent: 'center', height: '100%' }}
         >
           <Column>
+            <Row>
+              <BsBookHalf />
+              <CardText>{data?.subject.name}</CardText>
+              {' - '}
+              <CardText>{data?.subfield}</CardText>
+            </Row>
+            <Row>
+              <AiOutlineClockCircle />
+              <CardText>
+                {`${lessonStart.getDate()}\/${lessonStart.getMonth()}\/${lessonStart.getFullYear()}`}
+                {',   '}
+                {`${lessonStart.getHours()}:${lessonStart.getMinutes()} - ${lessonEnd.getHours()}:${lessonEnd.getMinutes()}`}
+              </CardText>
+            </Row>
             <Row>
               <BsPerson />
               <CardText>
@@ -114,25 +125,34 @@ export const LessonDetailsAfterStudent = (props: LessonDetailsAfterProps) => {
           ></div>
 
           <Column style={{ justifyContent: 'center', alignItems: 'center' }}>
-            <Title style={{ paddingLeft: '100px' }}>
+            <Title style={{ paddingLeft: '100px', paddingBottom: '30px' }}>
               <FormattedMessage id="lessonDetailsAfter.rating" />:
             </Title>
-            <Rating
-              style={{ padding: '30px' }}
-              name="simple-controlled"
-              value={getValues('studentRating')}
-              onChange={(event, newValue) => {
-                if (newValue) setValue('studentRating', newValue);
-              }}
-            />
+            {data?.rating.studentRating ? (
+              data?.rating.studentRating
+            ) : (
+              <div>
+                <Rating
+                  style={{ padding: '0px' }}
+                  name="simple-controlled"
+                  value={studentRating}
+                  onChange={(event, newValue) => {
+                    if (newValue) {
+                      setStudentRating(newValue);
+                      setValue('studentRating', newValue);
+                    }
+                  }}
+                />
 
-            <Row style={{ justifyContent: 'center' }}>
-              <Input
-                type="submit"
-                variant="authSubmit"
-                placeholderMsgId="lessonDetailsAfter.submitReview"
-              />
-            </Row>
+                <Row style={{ justifyContent: 'center' }}>
+                  <Input
+                    type="submit"
+                    variant="authSubmit"
+                    placeholderMsgId="lessonDetailsAfter.submitReview"
+                  />
+                </Row>
+              </div>
+            )}
           </Column>
         </div>
       </LessonDetailsContainer>

@@ -9,7 +9,7 @@ import { lessonFilters } from '@utils/lessonFilters';
 import { PageLayout } from './home';
 
 const LessonsPage: NextPage = () => {
-  const { todayFilter, nextWeekFilter } = lessonFilters();
+  const { todayFilter, nextWeekFilter, upcomingFilter } = lessonFilters();
 
   return (
     <div>
@@ -25,7 +25,7 @@ const LessonsPage: NextPage = () => {
         </TitledSection>
 
         <TitledSection titleMsgId="lessons.2nd_group">
-          <LessonsContainer filter={nextWeekFilter} />
+          <LessonsContainer filter={upcomingFilter} />
         </TitledSection>
 
         <TitledSection titleMsgId="lessons.3rd_group">

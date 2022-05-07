@@ -42,6 +42,7 @@ export const UpdateRequestForm = ({
     register,
     handleSubmit,
     setValue,
+    getValues,
     formState: { errors },
   } = useForm<UpdateRequestFormInputs>({
     resolver: zodResolver(updateRequestFormSchema),
@@ -101,6 +102,7 @@ export const UpdateRequestForm = ({
 
   const updateLessonTimeFrames = (tempSlots: any) => {
     const lessonTimeFrames = [];
+    setValue(`lessonTimeFrames`, []);
     for (let i = 0; i < tempSlots.length; i++) {
       const [month, day, year] = [
         tempSlots[i].date.getMonth(),
@@ -169,6 +171,7 @@ export const UpdateRequestForm = ({
     }
 
     updateTimeSlots(tempSlots);
+    updateLessonTimeFrames(tempSlots);
   };
 
   const onAddTimeSlot = () => {
@@ -182,6 +185,7 @@ export const UpdateRequestForm = ({
     });
 
     updateTimeSlots(tempSlots);
+    updateLessonTimeFrames(tempSlots);
   };
 
   updateLessonTimeFrames(timeSlots);
