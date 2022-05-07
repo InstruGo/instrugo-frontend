@@ -24,7 +24,7 @@ export const LessonDetailsPayment = (props: LessonDetailsPaymentProps) => {
     router.push('/student/home');
   };
 
-  if (isLoading) {
+  if (isLoading || !data) {
     return <Loader />;
   }
 
@@ -41,6 +41,9 @@ export const LessonDetailsPayment = (props: LessonDetailsPaymentProps) => {
     return <div>this lesson time not yet arranged...</div>;
   }
 
+  const hours = data.duration / 60;
+  const minutes = data.duration % 60;
+  console.log(hours);
   const lessonStart = new Date(tutorResponse.tutorResponseTimeFrame.startTime);
   const lessonEnd = new Date(tutorResponse.tutorResponseTimeFrame.endTime);
   let diffHours = lessonEnd.getHours() - lessonStart.getHours();

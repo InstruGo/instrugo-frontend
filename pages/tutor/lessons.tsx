@@ -7,9 +7,7 @@ import { lessonFilters } from '@utils/lessonFilters';
 import { PageLayout } from 'pages/student/home';
 
 const LessonsPage: NextPage = () => {
-  const { todayFilter, nextWeekFilter, upcomingFilter } = lessonFilters();
-  todayFilter.isLessonTutor = true;
-  upcomingFilter.isLessonTutor = true;
+  const { todayFilterTutor, upcomingFilterTutor } = lessonFilters();
   return (
     <div>
       <Head>
@@ -20,11 +18,11 @@ const LessonsPage: NextPage = () => {
 
       <PageLayout>
         <TitledSection titleMsgId="lessons.1st_group">
-          <LessonsContainer filter={todayFilter} />
+          <LessonsContainer filter={todayFilterTutor} />
         </TitledSection>
 
         <TitledSection titleMsgId="lessons.2nd_group">
-          <LessonsContainer filter={upcomingFilter} />
+          <LessonsContainer filter={upcomingFilterTutor} />
         </TitledSection>
 
         <TitledSection titleMsgId="lessons.3rd_group">

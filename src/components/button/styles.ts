@@ -50,9 +50,7 @@ export const StyledButton = styled('button', {
         },
       },
       disabled: {
-        backgroundColor: '#fff',
-        color: '#fff',
-        cursor: 'arrow',
+        cursor: 'not-allowed',
       },
     },
   },
