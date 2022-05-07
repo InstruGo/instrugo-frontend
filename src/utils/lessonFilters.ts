@@ -30,32 +30,9 @@ export const lessonFilters = () => {
     after: todayEnd.toISOString(),
   };
 
-  const todayFilterTutor = {
-    status: 'pending',
-    after: todayStart.toISOString(),
-    before: todayEnd.toISOString(),
-    isLessonTutor: true,
-  };
-
-  const nextWeekFilterTutor = {
-    status: 'pending',
-    before: weekAfterDate.toISOString(),
-    isLessonTutor: true,
-  };
-
-  // Upcoming filter
-  const upcomingFilterTutor = {
-    status: 'pending',
-    after: todayEnd.toISOString(),
-    isLessonTutor: true,
-  };
-
   return {
     todayFilter,
     nextWeekFilter,
     upcomingFilter,
-    todayFilterTutor,
-    nextWeekFilterTutor,
-    upcomingFilterTutor,
   };
 };
