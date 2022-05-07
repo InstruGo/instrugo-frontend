@@ -1,4 +1,5 @@
 import { CSS } from '@stitches/react';
+import { Controller } from 'react-hook-form';
 
 import { styled } from 'styles/stitches.config';
 
@@ -13,6 +14,18 @@ export const RegistrationFormContainer = styled('form', {
   '@bp1': {
     paddingTop: '$16',
   },
+});
+
+export const SubjectsInput = styled('div', {
+  py: '$2',
+  'div + div': {
+    marginTop: 0,
+  },
+});
+
+export const SubjectsLabel = styled('div', {
+  py: '$2',
+  mb: '$2',
 });
 
 export const LabeledCheckbox = styled('div', {

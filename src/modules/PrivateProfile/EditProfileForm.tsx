@@ -166,6 +166,7 @@ export const EditProfileForm = ({ user, setEditing }: EditProfileFormProps) => {
           <div>
             <FormattedMessage id="user.subjects" />:
           </div>
+
           <Controller
             control={control}
             defaultValue={usersSubjectIds}

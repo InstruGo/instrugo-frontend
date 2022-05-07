@@ -20,6 +20,8 @@
 
   "confirmPassword": "Confirm password",
 
+  "registration.tutor": "I want to be a tutor",
+  "registration.subjects": "Choose subjects you want to teach",
   "registration.terms": "Agree to Terms and Conditions",
   "registration.description": "Register an account and join the community",
   "registration.alreadyHaveAnAccount": "Already have an account?",

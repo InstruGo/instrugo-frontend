@@ -18,6 +18,8 @@
 
   "confirmPassword": "Potvrdi lozinku",
 
+  "registration.tutor": "Želim postati instruktor",
+  "registration.subjects": "Odaberite predmete koje želite podučavati",
   "registration.terms": "Prihvatite odredbe i uvjete",
   "registration.description": "Registrirajte se i pridružite se zajednici",
   "registration.alreadyHaveAnAccount": "Već imate korisnički račun?",
