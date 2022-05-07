@@ -41,3 +41,9 @@ export const NewRequestButtonContainer = styled('div', {
   display: 'flex',
   justifyContent: 'flex-end',
 });
+
+export const BudgetItem = styled('div', {
+  width: '170px',
+  display: 'flex',
+  justifyContent: 'space-between',
+});

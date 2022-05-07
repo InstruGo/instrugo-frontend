@@ -50,6 +50,9 @@
   "user.grade": "Grade",
   "user.subjects": "Subjects",
 
+  "rewards.description": "5 more lessons to get 30% discount on your next lesson.",
+  "rewards.rank": "Rank",
+
   "card.subject": "Subject",
   "card.dateAndTime": "Date And Time",
   "card.subfield": "Subfield",
@@ -112,6 +115,9 @@
   "educationLevel.elementary-school": "Elementary school",
   "educationLevel.high-school": "High school",
   "educationLevel.university": "University",
+
+  "filter.budgetFrom": "From",
+  "filter.budgetTo": "To",
 
   "button.createRequest": "Create new request",
   "updateRequest.description": "Update your request",

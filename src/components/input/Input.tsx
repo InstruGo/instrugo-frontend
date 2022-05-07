@@ -28,6 +28,8 @@ export const Input = ({
 }: InputProps) => {
   const intl = useIntl();
 
+  console.log(errors);
+
   return (
     <InputContainer>
       <StyledInput
