@@ -160,7 +160,11 @@ export const LessonDetails = (props: LessonDetailsProps) => {
             >
               {data?.status === 'pending' && user?.id === data?.student.id && (
                 <Row style={{ justifyContent: 'space-evenly', width: '100%' }}>
-                  <Button onClick={onFinishClick} disabled={disabled}>
+                  <Button
+                    variant={disabled ? 'disabled' : 'primary'}
+                    onClick={onFinishClick}
+                    disabled={disabled}
+                  >
                     <FormattedMessage id="lessonDetails.finishLesson"></FormattedMessage>
                   </Button>
                   <Button
