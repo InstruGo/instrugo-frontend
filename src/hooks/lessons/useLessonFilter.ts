@@ -32,10 +32,20 @@ export const useLessonFilter = (initialFilter?: LessonFilter) => {
         filterValue = [parseInt(value)];
         break;
       case 'grade':
-      case 'minPrice':
-      case 'maxPrice':
         filterValue = parseInt(value);
         break;
+      case 'minBudget':
+      case 'maxBudget':
+        if (value !== '' && parseInt(value) > 0) filterValue = parseInt(value);
+        else filterValue = undefined;
+        break;
+
+      case 'minDuration':
+      case 'maxDuration':
+        if (value !== '' && parseInt(value) > 0) filterValue = parseInt(value);
+        else filterValue = undefined;
+        break;
+
       case 'type':
         filterValue = meetingType[value];
         break;

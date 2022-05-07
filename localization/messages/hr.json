@@ -51,6 +51,12 @@
   "user.grade": "Razred",
   "user.subjects": "Predmeti",
 
+  "filter.budgetFrom": "Od",
+  "filter.budgetTo": "Do",
+
+  "rewards.description": "Još 5 instrukcija da osvojiš 30% popusta na svoje sljedeće instrukcije.",
+  "rewards.rank": "Razina",
+
   "card.subject": "Predmet",
   "card.dateAndTime": "Datum i vrijeme",
   "card.subfield": "Područje",

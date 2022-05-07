@@ -19,9 +19,11 @@ export const registerFormSchema = z
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: "Passwords don't match",
+    path: ['confirmPassword'],
   })
   .refine((data) => !data.isTutor || (data.isTutor && data.phone !== ''), {
     message: 'Phone is required when registering as a tutor',
+    path: ['phone'],
   });
 
 export type RegisterFormInputs = z.infer<typeof registerFormSchema>;
