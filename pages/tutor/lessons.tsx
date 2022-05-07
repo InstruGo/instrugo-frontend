@@ -7,9 +7,8 @@ import { lessonFilters } from '@utils/lessonFilters';
 import { PageLayout } from 'pages/student/home';
 
 const LessonsPage: NextPage = () => {
-  const { todayFilter, nextWeekFilter, upcomingFilter } = lessonFilters();
-  todayFilter.isLessonTutor = true;
-  upcomingFilter.isLessonTutor = true;
+  const { todayFilter, upcomingFilter } = lessonFilters();
+
   return (
     <div>
       <Head>

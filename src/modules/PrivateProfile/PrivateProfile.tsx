@@ -32,9 +32,10 @@ export const PrivateProfile = () => {
   const { user } = useUserContext();
   const [isEditing, setEditing] = useState(false);
 
-  const { data: lessonsLearned } = useLessons({});
+  const { data: lessonsLearned } = useLessons({ status: 'completed' });
 
   const { data: lessonsGiven } = useLessons({
+    status: 'completed',
     isLessonTutor: true,
   });
 

@@ -13,7 +13,6 @@ export const lessonFilters = () => {
     status: 'pending',
     after: todayStart.toISOString(),
     before: todayEnd.toISOString(),
-    isLessonTutor: false,
   };
 
   // Next week filter
@@ -23,14 +22,12 @@ export const lessonFilters = () => {
   const nextWeekFilter = {
     status: 'pending',
     before: weekAfterDate.toISOString(),
-    isLessonTutor: false,
   };
 
   // Upcoming filter
   const upcomingFilter = {
     status: 'pending',
     after: todayEnd.toISOString(),
-    isLessonTutor: false,
   };
 
   return { todayFilter, nextWeekFilter, upcomingFilter };
