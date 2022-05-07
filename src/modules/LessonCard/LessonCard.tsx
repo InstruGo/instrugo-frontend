@@ -25,6 +25,7 @@ import {
   ResponseSeparator,
 } from './styles';
 import lessons from 'pages/student/lessons';
+import { LessonsContainer } from '@modules/LessonsContainer/LessonsContainer';
 
 type StitchesComponentProps = React.ComponentPropsWithoutRef<
   typeof CardContainer
@@ -166,12 +167,14 @@ export const LessonCard = ({ lesson, response }: CardProps) => {
         shouldShow={showLessonDetailsModal}
         closeAction={() => setLessonDetailsModal(false)}
       >
-        {lesson.status === 'completed' && user?.role === 'tutor' && (
-          <LessonDetailsAfterTutor id={lesson.id} ratingId={1} />
-        )}
-        {lesson.status === 'completed' && user?.role === 'student' && (
-          <LessonDetailsAfterStudent id={lesson.id} ratingId={1} />
-        )}
+        {lesson.status === 'completed' &&
+          router.pathname.startsWith('/tutor') && (
+            <LessonDetailsAfterTutor id={lesson.id} />
+          )}
+        {lesson.status === 'completed' &&
+          router.pathname.startsWith('/student') && (
+            <LessonDetailsAfterStudent id={lesson.id} />
+          )}
         {lesson.status === 'pending' && <LessonDetails id={lesson.id} />}
       </Modal>
     </div>

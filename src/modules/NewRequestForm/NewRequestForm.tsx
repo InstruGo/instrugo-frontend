@@ -86,6 +86,7 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
 
   const updateLessonTimeFrames = (tempSlots: any) => {
     const lessonTimeFrames = [];
+    setValue(`lessonTimeFrames`, []);
     for (let i = 0; i < tempSlots.length; i++) {
       const [month, day, year] = [
         tempSlots[i].date.getMonth(),
@@ -154,6 +155,7 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
     }
 
     updateTimeSlots(tempSlots);
+    updateLessonTimeFrames(tempSlots);
   };
 
   const onAddTimeSlot = () => {
@@ -167,6 +169,7 @@ export const NewRequestForm = ({ onFinish }: NewRequestProps) => {
     });
 
     updateTimeSlots(tempSlots);
+    updateLessonTimeFrames(tempSlots);
   };
 
   updateLessonTimeFrames(timeSlots);

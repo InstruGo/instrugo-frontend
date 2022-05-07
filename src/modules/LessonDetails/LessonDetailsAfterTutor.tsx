@@ -1,7 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { AiOutlineClockCircle, AiOutlineDollar } from 'react-icons/ai';
-import { BsPerson } from 'react-icons/bs';
+import { BsPerson, BsBookHalf } from 'react-icons/bs';
 import { FormattedMessage } from 'react-intl';
 
 import { Button, Input, Loader } from '@components';
@@ -20,11 +20,10 @@ import {
 
 interface LessonDetailsAfterProps {
   id: number;
-  ratingId: number;
 }
 export const LessonDetailsAfterTutor = (props: LessonDetailsAfterProps) => {
   const { data, isLoading } = useLesson(props.id);
-  const feedback = useFeedback(props.ratingId);
+  const feedback = useFeedback(props.id);
 
   const {
     register,
@@ -42,15 +41,16 @@ export const LessonDetailsAfterTutor = (props: LessonDetailsAfterProps) => {
     return <Loader />;
   }
 
-  // if (!(data?.finalStartTime && data?.finalEndTime))
-  //   return <div>this lesson time not yet arranged...</div>;
+  if (!(data?.finalStartTime && data?.finalEndTime))
+    return <div>this lesson time not yet arranged...</div>;
 
-  // const lessonStart = new Date(data?.finalStartTime);
-  // const lessonEnd = new Date(data?.finalEndTime);
-  // let diffHours = lessonEnd.getHours() - lessonStart.getHours();
-  // const diffMinutes = lessonEnd.getMinutes() - lessonStart.getMinutes();
-  // if (diffMinutes < 0) diffHours--;
-
+  const lessonStart = new Date(data?.finalStartTime);
+  const lessonEnd = new Date(data?.finalEndTime);
+  let diffHours = lessonEnd.getHours() - lessonStart.getHours();
+  const diffMinutes = lessonEnd.getMinutes() - lessonStart.getMinutes();
+  if (diffMinutes < 0) diffHours--;
+  console.log(data);
+  console.log(data.rating);
   return (
     <>
       <LessonDetailsText>
@@ -62,17 +62,23 @@ export const LessonDetailsAfterTutor = (props: LessonDetailsAfterProps) => {
         >
           <Column>
             <Row>
-              <BsPerson />
-              <CardText>
-                {/* {data?.tutor.firstName + '  ' + data?.tutor.lastName} */}
-              </CardText>
+              <BsBookHalf />
+              <CardText>{data?.subject.name}</CardText>
+              {' - '}
+              <CardText>{data?.subfield}</CardText>
             </Row>
             <Row>
               <AiOutlineClockCircle />
               <CardText>
-                {/* {`${lessonStart.getDate()}\/${lessonStart.getMonth()}\/${lessonStart.getFullYear()}`}
+                {`${lessonStart.getDate()}\/${lessonStart.getMonth()}\/${lessonStart.getFullYear()}`}
                 {',   '}
-                {`${lessonStart.getHours()}:${lessonStart.getMinutes()} - ${lessonEnd.getHours()}:${lessonEnd.getMinutes()}`} */}
+                {`${lessonStart.getHours()}:${lessonStart.getMinutes()} - ${lessonEnd.getHours()}:${lessonEnd.getMinutes()}`}
+              </CardText>
+            </Row>
+            <Row>
+              <BsPerson />
+              <CardText>
+                {data?.student.firstName + '  ' + data?.student.lastName}
               </CardText>
             </Row>
             <Row>
@@ -107,17 +113,27 @@ export const LessonDetailsAfterTutor = (props: LessonDetailsAfterProps) => {
             }}
           ></div>
           <Column style={{ justifyContent: 'center', alignItems: 'center' }}>
+            <Row>
+              <FormattedMessage id="lessonDetailsAfter.studentRating" />:{' '}
+              {data?.rating.studentRating}/5
+            </Row>
             <Title style={{ paddingLeft: '100px' }}>
               <FormattedMessage id="lessonDetailsAfter.review" />:
             </Title>
-            <TextBox {...register('tutorFeedback', { required: true })} />
-            <Row style={{ justifyContent: 'center' }}>
-              <Input
-                type="submit"
-                variant="authSubmit"
-                placeholderMsgId="lessonDetailsAfter.submitR"
-              />
-            </Row>
+            {data?.rating.tutorFeedback ? (
+              data?.rating.tutorFeedback
+            ) : (
+              <div>
+                <TextBox {...register('tutorFeedback', { required: true })} />
+                <Row style={{ justifyContent: 'center' }}>
+                  <Input
+                    type="submit"
+                    variant="authSubmit"
+                    placeholderMsgId="lessonDetailsAfter.submitReview"
+                  />
+                </Row>
+              </div>
+            )}
           </Column>
         </div>
       </LessonDetailsContainer>
