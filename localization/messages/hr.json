@@ -15,6 +15,9 @@
   "button.register": "Registriraj se",
   "button.login": "Prijavi se",
   "button.createResponse": "Odgovori na zahtjev",
+  "button.edit": "Uredi",
+  "button.createRequest": "Stvorite novi zahtjev",
+  "button.updateRequest": "Ažuriraj zahtjev",
 
   "confirmPassword": "Potvrdi lozinku",
 
@@ -107,10 +110,6 @@
   "educationLevel.high-school": "Srednja škola",
   "educationLevel.university": "Fakultet",
 
-  "button.createRequest": "Stvorite novi zahtjev",
-  "button.edit": "Uredi",
-  "button.updateRequest": "Ažuriraj zahtjev",
-
   "student.request.requests": "Moji zahtjevi",
   "tutor.request.requests": "Javni zahtjevi",
   "tutor.request.noRequests": "Nema zahtjeva.",
@@ -142,7 +141,7 @@
   "lessonDetailsAfter.pay": "PLATI",
   "lessonDetailsAfter.submit": "Ocijeni",
   "lessonDetailsAfter.review": "???",
-  "lessonDetailsAfter.submitR": "Pošalji",
+  "lessonDetailsAfter.submitReview": "Pošalji",
 
   "lessons.1st_group": "Danas",
   "lessons.2nd_group": "U sljedećih 7 dana",

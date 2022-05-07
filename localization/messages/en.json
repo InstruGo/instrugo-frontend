@@ -16,6 +16,7 @@
   "button.login": "Log In",
   "button.createResponse": "Create response",
   "button.edit": "Edit",
+  "button.createRequest": "Create new request",
   "button.updateRequest": "Update request",
 
   "confirmPassword": "Confirm password",
@@ -113,7 +114,6 @@
   "educationLevel.high-school": "High school",
   "educationLevel.university": "University",
 
-  "button.createRequest": "Create new request",
   "updateRequest.description": "Update your request",
   "newRequest.description": "New Request",
   "newRequestForm.grade": "Grade",
@@ -141,7 +141,7 @@
   "lessonDetailsAfter.pay": "PAY",
   "lessonDetailsAfter.submit": "Submit rating",
   "lessonDetailsAfter.review": "Review",
-  "lessonDetailsAfter.submitR": "Submit review",
+  "lessonDetailsAfter.submitReview": "Submit review",
 
   "lessons.1st_group": "Today",
   "lessons.2nd_group": "In the next 7 days",

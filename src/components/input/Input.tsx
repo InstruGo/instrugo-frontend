@@ -13,7 +13,6 @@ interface InputProps extends StitchesComponentProps {
   register?: any;
   errors?: any;
   placeholderMsgId?: string;
-  defaultValueMsgId?: string;
   isNumber?: boolean;
 }
 
@@ -22,7 +21,6 @@ export const Input = ({
   register,
   errors,
   placeholderMsgId,
-  defaultValueMsgId,
   isNumber,
   ...rest
 }: InputProps) => {
@@ -34,11 +32,6 @@ export const Input = ({
         placeholder={
           placeholderMsgId
             ? intl.formatMessage({ id: placeholderMsgId })
-            : undefined
-        }
-        defaultValue={
-          defaultValueMsgId
-            ? intl.formatMessage({ id: defaultValueMsgId })
             : undefined
         }
         value={

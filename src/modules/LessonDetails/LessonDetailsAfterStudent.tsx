@@ -130,7 +130,7 @@ export const LessonDetailsAfterStudent = (props: LessonDetailsAfterProps) => {
               <Input
                 type="submit"
                 variant="authSubmit"
-                placeholderMsgId="lessonDetailsAfter.submitR"
+                placeholderMsgId="lessonDetailsAfter.submitReview"
               />
             </Row>
           </Column>
