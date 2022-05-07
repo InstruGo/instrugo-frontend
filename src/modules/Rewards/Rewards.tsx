@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { AiFillGift } from 'react-icons/ai';
 import { GiRank3 } from 'react-icons/gi';
 import { FormattedMessage, useIntl } from 'react-intl';
@@ -64,7 +65,13 @@ export const Rewards = () => {
           style={{ fontWeight: 'bold', color: '#5e5341' }}
         >{`${intl.formatMessage({ id: 'rewards.rank' })} 3`}</div>
 
-        <GiRank3 size="60px" fill="#967c4f" />
+        <Image
+          src="/rewardslevel.png"
+          width="60px"
+          height="60px"
+          alt="rewardsLevelIcon"
+          style={{ marginTop: '5px' }}
+        />
       </div>
     </RewardsBody>
   );
