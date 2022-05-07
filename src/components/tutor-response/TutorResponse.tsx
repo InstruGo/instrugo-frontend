@@ -91,17 +91,6 @@ export const TutorResponse = ({
             <BsCheck2 />
           </Button>
         </ResponseItem>
-        <ResponseItem style={{ flexGrow: '1' }}>
-          <Button
-            style={{
-              backgroundColor: '#fff',
-              color: '#c93030',
-              boxShadow: '0px 0px 0px 0px',
-            }}
-          >
-            <ImCross />
-          </Button>
-        </ResponseItem>
         <Modal
           shouldShow={showLessonPaymentModal}
           closeAction={() => setLessonPaymentModal(false)}
