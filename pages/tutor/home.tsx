@@ -19,10 +19,12 @@ const TutorHomepage: NextPage = () => {
 
       <PageLayout>
         <TitledSection titleMsgId="tutorsHome.upcoming">
-          <Calendar pending />
+          <Calendar filter={{ status: 'pending' }} />
         </TitledSection>
 
-        <PublicRequestsContainer title={'tutorsHome.recommended'} />
+        <TitledSection titleMsgId="tutorsHome.recommended">
+          <PublicRequestsContainer />
+        </TitledSection>
       </PageLayout>
     </div>
   );

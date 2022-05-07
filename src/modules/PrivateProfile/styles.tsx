@@ -48,14 +48,20 @@ export const Stats = styled('div', {
 });
 
 export const Stat = styled('div', {
-  width: '70px',
+  width: '100px',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
+
   ':first-child': {
+    height: '40px',
+    display: 'flex',
+    alignItems: 'center',
+    textAlign: 'center',
     fontWeight: 'bold',
     color: '#10434E',
   },
+
   'div + div': {
     marginTop: '$2',
     display: 'flex',

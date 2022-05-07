@@ -38,8 +38,8 @@
   "user.edit": "Uredi svoj profil",
   "user.noRating": "Nema recenzija",
   "user.age": "Dob",
-  "user.lessonsLearned": "Instrukcija",
-  "user.lessonsGiven": "Instrukcija",
+  "user.lessonsLearned": "Dobivenih instrukcija",
+  "user.lessonsGiven": "Danih instrukcija",
   "user.elementary-school": "Osnovna škola",
   "user.high-school": "Srednja škola",
   "user.university": "Fakultet",
@@ -67,6 +67,7 @@
 
   "home.rewards": "Nagrade",
   "home.lessons": "Lekcije",
+  "calendar.title": "Tvoj raspored",
 
   "lessons.upcoming": "Nadolazeće",
   "lessons.requests": "Zahtjevi",
@@ -78,6 +79,7 @@
   "tutorsHome.recommended": "Preporučeno",
 
   "responsesPage.title": "Moji odgovori",
+  "responsesPage.noResponses": "Nema odgovora.",
 
   "filter": "Filtar",
   "filter.subjects": "Po predmetima",
@@ -98,6 +100,7 @@
   "meetingType.in-person": "Uživo",
   "meetingType.online": "Online",
 
+  "educationLevel.all": "Sve",
   "educationLevel.elementary-school": "Osnovna škola",
   "educationLevel.high-school": "Srednja škola",
   "educationLevel.university": "Fakultet",
@@ -108,6 +111,7 @@
 
   "student.request.requests": "Moji zahtjevi",
   "tutor.request.requests": "Javni zahtjevi",
+  "tutor.request.noRequests": "Nema zahtjeva.",
 
   "updateRequest.description": "Uredite svoj zahtjev",
 

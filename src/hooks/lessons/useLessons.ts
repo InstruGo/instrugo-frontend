@@ -13,8 +13,8 @@ export const useLessons = (filter: LessonFilter) => {
   const getLessons = async (filter: LessonFilter): Promise<Lesson[]> => {
     const response = await axios.get(`/lessons`, {
       params: {
-        ...filter,
         isLessonTutor: router.pathname.startsWith('/tutor') ? true : undefined,
+        ...filter,
       },
     });
 
@@ -26,6 +26,5 @@ export const useLessons = (filter: LessonFilter) => {
     onError: (error) => {
       console.log(error);
     },
-    staleTime: Infinity,
   });
 };
