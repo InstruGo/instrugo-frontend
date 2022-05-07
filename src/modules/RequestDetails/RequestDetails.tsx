@@ -2,7 +2,13 @@ import { useRouter } from 'next/router';
 
 import { FormattedMessage } from 'react-intl';
 
-import { TutorResponse, Button, Calendar, Loader } from '@components';
+import {
+  TutorResponse,
+  Button,
+  Calendar,
+  Loader,
+  TitledSection,
+} from '@components';
 import { useLesson } from '@hooks';
 import { TimeFrame } from '@types';
 
@@ -12,12 +18,11 @@ import {
   Row,
   Column,
   FieldDescription,
-  StyledHr,
-  ResponsesHeader,
-  Title,
   CalendarContainer,
   FieldTitle,
   EditText,
+  RequestDetailsWrapper,
+  ResponseChildren,
 } from './styles';
 
 interface RequestDetailsProps {
@@ -48,7 +53,7 @@ export const RequestDetails = (props: RequestDetailsProps) => {
   }
 
   return (
-    <>
+    <RequestDetailsWrapper>
       <RequestDetailsText>
         <FormattedMessage id="requestDetails.description" />
       </RequestDetailsText>
@@ -84,6 +89,7 @@ export const RequestDetails = (props: RequestDetailsProps) => {
               : {data?.grade}.
             </FieldDescription>
           </Column>
+
           <Column>
             <FieldDescription>
               <FieldTitle>
@@ -112,13 +118,7 @@ export const RequestDetails = (props: RequestDetailsProps) => {
             </FieldDescription>
           </Column>
 
-          <Column
-            style={{
-              justifyContent: 'center',
-              alignItems: 'flex-start',
-              maxWidth: '200px',
-            }}
-          >
+          <div style={{}}>
             <Button
               variant="primary"
               onClick={() =>
@@ -132,52 +132,49 @@ export const RequestDetails = (props: RequestDetailsProps) => {
                 <FormattedMessage id="button.edit" />
               </EditText>
             </Button>
-          </Column>
+          </div>
         </Row>
 
-        <Row>
-          <Column>
-            <FieldDescription>
-              <FieldTitle>
-                <FormattedMessage id="newRequestForm.availableDates" />:
-              </FieldTitle>
-            </FieldDescription>
-          </Column>
-          <Column />
-          <Column style={{ maxWidth: '100px' }} />
-        </Row>
+        <div
+          style={{
+            fontSize: '22px',
+            fontWeight: 'bold',
+            width: '100%',
+            marginTop: '40px',
+          }}
+        >
+          <FormattedMessage id="newRequestForm.availableDates" />:
+        </div>
 
         <CalendarContainer>
           <Calendar requestTimeframes={timeFrames} />
         </CalendarContainer>
 
-        <ResponsesHeader>
-          <Title>
-            <FormattedMessage id="requestDetails.tutorResponses" />
-          </Title>
-
-          <StyledHr />
-        </ResponsesHeader>
-
-        {data?.tutorResponses.map((response) => {
-          return (
-            <TutorResponse
-              key={response.id}
-              lessonId={data?.id}
-              index={response.id}
-              firstName={response.tutor.firstName}
-              lastName={response.tutor.lastName}
-              avgRating={
-                response.tutor.ratingsCount != 0
-                  ? parseInt(response.tutor.averageRating)
-                  : undefined
-              }
-              price={response.price}
-              timeFrame={response.tutorResponseTimeFrame}
-            />
-          );
-        })}
+        <div style={{ width: '100%', marginTop: '50px' }}>
+          <TitledSection titleMsgId="requestDetails.tutorResponses">
+            <ResponseChildren>
+              {data?.tutorResponses.map((response) => {
+                return (
+                  <TutorResponse
+                    key={response.id}
+                    lessonId={data?.id}
+                    index={response.id}
+                    firstName={response.tutor.firstName}
+                    lastName={response.tutor.lastName}
+                    avgRating={
+                      response.tutor.ratingsCount != 0
+                        ? parseInt(response.tutor.averageRating)
+                        : undefined
+                    }
+                    price={response.price}
+                    timeFrame={response.tutorResponseTimeFrame}
+                  />
+                );
+              })}
+            </ResponseChildren>
+          </TitledSection>
+        </div>
       </RequestDetailsContainer>
-    </>
+    </RequestDetailsWrapper>
   );
 };

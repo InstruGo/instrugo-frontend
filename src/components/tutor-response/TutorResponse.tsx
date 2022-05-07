@@ -43,62 +43,69 @@ export const TutorResponse = ({
   const [showLessonPaymentModal, setLessonPaymentModal] = React.useState(false);
 
   return (
-    <>
-      <ResponseContainer>
-        <ResponseItem style={{ flexGrow: '0' }}>
-          <CgProfile size={'32px'} />
-        </ResponseItem>
-        <ResponseItem style={{ flexGrow: '1' }}>
-          <ItemRow>{firstName + ' ' + lastName}</ItemRow>
-          {avgRating && (
-            <ItemRow>
-              {avgRating + '/5'}
-              {'  '}
-              <div {...{ style: { padding: '0px 5px' } }}>
-                <BsStarHalf />
-              </div>
-            </ItemRow>
-          )}
-        </ResponseItem>
-        <ResponseItem>
-          <FieldDescription>Price: {'    ' + price + ' kn/h'}</FieldDescription>
-        </ResponseItem>
-        <ResponseItem>
-          <FieldDescription>
-            <FormattedMessage id="newRequestForm.availableDates" />:{' '}
-          </FieldDescription>
-        </ResponseItem>
-        <ResponseItem style={{ justifyContent: 'flex-start' }}>
-          <FieldDescription style={{ justifyContent: 'left' }}>
-            <ItemRow>
-              {`${start.getDate()}\/${start.getMonth()}\/${start.getFullYear()}`}
-            </ItemRow>
-            <ItemRow>
-              {`${start.getHours()}:${start.getMinutes()} - ${end.getHours()}:${end.getMinutes()}`}
-            </ItemRow>
-          </FieldDescription>
-        </ResponseItem>
-        <ResponseItem style={{ flexGrow: '1' }}>
-          <Button
-            onClick={() => setLessonPaymentModal(true)}
-            style={{
-              backgroundColor: '#fff',
-              color: '#26a644',
-              boxShadow: '0px 0px 0px 0px',
-              fontSize: '26px',
-            }}
-          >
-            <BsCheck2 />
-          </Button>
-        </ResponseItem>
-        <Modal
-          shouldShow={showLessonPaymentModal}
-          closeAction={() => setLessonPaymentModal(false)}
+    <ResponseContainer>
+      <ResponseItem style={{ flexGrow: '0' }}>
+        <CgProfile size={'32px'} />
+      </ResponseItem>
+
+      <ResponseItem style={{ flexGrow: '1' }}>
+        <ItemRow>{firstName + ' ' + lastName}</ItemRow>
+        {avgRating && (
+          <ItemRow>
+            {avgRating + '/5'}
+            {'  '}
+            <div {...{ style: { padding: '0px 5px' } }}>
+              <BsStarHalf />
+            </div>
+          </ItemRow>
+        )}
+      </ResponseItem>
+
+      <ResponseItem>
+        <FieldDescription>Price: {'    ' + price + ' kn/h'}</FieldDescription>
+      </ResponseItem>
+
+      <ResponseItem>
+        <FieldDescription>
+          <FormattedMessage id="newRequestForm.availableDates" />:{' '}
+        </FieldDescription>
+      </ResponseItem>
+
+      <ResponseItem style={{ justifyContent: 'flex-start' }}>
+        <FieldDescription style={{ justifyContent: 'left' }}>
+          <ItemRow>
+            {`${start.getDate()}\/${start.getMonth()}\/${start.getFullYear()}`}
+          </ItemRow>
+
+          <ItemRow>
+            {`${start.getHours()}:${start.getMinutes()} - ${end.getHours()}:${end.getMinutes()}`}
+          </ItemRow>
+        </FieldDescription>
+      </ResponseItem>
+
+      <ResponseItem>
+        <Button
+          onClick={() => setLessonPaymentModal(true)}
+          style={{
+            backgroundColor: '#fff',
+            color: '#26a644',
+            boxShadow: '0px 0px 0px 0px',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            padding: '7px',
+          }}
         >
-          <LessonDetailsPayment id={lessonId} responseId={index} />
-        </Modal>
-      </ResponseContainer>
-      <StyledHr />
-    </>
+          <BsCheck2 size="25px" strokeWidth="1px" />
+        </Button>
+      </ResponseItem>
+
+      <Modal
+        shouldShow={showLessonPaymentModal}
+        closeAction={() => setLessonPaymentModal(false)}
+      >
+        <LessonDetailsPayment id={lessonId} responseId={index} />
+      </Modal>
+    </ResponseContainer>
   );
 };

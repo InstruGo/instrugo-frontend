@@ -57,8 +57,9 @@ export const LessonDetailsPayment = (props: LessonDetailsPaymentProps) => {
       <LessonDetailsText>
         <FormattedMessage id="lessonDetails.payment" />
       </LessonDetailsText>
+
       <div
-        style={{ display: 'flex', justifyContent: 'center', height: '100%' }}
+        style={{ display: 'flex', justifyContent: 'center', marginTop: '50px' }}
       >
         <Column>
           <Row>

@@ -2,7 +2,7 @@ import { styled } from 'styles/stitches.config';
 
 export const ModalBackground = styled('div', {
   position: 'fixed',
-  zIndex: 1,
+  zIndex: 1000,
   left: 0,
   top: 0,
   width: '100%',
