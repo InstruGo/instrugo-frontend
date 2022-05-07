@@ -73,7 +73,7 @@ export const EditProfileForm = ({ user, setEditing }: EditProfileFormProps) => {
         </div>
         <Input
           name="firstName"
-          placeholderMsgId={intl.formatMessage({ id: 'user.firstName' })}
+          placeholderMsgId="user.firstName"
           defaultValue={user?.firstName}
           register={register}
           errors={errors.firstName}
@@ -86,7 +86,7 @@ export const EditProfileForm = ({ user, setEditing }: EditProfileFormProps) => {
         </div>
         <Input
           name="lastName"
-          placeholderMsgId={intl.formatMessage({ id: 'user.lastName' })}
+          placeholderMsgId="user.lastName"
           defaultValue={user?.lastName}
           register={register}
           errors={errors.lastName}
@@ -99,7 +99,7 @@ export const EditProfileForm = ({ user, setEditing }: EditProfileFormProps) => {
         </div>
         <Input
           name="phone"
-          placeholderMsgId={'user.phone'}
+          placeholderMsgId="user.phone"
           defaultValue={user?.phone}
           register={register}
           errors={errors.phone}
@@ -112,7 +112,7 @@ export const EditProfileForm = ({ user, setEditing }: EditProfileFormProps) => {
         </div>
         <Input
           name="birthDate"
-          placeholderMsgId={'user.birthDate'}
+          placeholderMsgId="user.birthDate"
           defaultValue={birthDate?.toLocaleDateString('en-CA')}
           type="date"
           register={register}
@@ -124,7 +124,7 @@ export const EditProfileForm = ({ user, setEditing }: EditProfileFormProps) => {
         <FormattedMessage id="user.description" />:
         <Description
           name="description"
-          placeholder={intl.formatMessage({ id: 'user.description' })}
+          placeholder="user.description"
           defaultValue={user?.description}
         />
       </div>
@@ -154,7 +154,7 @@ export const EditProfileForm = ({ user, setEditing }: EditProfileFormProps) => {
         <Input
           name="grade"
           type="number"
-          placeholderMsgId={intl.formatMessage({ id: 'user.grade' })}
+          placeholderMsgId="user.grade"
           defaultValue={user?.grade}
           register={register}
           errors={errors.grade}

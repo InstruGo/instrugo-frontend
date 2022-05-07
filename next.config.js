@@ -12,6 +12,8 @@ const nextConfig = {
       process.env.NODE_ENV === 'development'
         ? 'http://localhost:8000/api'
         : 'https://api.instrugo.frle.net/api',
+    googleClientId:
+      '825083933624-10nliucjethpcs569oachpserk391pfu.apps.googleusercontent.com',
   },
 };
 
