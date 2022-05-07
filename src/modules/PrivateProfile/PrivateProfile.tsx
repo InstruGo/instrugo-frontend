@@ -12,8 +12,8 @@ import {
   Loader,
 } from '@components';
 import { useLessons, useUserContext } from '@hooks';
-
 import { UserRole } from '@types';
+
 import { EditProfileForm } from './EditProfileForm';
 import {
   AboutMe,

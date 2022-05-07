@@ -18,6 +18,7 @@ import {
   EditFormContainer,
   FormTitle,
   InputContainer,
+  selectStyles,
 } from './styles';
 
 interface EditProfileFormProps {
@@ -161,11 +162,12 @@ export const EditProfileForm = ({ user, setEditing }: EditProfileFormProps) => {
         />
       </InputContainer>
 
-      <InputContainer>
-        <div>
-          <FormattedMessage id="user.subjects" />:
-        </div>
-        {user?.role !== UserRole.STUDENT && (
+      {user?.role !== UserRole.STUDENT && (
+        <InputContainer>
+          <div>
+            <FormattedMessage id="user.subjects" />:
+          </div>
+
           <Controller
             control={control}
             defaultValue={usersSubjectIds}
@@ -183,8 +185,8 @@ export const EditProfileForm = ({ user, setEditing }: EditProfileFormProps) => {
               />
             )}
           ></Controller>
-        )}
-      </InputContainer>
+        </InputContainer>
+      )}
 
       <Input
         type="submit"
@@ -193,11 +195,4 @@ export const EditProfileForm = ({ user, setEditing }: EditProfileFormProps) => {
       />
     </EditFormContainer>
   );
-};
-
-const selectStyles = {
-  container: (provided: any) => ({
-    ...provided,
-    width: 500,
-  }),
 };

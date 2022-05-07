@@ -2,13 +2,13 @@ import { useRouter } from 'next/router';
 
 import { useQuery } from 'react-query';
 
-import { useAxios } from '@hooks';
+import { useAxios, useUserContext } from '@hooks';
 import { Lesson, LessonFilter } from '@types';
 
 export const useLessons = (filter: LessonFilter) => {
   const axios = useAxios();
-
   const router = useRouter();
+  const { isLoggedIn } = useUserContext();
 
   const getLessons = async (filter: LessonFilter): Promise<Lesson[]> => {
     const response = await axios.get(`/lessons`, {
@@ -26,5 +26,6 @@ export const useLessons = (filter: LessonFilter) => {
     onError: (error) => {
       console.log(error);
     },
+    enabled: isLoggedIn,
   });
 };

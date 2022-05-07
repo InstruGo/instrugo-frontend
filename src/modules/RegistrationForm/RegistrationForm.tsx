@@ -1,30 +1,45 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
-import { FormattedMessage } from 'react-intl';
+import { Controller, useForm } from 'react-hook-form';
+import { FormattedMessage, useIntl } from 'react-intl';
+import Select from 'react-select';
 
-import { CustomLink, Input } from '@components';
+import { CustomLink, Input, Loader } from '@components';
+import { useRegister, useSubjects } from '@hooks';
+import { SubjectSelectOption } from '@types';
 
-import { useRegister } from '../../hooks/auth/useRegister';
 import {
   RegisterFormInputs,
   registerFormSchema,
 } from '../../types/register.type';
+import { SubjectsLabel, selectStyles } from './styles';
 import {
   AlreadyHaveAccount,
   LabeledCheckbox,
   RegistrationFormContainer,
+  SubjectsInput,
 } from './styles';
 
 export const RegistrationForm = () => {
+  const intl = useIntl();
   const registerUser = useRegister();
+  const { data, isLoading } = useSubjects();
+
+  const subjectSelectOptions = data?.map((subject) => ({
+    value: subject.id,
+    label: intl.formatMessage({ id: `subjects.${subject.name}` }),
+  }));
 
   const {
     register,
+    watch,
     handleSubmit,
+    control,
     formState: { errors },
   } = useForm<RegisterFormInputs>({
     resolver: zodResolver(registerFormSchema),
   });
+
+  const watchIsTutor = watch('isTutor');
 
   const onSubmit = (data: RegisterFormInputs) => {
     if (data.phone === '') {
@@ -33,6 +48,10 @@ export const RegistrationForm = () => {
 
     registerUser.mutate(data);
   };
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <>
@@ -81,6 +100,39 @@ export const RegistrationForm = () => {
           errors={errors.phone}
           placeholderMsgId="user.phone"
         />
+
+        <LabeledCheckbox>
+          <label style={{ marginLeft: '10px' }}>
+            <FormattedMessage id={'registration.tutor'} />
+          </label>
+          <input type="checkbox" {...register('isTutor')} />
+        </LabeledCheckbox>
+
+        {watchIsTutor && (
+          <SubjectsInput>
+            <SubjectsLabel>
+              <FormattedMessage id="registration.subjects" />:
+            </SubjectsLabel>
+
+            <Controller
+              control={control}
+              defaultValue={[]}
+              name="subjectIds"
+              render={({ field }) => (
+                <Select
+                  isMulti
+                  defaultValue={[] as SubjectSelectOption[]}
+                  ref={field.ref}
+                  options={subjectSelectOptions}
+                  styles={selectStyles}
+                  onChange={(values) =>
+                    field.onChange(values.map((value) => value.value))
+                  }
+                />
+              )}
+            ></Controller>
+          </SubjectsInput>
+        )}
 
         <LabeledCheckbox>
           <label style={{ marginLeft: '10px' }}>

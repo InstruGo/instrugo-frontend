@@ -32,7 +32,7 @@ export const withAuth = (Component: NextPage) => {
         queryClient.invalidateQueries('profile');
       }
 
-      if (!isLoggedIn) {
+      if (!isLoggedIn && !isError) {
         queryClient.clear();
         router.push('/login');
       }
