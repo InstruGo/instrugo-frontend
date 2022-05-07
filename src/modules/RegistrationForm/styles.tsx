@@ -16,18 +16,6 @@ export const RegistrationFormContainer = styled('form', {
   },
 });
 
-export const SubjectsInput = styled('div', {
-  py: '$2',
-  'div + div': {
-    marginTop: 0,
-  },
-});
-
-export const SubjectsLabel = styled('div', {
-  py: '$2',
-  mb: '$2',
-});
-
 export const LabeledCheckbox = styled('div', {
   display: 'flex',
   flexDirection: 'row-reverse',
@@ -56,3 +44,22 @@ export const AlreadyHaveAccount = styled('div', {
   'a:hover': { textDecoration: 'underline' },
   userSelect: 'none',
 });
+
+export const SubjectsInput = styled('div', {
+  py: '$2',
+  'div + div': {
+    marginTop: 0,
+  },
+});
+
+export const SubjectsLabel = styled('div', {
+  py: '$2',
+  mb: '$2',
+});
+
+export const selectStyles = {
+  container: (provided: any) => ({
+    ...provided,
+    width: 400,
+  }),
+};

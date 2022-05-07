@@ -170,3 +170,10 @@ export const Description = styled('textarea', {
     outline: 'none',
   },
 });
+
+export const selectStyles = {
+  container: (provided: any) => ({
+    ...provided,
+    width: 500,
+  }),
+};

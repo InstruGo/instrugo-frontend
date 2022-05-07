@@ -11,8 +11,7 @@ import {
   RegisterFormInputs,
   registerFormSchema,
 } from '../../types/register.type';
-import { InputContainer } from '../PrivateProfile/styles';
-import { SubjectsLabel } from './styles';
+import { SubjectsLabel, selectStyles } from './styles';
 import {
   AlreadyHaveAccount,
   LabeledCheckbox,
@@ -157,15 +156,4 @@ export const RegistrationForm = () => {
       </RegistrationFormContainer>
     </>
   );
-};
-
-const selectStyles = {
-  container: (provided: any) => ({
-    ...provided,
-    width: 400,
-  }),
-  menu: (provided: any) => ({
-    ...provided,
-    padding: 0,
-  }),
 };

@@ -18,6 +18,7 @@ import {
   EditFormContainer,
   FormTitle,
   InputContainer,
+  selectStyles,
 } from './styles';
 
 interface EditProfileFormProps {
@@ -194,11 +195,4 @@ export const EditProfileForm = ({ user, setEditing }: EditProfileFormProps) => {
       />
     </EditFormContainer>
   );
-};
-
-const selectStyles = {
-  container: (provided: any) => ({
-    ...provided,
-    width: 500,
-  }),
 };
