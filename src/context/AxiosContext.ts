@@ -4,7 +4,7 @@ import React, { createContext, useMemo } from 'react';
 
 import Axios, { AxiosInstance } from 'axios';
 
-import { useLogout } from '@hooks';
+import { useLogout, useUserContext } from '@hooks';
 
 export const AxiosContext = createContext<AxiosInstance>(
   Axios.create({
@@ -18,6 +18,7 @@ export const AxiosProvider = ({
 }: React.PropsWithChildren<unknown>) => {
   const router = useRouter();
   const logout = useLogout();
+  const { user } = useUserContext();
   const { publicRuntimeConfig } = getConfig();
 
   const auth = useMemo(() => {
@@ -31,14 +32,18 @@ export const AxiosProvider = ({
         return response;
       },
       (error) => {
-        if (error.response.status === 401 && router.pathname !== '/login') {
+        if (
+          error.response.status === 401 &&
+          router.pathname !== '/login' &&
+          user
+        ) {
           logout.mutate();
         }
       }
     );
 
     return axios;
-  }, [logout, publicRuntimeConfig.apiUrl, router.pathname]);
+  }, [logout, user, publicRuntimeConfig.apiUrl, router.pathname]);
 
   return React.createElement(AxiosContext.Provider, { value: auth }, children);
 };
