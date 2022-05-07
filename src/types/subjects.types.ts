@@ -3,3 +3,8 @@ export type Subject = {
   name: string;
   color: string;
 };
+
+export type SubjectSelectOption = {
+  value: number;
+  label: string;
+};

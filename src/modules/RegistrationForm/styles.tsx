@@ -1,4 +1,5 @@
 import { CSS } from '@stitches/react';
+import { Controller } from 'react-hook-form';
 
 import { styled } from 'styles/stitches.config';
 
@@ -43,3 +44,22 @@ export const AlreadyHaveAccount = styled('div', {
   'a:hover': { textDecoration: 'underline' },
   userSelect: 'none',
 });
+
+export const SubjectsInput = styled('div', {
+  py: '$2',
+  'div + div': {
+    marginTop: 0,
+  },
+});
+
+export const SubjectsLabel = styled('div', {
+  py: '$2',
+  mb: '$2',
+});
+
+export const selectStyles = {
+  container: (provided: any) => ({
+    ...provided,
+    width: 400,
+  }),
+};

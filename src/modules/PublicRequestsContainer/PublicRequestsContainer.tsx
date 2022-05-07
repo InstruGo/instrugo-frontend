@@ -2,53 +2,48 @@ import { FormattedMessage } from 'react-intl';
 
 import { Loader } from '@components';
 import { usePublicRequests, useUserContext } from '@hooks';
-import { LessonCard } from '@modules';
+import { LessonCard } from '@modules/LessonCard/LessonCard';
+import { LessonFilter } from '@types';
+import { styled } from 'styles/stitches.config';
 
-import {
-  RequestsBody,
-  LessonsHeader,
-  StyledContainer,
-  StyledHr,
-  Title,
-} from './styles';
-
-interface publicRequestProps {
-  title: string;
+interface PublicRequestsContainerProps {
+  filter?: LessonFilter;
 }
 
-export const PublicRequestsContainer = ({ title }: publicRequestProps) => {
+export const PublicRequestsContainer = ({
+  filter,
+}: PublicRequestsContainerProps) => {
   const { user } = useUserContext();
-  const subjectIds: number[] = [];
 
-  if (user) {
-    user.subjects.map((subject) => subjectIds.push(subject.id));
-  }
+  const subjectIds: number[] | undefined = user?.subjects.map(
+    (subject) => subject.id
+  );
+  const defaultSubjectsFilter =
+    subjectIds && subjectIds.length !== 0 ? { subjectIds } : {};
 
-  const filter = subjectIds !== [] ? { subjectIds: subjectIds } : {};
-  const { data, isLoading } = usePublicRequests(filter);
+  const { data: requests, isLoading } = usePublicRequests({
+    ...defaultSubjectsFilter,
+    ...filter,
+  });
 
-  if (isLoading) {
-    return <Loader />;
-  }
-
-  if (!data) {
-    return <div>No public requests...</div>;
-  }
+  if (isLoading || !requests) return <Loader />;
 
   return (
     <StyledContainer>
-      <LessonsHeader>
-        <Title>
-          <FormattedMessage id={title} />
-        </Title>
-        <StyledHr />
-      </LessonsHeader>
-
-      <RequestsBody>
-        {data.map((lesson) => {
-          return <LessonCard key={lesson.id} lesson={lesson} />;
-        })}
-      </RequestsBody>
+      {requests.length !== 0 ? (
+        requests.map((request) => {
+          return <LessonCard key={request.id} lesson={request} />;
+        })
+      ) : (
+        <FormattedMessage id="tutor.request.noRequests" />
+      )}
     </StyledContainer>
   );
 };
+
+const StyledContainer = styled('div', {
+  display: 'flex',
+  flexWrap: 'wrap',
+  gap: '$5',
+  marginTop: '$4',
+});

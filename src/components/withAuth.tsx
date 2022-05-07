@@ -28,16 +28,11 @@ export const withAuth = (Component: NextPage) => {
     };
 
     useEffect(() => {
-      queryClient.invalidateQueries('lessons');
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
-    useEffect(() => {
       if (isError) {
         queryClient.invalidateQueries('profile');
       }
 
-      if (!isLoggedIn) {
+      if (!isLoggedIn && !isError) {
         queryClient.clear();
         router.push('/login');
       }

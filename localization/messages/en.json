@@ -20,6 +20,8 @@
 
   "confirmPassword": "Confirm password",
 
+  "registration.tutor": "I want to be a tutor",
+  "registration.subjects": "Choose subjects you want to teach",
   "registration.terms": "Agree to Terms and Conditions",
   "registration.description": "Register an account and join the community",
   "registration.alreadyHaveAnAccount": "Already have an account?",
@@ -40,8 +42,8 @@
   "user.edit": "Edit your profile",
   "user.noRating": "No ratings",
   "user.age": "Age",
-  "user.lessonsLearned": "Lessons",
-  "user.lessonsGiven": "Lessons",
+  "user.lessonsLearned": "Lessons learned",
+  "user.lessonsGiven": "Lessons given",
   "user.elementary-school": "Elementary school",
   "user.high-school": "High school",
   "user.university": "University",
@@ -58,6 +60,7 @@
 
   "student.request.requests": "My requests",
   "tutor.request.requests": "Public requests",
+  "tutor.request.noRequests": "No requests.",
 
   "tutor.subjectsTitle": "Subjects I'm good at",
 
@@ -74,11 +77,13 @@
 
   "home.rewards": "Rewards",
   "home.lessons": "Lessons",
+  "calendar.title": "Your schedule",
 
   "tutorsHome.upcoming": "Upcoming lessons",
   "tutorsHome.recommended": "Recommended requests",
 
   "responsesPage.title": "My responses",
+  "responsesPage.noResponses": "No responses.",
 
   "lessons.upcoming": "Upcoming",
   "lessons.requests": "Requests",
@@ -103,6 +108,7 @@
   "meetingType.in-person": "In person",
   "meetingType.online": "Online",
 
+  "educationLevel.all": "All",
   "educationLevel.elementary-school": "Elementary school",
   "educationLevel.high-school": "High school",
   "educationLevel.university": "University",
@@ -152,7 +158,7 @@
   "lessons.titles.price": "Price",
   "lessons.titles.location": "Location",
   "lessons.titles.meetingType": "Meeting Type",
-  "lessons.titles.educationLevel": "Education lvl",
+  "lessons.titles.educationLevel": "Education level",
   "lessons.titles.grade": "Grade",
   "lessons.titles.rating": "Rating",
 

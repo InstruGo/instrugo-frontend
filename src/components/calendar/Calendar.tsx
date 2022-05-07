@@ -9,18 +9,19 @@ import {
   ViewSwitcher,
   DateNavigator,
   Resources,
+  TodayButton,
 } from '@devexpress/dx-react-scheduler-material-ui';
 import Paper from '@mui/material/Paper';
 
 import { Loader } from '@components';
 import { useLessons } from '@hooks';
-import { TimeFrame } from '@types';
+import { LessonFilter, TimeFrame } from '@types';
 
-type TimeFrames = { timeFrame: TimeFrame; color: string; title: string }[];
+type TimeFrameData = { timeFrame: TimeFrame; color: string; title: string };
 
 interface CalendarProps {
-  pending?: boolean;
-  requestTimeframes?: TimeFrames;
+  filter?: LessonFilter;
+  requestTimeframes?: TimeFrameData[];
 }
 
 /**
@@ -30,43 +31,45 @@ interface CalendarProps {
  * @param param0
  * @returns
  */
-export const Calendar = ({ pending, requestTimeframes }: CalendarProps) => {
-  const { data: lessons, isLoading } = useLessons({ status: 'pending' });
+export const Calendar = ({ filter, requestTimeframes }: CalendarProps) => {
+  const { data: lessons, isLoading } = useLessons({ ...filter });
 
-  const pendingTimeframes: TimeFrames | undefined = lessons?.map((lesson) => {
-    return {
-      timeFrame: {
-        id: 0,
-        startTime: lesson.finalStartTime,
-        endTime: lesson.finalEndTime,
-      } as TimeFrame,
-      color: lesson.subject.color,
-      title: lesson.subject.name,
-    };
-  });
+  const pendingTimeframes: TimeFrameData[] | undefined = lessons?.map(
+    (lesson) => {
+      return {
+        timeFrame: {
+          id: 0,
+          startTime: lesson.finalStartTime,
+          endTime: lesson.finalEndTime,
+        } as TimeFrame,
+        color: lesson.subject.color,
+        title: lesson.subject.name,
+      };
+    }
+  );
 
   const schedulerData: any = [];
   const instances: any = [];
 
-  const timeframes = pending ? pendingTimeframes : requestTimeframes;
+  const timeframes = filter ? pendingTimeframes : requestTimeframes;
 
-  (timeframes || []).map(
-    (timeFrame: { timeFrame: TimeFrame; color: string; title: string }) => {
-      const start = new Date(timeFrame.timeFrame.startTime);
-      const end = new Date(timeFrame.timeFrame.endTime);
-      schedulerData.push({
-        startDate: start.toString(),
-        endDate: end.toString(),
-        title: timeFrame.title,
-        type: timeFrame.title,
-      });
-      instances.push({
-        id: timeFrame.title,
-        text: timeFrame.title,
-        color: timeFrame.color,
-      });
-    }
-  );
+  (timeframes || []).map((timeFrame: TimeFrameData) => {
+    const start = new Date(timeFrame.timeFrame.startTime);
+    const end = new Date(timeFrame.timeFrame.endTime);
+
+    schedulerData.push({
+      startDate: start.toString(),
+      endDate: end.toString(),
+      title: timeFrame.title,
+      type: timeFrame.title,
+    });
+
+    instances.push({
+      id: timeFrame.title,
+      text: timeFrame.title,
+      color: timeFrame.color,
+    });
+  });
 
   const resources = [
     {
@@ -95,12 +98,12 @@ export const Calendar = ({ pending, requestTimeframes }: CalendarProps) => {
         <DayView startDayHour={6} endDayHour={23} cellDuration={120} />
         <WeekView startDayHour={6} endDayHour={23} cellDuration={120} />
         <MonthView />
-        <Toolbar />
-        <div style={{ color: '#fffff' }}>
-          <DateNavigator />
-        </div>
 
+        <Toolbar />
+        <DateNavigator />
+        <TodayButton />
         <ViewSwitcher />
+
         <Appointments />
         <Resources data={resources} />
       </Scheduler>
