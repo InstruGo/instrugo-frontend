@@ -156,7 +156,7 @@ export const LessonCard = ({ lesson, response }: CardProps) => {
 
               <CardItem>
                 <AiOutlineDollar />
-                <CardText>{lesson.budget + ' kn'}</CardText>
+                <CardText>{response.price + ' kn'}</CardText>
               </CardItem>
             </>
           )}

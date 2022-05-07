@@ -31,7 +31,7 @@ export const LessonsTable = ({ filter }: LessonsTableProps) => {
     return <Loader />;
   }
 
-  if (!lessons) {
+  if (!lessons || lessons.length === 0) {
     return <div>No completed lessons...</div>;
   }
 
@@ -109,11 +109,9 @@ export const LessonsTable = ({ filter }: LessonsTableProps) => {
             );
           })
         ) : (
-          <TableItem>
-            <TableData>
-              <FormattedMessage id="lessons.noLessons" />
-            </TableData>
-          </TableItem>
+          <div>
+            <FormattedMessage id="lessons.noLessons" />
+          </div>
         )}
       </TableBody>
     </TableStyle>
