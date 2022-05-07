@@ -24,8 +24,8 @@ interface RequestDetailsProps {
 }
 
 export const PublicRequestDetails = ({ id }: RequestDetailsProps) => {
-  const { data, isLoading } = useLesson(id);
   const router = useRouter();
+  const { data, isLoading } = useLesson(id);
 
   if (isLoading || !data) {
     return <Loader />;

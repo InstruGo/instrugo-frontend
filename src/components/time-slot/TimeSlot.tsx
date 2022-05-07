@@ -21,11 +21,13 @@ interface TimeSlotProps {
   onDestroy: (index: number) => void;
   isSingle: boolean;
 }
+
 export const TimeSlot = (props: TimeSlotProps) => {
   const [date, setDate] = useState<Date>(props.date);
   const [startTime, setStartTime] = useState<Date>(props.startTime);
   const [endTime, setEndTime] = useState<Date>(props.endTime);
   const [destroyed, setDestroyed] = useState(false);
+
   return destroyed ? null : (
     <LocalizationProvider dateAdapter={DateAdapterFns}>
       <FormRow>

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
@@ -7,12 +7,12 @@ import { FormattedMessage } from 'react-intl';
 import { Input } from '@components';
 import { TimeSlot } from '@components';
 import { useNewTutorResponse } from '@hooks';
-
 import {
   NewTutorResponseFormInputs,
   newTutorResponseFormSchema,
   TimeFrame,
 } from '@types';
+
 import {
   ResponseFormContainer,
   InputDescription,
@@ -25,16 +25,19 @@ interface NewResponseProps {
   lessonId: number;
   lessonTimeFrames: TimeFrame[];
 }
+
 interface SimpleTimeFrame {
   startTime: string;
   endTime: string;
 }
+
 function contains(lessonTimeFrame: TimeFrame, another: SimpleTimeFrame) {
   return (
     new Date(another.startTime) >= new Date(lessonTimeFrame.startTime) &&
     new Date(another.endTime) <= new Date(lessonTimeFrame.endTime)
   );
 }
+
 function containsTimeFrame(
   lessonTimeFrames: TimeFrame[],
   timeFrame: SimpleTimeFrame
@@ -47,6 +50,7 @@ function containsTimeFrame(
 
   return false;
 }
+
 export const NewTutorResponseForm = ({
   onFinish,
   lessonId,
@@ -148,6 +152,7 @@ export const NewTutorResponseForm = ({
           <InputDescription>
             <FormattedMessage id="newRequestForm.availableDates" />:
           </InputDescription>
+
           <TimeSlot
             date={timeSlot.date}
             startTime={timeSlot.startTime}
@@ -162,6 +167,7 @@ export const NewTutorResponseForm = ({
               <FormattedMessage id="newResponseForm.timeError" />
             </p>
           )}
+
           <InputDescription>
             <FormattedMessage id="newResponseForm.price" />: (kn/h)
           </InputDescription>
