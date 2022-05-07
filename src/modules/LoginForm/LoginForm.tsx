@@ -1,17 +1,23 @@
+import getConfig from 'next/config';
 import Link from 'next/link';
 import React from 'react';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import GoogleLogin, {
+  GoogleLoginResponse,
+  GoogleLoginResponseOffline,
+} from 'react-google-login';
 import { useForm } from 'react-hook-form';
 import { IoCheckmarkCircle } from 'react-icons/io5';
 import { FormattedMessage } from 'react-intl';
 
 import { CustomLink, Input, LoaderIcon } from '@components';
-import { useLogin } from '@hooks';
+import { useGoogleLogin, useLogin } from '@hooks';
 import { LoginFormInputs, loginFormSchema } from '@types';
 
 import {
   ForgotPassContainer,
+  LoginActionsBox,
   LoaderContainer,
   LoginFormContainer,
   NeedAnAccount,
@@ -19,6 +25,8 @@ import {
 
 export const LoginForm = () => {
   const loginUser = useLogin();
+  const googleLogin = useGoogleLogin();
+  const { publicRuntimeConfig } = getConfig();
 
   const {
     register,
@@ -30,6 +38,14 @@ export const LoginForm = () => {
 
   const onSubmit = (data: LoginFormInputs) => {
     loginUser.mutate(data);
+  };
+
+  const onGoogleResponse = (
+    response: GoogleLoginResponse | GoogleLoginResponseOffline
+  ) => {
+    if ('accessToken' in response) {
+      googleLogin.mutate(response.accessToken);
+    }
   };
 
   return (
@@ -58,11 +74,20 @@ export const LoginForm = () => {
         </Link>
       </ForgotPassContainer>
 
-      <Input
-        type="submit"
-        variant="authSubmit"
-        placeholderMsgId="button.login"
-      />
+      <LoginActionsBox>
+        <Input
+          type="submit"
+          variant="authSubmit"
+          placeholderMsgId="button.login"
+          css={{ margin: 0 }}
+        />
+
+        <GoogleLogin
+          clientId={publicRuntimeConfig.googleClientId}
+          buttonText="Login"
+          onSuccess={onGoogleResponse}
+        />
+      </LoginActionsBox>
 
       <NeedAnAccount>
         <FormattedMessage id="login.needAnAccount" />

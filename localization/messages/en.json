@@ -16,6 +16,7 @@
   "button.login": "Log In",
   "button.createResponse": "Create response",
   "button.edit": "Edit",
+  "button.createRequest": "Create new request",
   "button.updateRequest": "Update request",
 
   "confirmPassword": "Confirm password",
@@ -49,6 +50,9 @@
   "user.university": "University",
   "user.grade": "Grade",
   "user.subjects": "Subjects",
+
+  "rewards.description": "5 more lessons to get 30% discount on your next lesson.",
+  "rewards.rank": "Level",
 
   "card.subject": "Subject",
   "card.dateAndTime": "Date And Time",
@@ -113,6 +117,9 @@
   "educationLevel.high-school": "High school",
   "educationLevel.university": "University",
 
+  "filter.budgetFrom": "From",
+  "filter.budgetTo": "To",
+
   "button.createRequest": "Create new request",
   "updateRequest.description": "Update your request",
   "newRequest.description": "New Request",
@@ -142,7 +149,7 @@
   "lessonDetailsAfter.pay": "PAY",
   "lessonDetailsAfter.submit": "Submit rating",
   "lessonDetailsAfter.review": "Review",
-  "lessonDetailsAfter.submitR": "Submit review",
+  "lessonDetailsAfter.submitReview": "Submit review",
   "lessonDetailsAfter.studentRating": "Student's rating",
   "lessonDetailsAfter.feedback": "Feedback",
 

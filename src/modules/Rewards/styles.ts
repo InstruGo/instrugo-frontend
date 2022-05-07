@@ -2,16 +2,24 @@ import { styled } from 'styles/stitches.config';
 
 export const RewardsBody = styled('div', {
   display: 'flex',
-  flexDirection: 'column',
+  justifyContent: 'center',
   alignItems: 'center',
+});
+
+export const RewardsDescription = styled('div', {
+  fontWeight: 'bold',
+  display: 'flex',
+  alignItems: 'center',
+  marginTop: '$3',
 });
 
 export const ProgressBarContainer = styled('div', {
   display: 'flex',
-  width: '100%',
-  marginTop: '20px',
+  width: '400px',
+  marginLeft: '$6',
+
   '@bp1': {
-    width: '70%',
+    width: '400px',
   },
   alignItems: 'center',
   '& progress::-webkit-progress-bar': {
@@ -31,11 +39,4 @@ export const ProgressBarContainer = styled('div', {
   '& label': {
     fontWeight: 'bold',
   },
-});
-
-export const RewardsDescription = styled('div', {
-  fontWeight: 'bold',
-  display: 'flex',
-  alignItems: 'center',
-  marginTop: '20px',
 });

@@ -5,7 +5,7 @@ import { useLessonFilter } from '@hooks';
 import { useAvailableFilterOptions } from '@modules/LessonsWithFilter/useAvailableFilterOptions';
 import { PublicRequestsContainer } from '@modules/PublicRequestsContainer/PublicRequestsContainer';
 
-import { FilterGroup, FilterMenuContainer } from './styles';
+import { BudgetItem, FilterGroup, FilterMenuContainer } from './styles';
 
 export const PublicRequestsWithFilter = () => {
   // This filter stores the current filter state and provides a setter
@@ -47,6 +47,78 @@ export const PublicRequestsWithFilter = () => {
               setFilter('educationLevel', value)
             }
           />
+        </FilterGroup>
+
+        <FilterGroup>
+          <div>
+            <FormattedMessage id="newRequestForm.budget" />:
+          </div>
+
+          <div>
+            <BudgetItem>
+              <div>
+                <FormattedMessage id="filter.budgetFrom" />:
+              </div>
+              <div>
+                <input
+                  type="number"
+                  style={{ width: '70px' }}
+                  onChange={(e) => setFilter('minBudget', e.target.value)}
+                />{' '}
+                kn/h
+              </div>
+            </BudgetItem>
+
+            <BudgetItem style={{ marginTop: '5px' }}>
+              <div>
+                <FormattedMessage id="filter.budgetTo" />:
+              </div>
+              <div>
+                <input
+                  type="number"
+                  style={{ width: '70px' }}
+                  onChange={(e) => setFilter('maxBudget', e.target.value)}
+                />{' '}
+                kn/h
+              </div>
+            </BudgetItem>
+          </div>
+        </FilterGroup>
+
+        <FilterGroup>
+          <div>
+            <FormattedMessage id="newRequestForm.duration" />:
+          </div>
+
+          <div>
+            <BudgetItem>
+              <div>
+                <FormattedMessage id="filter.budgetFrom" />:
+              </div>
+              <div>
+                <input
+                  type="number"
+                  style={{ width: '70px' }}
+                  onChange={(e) => setFilter('minDuration', e.target.value)}
+                />{' '}
+                min
+              </div>
+            </BudgetItem>
+
+            <BudgetItem style={{ marginTop: '5px' }}>
+              <div>
+                <FormattedMessage id="filter.budgetTo" />:
+              </div>
+              <div>
+                <input
+                  type="number"
+                  style={{ width: '70px' }}
+                  onChange={(e) => setFilter('maxDuration', e.target.value)}
+                />{' '}
+                min
+              </div>
+            </BudgetItem>
+          </div>
         </FilterGroup>
       </FilterMenuContainer>
 

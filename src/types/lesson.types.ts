@@ -49,11 +49,13 @@ export type LessonFilter = {
   educationLevel?: EducationLevel;
   grade?: number;
   type?: MeetingType;
-  minPrice?: number;
-  maxPrice?: number;
+  minBudget?: number;
+  maxBudget?: number;
   status?: string;
   after?: string;
   before?: string;
   subjectIds?: number[];
   isLessonTutor?: boolean;
+  minDuration?: number;
+  maxDuration?: number;
 };

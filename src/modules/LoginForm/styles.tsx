@@ -36,15 +36,6 @@ export const ForgotPassContainer = styled('div', {
   },
 });
 
-export const LoginButton: CSS = {
-  marginTop: '$5',
-  borderRadius: '50px',
-  padding: '$2 $12',
-  textTransform: 'uppercase',
-  fontWeight: 'bold',
-  fontSize: '$base',
-};
-
 export const NeedAnAccount = styled('div', {
   display: 'flex',
   fontSize: '13px',
@@ -70,4 +61,11 @@ export const LoaderContainer = styled('div', {
   marginTop: '40px',
   width: '40px',
   height: '40px',
+});
+
+export const LoginActionsBox = styled('div', {
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  gap: '$5',
 });
