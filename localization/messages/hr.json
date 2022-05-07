@@ -130,6 +130,7 @@
   "lessonDetails.description": "Detalji instrukcija",
   "lessonDetails.cancelLesson": "Otkaži instrukcije",
   "lessonDetails.payment": "Plaćanje instrukcija",
+  "lessonDetails.finishLesson": "Završi instrukcije",
 
   "lessonDetailsAfter.total": "Ukupno",
   "lessonDetailsAfter.rating": "Ocjena",
@@ -137,9 +138,11 @@
   "lessonDetailsAfter.submit": "Ocijeni",
   "lessonDetailsAfter.review": "???",
   "lessonDetailsAfter.submitR": "Pošalji",
+  "lessonDetailsAfter.studentRating": "Ocjena",
+  "lessonDetailsAfter.feedback": "Povratna informacija",
 
   "lessons.1st_group": "Danas",
-  "lessons.2nd_group": "U sljedećih 7 dana",
+  "lessons.2nd_group": "Nadolazeće",
   "lessons.3rd_group": "Nedavno završeno",
   "lessons.table": "Završeno",
   "lessons.noLessons": "Nema instrukcija.",

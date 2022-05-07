@@ -8,7 +8,7 @@ export const useCompleteLesson = (lessonId: number) => {
   const queryClient = useQueryClient();
 
   const completeLesson = async (): Promise<Lesson> => {
-    const response = await axios.post(`/lessons/completed/${lessonId}`);
+    const response = await axios.post(`/lessons/complete/${lessonId}`);
     const data = response.data as Lesson;
     return data;
   };
@@ -16,7 +16,6 @@ export const useCompleteLesson = (lessonId: number) => {
   return useMutation(completeLesson, {
     onSuccess: () => {
       queryClient.invalidateQueries('lessons');
-      queryClient.invalidateQueries('publicRequests');
       queryClient.invalidateQueries(`lesson${lessonId}`);
     },
     onError: (error) => {

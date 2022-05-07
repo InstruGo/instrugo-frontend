@@ -7,7 +7,12 @@ import { MdOutlineMeetingRoom, MdOutlineLocationOn } from 'react-icons/md';
 import { FormattedMessage } from 'react-intl';
 
 import { Button, Loader } from '@components';
-import { useLesson, useCancelLesson } from '@hooks';
+import {
+  useLesson,
+  useCancelLesson,
+  useCompleteLesson,
+  useUserContext,
+} from '@hooks';
 import { PublicProfile } from '@modules';
 
 import {
@@ -26,9 +31,14 @@ interface LessonDetailsProps {
 export const LessonDetails = (props: LessonDetailsProps) => {
   const { data, isLoading } = useLesson(props.id);
   const cancelLesson = useCancelLesson(props.id);
-
+  const finishLesson = useCompleteLesson(props.id);
+  const { user } = useUserContext();
   const onCancel = async () => {
     const result = await cancelLesson.mutate(props.id);
+  };
+
+  const onFinishClick = () => {
+    finishLesson.mutate();
   };
 
   const [showPublicProfile, setShowProfile] = useState(false);
@@ -42,7 +52,7 @@ export const LessonDetails = (props: LessonDetailsProps) => {
 
   const lessonStart = new Date(data?.finalStartTime);
   const lessonEnd = new Date(data?.finalEndTime);
-
+  const disabled = new Date() < lessonStart;
   return (
     <>
       <LessonDetailsText>
@@ -67,16 +77,33 @@ export const LessonDetails = (props: LessonDetailsProps) => {
             </Row>
             <Row>
               <BsPerson />
-              <CardText>
-                <TutorLink onClick={() => setShowProfile(true)}>
-                  {data?.tutor.firstName + '  ' + data?.tutor.lastName}
-                </TutorLink>
-                <PublicProfile
-                  userId={data.tutor.id}
-                  showProfile={showPublicProfile}
-                  setShowProfile={setShowProfile}
-                />
-              </CardText>
+
+              {user?.id === data?.student.id && (
+                <CardText>
+                  {' '}
+                  <TutorLink onClick={() => setShowProfile(true)}>
+                    {data?.tutor.firstName + '  ' + data?.tutor.lastName}
+                  </TutorLink>
+                  <PublicProfile
+                    userId={data.tutor.id}
+                    showProfile={showPublicProfile}
+                    setShowProfile={setShowProfile}
+                  />
+                </CardText>
+              )}
+              {user?.id === data?.tutor.id && (
+                <CardText>
+                  {' '}
+                  <TutorLink onClick={() => setShowProfile(true)}>
+                    {data?.student.firstName + '  ' + data?.student.lastName}
+                  </TutorLink>
+                  <PublicProfile
+                    userId={data.student.id}
+                    showProfile={showPublicProfile}
+                    setShowProfile={setShowProfile}
+                  />
+                </CardText>
+              )}
             </Row>
             <Row>
               <AiOutlineDollar />
@@ -109,6 +136,21 @@ export const LessonDetails = (props: LessonDetailsProps) => {
               <FormattedMessage id="newRequestForm.description" />:{' '}
             </Title>
             {data?.description}
+            <Title>
+              <FormattedMessage id="lessonDetailsAfter.studentRating" />:{' '}
+              {data?.status === 'completed' && data?.rating.studentRating
+                ? data?.rating.studentRating
+                : 'No rating yet'}
+            </Title>
+
+            {data?.status === 'completed' && data?.rating.tutorFeedback && (
+              <div>
+                <Title>
+                  <FormattedMessage id="lessonDetailsAfter.feedback" />:
+                </Title>
+                {data?.rating.tutorFeedback}
+              </div>
+            )}
             <Column
               style={{
                 height: '100%',
@@ -116,9 +158,19 @@ export const LessonDetails = (props: LessonDetailsProps) => {
                 alignItems: 'flex-end',
               }}
             >
-              <Button onClick={onCancel} style={{ backgroundColor: 'red' }}>
-                <FormattedMessage id="lessonDetails.cancelLesson"></FormattedMessage>
-              </Button>
+              {data?.status === 'pending' && user?.id === data?.student.id && (
+                <Row style={{ justifyContent: 'space-evenly', width: '100%' }}>
+                  <Button onClick={onFinishClick} disabled={disabled}>
+                    <FormattedMessage id="lessonDetails.finishLesson"></FormattedMessage>
+                  </Button>
+                  <Button
+                    onClick={onCancel}
+                    style={{ backgroundColor: '#c23b22' }}
+                  >
+                    <FormattedMessage id="lessonDetails.cancelLesson"></FormattedMessage>
+                  </Button>
+                </Row>
+              )}
             </Column>
           </Column>
         </div>
