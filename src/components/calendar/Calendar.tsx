@@ -1,3 +1,5 @@
+import { useRouter } from 'next/router';
+
 import { ViewState } from '@devexpress/dx-react-scheduler';
 import {
   Scheduler,
@@ -17,7 +19,6 @@ import Paper from '@mui/material/Paper';
 import { Loader } from '@components';
 import { useLessons } from '@hooks';
 import { LessonFilter, TimeFrame } from '@types';
-import { useRouter } from 'next/router';
 
 type TimeFrameData = { timeFrame: TimeFrame; color: string; title: string };
 
