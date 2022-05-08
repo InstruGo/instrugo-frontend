@@ -10,12 +10,14 @@ import {
   DateNavigator,
   Resources,
   TodayButton,
+  AppointmentTooltip,
 } from '@devexpress/dx-react-scheduler-material-ui';
 import Paper from '@mui/material/Paper';
 
 import { Loader } from '@components';
 import { useLessons } from '@hooks';
 import { LessonFilter, TimeFrame } from '@types';
+import { useRouter } from 'next/router';
 
 type TimeFrameData = { timeFrame: TimeFrame; color: string; title: string };
 
@@ -33,6 +35,7 @@ interface CalendarProps {
  */
 export const Calendar = ({ filter, requestTimeframes }: CalendarProps) => {
   const { data: lessons, isLoading } = useLessons({ ...filter });
+  const router = useRouter();
 
   const pendingTimeframes: TimeFrameData[] | undefined = lessons?.map(
     (lesson) => {
@@ -105,6 +108,7 @@ export const Calendar = ({ filter, requestTimeframes }: CalendarProps) => {
         <ViewSwitcher />
 
         <Appointments />
+        <AppointmentTooltip showOpenButton />
         <Resources data={resources} />
       </Scheduler>
     </Paper>
