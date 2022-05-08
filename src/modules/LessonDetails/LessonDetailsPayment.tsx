@@ -41,28 +41,15 @@ export const LessonDetailsPayment = (props: LessonDetailsPaymentProps) => {
     return <div>this lesson time not yet arranged...</div>;
   }
 
-  const hours = data.duration / 60;
+  const hours = Math.floor(data.duration / 60);
   const minutes = data.duration % 60;
-  console.log(hours);
-  const lessonStart = new Date(tutorResponse.tutorResponseTimeFrame.startTime);
-  const lessonEnd = new Date(tutorResponse.tutorResponseTimeFrame.endTime);
-  let diffHours = lessonEnd.getHours() - lessonStart.getHours();
-  const diffMinutes = lessonEnd.getMinutes() - lessonStart.getMinutes();
-
-  if (diffMinutes < 0) {
-    diffHours--;
-  }
-
-  const totalHours = diffHours + diffMinutes / 60;
 
   return (
     <>
       <LessonDetailsText>
         <FormattedMessage id="lessonDetails.payment" />
       </LessonDetailsText>
-      <div
-        style={{ display: 'flex', justifyContent: 'center', height: '100%' }}
-      >
+      <div style={{ display: 'flex', justifyContent: 'center', height: '90%' }}>
         <Column>
           <Row>
             <BsPerson />
@@ -74,7 +61,7 @@ export const LessonDetailsPayment = (props: LessonDetailsPaymentProps) => {
           </Row>
           <Row>
             <AiOutlineClockCircle />
-            <CardText>{totalHours + ' h'} </CardText>
+            <CardText>{hours + ' h ' + minutes + ' min'} </CardText>
           </Row>
           <Row>
             <AiOutlineDollar />
@@ -91,7 +78,7 @@ export const LessonDetailsPayment = (props: LessonDetailsPaymentProps) => {
           <Row>
             <CardText>
               <FormattedMessage id="lessonDetailsAfter.total" />:{' '}
-              {totalHours * tutorResponse.price + ' kn'}
+              {(data?.duration / 60) * tutorResponse.price + ' kn'}
             </CardText>
           </Row>
           <Row style={{ justifyContent: 'center' }}>

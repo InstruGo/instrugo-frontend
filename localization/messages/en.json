@@ -145,13 +145,13 @@
   "lessonDetails.finishLesson": "Complete lesson",
 
   "lessonDetailsAfter.total": "Total",
-  "lessonDetailsAfter.rating": "Rating",
+  "lessonDetailsAfter.rating": "Your rating",
   "lessonDetailsAfter.pay": "PAY",
   "lessonDetailsAfter.submit": "Submit rating",
-  "lessonDetailsAfter.review": "Review",
+  "lessonDetailsAfter.review": "Your review",
   "lessonDetailsAfter.submitReview": "Submit review",
   "lessonDetailsAfter.studentRating": "Student's rating",
-  "lessonDetailsAfter.feedback": "Feedback",
+  "lessonDetailsAfter.feedback": "Tutor's feedback",
 
   "lessons.1st_group": "Today",
   "lessons.2nd_group": "Upcoming",

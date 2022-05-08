@@ -66,7 +66,7 @@ export const Rewards = () => {
         >{`${intl.formatMessage({ id: 'rewards.rank' })} 3`}</div>
 
         <Image
-          src="/rewardslevel.png"
+          src="/rewardsLevel.png"
           width="60px"
           height="60px"
           alt="rewardsLevelIcon"

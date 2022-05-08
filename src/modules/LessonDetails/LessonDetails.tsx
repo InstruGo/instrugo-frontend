@@ -5,6 +5,7 @@ import { BsPerson, BsBookHalf } from 'react-icons/bs';
 import { FaGraduationCap } from 'react-icons/fa';
 import { MdOutlineMeetingRoom, MdOutlineLocationOn } from 'react-icons/md';
 import { FormattedMessage } from 'react-intl';
+import { Rating } from '@mui/material';
 
 import { Button, Loader } from '@components';
 import {
@@ -50,9 +51,16 @@ export const LessonDetails = (props: LessonDetailsProps) => {
   if (!(data?.finalStartTime && data?.finalEndTime))
     return <div>Lesson time not yet arranged...</div>;
 
-  const lessonStart = new Date(data?.finalStartTime);
-  const lessonEnd = new Date(data?.finalEndTime);
-  const disabled = new Date() < lessonStart;
+  const start = new Date(data?.finalStartTime);
+  const end = new Date(data?.finalEndTime);
+  const disabled = new Date() < start;
+  const startMinutes =
+    start.getMinutes() < 10 ? '0' + start.getMinutes() : start.getMinutes();
+  const startHours =
+    start.getHours() < 10 ? '0' + start.getHours() : start.getHours();
+  const endMinutes =
+    end.getMinutes() < 10 ? '0' + end.getMinutes() : end.getMinutes();
+  const endHours = end.getHours() < 10 ? '0' + end.getHours() : end.getHours();
   return (
     <>
       <LessonDetailsText>
@@ -66,14 +74,16 @@ export const LessonDetails = (props: LessonDetailsProps) => {
             <Row>
               <AiOutlineClockCircle />
               <CardText>
-                {`${lessonStart.getDate()}\/${lessonStart.getMonth()}\/${lessonStart.getFullYear()}`}
+                {`${start.getDate()}\/${start.getMonth()}\/${start.getFullYear()}`}
                 {',   '}
-                {`${lessonStart.getHours()}:${lessonStart.getMinutes()} - ${lessonEnd.getHours()}:${lessonEnd.getMinutes()}`}
+                {`${startHours}:${startMinutes} - ${endHours}:${endMinutes}`}
               </CardText>
             </Row>
             <Row>
               <MdOutlineMeetingRoom />
-              <CardText>{data?.type}</CardText>
+              <CardText>
+                <FormattedMessage id={`meetingType.${data?.type}`} />
+              </CardText>
             </Row>
             <Row>
               <BsPerson />
@@ -111,13 +121,19 @@ export const LessonDetails = (props: LessonDetailsProps) => {
             </Row>
             <Row>
               <BsBookHalf />
-              <CardText>{data?.subject.name}</CardText>
+              <CardText>
+                <FormattedMessage id={`subjects.${data?.subject.name}`} />
+              </CardText>
               {' - '}
               <CardText>{data?.subfield}</CardText>
             </Row>
             <Row>
               <FaGraduationCap />
-              <CardText>{data?.educationLevel}</CardText>
+              <CardText>
+                <FormattedMessage
+                  id={`educationLevel.${data?.educationLevel}`}
+                />
+              </CardText>
             </Row>
             <Row>
               <MdOutlineLocationOn />
@@ -131,25 +147,33 @@ export const LessonDetails = (props: LessonDetailsProps) => {
               borderRadius: '6px',
             }}
           ></div>
-          <Column style={{ justifyContent: 'flex-start' }}>
+          <Column style={{ justifyContent: 'center', alignItems: 'center' }}>
             <Title>
               <FormattedMessage id="newRequestForm.description" />:{' '}
             </Title>
             {data?.description}
-            <Title>
-              <FormattedMessage id="lessonDetailsAfter.studentRating" />:{' '}
-              {data?.status === 'completed' && data?.rating.studentRating
-                ? data?.rating.studentRating
-                : 'No rating yet'}
-            </Title>
+            {data?.rating.studentRating && (
+              <>
+                <Title>
+                  <FormattedMessage id="lessonDetailsAfter.studentRating" />:{' '}
+                </Title>
 
-            {data?.status === 'completed' && data?.rating.tutorFeedback && (
-              <div>
+                <Rating
+                  style={{ padding: '0px' }}
+                  name="simple-controlled"
+                  value={data?.rating.studentRating}
+                  readOnly
+                />
+              </>
+            )}
+
+            {data?.rating.tutorFeedback && (
+              <>
                 <Title>
                   <FormattedMessage id="lessonDetailsAfter.feedback" />:
                 </Title>
                 {data?.rating.tutorFeedback}
-              </div>
+              </>
             )}
             <Column
               style={{

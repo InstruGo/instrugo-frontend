@@ -46,16 +46,16 @@ export const LessonDetailsAfterStudent = (props: LessonDetailsAfterProps) => {
     return <div>this lesson time not yet arranged...</div>;
   }
 
-  const lessonStart = new Date(data?.finalStartTime);
-  const lessonEnd = new Date(data?.finalEndTime);
-  let diffHours = lessonEnd.getHours() - lessonStart.getHours();
-  const diffMinutes = lessonEnd.getMinutes() - lessonStart.getMinutes();
+  const start = new Date(data?.finalStartTime);
+  const end = new Date(data?.finalEndTime);
 
-  if (diffMinutes < 0) {
-    diffHours--;
-  }
-
-  const totalHours = diffHours + diffMinutes / 60;
+  const startMinutes =
+    start.getMinutes() < 10 ? '0' + start.getMinutes() : start.getMinutes();
+  const startHours =
+    start.getHours() < 10 ? '0' + start.getHours() : start.getHours();
+  const endMinutes =
+    end.getMinutes() < 10 ? '0' + end.getMinutes() : end.getMinutes();
+  const endHours = end.getHours() < 10 ? '0' + end.getHours() : end.getHours();
 
   return (
     <>
@@ -70,16 +70,18 @@ export const LessonDetailsAfterStudent = (props: LessonDetailsAfterProps) => {
           <Column>
             <Row>
               <BsBookHalf />
-              <CardText>{data?.subject.name}</CardText>
+              <CardText>
+                <FormattedMessage id={`subjects.${data?.subject.name}`} />
+              </CardText>
               {' - '}
               <CardText>{data?.subfield}</CardText>
             </Row>
             <Row>
               <AiOutlineClockCircle />
               <CardText>
-                {`${lessonStart.getDate()}\/${lessonStart.getMonth()}\/${lessonStart.getFullYear()}`}
+                {`${start.getDate()}\/${start.getMonth()}\/${start.getFullYear()}`}
                 {',   '}
-                {`${lessonStart.getHours()}:${lessonStart.getMinutes()} - ${lessonEnd.getHours()}:${lessonEnd.getMinutes()}`}
+                {`${startHours}:${startMinutes} - ${endHours}:${endMinutes}`}
               </CardText>
             </Row>
             <Row>
@@ -91,7 +93,12 @@ export const LessonDetailsAfterStudent = (props: LessonDetailsAfterProps) => {
 
             <Row>
               <AiOutlineClockCircle />
-              <CardText>{totalHours + ' h'} </CardText>
+              <CardText>
+                {Math.floor(data?.duration / 60) +
+                  ' h ' +
+                  (data?.duration % 60) +
+                  ' min'}{' '}
+              </CardText>
             </Row>
 
             <Row>
@@ -111,7 +118,7 @@ export const LessonDetailsAfterStudent = (props: LessonDetailsAfterProps) => {
             <Row>
               <CardText>
                 <FormattedMessage id="lessonDetailsAfter.total" />:{' '}
-                {totalHours * data?.finalPrice + ' kn'}
+                {(data?.duration / 60) * data?.finalPrice + ' kn'}
               </CardText>
             </Row>
           </Column>
@@ -124,34 +131,43 @@ export const LessonDetailsAfterStudent = (props: LessonDetailsAfterProps) => {
             }}
           ></div>
 
-          <Column style={{ justifyContent: 'center', alignItems: 'center' }}>
-            <Title style={{ paddingLeft: '100px', paddingBottom: '30px' }}>
+          <Column style={{ justifyContent: 'flex-start', marginTop: '60px' }}>
+            <Title>
               <FormattedMessage id="lessonDetailsAfter.rating" />:
             </Title>
-            {data?.rating.studentRating ? (
-              data?.rating.studentRating
-            ) : (
-              <div>
-                <Rating
-                  style={{ padding: '0px' }}
-                  name="simple-controlled"
-                  value={studentRating}
-                  onChange={(event, newValue) => {
-                    if (newValue) {
-                      setStudentRating(newValue);
-                      setValue('studentRating', newValue);
-                    }
-                  }}
-                />
 
-                <Row style={{ justifyContent: 'center' }}>
-                  <Input
-                    type="submit"
-                    variant="authSubmit"
-                    placeholderMsgId="lessonDetailsAfter.submitReview"
-                  />
-                </Row>
-              </div>
+            <Rating
+              style={{ padding: '0px' }}
+              name="simple-controlled"
+              value={
+                !!data?.rating.studentRating
+                  ? data?.rating.studentRating
+                  : studentRating
+              }
+              readOnly={!!data?.rating.studentRating}
+              onChange={(event, newValue) => {
+                if (newValue) {
+                  setStudentRating(newValue);
+                  setValue('studentRating', newValue);
+                }
+              }}
+            />
+            {!data?.rating.studentRating && (
+              <Row style={{ justifyContent: 'center' }}>
+                <Input
+                  type="submit"
+                  variant="authSubmit"
+                  placeholderMsgId="lessonDetailsAfter.submitReview"
+                />
+              </Row>
+            )}
+            {data?.rating.tutorFeedback && (
+              <>
+                <Title>
+                  <FormattedMessage id="lessonDetailsAfter.feedback" />:
+                </Title>
+                {data?.rating.tutorFeedback}
+              </>
             )}
           </Column>
         </div>

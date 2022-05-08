@@ -5,6 +5,8 @@ export const ResponseContainer = styled('div', {
   display: 'flex',
   flexDirection: 'row',
   width: '100%',
+  backgroundColor: '#f3f3f3',
+  borderRadius: '5px',
 });
 
 export const StyledHr = styled('hr', {
@@ -19,7 +21,7 @@ export const ResponseItem = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   flexGrow: '2',
-  padding: '$2',
+  padding: '$2 $4',
 });
 
 export const FieldDescription = styled('div', {

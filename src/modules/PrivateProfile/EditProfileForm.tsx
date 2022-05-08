@@ -123,9 +123,9 @@ export const EditProfileForm = ({ user, setEditing }: EditProfileFormProps) => {
       <div style={{ fontWeight: 'bold' }}>
         <FormattedMessage id="user.description" />:
         <Description
-          name="description"
-          placeholder="user.description"
+          placeholder={intl.formatMessage({ id: 'user.description' })}
           defaultValue={user?.description}
+          {...register('description')}
         />
       </div>
 
@@ -191,7 +191,8 @@ export const EditProfileForm = ({ user, setEditing }: EditProfileFormProps) => {
       <Input
         type="submit"
         placeholderMsgId="profile.saveChanges"
-        style={{ cursor: 'pointer' }}
+        variant="authSubmit"
+        css={{ alignSelf: 'flex-start' }}
       />
     </EditFormContainer>
   );

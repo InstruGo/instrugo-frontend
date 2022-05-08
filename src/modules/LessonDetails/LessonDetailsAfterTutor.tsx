@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { AiOutlineClockCircle, AiOutlineDollar } from 'react-icons/ai';
 import { BsPerson, BsBookHalf } from 'react-icons/bs';
 import { FormattedMessage } from 'react-intl';
+import { Rating } from '@mui/material';
 
 import { Button, Input, Loader } from '@components';
 import { useLesson, useFeedback } from '@hooks';
@@ -44,13 +45,16 @@ export const LessonDetailsAfterTutor = (props: LessonDetailsAfterProps) => {
   if (!(data?.finalStartTime && data?.finalEndTime))
     return <div>this lesson time not yet arranged...</div>;
 
-  const lessonStart = new Date(data?.finalStartTime);
-  const lessonEnd = new Date(data?.finalEndTime);
-  let diffHours = lessonEnd.getHours() - lessonStart.getHours();
-  const diffMinutes = lessonEnd.getMinutes() - lessonStart.getMinutes();
-  if (diffMinutes < 0) diffHours--;
-  console.log(data);
-  console.log(data.rating);
+  const start = new Date(data?.finalStartTime);
+  const end = new Date(data?.finalEndTime);
+
+  const startMinutes =
+    start.getMinutes() < 10 ? '0' + start.getMinutes() : start.getMinutes();
+  const startHours =
+    start.getHours() < 10 ? '0' + start.getHours() : start.getHours();
+  const endMinutes =
+    end.getMinutes() < 10 ? '0' + end.getMinutes() : end.getMinutes();
+  const endHours = end.getHours() < 10 ? '0' + end.getHours() : end.getHours();
   return (
     <>
       <LessonDetailsText>
@@ -63,16 +67,18 @@ export const LessonDetailsAfterTutor = (props: LessonDetailsAfterProps) => {
           <Column>
             <Row>
               <BsBookHalf />
-              <CardText>{data?.subject.name}</CardText>
+              <CardText>
+                <FormattedMessage id={`subjects.${data?.subject.name}`} />
+              </CardText>
               {' - '}
               <CardText>{data?.subfield}</CardText>
             </Row>
             <Row>
               <AiOutlineClockCircle />
               <CardText>
-                {`${lessonStart.getDate()}\/${lessonStart.getMonth()}\/${lessonStart.getFullYear()}`}
+                {`${start.getDate()}\/${start.getMonth()}\/${start.getFullYear()}`}
                 {',   '}
-                {`${lessonStart.getHours()}:${lessonStart.getMinutes()} - ${lessonEnd.getHours()}:${lessonEnd.getMinutes()}`}
+                {`${startHours}:${startMinutes} - ${endHours}:${endMinutes}`}
               </CardText>
             </Row>
             <Row>
@@ -96,14 +102,6 @@ export const LessonDetailsAfterTutor = (props: LessonDetailsAfterProps) => {
             <Row>
               <FormattedMessage id="lessonDetailsAfter.total" />: 240kn
             </Row>
-            <Row style={{ justifyContent: 'center' }}>
-              <Button
-                // onClick={onCancel}
-                style={{ backgroundColor: '#0E353D', width: '80px' }}
-              >
-                <FormattedMessage id="lessonDetailsAfter.pay"></FormattedMessage>
-              </Button>
-            </Row>
           </Column>
           <div
             style={{
@@ -112,12 +110,22 @@ export const LessonDetailsAfterTutor = (props: LessonDetailsAfterProps) => {
               borderRadius: '6px',
             }}
           ></div>
-          <Column style={{ justifyContent: 'center', alignItems: 'center' }}>
-            <Row>
-              <FormattedMessage id="lessonDetailsAfter.studentRating" />:{' '}
-              {data?.rating.studentRating}/5
-            </Row>
-            <Title style={{ paddingLeft: '100px' }}>
+          <Column style={{ justifyContent: 'flex-start', marginTop: '60px' }}>
+            {data?.rating.studentRating && (
+              <>
+                <Title>
+                  <FormattedMessage id="lessonDetailsAfter.studentRating" />:{' '}
+                </Title>
+
+                <Rating
+                  style={{ padding: '0px' }}
+                  name="simple-controlled"
+                  value={data?.rating.studentRating}
+                  readOnly
+                />
+              </>
+            )}
+            <Title>
               <FormattedMessage id="lessonDetailsAfter.review" />:
             </Title>
             {data?.rating.tutorFeedback ? (

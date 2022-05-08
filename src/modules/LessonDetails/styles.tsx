@@ -27,6 +27,8 @@ export const Title = styled('div', {
   paddingLeft: '$5',
   paddingBottom: '$5',
   textSize: '$lg',
+  marginTop: '30px',
+  marginLeft: '100px',
 });
 
 export const FieldDescription = styled('div', {
@@ -120,7 +122,7 @@ export const TutorLink = styled('div', {
 export const TextBox = styled('textarea', {
   height: '70px',
   width: '100%',
-  maxWidth: '370px',
+  maxWidth: '400px',
   fontSize: '$base',
   color: '#10434E',
   border: 'none',

@@ -32,9 +32,10 @@ export const PrivateProfile = () => {
   const { user } = useUserContext();
   const [isEditing, setEditing] = useState(false);
 
-  const { data: lessonsLearned } = useLessons({});
+  const { data: lessonsLearned } = useLessons({ status: 'completed' });
 
   const { data: lessonsGiven } = useLessons({
+    status: 'completed',
     isLessonTutor: true,
   });
 
@@ -79,7 +80,9 @@ export const PrivateProfile = () => {
             <div>
               <FormattedMessage id="user.age" />
             </div>
-            <div>{getAgeFromBirthDate(user.birthDate)}</div>
+            <div>
+              {user.birthDate ? getAgeFromBirthDate(user.birthDate) : ''}
+            </div>
           </Stat>
 
           <Stat>
@@ -88,7 +91,6 @@ export const PrivateProfile = () => {
             </div>
             <div>{lessonsLearned ? lessonsLearned.length : 0}</div>
           </Stat>
-
           {user.role === UserRole.TUTOR && (
             <Stat>
               <div>
