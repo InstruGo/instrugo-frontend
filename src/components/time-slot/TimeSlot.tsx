@@ -36,7 +36,11 @@ export const TimeSlot = (props: TimeSlotProps) => {
             value={date}
             minDate={new Date()}
             onChange={(newValue) => {
-              if (newValue != null) {
+              if (
+                newValue != null &&
+                Object.prototype.toString.call(newValue) === '[object Date]' &&
+                !isNaN(newValue.getTime())
+              ) {
                 setDate(newValue);
                 props.onDateChange(props.index, newValue, startTime, endTime);
               }
@@ -49,7 +53,11 @@ export const TimeSlot = (props: TimeSlotProps) => {
             label="start time"
             value={startTime}
             onChange={(newValue) => {
-              if (newValue != null) {
+              if (
+                newValue != null &&
+                Object.prototype.toString.call(newValue) === '[object Date]' &&
+                !isNaN(newValue.getTime())
+              ) {
                 setStartTime(newValue);
                 props.onDateChange(props.index, date, newValue, endTime);
               }
@@ -62,7 +70,11 @@ export const TimeSlot = (props: TimeSlotProps) => {
             label="end time"
             value={endTime}
             onChange={(newValue) => {
-              if (newValue != null) {
+              if (
+                newValue != null &&
+                Object.prototype.toString.call(newValue) === '[object Date]' &&
+                !isNaN(newValue.getTime())
+              ) {
                 setEndTime(newValue);
                 props.onDateChange(props.index, date, startTime, newValue);
               }

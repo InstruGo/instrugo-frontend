@@ -144,13 +144,13 @@
   "lessonDetails.finishLesson": "Završi instrukcije",
 
   "lessonDetailsAfter.total": "Ukupno",
-  "lessonDetailsAfter.rating": "Ocjena",
+  "lessonDetailsAfter.rating": "Tvoja ocjena",
   "lessonDetailsAfter.pay": "PLATI",
   "lessonDetailsAfter.submit": "Ocijeni",
-  "lessonDetailsAfter.review": "???",
+  "lessonDetailsAfter.review": "Povratna informacija",
   "lessonDetailsAfter.submitReview": "Pošalji",
   "lessonDetailsAfter.studentRating": "Ocjena",
-  "lessonDetailsAfter.feedback": "Povratna informacija",
+  "lessonDetailsAfter.feedback": "Povratna informacija instruktora",
 
   "lessons.1st_group": "Danas",
   "lessons.2nd_group": "Nadolazeće",

@@ -9,7 +9,7 @@ import { lessonFilters } from '@utils/lessonFilters';
 import { PageLayout } from './home';
 
 const LessonsPage: NextPage = () => {
-  const { todayFilter, nextWeekFilter, upcomingFilter } = lessonFilters();
+  const { todayFilter, upcomingFilter } = lessonFilters();
 
   return (
     <div>

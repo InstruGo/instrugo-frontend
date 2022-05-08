@@ -70,12 +70,30 @@ export const LessonCard = ({ lesson, response }: CardProps) => {
     : undefined;
 
   const responseDateDisplay = responseStartDate
-    ? `${responseStartDate.getDate()}\/${responseStartDate.getMonth()}\/${responseStartDate.getFullYear()}`
+    ? `${responseStartDate.getDate()}\/${
+        responseStartDate.getMonth() + 1
+      }\/${responseStartDate.getFullYear()}`
     : undefined;
 
   const responseTimeIntervalDisplay =
     responseStartDate && responseEndDate
-      ? `${responseStartDate.getHours()}:${responseStartDate.getMinutes()} - ${responseEndDate.getHours()}:${responseEndDate.getMinutes()}`
+      ? `${
+          responseStartDate.getHours() < 10
+            ? '0' + responseStartDate.getHours()
+            : responseStartDate.getHours()
+        }:${
+          responseStartDate.getMinutes() < 10
+            ? '0' + responseStartDate.getMinutes()
+            : responseStartDate.getMinutes()
+        } - ${
+          responseEndDate.getHours() < 10
+            ? '0' + responseEndDate.getHours()
+            : responseEndDate.getHours()
+        }:${
+          responseEndDate.getMinutes() < 10
+            ? '0' + responseEndDate.getMinutes()
+            : responseEndDate.getMinutes()
+        }`
       : undefined;
 
   return (

@@ -40,6 +40,13 @@ export const TutorResponse = ({
 }: ResponseProps) => {
   const start = new Date(timeFrame.startTime);
   const end = new Date(timeFrame.endTime);
+  const startMinutes =
+    start.getMinutes() < 10 ? '0' + start.getMinutes() : start.getMinutes();
+  const startHours =
+    start.getHours() < 10 ? '0' + start.getHours() : start.getHours();
+  const endMinutes =
+    end.getMinutes() < 10 ? '0' + end.getMinutes() : end.getMinutes();
+  const endHours = end.getHours() < 10 ? '0' + end.getHours() : end.getHours();
   const [showLessonPaymentModal, setLessonPaymentModal] = React.useState(false);
 
   return (
@@ -74,11 +81,13 @@ export const TutorResponse = ({
       <ResponseItem style={{ justifyContent: 'flex-start' }}>
         <FieldDescription style={{ justifyContent: 'left' }}>
           <ItemRow>
-            {`${start.getDate()}\/${start.getMonth()}\/${start.getFullYear()}`}
+            {`${start.getDate()}\/${
+              start.getMonth() + 1
+            }\/${start.getFullYear()}`}
           </ItemRow>
 
           <ItemRow>
-            {`${start.getHours()}:${start.getMinutes()} - ${end.getHours()}:${end.getMinutes()}`}
+            {`${startHours}:${startMinutes} - ${endHours}:${endMinutes}`}
           </ItemRow>
         </FieldDescription>
       </ResponseItem>

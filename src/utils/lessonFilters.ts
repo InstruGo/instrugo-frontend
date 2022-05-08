@@ -30,5 +30,9 @@ export const lessonFilters = () => {
     after: todayEnd.toISOString(),
   };
 
-  return { todayFilter, nextWeekFilter, upcomingFilter };
+  return {
+    todayFilter,
+    nextWeekFilter,
+    upcomingFilter,
+  };
 };

@@ -15,6 +15,7 @@ export const useFeedback = (id: number) => {
   return useMutation(rate, {
     onSuccess: () => {
       queryClient.invalidateQueries(`lesson${id}`);
+      queryClient.invalidateQueries(`lessons`);
     },
     onError: (error) => {
       console.log(error);
