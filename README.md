@@ -4,6 +4,14 @@
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/api-reference/create-next-app) using [Yarn](https://yarnpkg.com/) package manager.
 
+## NOTE
+
+This repository contains just the frontend for InstruGo. To see details about running the backend locally, go to the backend repository and read the README.md.
+
+## Prerequisites
+
+You will need Node.js >= 16 and yarn installed on your machine.
+
 ## Install dependencies
 
 ```bash
