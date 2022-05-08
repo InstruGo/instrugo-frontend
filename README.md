@@ -4,13 +4,24 @@
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/api-reference/create-next-app) using [Yarn](https://yarnpkg.com/) package manager.
 
-## Start developing
-
-Clone the repo, install dependencies and run:
+## Install dependencies
 
 ```bash
-$ yarn dev
+$ yarn
 ```
+
+## Run the app
+
+```bash
+# development mode
+$ yarn dev
+
+# production mode
+$ yarn build
+$ yarn start
+```
+
+IMPORTANT: If you're running the app in production mode, make sure to change the `publicRuntimeConfig.apiUrl` variable from `https://api.instrugo.frle.net/api` to `http://localhost:8000/api` in `next.config.js` file. Otherwise you will be sending requests to our deployed production backend which will be no good (it won't work for you). :)
 
 ## Type checking and formatting
 

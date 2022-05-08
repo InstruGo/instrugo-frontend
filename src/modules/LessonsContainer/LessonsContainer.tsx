@@ -1,8 +1,9 @@
+import { FormattedMessage } from 'react-intl';
+
 import { Loader } from '@components';
 import { useLessons } from '@hooks';
 import { LessonCard } from '@modules';
 import { LessonFilter } from '@types';
-import { FormattedMessage } from 'react-intl';
 import { styled } from 'styles/stitches.config';
 
 interface LessonsContainerProps {

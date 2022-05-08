@@ -1,9 +1,9 @@
 import { zodResolver } from '@hookform/resolvers/zod';
+import { Rating } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import { AiOutlineClockCircle, AiOutlineDollar } from 'react-icons/ai';
 import { BsPerson, BsBookHalf } from 'react-icons/bs';
 import { FormattedMessage } from 'react-intl';
-import { Rating } from '@mui/material';
 
 import { Button, Input, Loader } from '@components';
 import { useLesson, useFeedback } from '@hooks';

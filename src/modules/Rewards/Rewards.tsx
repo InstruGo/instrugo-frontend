@@ -1,6 +1,6 @@
 import Image from 'next/image';
+
 import { AiFillGift } from 'react-icons/ai';
-import { GiRank3 } from 'react-icons/gi';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import {
