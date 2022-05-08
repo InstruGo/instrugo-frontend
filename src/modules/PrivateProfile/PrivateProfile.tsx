@@ -76,14 +76,16 @@ export const PrivateProfile = () => {
         )}
 
         <Stats>
-          <Stat>
-            <div>
-              <FormattedMessage id="user.age" />
-            </div>
-            <div>
-              {user.birthDate ? getAgeFromBirthDate(user.birthDate) : ''}
-            </div>
-          </Stat>
+          {user.birthDate && (
+            <Stat>
+              <div>
+                <FormattedMessage id="user.age" />
+              </div>
+              <div>
+                {user.birthDate ? getAgeFromBirthDate(user.birthDate) : ''}
+              </div>
+            </Stat>
+          )}
 
           <Stat>
             <div>
@@ -91,6 +93,7 @@ export const PrivateProfile = () => {
             </div>
             <div>{lessonsLearned ? lessonsLearned.length : 0}</div>
           </Stat>
+
           {user.role === UserRole.TUTOR && (
             <Stat>
               <div>
