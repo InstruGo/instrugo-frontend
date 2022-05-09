@@ -84,6 +84,9 @@ export const LessonsWithFilter = () => {
           <Dropdown
             options={subjectOptions}
             onOptionSelect={(value: string) => setFilter('subjectIds', value)}
+            selectedOption={
+              filter.subjectIds ? filter.subjectIds[0].toString() : undefined
+            }
           />
         </FilterGroup>
 
@@ -94,6 +97,7 @@ export const LessonsWithFilter = () => {
           <Dropdown
             options={meetingTypeOptions}
             onOptionSelect={(value: string) => setFilter('type', value)}
+            selectedOption={filter.type}
           />
         </FilterGroup>
 
@@ -106,6 +110,7 @@ export const LessonsWithFilter = () => {
             onOptionSelect={(value: string) =>
               setFilter('educationLevel', value)
             }
+            selectedOption={filter.educationLevel}
           />
         </FilterGroup>
         <div style={{ marginTop: '25px', alignItems: 'center' }}>
