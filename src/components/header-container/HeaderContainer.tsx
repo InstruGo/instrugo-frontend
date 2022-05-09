@@ -29,7 +29,7 @@ export const HeaderContainer = ({
       : router.pathname.startsWith('/student')
       ? '/student/home'
       : '/tutor/home'
-    : '';
+    : '/';
 
   return (
     <StyledHeaderContainer {...rest}>

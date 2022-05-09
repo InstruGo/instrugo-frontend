@@ -14,7 +14,7 @@ import { useUserContext } from './useUserContext';
 export const useGoogleLogin = () => {
   const axios = useAxios();
   const router = useRouter();
-  const { setIsLoggedIn } = useUserContext();
+  const { setIsLoggedIn, setIsLoggedInWithGoogle } = useUserContext();
 
   const loginWithGoogle = async (token: string): Promise<LoginResponse> => {
     const response = await axios.post('/auth/login/google', { token });
@@ -26,6 +26,7 @@ export const useGoogleLogin = () => {
   const googleLogin = useMutation(loginWithGoogle, {
     onSuccess: () => {
       setIsLoggedIn(true);
+      setIsLoggedInWithGoogle(true);
 
       let returnUrl = '/auth';
       if (router.query.returnUrl) {
