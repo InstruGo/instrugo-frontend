@@ -24,8 +24,6 @@ import {
   CardContainer,
   ResponseSeparator,
 } from './styles';
-import lessons from 'pages/student/lessons';
-import { LessonsContainer } from '@modules/LessonsContainer/LessonsContainer';
 
 type StitchesComponentProps = React.ComponentPropsWithoutRef<
   typeof CardContainer
@@ -38,7 +36,6 @@ export interface CardProps extends StitchesComponentProps {
 
 export const LessonCard = ({ lesson, response }: CardProps) => {
   const router = useRouter();
-  const { user } = useUserContext();
 
   const [showLessonDetailsModal, setLessonDetailsModal] = useState(false);
 
@@ -174,7 +171,7 @@ export const LessonCard = ({ lesson, response }: CardProps) => {
 
               <CardItem>
                 <AiOutlineDollar />
-                <CardText>{lesson.budget + ' kn'}</CardText>
+                <CardText>{response.price + ' kn'}</CardText>
               </CardItem>
             </>
           )}

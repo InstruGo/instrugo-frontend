@@ -1,3 +1,5 @@
+import { useRouter } from 'next/router';
+
 import { ViewState } from '@devexpress/dx-react-scheduler';
 import {
   Scheduler,
@@ -10,6 +12,7 @@ import {
   DateNavigator,
   Resources,
   TodayButton,
+  AppointmentTooltip,
 } from '@devexpress/dx-react-scheduler-material-ui';
 import Paper from '@mui/material/Paper';
 
@@ -33,6 +36,7 @@ interface CalendarProps {
  */
 export const Calendar = ({ filter, requestTimeframes }: CalendarProps) => {
   const { data: lessons, isLoading } = useLessons({ ...filter });
+  const router = useRouter();
 
   const pendingTimeframes: TimeFrameData[] | undefined = lessons?.map(
     (lesson) => {
@@ -105,6 +109,7 @@ export const Calendar = ({ filter, requestTimeframes }: CalendarProps) => {
         <ViewSwitcher />
 
         <Appointments />
+        <AppointmentTooltip showOpenButton />
         <Resources data={resources} />
       </Scheduler>
     </Paper>

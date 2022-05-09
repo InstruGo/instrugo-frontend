@@ -28,7 +28,7 @@ export const ResponseHeader = styled('div', {
 });
 
 export const CalendarContainer = styled('div', {
-  maxWidth: '1400px',
+  maxWidth: '1100px',
   padding: '$10',
   color: '#328fab',
 });

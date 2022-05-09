@@ -127,7 +127,7 @@ export const PublicRequestDetails = ({ id }: RequestDetailsProps) => {
         </ResponseHeader>
         <NewTutorResponseForm
           onFinish={() => {
-            router.push('/tutor/requests'); //change to tutor responses when page is made
+            router.push('/tutor/responses');
           }}
           lessonId={id}
           lessonTimeFrames={data?.lessonTimeFrames}

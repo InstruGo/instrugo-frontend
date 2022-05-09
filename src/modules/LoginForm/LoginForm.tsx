@@ -48,6 +48,10 @@ export const LoginForm = () => {
     }
   };
 
+  const onGoogleFailure = (error: any) => {
+    console.log(error);
+  };
+
   return (
     <LoginFormContainer onSubmit={handleSubmit(onSubmit)}>
       <Input
@@ -86,6 +90,7 @@ export const LoginForm = () => {
           clientId={publicRuntimeConfig.googleClientId}
           buttonText="Login"
           onSuccess={onGoogleResponse}
+          onFailure={onGoogleFailure}
         />
       </LoginActionsBox>
 

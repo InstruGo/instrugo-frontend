@@ -51,7 +51,7 @@
     "@types/react": "17.0.39"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,md,mdx}": [
+    "*.{js,jsx,ts,tsx}": [
       "yarn lint",
       "yarn format"
     ]

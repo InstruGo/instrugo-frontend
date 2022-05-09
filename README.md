@@ -4,13 +4,32 @@
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/api-reference/create-next-app) using [Yarn](https://yarnpkg.com/) package manager.
 
-## Start developing
+## NOTE
 
-Clone the repo, install dependencies and run:
+This repository contains just the frontend for InstruGo. To see details about running the backend locally, go to the backend repository and read the README.md.
+
+## Prerequisites
+
+You will need Node.js >= 16 and yarn installed on your machine.
+
+## Install dependencies
 
 ```bash
-$ yarn dev
+$ yarn
 ```
+
+## Run the app
+
+```bash
+# development mode
+$ yarn dev
+
+# production mode
+$ yarn build
+$ yarn start
+```
+
+IMPORTANT: If you're running the app in production mode, make sure to change the `publicRuntimeConfig.apiUrl` variable from `https://api.instrugo.frle.net/api` to `http://localhost:8000/api` in `next.config.js` file. Otherwise you will be sending requests to our deployed production backend which will be no good (it won't work for you). :)
 
 ## Type checking and formatting
 

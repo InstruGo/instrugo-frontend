@@ -1,11 +1,11 @@
 import { useState } from 'react';
 
+import { Rating } from '@mui/material';
 import { AiOutlineClockCircle, AiOutlineDollar } from 'react-icons/ai';
 import { BsPerson, BsBookHalf } from 'react-icons/bs';
 import { FaGraduationCap } from 'react-icons/fa';
 import { MdOutlineMeetingRoom, MdOutlineLocationOn } from 'react-icons/md';
 import { FormattedMessage } from 'react-intl';
-import { Rating } from '@mui/material';
 
 import { Button, Loader } from '@components';
 import {
