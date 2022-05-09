@@ -13,6 +13,11 @@ export const LogoContainer = styled('div', {
   marginLeft: '$6',
 });
 
+export const HomeContainer = styled('div', {
+  flexBasis: '50px',
+  marginRight: '$6',
+});
+
 export const ChildrenContainer = styled('div', {
   display: 'flex',
   width: '100%',
