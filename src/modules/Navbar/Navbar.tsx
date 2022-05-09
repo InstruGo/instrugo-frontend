@@ -17,6 +17,7 @@ import {
 import { UserRole } from '@types';
 
 import {
+  Background,
   Clickable,
   HamburgerMenu,
   NavLink,
@@ -286,6 +287,7 @@ export const Navbar = () => {
             </OpenedProfileMenu>
           </ProfileLink>
         </RightNavSection>
+        {isProfileOpen && <Background onClick={() => setProfileOpen(false)} />}
       </StyledHeader>
     </HeaderContainer>
   );
