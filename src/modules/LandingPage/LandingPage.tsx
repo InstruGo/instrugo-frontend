@@ -1,7 +1,8 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-import { BsFacebook, BsYoutube, BsTwitter } from 'react-icons/bs';
+import { BsFacebook, BsYoutube, BsTwitter, BsGithub } from 'react-icons/bs';
 import { FormattedMessage } from 'react-intl';
 
 import { Button, HeaderContainer } from '@components';
@@ -170,6 +171,14 @@ export const LandingPage = () => {
             <BsFacebook />
             <BsTwitter />
             <BsYoutube />
+            <a
+              href="https://github.com/InstruGo"
+              target="_blank"
+              rel="noreferrer"
+              style={{ paddingLeft: '10px' }}
+            >
+              <BsGithub />
+            </a>
           </SocialIcons>
         </FooterColumn>
 
@@ -178,7 +187,9 @@ export const LandingPage = () => {
             <FormattedMessage id="footer.support" />
           </div>
           <div>
-            <FormattedMessage id="footer.contact" />
+            <a href="mailto:ivan.skorupan@fer.hr,karlo-valentin.cihlar@fer.hr,fptodoric@gmail.com,lara.granosa@fer.hr">
+              <FormattedMessage id="footer.contact" />
+            </a>
           </div>
           <div>
             <FormattedMessage id="footer.faq" />

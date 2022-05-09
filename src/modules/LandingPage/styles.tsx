@@ -215,6 +215,10 @@ export const FooterColumn = styled('div', {
   flexDirection: 'column',
   alignItems: 'center',
 
+  ':hover': {
+    cursor: 'pointer',
+  },
+
   'div + div': {
     marginTop: '$3',
   },

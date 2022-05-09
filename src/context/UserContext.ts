@@ -7,13 +7,17 @@ interface UserContextType {
   setUser: React.Dispatch<React.SetStateAction<OptionalUser>>;
   isLoggedIn: boolean;
   setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
+  isLoggedInWithGoogle: boolean;
+  setIsLoggedInWithGoogle: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const UserContext = createContext<UserContextType>({
   user: null,
   setUser: () => null,
   isLoggedIn: true,
-  setIsLoggedIn: () => false,
+  setIsLoggedIn: () => true,
+  isLoggedInWithGoogle: false,
+  setIsLoggedInWithGoogle: () => false,
 });
 
 export const UserContextProvider = ({
@@ -21,6 +25,7 @@ export const UserContextProvider = ({
 }: React.PropsWithChildren<unknown>) => {
   const [user, setUser] = useState<OptionalUser>(null);
   const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedInWithGoogle, setIsLoggedInWithGoogle] = useState(false);
 
   const providerUser = useMemo(
     () => ({
@@ -28,8 +33,17 @@ export const UserContextProvider = ({
       setUser,
       isLoggedIn,
       setIsLoggedIn,
+      isLoggedInWithGoogle,
+      setIsLoggedInWithGoogle,
     }),
-    [user, setUser, isLoggedIn, setIsLoggedIn]
+    [
+      user,
+      setUser,
+      isLoggedIn,
+      setIsLoggedIn,
+      isLoggedInWithGoogle,
+      setIsLoggedInWithGoogle,
+    ]
   );
 
   return React.createElement(
