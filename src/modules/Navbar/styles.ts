@@ -87,8 +87,23 @@ export const OpenedProfileMenu = styled('div', {
   boxSizing: 'border-box',
   overflow: 'hidden',
   height: '0',
+  marginBottom: '20px',
+});
 
+export const LocaleSection = styled('div', {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  marginBottom: '10px',
   'div + div': {
-    marginTop: '20px',
+    borderLeft: 'solid 1px #10434E',
+    paddingLeft: '10px',
+  },
+});
+
+export const LocaleLink = styled('div', {
+  color: '#10434E',
+  ':hover': {
+    color: '#47b9d3',
   },
 });
