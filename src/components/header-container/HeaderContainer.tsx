@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import React from 'react';
+import { AiOutlineHome } from 'react-icons/ai';
 
 import { CustomLink } from '@components';
 import { useUserContext } from '@hooks';
@@ -10,6 +11,7 @@ import {
   ChildrenContainer,
   LogoContainer,
   StyledHeaderContainer,
+  HomeContainer,
 } from './styles';
 
 type StitchesComponentProps = React.ComponentPropsWithoutRef<
@@ -45,6 +47,16 @@ export const HeaderContainer = ({
         </CustomLink>
       </LogoContainer>
       <ChildrenContainer>{children}</ChildrenContainer>
+
+      {!user && (
+        <HomeContainer>
+          <CustomLink href="/">
+            <AiOutlineHome
+              style={{ color: 'white', height: '100%', width: '100%' }}
+            />
+          </CustomLink>
+        </HomeContainer>
+      )}
     </StyledHeaderContainer>
   );
 };
