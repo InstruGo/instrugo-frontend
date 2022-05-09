@@ -1,6 +1,7 @@
 import { useLayoutEffect, useRef, useState } from 'react';
 
 import { BiFilter } from 'react-icons/bi';
+import { ImCross } from 'react-icons/im';
 import { FormattedMessage } from 'react-intl';
 
 import { Button, Calendar, Dropdown } from '@components';
@@ -33,6 +34,9 @@ export const LessonsWithFilter = () => {
     filterMenuAnimation(filterMenuRef, isFilterMenuOpen);
   }, [filterMenuAnimation, isFilterMenuOpen]);
 
+  const handleClearFilters = () => {
+    setFilter('reset', 'all');
+  };
   return (
     <div>
       <ControlPanel>
@@ -104,6 +108,19 @@ export const LessonsWithFilter = () => {
             }
           />
         </FilterGroup>
+        <div style={{ marginTop: '25px', alignItems: 'center' }}>
+          <Button
+            variant="secondary"
+            style={{
+              border: 'none',
+              backgroundColor: 'inherit',
+              boxShadow: 'none',
+            }}
+            onClick={handleClearFilters}
+          >
+            <ImCross style={{ width: '15px', paddingTop: '2px' }} />
+          </Button>
+        </div>
       </FilterMenuContainer>
 
       {filter.status !== 'pending' ? (

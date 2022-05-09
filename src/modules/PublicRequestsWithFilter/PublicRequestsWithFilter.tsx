@@ -1,6 +1,7 @@
 import { FormattedMessage } from 'react-intl';
+import { ImCross } from 'react-icons/im';
 
-import { Dropdown } from '@components';
+import { Dropdown, Button } from '@components';
 import { useLessonFilter } from '@hooks';
 import { useAvailableFilterOptions } from '@modules/LessonsWithFilter/useAvailableFilterOptions';
 import { PublicRequestsContainer } from '@modules/PublicRequestsContainer/PublicRequestsContainer';
@@ -13,7 +14,9 @@ export const PublicRequestsWithFilter = () => {
 
   const { subjectOptions, meetingTypeOptions, educationLevelOptions } =
     useAvailableFilterOptions();
-
+  const handleClearFilters = () => {
+    setFilter('reset', 'all');
+  };
   return (
     <div>
       <FilterMenuContainer>
@@ -120,6 +123,19 @@ export const PublicRequestsWithFilter = () => {
             </BudgetItem>
           </div>
         </FilterGroup>
+        <div style={{ marginTop: '25px', alignItems: 'center' }}>
+          <Button
+            variant="secondary"
+            style={{
+              border: 'none',
+              backgroundColor: 'inherit',
+              boxShadow: 'none',
+            }}
+            onClick={handleClearFilters}
+          >
+            <ImCross style={{ width: '15px', paddingTop: '2px' }} />
+          </Button>
+        </div>
       </FilterMenuContainer>
 
       <PublicRequestsContainer filter={filter} />

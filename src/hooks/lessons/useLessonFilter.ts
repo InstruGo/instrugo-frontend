@@ -61,7 +61,10 @@ export const useLessonFilter = (initialFilter?: LessonFilter) => {
 
     if (value === 'all') filterValue = undefined;
 
-    let newFilter = { ...filter, [key]: filterValue };
+    let newFilter =
+      key !== 'reset'
+        ? { ...filter, [key]: filterValue }
+        : { status: 'pending' };
     setFilterInner(newFilter as LessonFilter);
   };
 
