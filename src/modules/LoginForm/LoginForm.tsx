@@ -3,10 +3,7 @@ import Link from 'next/link';
 import React from 'react';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import GoogleLogin, {
-  GoogleLoginResponse,
-  GoogleLoginResponseOffline,
-} from 'react-google-login';
+import GoogleLogin from 'react-google-login';
 import { useForm } from 'react-hook-form';
 import { IoCheckmarkCircle } from 'react-icons/io5';
 import { FormattedMessage } from 'react-intl';
@@ -17,7 +14,7 @@ import { LoginFormInputs, loginFormSchema } from '@types';
 
 import {
   ForgotPassContainer,
-  LoginActionsBox,
+  SubmitActionsBox,
   LoaderContainer,
   LoginFormContainer,
   NeedAnAccount,
@@ -25,8 +22,8 @@ import {
 
 export const LoginForm = () => {
   const loginUser = useLogin();
-  const googleLogin = useGoogleLogin();
   const { publicRuntimeConfig } = getConfig();
+  const { onGoogleResponse, onGoogleFailure } = useGoogleLogin();
 
   const {
     register,
@@ -38,18 +35,6 @@ export const LoginForm = () => {
 
   const onSubmit = (data: LoginFormInputs) => {
     loginUser.mutate(data);
-  };
-
-  const onGoogleResponse = (
-    response: GoogleLoginResponse | GoogleLoginResponseOffline
-  ) => {
-    if ('accessToken' in response) {
-      googleLogin.mutate(response.accessToken);
-    }
-  };
-
-  const onGoogleFailure = (error: any) => {
-    console.log(error);
   };
 
   return (
@@ -78,7 +63,7 @@ export const LoginForm = () => {
         </Link>
       </ForgotPassContainer>
 
-      <LoginActionsBox>
+      <SubmitActionsBox>
         <Input
           type="submit"
           variant="authSubmit"
@@ -92,7 +77,7 @@ export const LoginForm = () => {
           onSuccess={onGoogleResponse}
           onFailure={onGoogleFailure}
         />
-      </LoginActionsBox>
+      </SubmitActionsBox>
 
       <NeedAnAccount>
         <FormattedMessage id="login.needAnAccount" />
