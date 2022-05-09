@@ -173,6 +173,8 @@ export const LandingPage = () => {
             <BsYoutube />
             <a
               href="https://github.com/InstruGo"
+              target="_blank"
+              rel="noreferrer"
               style={{ paddingLeft: '10px' }}
             >
               <BsGithub />

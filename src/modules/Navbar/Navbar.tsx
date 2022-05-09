@@ -10,14 +10,10 @@ import { FormattedMessage } from 'react-intl';
 import { useQueryClient } from 'react-query';
 
 import { Button, CustomLink, HeaderContainer, Loader } from '@components';
-import {
-  useBecomeTutor,
-  useLogout,
-  useMenuAnimation,
-  useUserContext,
-} from '@hooks';
+import { useBecomeTutor, useMenuAnimation, useUserContext } from '@hooks';
 import { UserRole } from '@types';
 
+import { Logout } from './Logout';
 import {
   Clickable,
   HamburgerMenu,
@@ -34,11 +30,10 @@ import {
 } from './styles';
 
 export const Navbar = () => {
-  const queryClient = useQueryClient();
   const router = useRouter();
-  const logout = useLogout();
-  const becomeTutor = useBecomeTutor();
   const { user } = useUserContext();
+  const queryClient = useQueryClient();
+  const becomeTutor = useBecomeTutor();
 
   const [isMenuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -268,14 +263,8 @@ export const Navbar = () => {
                   <FormattedMessage id={'nav.profile'} />
                 </CustomLink>
               </NavLink>
-              <NavLink
-                onClick={() => logout.mutate()}
-                style={{ margin: '20px 15px' }}
-              >
-                <a>
-                  <FormattedMessage id={'nav.logout'} />
-                </a>
-              </NavLink>
+
+              <Logout />
 
               <LocaleSection>
                 <LocaleLink>

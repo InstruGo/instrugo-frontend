@@ -26,13 +26,11 @@ export const NavLinkDecorator = styled('div', {
 });
 
 export const NavLink = styled('div', {
-  '> a': {
-    color: 'white',
-    fontSize: '$lg',
-    fontWeight: 'bold',
-    cursor: 'pointer',
-    '&:hover': { color: '#a4e4ed' },
-  },
+  color: 'white',
+  fontSize: '$lg',
+  fontWeight: 'bold',
+  cursor: 'pointer',
+  '&:hover': { color: '#a4e4ed' },
 });
 
 export const HamburgerMenu = styled('div', {

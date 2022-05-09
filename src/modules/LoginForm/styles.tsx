@@ -1,5 +1,3 @@
-import { CSS } from '@stitches/react';
-
 import { styled } from '../../../styles/stitches.config';
 
 export const LoginFormContainer = styled('form', {
@@ -63,7 +61,7 @@ export const LoaderContainer = styled('div', {
   height: '40px',
 });
 
-export const LoginActionsBox = styled('div', {
+export const SubmitActionsBox = styled('div', {
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',

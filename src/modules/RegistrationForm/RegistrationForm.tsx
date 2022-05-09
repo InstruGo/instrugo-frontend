@@ -1,16 +1,20 @@
+import getConfig from 'next/config';
+
 import { zodResolver } from '@hookform/resolvers/zod';
+import GoogleLogin from 'react-google-login';
 import { Controller, useForm } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
 import Select from 'react-select';
 
 import { CustomLink, Input, Loader } from '@components';
-import { useRegister, useSubjects } from '@hooks';
+import { useGoogleLogin, useRegister, useSubjects } from '@hooks';
 import { SubjectSelectOption } from '@types';
 
 import {
   RegisterFormInputs,
   registerFormSchema,
 } from '../../types/register.type';
+import { SubmitActionsBox } from '../LoginForm/styles';
 import { SubjectsLabel, selectStyles } from './styles';
 import {
   AlreadyHaveAccount,
@@ -22,7 +26,9 @@ import {
 export const RegistrationForm = () => {
   const intl = useIntl();
   const registerUser = useRegister();
+  const { onGoogleResponse, onGoogleFailure } = useGoogleLogin();
   const { data, isLoading } = useSubjects();
+  const { publicRuntimeConfig } = getConfig();
 
   const subjectSelectOptions = data?.map((subject) => ({
     value: subject.id,
@@ -141,11 +147,21 @@ export const RegistrationForm = () => {
           <input type="checkbox" required />
         </LabeledCheckbox>
 
-        <Input
-          type="submit"
-          variant="authSubmit"
-          placeholderMsgId="button.register"
-        />
+        <SubmitActionsBox>
+          <Input
+            type="submit"
+            variant="authSubmit"
+            placeholderMsgId="button.register"
+            css={{ margin: 0 }}
+          />
+
+          <GoogleLogin
+            clientId={publicRuntimeConfig.googleClientId}
+            buttonText="Login"
+            onSuccess={onGoogleResponse}
+            onFailure={onGoogleFailure}
+          />
+        </SubmitActionsBox>
 
         <AlreadyHaveAccount>
           <FormattedMessage id="registration.alreadyHaveAnAccount" />
