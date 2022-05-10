@@ -15,7 +15,6 @@ import { UserRole } from '@types';
 
 import { Logout } from './Logout';
 import {
-  Background,
   Clickable,
   HamburgerMenu,
   NavLink,
@@ -270,6 +269,7 @@ export const Navbar = () => {
               >
                 {user.firstName + ' ' + user.lastName}
               </NavLink>
+
               <NavLink style={{ margin: '20px 15px' }}>
                 <CustomLink href="/profile">
                   <FormattedMessage id={'nav.profile'} />
@@ -288,9 +288,6 @@ export const Navbar = () => {
                         height="20px"
                         alt="hrIcon"
                       />
-                      {/* <span className="text">
-                        <FormattedMessage id="lang.hr" />
-                      </span> */}
                     </a>
                   </Link>
                 </LocaleLink>
@@ -303,9 +300,6 @@ export const Navbar = () => {
                         height="20px"
                         alt="enIcon"
                       />
-                      {/* <span className="text">
-                        <FormattedMessage id="lang.en" />
-                      </span> */}
                     </a>
                   </Link>
                 </LocaleLink>
@@ -313,7 +307,6 @@ export const Navbar = () => {
             </OpenedProfileMenu>
           </ProfileLink>
         </RightNavSection>
-        {isProfileOpen && <Background onClick={() => setProfileOpen(false)} />}
       </StyledHeader>
     </HeaderContainer>
   );
