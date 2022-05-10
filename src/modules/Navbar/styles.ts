@@ -49,7 +49,6 @@ export const Clickable = styled('div', {
 
 export const OpenedMenu = styled('div', {
   position: 'absolute',
-  zIndex: 1,
   top: '83px',
   left: '3px',
   borderRadius: '5px',
@@ -76,7 +75,7 @@ export const ProfileLink = styled('div', {
 
 export const OpenedProfileMenu = styled('div', {
   position: 'absolute',
-  zIndex: 1,
+  zIndex: 1000,
   top: '83px',
   right: '3px',
   backgroundColor: 'rgb(16, 67, 78)',
