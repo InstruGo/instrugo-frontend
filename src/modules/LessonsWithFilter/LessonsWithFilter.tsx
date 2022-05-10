@@ -1,6 +1,7 @@
 import { useLayoutEffect, useRef, useState } from 'react';
 
 import { BiFilter } from 'react-icons/bi';
+import { ImCross } from 'react-icons/im';
 import { FormattedMessage } from 'react-intl';
 
 import { Button, Calendar, Dropdown } from '@components';
@@ -33,6 +34,9 @@ export const LessonsWithFilter = () => {
     filterMenuAnimation(filterMenuRef, isFilterMenuOpen);
   }, [filterMenuAnimation, isFilterMenuOpen]);
 
+  const handleClearFilters = () => {
+    setFilter('reset', 'all');
+  };
   return (
     <div>
       <ControlPanel>
@@ -80,6 +84,11 @@ export const LessonsWithFilter = () => {
           <Dropdown
             options={subjectOptions}
             onOptionSelect={(value: string) => setFilter('subjectIds', value)}
+            selectedOption={
+              filter.subjectIds && filter.subjectIds.length !== 0
+                ? filter.subjectIds[0].toString()
+                : undefined
+            }
           />
         </FilterGroup>
 
@@ -90,6 +99,7 @@ export const LessonsWithFilter = () => {
           <Dropdown
             options={meetingTypeOptions}
             onOptionSelect={(value: string) => setFilter('type', value)}
+            selectedOption={filter.type}
           />
         </FilterGroup>
 
@@ -102,8 +112,22 @@ export const LessonsWithFilter = () => {
             onOptionSelect={(value: string) =>
               setFilter('educationLevel', value)
             }
+            selectedOption={filter.educationLevel}
           />
         </FilterGroup>
+        <div style={{ marginTop: '25px', alignItems: 'center' }}>
+          <Button
+            variant="secondary"
+            style={{
+              border: 'none',
+              backgroundColor: 'inherit',
+              boxShadow: 'none',
+            }}
+            onClick={handleClearFilters}
+          >
+            <ImCross style={{ width: '15px', paddingTop: '2px' }} />
+          </Button>
+        </div>
       </FilterMenuContainer>
 
       {filter.status !== 'pending' ? (

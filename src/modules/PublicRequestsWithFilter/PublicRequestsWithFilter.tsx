@@ -1,6 +1,7 @@
 import { FormattedMessage } from 'react-intl';
+import { ImCross } from 'react-icons/im';
 
-import { Dropdown } from '@components';
+import { Dropdown, Button } from '@components';
 import { useLessonFilter } from '@hooks';
 import { useAvailableFilterOptions } from '@modules/LessonsWithFilter/useAvailableFilterOptions';
 import { PublicRequestsContainer } from '@modules/PublicRequestsContainer/PublicRequestsContainer';
@@ -13,7 +14,9 @@ export const PublicRequestsWithFilter = () => {
 
   const { subjectOptions, meetingTypeOptions, educationLevelOptions } =
     useAvailableFilterOptions();
-
+  const handleClearFilters = () => {
+    setFilter('reset', 'all');
+  };
   return (
     <div>
       <FilterMenuContainer>
@@ -24,6 +27,11 @@ export const PublicRequestsWithFilter = () => {
           <Dropdown
             options={subjectOptions}
             onOptionSelect={(value: string) => setFilter('subjectIds', value)}
+            selectedOption={
+              filter.subjectIds && filter.subjectIds.length !== 0
+                ? filter.subjectIds[0].toString()
+                : undefined
+            }
           />
         </FilterGroup>
 
@@ -34,6 +42,7 @@ export const PublicRequestsWithFilter = () => {
           <Dropdown
             options={meetingTypeOptions}
             onOptionSelect={(value: string) => setFilter('type', value)}
+            selectedOption={filter.type}
           />
         </FilterGroup>
 
@@ -46,6 +55,7 @@ export const PublicRequestsWithFilter = () => {
             onOptionSelect={(value: string) =>
               setFilter('educationLevel', value)
             }
+            selectedOption={filter.educationLevel}
           />
         </FilterGroup>
 
@@ -63,6 +73,7 @@ export const PublicRequestsWithFilter = () => {
                 <input
                   type="number"
                   style={{ width: '70px' }}
+                  value={filter.minBudget ? filter.minBudget : ''}
                   onChange={(e) => setFilter('minBudget', e.target.value)}
                 />{' '}
                 kn/h
@@ -77,6 +88,7 @@ export const PublicRequestsWithFilter = () => {
                 <input
                   type="number"
                   style={{ width: '70px' }}
+                  value={filter.maxBudget ? filter.maxBudget : ''}
                   onChange={(e) => setFilter('maxBudget', e.target.value)}
                 />{' '}
                 kn/h
@@ -99,6 +111,7 @@ export const PublicRequestsWithFilter = () => {
                 <input
                   type="number"
                   style={{ width: '70px' }}
+                  value={filter.minDuration ? filter.minDuration : ''}
                   onChange={(e) => setFilter('minDuration', e.target.value)}
                 />{' '}
                 min
@@ -113,6 +126,7 @@ export const PublicRequestsWithFilter = () => {
                 <input
                   type="number"
                   style={{ width: '70px' }}
+                  value={filter.maxDuration ? filter.maxDuration : ''}
                   onChange={(e) => setFilter('maxDuration', e.target.value)}
                 />{' '}
                 min
@@ -120,6 +134,19 @@ export const PublicRequestsWithFilter = () => {
             </BudgetItem>
           </div>
         </FilterGroup>
+        <div style={{ marginTop: '25px', alignItems: 'center' }}>
+          <Button
+            variant="secondary"
+            style={{
+              border: 'none',
+              backgroundColor: 'inherit',
+              boxShadow: 'none',
+            }}
+            onClick={handleClearFilters}
+          >
+            <ImCross style={{ width: '15px', paddingTop: '2px' }} />
+          </Button>
+        </div>
       </FilterMenuContainer>
 
       <PublicRequestsContainer filter={filter} />

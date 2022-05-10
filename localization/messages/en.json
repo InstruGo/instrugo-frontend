@@ -120,7 +120,6 @@
   "filter.budgetFrom": "From",
   "filter.budgetTo": "To",
 
-  "button.createRequest": "Create new request",
   "updateRequest.description": "Update your request",
   "newRequest.description": "New Request",
   "newRequestForm.grade": "Grade",
