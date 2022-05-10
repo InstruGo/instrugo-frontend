@@ -85,7 +85,9 @@ export const LessonsWithFilter = () => {
             options={subjectOptions}
             onOptionSelect={(value: string) => setFilter('subjectIds', value)}
             selectedOption={
-              filter.subjectIds ? filter.subjectIds[0].toString() : undefined
+              filter.subjectIds && filter.subjectIds.length !== 0
+                ? filter.subjectIds[0].toString()
+                : undefined
             }
           />
         </FilterGroup>

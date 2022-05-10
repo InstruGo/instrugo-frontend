@@ -17,7 +17,6 @@ export const PublicRequestsWithFilter = () => {
   const handleClearFilters = () => {
     setFilter('reset', 'all');
   };
-  console.log(filter);
   return (
     <div>
       <FilterMenuContainer>
@@ -29,7 +28,9 @@ export const PublicRequestsWithFilter = () => {
             options={subjectOptions}
             onOptionSelect={(value: string) => setFilter('subjectIds', value)}
             selectedOption={
-              filter.subjectIds ? filter.subjectIds[0].toString() : undefined
+              filter.subjectIds && filter.subjectIds.length !== 0
+                ? filter.subjectIds[0].toString()
+                : undefined
             }
           />
         </FilterGroup>
